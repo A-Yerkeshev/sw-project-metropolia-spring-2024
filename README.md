@@ -6,5 +6,6 @@ The Instant Review Softwareis designed for dedicated teachers at diverse educati
 
 ## Installation
 
-To run backend navigate to backend directory and run npm run dev
-To run frontend navigate to frontend directory and run npm start
+### To run backend navigate to backend directory and run npm run dev
+
+### To run frontend navigate to frontend directory and run npm start
