@@ -38,24 +38,21 @@ const getOneSession = async (req, res) => {
 
 // POST one event
 const createSession = async (req, res) => {
-    const { name, description, start, end, feedbacks } = req.body
+    const { name, description, start, end } = req.body
 
     // Input validation
     let emptyFields = []
     if (!name) emptyFields.push('name')
-    if (!date) emptyFields.push('date')
     if (!description) emptyFields.push('description')
-    if (!location) emptyFields.push('location')
-    // if (!organizer) emptyFields.push('organizer')
-    if (!status) emptyFields.push('status')
+    if (!start) emptyFields.push('start')
+    if (!end) emptyFields.push('end')
 
     if (emptyFields.length > 0) {
         return res.status(400).json({ error: `Missing required fields: ${emptyFields.join(', ')}` })
     }
 
-
     try {
-        const session = await Session.create({ start, end, feedbacks });
+        const session = await Session.create({ name, description, start, end });
         res.status(200).json({ session });
 
     } catch (error) {
