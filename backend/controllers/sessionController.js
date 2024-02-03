@@ -63,19 +63,19 @@ const createSession = async (req, res) => {
 
 // DELETE one event
 const deleteSession = async (req, res) => {
-    const { eventId } = req.params
+    const { sessionId } = req.params
 
-    // check if eventId is valid
-    if (!mongoose.Types.ObjectId.isValid(eventId)) {
-        return res.status(400).json({ error: 'Invalid event ID'})
+    // check if sessionId is valid
+    if (!mongoose.Types.ObjectId.isValid(sessionId)) {
+        return res.status(400).json({ error: 'Invalid session ID'})
     }
 
     try {
-        const deletedEvent = await Event.findByIdAndDelete(eventId)
-        if (!deletedEvent) {
-            return res.status(404).json({ error: 'Event not found'})
+        const deletedSession = await Session.findByIdAndDelete(sessionId)
+        if (!deletedSession) {
+            return res.status(404).json({ error: 'Session not found'})
         }
-        res.status(200).json({ deletedEvent })
+        res.status(200).json({ deletedSession })
     } catch (error) {
         res.status(500).json({ error: error.message })
     }
