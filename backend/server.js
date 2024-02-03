@@ -5,7 +5,7 @@ const dbURI = process.env.MONGO_URI
 
 const express = require('express')
 const mongoose = require('mongoose')
-const eventRoutes = require('./routes/events')
+const sessionRoutes = require('./routes/sessions')
 const { error } = require('console')
 
 // Create express app
@@ -20,7 +20,7 @@ app.use((req, res, next) => {
 })
 
 // routes
-app.use('/api/events',eventRoutes)
+app.use('/api/sessions',sessionRoutes)
 
 //connect to mongodb
 mongoose.connect(dbURI)

@@ -18,6 +18,8 @@ const feedbackSchema = new Schema({
 
 // Session Schema
 const sessionSchema = new Schema({
+  name: { type: String, required: true },
+  description: { type: String, required: true },
   start: { type: Date, required: true },
   end: { type: Date, required: true },
   feedbacks: [{ type: Schema.Types.ObjectId, ref: 'Feedback', required: true }]

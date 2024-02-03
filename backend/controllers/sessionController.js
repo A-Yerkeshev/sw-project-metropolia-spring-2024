@@ -1,21 +1,21 @@
-const Event = require('../models/eventModel')
+const {Session} = require('../models')
 const mongoose = require('mongoose')
 
-// GET all events
-const getAllEvents = async (req, res) => {
+// GET all sessions
+const getAllSessions = async (req, res) => {
     try {
-        const events = await Event.find({}).sort({createdAt: -1})
-        res.status(200).json({ events })
+        const sessions = await Session.find({}).sort({createdAt: -1})
+        res.status(200).json({ sessions })
     } catch (error) {
         res.status(500).json({ error: error.message })
     }
 }
 
-// GET one event
-const getOneEvent = async (req, res) => {
-    const { eventId } = req.params
+// GET one session
+const getOneSession = async (req, res) => {
+    const { sessionId } = req.params
 
-    // check if eventId is valid    
+    // check if sessionId is valid    
     if (!mongoose.Types.ObjectId.isValid(eventId)) {
         return res.status(404).json({ error: 'Invalid event ID'})
     }
@@ -37,8 +37,8 @@ const getOneEvent = async (req, res) => {
 }
 
 // POST one event
-const createEvent = async (req, res) => {
-    const { name, date, description, location, organizer, status } = req.body
+const createSession = async (req, res) => {
+    const { name, description, start, end, feedbacks } = req.body
 
     // Input validation
     let emptyFields = []
@@ -55,8 +55,9 @@ const createEvent = async (req, res) => {
 
 
     try {
-        const event = await Event.create({ name, date, description, location, organizer, status })
-        res.status(200).json({ event })
+        const session = await Session.create({ start, end, feedbacks });
+        res.status(200).json({ session });
+
     } catch (error) {
         res.status(500).json({ error: 'Server error' })
 
@@ -64,7 +65,7 @@ const createEvent = async (req, res) => {
 }
 
 // DELETE one event
-const deleteEvent = async (req, res) => {
+const deleteSession = async (req, res) => {
     const { eventId } = req.params
 
     // check if eventId is valid
@@ -85,7 +86,7 @@ const deleteEvent = async (req, res) => {
 
 
 // UPDATE one event
-const updateEvent = async (req, res) => {
+const updateSession = async (req, res) => {
     const { eventId } = req.params
     const { name, date, description, location, organizer, status } = req.body
 
@@ -103,9 +104,9 @@ const updateEvent = async (req, res) => {
 }
 
 module.exports = {
-    getAllEvents,
-    getOneEvent,
-    createEvent,
-    deleteEvent,
-    updateEvent
+    getAllSessions,
+    getOneSession,
+    createSession,
+    deleteSession,
+    updateSession
 }
