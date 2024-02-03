@@ -16,19 +16,19 @@ const getOneSession = async (req, res) => {
     const { sessionId } = req.params
 
     // check if sessionId is valid    
-    if (!mongoose.Types.ObjectId.isValid(eventId)) {
-        return res.status(404).json({ error: 'Invalid event ID'})
+    if (!mongoose.Types.ObjectId.isValid(sessionId)) {
+        return res.status(404).json({ error: 'Invalid session ID'})
     }
 
     try {
-        const event = await Event.findById(eventId)
+        const session = await Session.findById(sessionId)
 
-        // check if event exists
-        if (!event) {
+        // check if session exists
+        if (!session) {
             return res.status(404).json({ error: 'Event not found'})
         }
 
-        res.status(200).json({ event })
+        res.status(200).json({session })
     } catch (error) {
         console.log('Error fetching event: ',error);
 
