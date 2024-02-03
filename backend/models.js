@@ -22,7 +22,7 @@ const sessionSchema = new Schema({
   description: { type: String, required: true },
   start: { type: Date, required: true },
   end: { type: Date, required: true },
-  feedbacks: [{ type: Schema.Types.ObjectId, ref: 'Feedback', required: true }]
+  feedbacks: [{ type: Schema.Types.ObjectId, ref: 'Feedback' }]
 }, {timestamps: true});
 
 // Course Schema
