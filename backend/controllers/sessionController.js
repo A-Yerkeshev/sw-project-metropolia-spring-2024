@@ -82,19 +82,19 @@ const deleteSession = async (req, res) => {
 }
 
 
-// UPDATE one event
+// UPDATE one session
 const updateSession = async (req, res) => {
-    const { eventId } = req.params
-    const { name, date, description, location, organizer, status } = req.body
+    const { sessionId } = req.params
+    const { name, description, start, end } = req.body
 
     // check if eventId is valid
-    if (!mongoose.Types.ObjectId.isValid(eventId)) {
+    if (!mongoose.Types.ObjectId.isValid(sessionId)) {
         return res.status(400).json({ error: 'Invalid event ID'})
     }
 
     try {
-        const updatedEvent = await Event.findByIdAndUpdate(eventId, { name, date, description, location, organizer, status }, { new: true })
-        res.status(200).json({ updatedEvent })
+        const updatedSession = await Session.findByIdAndUpdate(sessionId, { name, description,start, end }, { new: true })
+        res.status(200).json({ updatedSession })
     } catch (error) {
         res.status(500).json({ error: 'Server error' })
     }
