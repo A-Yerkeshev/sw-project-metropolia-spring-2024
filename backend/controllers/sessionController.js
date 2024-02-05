@@ -1,4 +1,4 @@
-const {Session} = require('../models/models')
+const {Session} = require('../models/sessionModel')
 const mongoose = require('mongoose')
 
 // GET all sessions
