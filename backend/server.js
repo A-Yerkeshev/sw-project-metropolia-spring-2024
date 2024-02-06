@@ -4,6 +4,7 @@ const port = process.env.PORT || 4000
 const dbURI = process.env.MONGO_URI
 
 const express = require('express')
+const cors = require('cors')
 const mongoose = require('mongoose')
 const sessionRoutes = require('./routes/sessions')
 const userRoutes = require('./routes/user')
@@ -11,6 +12,9 @@ const { error } = require('console')
 
 // Create express app
 const app = express()
+
+//configure cors
+app.use(cors())
 
 // middleware
 app.use(express.json())
