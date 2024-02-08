@@ -4,6 +4,7 @@ import {useAuthContext} from './hooks/useAuthContext';
 // pages & components
 import Signup from './pages/Signup';
 import Login from './pages/Login';
+import QR from './pages/QR';
 
 function App() {
   const {user} = useAuthContext();
@@ -13,8 +14,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element= {<Login />} />
-          <Route path="/signup" element= {!user ? <Signup /> : <Navigate to="/" />} 
-          />
+          <Route path="/signup" element= {!user ? <Signup /> : <Navigate to="/" />} />
+          <Route path="/share" element= {<QR />}/>
         </Routes>
       </BrowserRouter>
     </div>
