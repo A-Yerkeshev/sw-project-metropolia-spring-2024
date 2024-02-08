@@ -7,7 +7,7 @@ const chaiHttp = require('chai-http');
 chai.use(chaiHttp);
 const expect = chai.expect;
 
-describe('User Endpoints', () => {
+describe('User API', () => {
   before(async () => {
     await User.deleteMany({});
   });
