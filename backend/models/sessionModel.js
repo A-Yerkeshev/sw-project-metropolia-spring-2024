@@ -5,9 +5,8 @@ const Schema = mongoose.Schema;
 const sessionSchema = new Schema({
     name: { type: String, required: true },
     description: { type: String, required: true },
-    start: { type: Date, required: true },
-    end: { type: Date, required: true },
-    feedbacks: [{ type: Schema.Types.ObjectId, ref: 'Feedback' }]
+    duration: { type: Number, required: true },
+    courseId: { type: Schema.Types.ObjectId, ref: 'Course', required: true }
   }, {timestamps: true});
 
 const Session = mongoose.model('Session', sessionSchema);

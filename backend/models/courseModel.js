@@ -5,8 +5,7 @@ const Schema = mongoose.Schema;
 const courseSchema = new Schema({
   name: { type: String, required: true },
   students: [{ type: Number }],
-  teachers: [{ type: Schema.Types.ObjectId, ref: 'User' }],
-  sessions: [{ type: Schema.Types.ObjectId, ref: 'Session' }]
+  teachers: [{ type: Schema.Types.ObjectId, ref: 'User' }]
 }, {timestamps: true});
 
 const Course = mongoose.model('Course', courseSchema);

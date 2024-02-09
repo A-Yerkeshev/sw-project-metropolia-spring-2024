@@ -15,7 +15,7 @@ const getAllSessions = async (req, res) => {
 const getOneSession = async (req, res) => {
     const { sessionId } = req.params
 
-    // check if sessionId is valid    
+    // check if sessionId is valid
     if (!mongoose.Types.ObjectId.isValid(sessionId)) {
         return res.status(404).json({ error: 'Invalid session ID'})
     }
@@ -38,21 +38,21 @@ const getOneSession = async (req, res) => {
 
 // POST one event
 const createSession = async (req, res) => {
-    const { name, description, start, end } = req.body
+    const { name, description, duration, courseId } = req.body
 
     // Input validation
     let emptyFields = []
     if (!name) emptyFields.push('name')
     if (!description) emptyFields.push('description')
-    if (!start) emptyFields.push('start')
-    if (!end) emptyFields.push('end')
+    if (!duration) emptyFields.push('duration')
+    if (!courseId) emptyFields.push('courseId')
 
     if (emptyFields.length > 0) {
         return res.status(400).json({ error: `Missing required fields: ${emptyFields.join(', ')}` })
     }
 
     try {
-        const session = await Session.create({ name, description, start, end });
+        const session = await Session.create({ name, description, duration, courseId });
         res.status(200).json({ session });
 
     } catch (error) {
