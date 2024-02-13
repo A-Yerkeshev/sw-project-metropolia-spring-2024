@@ -20,7 +20,7 @@ const CoursesList = () => {
                     <p className={styles.actionButtonTimeText}>Timeframe:</p>
                 </div>
                 <div className={styles.actionButtonCourse}>
-                    <p className={styles.actionButton}>Course</p>
+                    <p className={styles.actionButtonCourseText}>Course</p>
                 </div>
                 <div className={styles.actionButtonGroup}>
                     <p className={styles.actionButtonGroupText}>Group</p>
