@@ -15,6 +15,17 @@ const CoursesList = () => {
                         <p className={styles.searchButtonIconText}>Search...</p>
                     </div>
             </div>
+            <div className={styles.actionButtonContainer}>
+                <div className={styles.actionButtonTime}>
+                    <p className={styles.actionButtonTimeText}>Timeframe:</p>
+                </div>
+                <div className={styles.actionButtonCourse}>
+                    <p className={styles.actionButton}>Course</p>
+                </div>
+                <div className={styles.actionButtonGroup}>
+                    <p className={styles.actionButtonGroupText}>Group</p>
+                </div>
+            </div>
         </div>
     )
 }

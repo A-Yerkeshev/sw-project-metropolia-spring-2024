@@ -42,6 +42,8 @@
 }
 
 .searchButtonIcon {
+    display: flex;
+    justify-content: center;
     border-radius: 6px;
     border: 1px solid #EEEBEA;
     width: 89px;
@@ -54,4 +56,64 @@
     display: flex;
     align-items: center;
     font-size: 16px;
+}
+
+.actionButtonContainer {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    padding: 37px;
+}
+
+.actionButtonTime {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    border: 1px solid #EEEBEA;
+    width: 298px;
+    height: 34px;
+    background: #FFFFFF;
+}
+
+.actionButtonTimeText {
+    font-size: 14px;
+    font-weight: 500;
+    color: black;
+}
+
+.actionButtonCourse {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    border: 1px solid #EEEBEA;
+    width: 85px;
+    height: 34px;
+    background: #FFFFFF;
+    margin-left: 20px;
+}
+
+.actionButtonCourseText {
+    font-size: 14px;
+    font-weight: 500;
+    color: black;
+}
+
+.actionButtonGroup {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    border: 1px solid #EEEBEA;
+    width: 85px;
+    height: 34px;
+    background: #FFFFFF;
+    margin-left: 20px;
+}
+
+.actionButtonGroupText {
+    font-size: 14px;
+    font-weight: 500;
+    color: black;
 }
