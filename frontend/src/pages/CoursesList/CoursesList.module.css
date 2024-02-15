@@ -130,7 +130,8 @@ th {
     text-align: left;
 }
 
-td, th {
+td,
+th {
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
@@ -142,4 +143,16 @@ td, th {
     color: black;
     border: 1px solid #dddddd;
     padding: 1px 12px 1px 12px;
+}
+
+.openButtom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    border: 1px solid #DAD6D5;
+    width: 110px;
+    height: 40px;
+    background: #FAF9F8;
+    margin-top: 16px;
 }

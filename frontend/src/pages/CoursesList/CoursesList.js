@@ -90,6 +90,9 @@ const CoursesList = () => {
                 })}
                 </tbody>
             </table>
+            <div>
+                <button className={styles.openButtom}>Open</button>
+            </div>
         </div>
     )
 }
