@@ -9,6 +9,7 @@ import Feedback from './pages/Feedback';
 import Navbar from './components/Navbar/Navbar';
 import CoursesList from './pages/CoursesList/CoursesList';
 import Course from './pages/Course/Course';
+import Users from './pages/Users/Users';
 
 function App() {
   const {user} = useAuthContext();
@@ -24,6 +25,7 @@ function App() {
           <Route path="/feedback/new" element= {<Feedback />}/>
           <Route path="/CoursesList" element= {<CoursesList />} />
           <Route path="/Course" element= {<Course />} />
+          <Route path="/Users" element= {<Users />} />
         </Routes>
       </BrowserRouter>
     </div>
