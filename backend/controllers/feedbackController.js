@@ -88,11 +88,15 @@ const getOneFeedback = async (req, res) => {
 // POST a feedback to a session in a course
 const createFeedback = async (req, res) => {
   const { courseId, sessionId } = req.params;
-  const { rating, text } = req.body;
+  const { rating, text, studentId } = req.body;
 
   // input validation
   if (!rating) {
     return res.status(400).json({ error: 'Missing required field: rating' });
+  }
+
+  if (!studentId) {
+    return res.status(400).json({ error: 'Missing required field: student id' });
   }
 
   // check if courseId and sessionId are valid
@@ -115,6 +119,7 @@ const createFeedback = async (req, res) => {
       rating,
       text,
       session: sessionId,
+      studentId
     });
 
     // include the newly created feedback's Id in the session's "feedbacks" array
