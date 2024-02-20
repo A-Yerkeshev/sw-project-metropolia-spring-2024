@@ -34,10 +34,10 @@ app.use((req, res, next) => {
 });
 
 // routes
-app.use('/api/course', courseRoutes);
-app.use('/api/course', sessionRoutes);
-app.use('/api/course', feedbackRoutes);
-app.use('/api/user', userRoutes);
+app.use('/api/courses', courseRoutes);
+app.use('/api/sessions', sessionRoutes);
+app.use('/api/feedbacks', feedbackRoutes);
+app.use('/api/users', userRoutes);
 
 //connect to mongodb
 mongoose

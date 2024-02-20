@@ -9,21 +9,15 @@ const {
 const router = express.Router();
 
 // GET all feedbacks
-router.get('/:courseId/session/:sessionId/feedback', getAllFeedbacks);
+router.get('/', getAllFeedbacks);
 
 // GET one feedback
-router.get(
-  '/:courseId/session/:sessionId/feedback/:feedbackId',
-  getOneFeedback
-);
+router.get('/:feedbackId', getOneFeedback);
 
 // POST one feedback
-router.post('/:courseId/session/:sessionId/feedback', createFeedback);
+router.post('/', createFeedback);
 
 // DELETE one feedback
-router.delete(
-  '/:courseId/session/:sessionId/feedback/:feedbackId',
-  deleteFeedback
-);
+router.delete('/:feedbackId', deleteFeedback);
 
 module.exports = router;

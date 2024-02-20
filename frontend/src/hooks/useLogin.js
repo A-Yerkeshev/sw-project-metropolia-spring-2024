@@ -5,14 +5,14 @@ export const useLogin = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(null);
   const { dispatch } = useAuthContext();
-  const backendUrl = process.env.REACT_APP_BACKEND_URL; 
+  const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
   const login = async (email, password) => {
     setIsLoading(true);
     setError(null);
 
     try {
-      const response = await fetch(`${backendUrl}/api/user/login`, { 
+      const response = await fetch(`${backendUrl}/api/users/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

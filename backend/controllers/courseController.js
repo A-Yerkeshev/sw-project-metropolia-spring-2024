@@ -62,7 +62,7 @@ const getOneCourse = async (req, res) => {
 
 // POST one course
 const createCourse = async (req, res) => {
-  const { name, description, students } = req.body;
+  const { name, description, students, teacherId } = req.body;
 
   // Input validation
   let emptyFields = [];
@@ -75,9 +75,15 @@ const createCourse = async (req, res) => {
       .json({ error: `Missing required fields: ${emptyFields.join(', ')}` });
   }
 
+  if (!mongoose.Types.ObjectId.isValid(teacherId)) {
+    return res
+      .status(400)
+      .json({ error: `Teacher id ${teacherId} is invalid.` });
+  }
+
   try {
     // create course entry with provided info in req body
-    const course = await Course.create({ name, description, students });
+    const course = await Course.create({ name, description, students, teacherId });
 
     res.status(200).json({ course });
   } catch (error) {

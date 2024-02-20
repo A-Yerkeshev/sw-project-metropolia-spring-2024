@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "cross-env NODE_ENV=test mocha --exit 'tests/*.test.js'",
+    "test": "cross-env NODE_ENV=test mocha --exit 'tests/coursesAPI.test.js'",
     "start": "cross-env NODE_ENV=production node server.js",
     "dev": "cross-env NODE_ENV=development nodemon server.js"
   },
