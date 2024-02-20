@@ -4,13 +4,13 @@ const mongoose = require('mongoose');
 
 // GET all feedbacks of a session in a course
 const getAllFeedbacks = async (req, res) => {
-  const { sessionId } = req.params;
+  const { sessionId } = req.query;
 
   // check if and sessionId are valid
   if (
     !mongoose.Types.ObjectId.isValid(sessionId)
   ) {
-    return res.status(400).json({ error: 'Invalid course ID or session ID' });
+    return res.status(400).json({ error: 'Invalid session ID' });
   }
 
   try {
@@ -49,24 +49,17 @@ const getOneFeedback = async (req, res) => {
   }
 
   try {
-    // check if session exists and belongs to the course
-    const session = await Session.findOne({ _id: feedbackId });
-    if (!session) {
-      return res.status(404).json({ error: 'Session not found in the course' });
-    }
-
     // check if feedback belongs to the session
     const feedback = await Feedback.findOne({
       _id: feedbackId,
-      session: sessionId,
     })
-      .populate({
-        path: 'session',
-        populate: {
-          path: 'course',
-        },
-      })
-      .exec();
+      // .populate({
+      //   path: 'session',
+      //   populate: {
+      //     path: 'course',
+      //   },
+      // })
+      // .exec();
 
     if (!feedback) {
       return res
@@ -93,11 +86,11 @@ const createFeedback = async (req, res) => {
     return res.status(400).json({ error: 'Missing required field: student id' });
   }
 
-  // check if and sessionId are valid
+  // check if and sessionId is valid
   if (
     !mongoose.Types.ObjectId.isValid(sessionId)
   ) {
-    return res.status(400).json({ error: 'Invalid course ID or session ID' });
+    return res.status(400).json({ error: 'Invalid session ID' });
   }
 
   try {
@@ -111,7 +104,7 @@ const createFeedback = async (req, res) => {
     const feedback = await Feedback.create({
       rating,
       text,
-      session: sessionId,
+      sessionId,
       studentId
     });
 
@@ -128,29 +121,21 @@ const createFeedback = async (req, res) => {
 
 // DELETE one feedback from a session in a course
 const deleteFeedback = async (req, res) => {
-  const { sessionId, feedbackId } = req.params;
+  const { feedbackId } = req.params;
 
   // check if and sessionId are valid
   if (
-    !mongoose.Types.ObjectId.isValid(sessionId) ||
     !mongoose.Types.ObjectId.isValid(feedbackId)
   ) {
     return res
       .status(400)
-      .json({ error: 'Invalid course ID, session ID or feedback ID' });
+      .json({ error: 'Invalid feedback ID' });
   }
 
   try {
-    // check if session exists and belongs to the course
-    const session = await Session.findOne({ _id: sessionId });
-    if (!session) {
-      return res.status(404).json({ error: 'Session not found in the course' });
-    }
-
     // check if feedback belongs to the session
     const deletedFeedback = await Feedback.findOneAndDelete({
-      _id: feedbackId,
-      session: sessionId,
+      _id: feedbackId
     });
 
     if (!deletedFeedback) {
@@ -158,11 +143,6 @@ const deleteFeedback = async (req, res) => {
         .status(404)
         .json({ error: 'Feedback not found in the session' });
     }
-
-    // remove the deleted feedback's Id from the session's "feedbacks" array
-    await Session.findByIdAndUpdate(sessionId, {
-      $pull: { feedbacks: feedbackId },
-    });
 
     res.status(200).json({ deletedFeedback });
   } catch (error) {

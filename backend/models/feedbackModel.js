@@ -6,7 +6,7 @@ const feedbackSchema = new Schema(
   {
     rating: { type: Number, required: true },
     text: { type: String },
-    session: { type: Schema.Types.ObjectId, ref: 'Session', required: true },
+    sessionId: { type: Schema.Types.ObjectId, ref: 'Session', required: true },
     studentId: { type: Number, required: true }
   },
   { timestamps: true }
