@@ -23,13 +23,13 @@ const getAllSessions = async (req, res) => {
     // retrieve all sessions of this course, and populate the sessions' course and feedbacks
     const sessions = await Session.find({ course: courseId })
       .populate('course')
-      .populate({
-        path: 'feedbacks',
-        options: { sort: { createdAt: -1 } },
-        populate: {
-          path: 'session',
-        },
-      })
+      // .populate({
+      //   path: 'feedbacks',
+      //   options: { sort: { createdAt: -1 } },
+      //   populate: {
+      //     path: 'session',
+      //   },
+      // })
       .sort({ createdAt: -1 })
       .exec();
 
@@ -63,13 +63,13 @@ const getOneSession = async (req, res) => {
     // retrieving the session and populate its course and feedbacks
     const session = await Session.findById(sessionId)
       .populate('course')
-      .populate({
-        path: 'feedbacks',
-        options: { sort: { createdAt: -1 } },
-        populate: {
-          path: 'session',
-        },
-      })
+      // .populate({
+      //   path: 'feedbacks',
+      //   options: { sort: { createdAt: -1 } },
+      //   populate: {
+      //     path: 'session',
+      //   },
+      // })
       .sort({ createdAt: -1 })
       .exec();
 
