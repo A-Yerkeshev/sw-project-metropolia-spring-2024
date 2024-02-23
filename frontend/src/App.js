@@ -17,7 +17,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-      <Navbar></Navbar>
+      {user && <Navbar />}
         <Routes>
           <Route path="/" element= {<Login />} />
           <Route path="/signup" element= {!user ? <Signup /> : <Navigate to="/" />} />
