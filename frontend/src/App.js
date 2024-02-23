@@ -5,7 +5,7 @@ import {useAuthContext} from './hooks/useAuthContext';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import QR from './pages/QR';
-import Feedback from './pages/Feedback';
+import Feedback from './pages/Feedback/Feedback';
 import Navbar from './components/Navbar/Navbar';
 import CoursesList from './pages/CoursesList/CoursesList';
 import Course from './pages/Course/Course';
