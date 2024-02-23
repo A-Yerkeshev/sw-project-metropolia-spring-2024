@@ -17,7 +17,7 @@ describe('User API', () => {
   // Test user signup
   it('should signup a new user', async () => {
     const res = await supertest(app)
-      .post('/api/user/signup')
+      .post('/api/users/signup')
       .send({
         firstName: 'John',
         lastName: 'Doe',
@@ -32,7 +32,7 @@ describe('User API', () => {
   // Test user login
   it('should login an existing user', async () => {
     const res = await supertest(app)
-      .post('/api/user/login')
+      .post('/api/users/login')
       .send({
         email: 'john.doe@example.com',
         password: 'password123'
