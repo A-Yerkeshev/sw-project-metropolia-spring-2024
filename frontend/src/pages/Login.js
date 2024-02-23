@@ -1,15 +1,23 @@
 import React, { useState } from 'react';
 import {useLogin} from '../hooks/useLogin';
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const {login, error, isLoading} = useLogin();
+    const navigate = useNavigate();
 
     const handleSubmit = async(e) => {
         e.preventDefault();
-         await login(email, password);
+        try {
+          await login(email, password);
+          navigate('/CoursesList');
+      } catch (err) {
+          
+          console.error("Failed to login:", err);
+      }
     }
 
     return (
