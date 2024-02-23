@@ -3,7 +3,6 @@ import {useLogin} from '../hooks/useLogin';
 import { Link } from 'react-router-dom';
 import'./login.css';
 import darkImage from '../img/dark.JPG';
-import ParticlesBackground from '../components/ParticlesBackground';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -18,7 +17,7 @@ const Login = () => {
     return (
       <div className="container">
         <div className="left-container" >
-          <ParticlesBackground />
+          <img src="https://i.gifer.com/QHG.gif" alt="Dark" />
         </div>
 
         <div className="forms-container">

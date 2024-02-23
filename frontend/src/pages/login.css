@@ -8,6 +8,8 @@
 
 body, html {
   height: 100%;
+  margin: 0;
+  padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,6 +17,10 @@ body, html {
   background-color: #ddd;
 }
 
+.div {
+  margin: 0;
+  padding: 0;
+}
 .container {
   display: flex;
   width: 960px;
@@ -29,11 +35,25 @@ body, html {
 .left-container {
   flex: 1;
   position: relative;
-  background-color: #333; /* Dark gray, replace with image later */
+  background-color: #3E47A1;
+  background-image: linear-gradient(to bottom, #484A98 30%, #121E3B 60%, #0C1116 100%);
+  background-size: cover; /* Cover the entire area of the container */
+  
+  background-position: bottom;
   color: white;
   display: flex;
+  padding: 0;
+  margin: 0;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
+  height: 100%;
+}
+.left-container img {
+  position: absolute;
+  width: 100%;
+  object-fit: cover;
+  object-position: bottom;
 }
 
 .forms-container {
