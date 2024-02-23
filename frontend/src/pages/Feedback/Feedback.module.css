@@ -1,4 +1,8 @@
 /* Feedback.module.css */
+body {
+  font-family: 'Inter', sans-serif;
+}
+
 .formControl {
     display: flex;
     flex-direction: column;
@@ -7,11 +11,11 @@
     padding: 16px;
   }
   
-  .legend {
+  .legend.legend {
     font-family: 'Inter', sans-serif;
     font-weight: bold;
     font-size: 1.25rem; /* Equivalent to h6.fontSize in MUI */
-    color: black;
+    color: black !important;
   }
   
   .radioGroup {
@@ -21,9 +25,16 @@
   
   .textField {
     margin-top: 16px;
-    width: 100%; /* Ensures it takes full width of its parent */
+    width: 100%; 
   }
   
   .submitButton {
     margin-top: 16px;
+  }
+
+  .submitButtonContainer {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%; 
+    margin-top: 16px; 
   }

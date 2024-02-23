@@ -1,5 +1,6 @@
 import React from 'react';
 import {  Box, Container, FormControl, FormLabel, RadioGroup, FormControlLabel, Radio, TextField, Button } from '@mui/material';
+import styles from './Feedback.module.css';
 
 const Feedback = () => {
   const [value, setValue] = React.useState('');
@@ -19,8 +20,8 @@ const Feedback = () => {
           padding: 2,              // Adds padding around the content
         }}
       >
-        <FormControl component="fieldset" fullWidth>
-        <FormLabel component="legend" sx={{ fontFamily: 'Inter', fontWeight: 'bold', fontSize: 'h6.fontSize', color: 'black' }}>Rate:</FormLabel>
+        <FormControl component="fieldset" className={styles.formControl}  fullWidth>
+        <FormLabel component="legend" className={styles.legend}>Rate:</FormLabel>
           <RadioGroup
             aria-label="rating"
             name="rate"
@@ -40,7 +41,9 @@ const Feedback = () => {
             margin="normal"
             fullWidth
           />
-          <Button variant="contained" color="primary" sx={{ marginTop: 2 }}>Submit</Button>
+          <Box className={styles.submitButtonContainer}>
+            <Button variant="contained" color="primary" sx={{ marginTop: 2 }}>Submit</Button>
+          </Box>        
         </FormControl>
       </Box>
     </Container>
