@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "react-qr-code": "^2.0.12",
+    "react-tsparticles": "^2.12.2",
+    "tsparticles": "^3.2.1"
+  }
+}

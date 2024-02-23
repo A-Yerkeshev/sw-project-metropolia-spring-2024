@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import {useLogin} from '../hooks/useLogin';
 import { Link } from 'react-router-dom';
+import'./login.css';
+import darkImage from '../img/dark.JPG';
+import ParticlesBackground from '../components/ParticlesBackground';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -13,7 +16,13 @@ const Login = () => {
     }
 
     return (
-        <form className="login" onSubmit={handleSubmit}>
+      <div className="container">
+        <div className="left-container" >
+          <ParticlesBackground />
+        </div>
+
+        <div className="forms-container">
+        <form className="form-control signin-form" onSubmit={handleSubmit}>
           <h3>Welcome back!</h3>
           
           <label >Email address:</label>
@@ -40,6 +49,8 @@ const Login = () => {
              Don't have an account? <Link to="/signup">Sign up for Free</Link>
              </p>
         </form>
+        </div>
+      </div>
       );
     };
     
