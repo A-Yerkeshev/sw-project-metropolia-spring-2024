@@ -1,26 +1,26 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body, html {
-  height: 100%;
+.loginWrapper {
+  height: 100vh;
   margin: 0;
   padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Poppins', sans-serif;
-  background-color: #ddd;
-}
-
-.div {
+  font-family: Inter;
   margin: 0;
   padding: 0;
+  background: #FFFFFF;
+  
 }
+
+.headerText {
+  font-size: 30px;
+  font-weight: 600;
+  color: #232222;
+  font-family: Inter;
+}
+
+
 .container {
   display: flex;
   width: 960px;
@@ -29,15 +29,16 @@ body, html {
   position: relative;
   overflow-x: hidden;
   background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.5), 0 0 24px rgba(0, 0, 0, 0.5);
+  
 }
 
-.left-container {
+.leftContainer {
   flex: 1;
   position: relative;
   background-color: #3E47A1;
   background-image: linear-gradient(to bottom, #484A98 30%, #121E3B 60%, #0C1116 100%);
-  background-size: cover; /* Cover the entire area of the container */
+  background-size: cover; 
   
   background-position: bottom;
   color: white;
@@ -49,14 +50,14 @@ body, html {
   overflow: hidden;
   height: 100%;
 }
-.left-container img {
+.leftContainer img {
   position: absolute;
   width: 100%;
   object-fit: cover;
   object-position: bottom;
 }
 
-.forms-container {
+.formsContainer {
   flex: 1;
   background-color: white;
   display: flex;
@@ -64,12 +65,12 @@ body, html {
   align-items: center;
 }
 
-.form-control {
+.formControl {
   width: 80%;
 }
 
-.form-control input,
-.form-control button {
+.formControl input,
+.formControl button {
   width: 100%;
   padding: 15px;
   margin: 10px 0;
@@ -77,13 +78,13 @@ body, html {
   border: 1px solid #ccc;
 }
 
-.form-control button {
+.formControl button {
   background-color: #4b71cd;
   color: white;
   cursor: pointer;
 }
 
-.form-control button:hover {
+.formControl button:hover {
   background-color:  #6c8ae4;
 }
 

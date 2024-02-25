@@ -3,7 +3,7 @@ import {useAuthContext} from './hooks/useAuthContext';
 
 // pages & components
 import Signup from './pages/Signup';
-import Login from './pages/Login';
+import Login from './pages/Login/Login';
 import QR from './pages/QR';
 import Feedback from './pages/Feedback/Feedback';
 import Navbar from './components/Navbar/Navbar';
