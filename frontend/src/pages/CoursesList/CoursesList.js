@@ -5,42 +5,41 @@ const CoursesList = () => {
     const [courses, setCourses] = useState([]);
 
     useEffect(() => {
-        // const url = process.env.REACT_APP_BACKEND_URL + '/api/courses';
+        const fetchCourses = async () => {
+            const url = process.env.REACT_APP_BACKEND_URL + '/api/courses';  
+            const res = await fetch(url);
+            const data = await res.json();
 
-        // const fetchCourses = async () => {
-        //   const res = await fetch(url);
-        //   const courses = await res.json();
+          setCourses(data.courses);
+          console.log(courses);
+        }
 
-        //   setCourses(courses);
-        //   console.log(courses);
-        // }
+        fetchCourses();
 
-        // fetchCourses();
+        // const courses = [
+        //     {
+        //         _id: '2874682101',
+        //         name: 'Software 1',
+        //         students: [1,2,3],
+        //         teachers: [{
+        //             firstName: 'Juso',
+        //             lastName: 'Pehkonen'
+        //         }]
+        //     }, {
+        //         _id: '2874682102',
+        //         name: 'Software 2',
+        //         students: [1,2,3,4,5],
+        //         teachers: [{
+        //             firstName: 'Jarkko',
+        //             lastName: 'Punavuori'
+        //         }, {
+        //             firstName: 'Asko',
+        //             lastName: 'Mattila'
+        //         }]
+        //     },
+        // ];
 
-        const courses = [
-            {
-                _id: '2874682101',
-                name: 'Software 1',
-                students: [1,2,3],
-                teachers: [{
-                    firstName: 'Juso',
-                    lastName: 'Pehkonen'
-                }]
-            }, {
-                _id: '2874682102',
-                name: 'Software 2',
-                students: [1,2,3,4,5],
-                teachers: [{
-                    firstName: 'Jarkko',
-                    lastName: 'Punavuori'
-                }, {
-                    firstName: 'Asko',
-                    lastName: 'Mattila'
-                }]
-            },
-        ];
-
-        setCourses(courses);
+        // setCourses(courses);
     }, []);
 
     return(
@@ -73,7 +72,7 @@ const CoursesList = () => {
                     <tr>
                         <th>Name</th>
                         <th>Students</th>
-                        <th>Teachers</th>
+                        {/* <th>Teachers</th> */}
                         <th></th>
                     </tr>
                 </thead>
@@ -82,7 +81,7 @@ const CoursesList = () => {
                     return  <tr key={course._id}>
                                 <td>{course.name}</td>
                                 <td>{course.students.length}</td>
-                                <td>{course.teachers.map((teacher) => teacher.firstName + ' ' + teacher.lastName).join(', ')}</td>
+                                {/* <td>{course.teachers.map((teacher) => teacher.firstName + ' ' + teacher.lastName).join(', ')}</td> */}
                                 <td>
                                     <a className={styles.courseBtn} href={`/courses/${course._id}`}>Go to course</a>
                                 </td>

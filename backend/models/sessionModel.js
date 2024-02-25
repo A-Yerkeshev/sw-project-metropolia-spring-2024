@@ -9,7 +9,7 @@ const sessionSchema = new Schema(
     start: { type: Date, required: true },
     end: { type: Date, required: true },
     course: { type: Schema.Types.ObjectId, ref: 'Course', required: true },
-    // feedbacks: [{ type: Schema.Types.ObjectId, ref: 'Feedback' }],
+    feedbacks: [{ type: Schema.Types.ObjectId, ref: 'Feedback' }],
   },
   { timestamps: true }
 );
