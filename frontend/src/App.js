@@ -25,6 +25,7 @@ function App() {
           <Route path="/feedback/new" element= {<Feedback />}/>
           <Route path="/CoursesList" element= {<CoursesList />} />
           <Route path="/Course" element= {<Course />} />
+          <Route path="/courses/:courseId" element={<Course />} />
           <Route path="/Users" element= {<Users />} />
         </Routes>
       </BrowserRouter>
