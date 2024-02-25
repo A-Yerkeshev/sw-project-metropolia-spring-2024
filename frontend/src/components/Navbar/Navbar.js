@@ -19,7 +19,7 @@ const Navbar = () => {
                 <div className={styles.topMenuEmail}>
                     <div className={styles.topMenuEmailAvatar}>   
                     </div>
-                    <p>test@metropolia.fi</p>
+                    <p>{user.email}</p>
                 </div>
                 <div className={styles.topMenuUserAvatar}>
                 </div>
