@@ -1,9 +1,17 @@
 import { Link } from 'react-router-dom';
+import { useAuthContext } from '../../hooks/useAuthContext'; 
 import styles from './Navbar.module.css';
 import  {useLogout} from '../../hooks/useLogout'
 
 const Navbar = () => {
+    const { user } = useAuthContext();
     const {logout} = useLogout();
+
+    console.log('Navbar user:', user);
+
+    if (!user) {
+        return null;
+    }
 
     return (
         <div className={styles.mainNavBarContainer}>
