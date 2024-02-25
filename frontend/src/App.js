@@ -2,7 +2,7 @@ import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
 import {useAuthContext} from './hooks/useAuthContext';
 
 // pages & components
-import Signup from './pages/Signup';
+import Signup from './pages/Login/Signup';
 import Login from './pages/Login/Login';
 import QR from './pages/QR';
 import Feedback from './pages/Feedback/Feedback';
