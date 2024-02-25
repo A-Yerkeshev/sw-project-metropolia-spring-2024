@@ -10,8 +10,10 @@
 .leftContainer {
     display: flex;
     flex-direction: column;
+    overflow: auto;
     float: left;
     width: 50%;
+    height: 100vh;
 }
 
 .rightContainer {
@@ -22,21 +24,31 @@
     width: 50%;
 }
 
+.courseInfoBlock, .contactUsBlock {
+    margin-bottom: 20px; 
+    overflow: hidden; 
+}
+
 .courseInfoBlock {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     border-radius: 6px;
     border: 1px solid #EEEBEA;
     width: 654px;
-    height: 367px;
     background: #FFFFFF;
     padding: 1rem 1rem;
+    overflow: visible;
+}
+
+.sessionBlock {
+    margin-bottom: 10px; 
 }
 
 .contactUsBlock {
+    display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     margin-top: 39px;
     border-radius: 6px;
     border: 1px solid #EEEBEA;
@@ -44,6 +56,7 @@
     height: 169px;
     background: #FFFFFF;
     padding: 1rem 1rem;
+    box-sizing: border-box;
 }
 
 .qrCodeContainer {
@@ -64,4 +77,20 @@
     height: 37px;
     background: #FFFFFF;
     font-size: 16px;
+}
+.sessionBlock {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9; 
+    border-radius: 5px; 
+}
+.buttonContainer {
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-between; 
+    flex-wrap: wrap; 
+    padding: 10px 0; 
 }
