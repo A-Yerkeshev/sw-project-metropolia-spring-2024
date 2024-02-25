@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import {useLogin} from '../hooks/useLogin';
+import'./login.css';
+import darkImage from '../img/dark.JPG';
 import { useNavigate, Link } from 'react-router-dom';
 
 
@@ -21,7 +23,13 @@ const Login = () => {
     }
 
     return (
-        <form className="login" onSubmit={handleSubmit}>
+      <div className="container">
+        <div className="left-container" >
+          <img src="https://i.gifer.com/QHG.gif" alt="Dark" />
+        </div>
+
+        <div className="forms-container">
+        <form className="form-control signin-form" onSubmit={handleSubmit}>
           <h3>Welcome back!</h3>
           
           <label >Email address:</label>
@@ -48,6 +56,8 @@ const Login = () => {
              Don't have an account? <Link to="/signup">Sign up for Free</Link>
              </p>
         </form>
+        </div>
+      </div>
       );
     };
     
