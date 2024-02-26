@@ -63,13 +63,52 @@ const Course = () => {
     );
     const data = await response.json();
     if (data.feedbacks) {
-      const transformedData = data.feedbacks.map((feedback, index) => ({
-        id: index, // Ensure each data point has a unique id
-        value: feedback.rating, // Assuming rating holds the value for the chart
-        label: `Rating ${feedback.rating}`, // Customize this as needed
-      }));
+      // Transform feedback data, assigning colors based on rating
+      const transformedData = data.feedbacks.map((feedback, index) => {
+        let color;
+        switch (feedback.rating) {
+          case 0:
+            color = "red"; // Negative feedback
+            break;
+          case 1:
+            color = "yellow"; // Neutral feedback
+            break;
+          case 2:
+            color = "green"; // Positive feedback
+            break;
+          default:
+            color = "grey"; // Unknown or undefined rating
+        }
 
-      setFeedbackData([{ data: transformedData }]);
+        return {
+          id: index, // Ensure each data point has a unique id
+          value: 1, // Each feedback counts as one
+          label: `Rating ${feedback.rating}`, // Customize this label as needed
+          color: color, // Assign color based on rating
+        };
+      });
+
+      // Since we're counting each feedback as one, we can aggregate ratings
+      const aggregatedData = [
+        {
+          value: transformedData.filter((d) => d.color === "green").length,
+          label: "Positive",
+          color: "green",
+        },
+        {
+          value: transformedData.filter((d) => d.color === "yellow").length,
+          label: "Neutral",
+          color: "yellow",
+        },
+        {
+          value: transformedData.filter((d) => d.color === "red").length,
+          label: "Negative",
+          color: "red",
+        },
+      ]
+        .filter((d) => d.value > 0) // Filter out categories with no feedback
+        .map((d) => ({ ...d, label: `${d.label} (${d.value})` }));
+      setFeedbackData([{ data: aggregatedData }]);
       setOpenModal(true);
     }
   };
