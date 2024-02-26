@@ -13,6 +13,7 @@ const Course = () => {
   const [course, setCourse] = useState(null);
   const [openModal, setOpenModal] = useState(false);
   const [feedbackData, setFeedbackData] = useState(null);
+  const [feedbackTexts, setFeedbackTexts] = useState([]);
 
   const modalStyle = {
     position: "absolute",
@@ -110,6 +111,10 @@ const Course = () => {
         .map((d) => ({ ...d, label: `${d.label} (${d.value})` }));
       setFeedbackData([{ data: aggregatedData }]);
       setOpenModal(true);
+
+      // Extract and store feedback texts
+      const texts = data.feedbacks.map((feedback) => feedback.text);
+      setFeedbackTexts(texts);
     }
   };
 
@@ -186,9 +191,19 @@ const Course = () => {
               <Typography id="modal-modal-title" variant="h6" component="h2">
                 Session Feedback
               </Typography>
-              <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                {feedbackData && (
-                  <PieChart series={feedbackData} width={400} height={200} />
+              {feedbackData && (
+                <PieChart series={feedbackData} width={400} height={200} />
+              )}
+              <Typography sx={{ mt: 2 }}>
+                <strong>Text Feedback:</strong>
+                {feedbackTexts.length > 0 ? (
+                  feedbackTexts.map((text, index) => (
+                    <div key={index}>
+                      {text || "No text feedback provided."}
+                    </div>
+                  ))
+                ) : (
+                  <div>No text feedback available.</div>
                 )}
               </Typography>
             </Box>
