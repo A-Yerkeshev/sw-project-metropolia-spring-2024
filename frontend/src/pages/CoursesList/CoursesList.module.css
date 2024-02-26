@@ -1,0 +1,159 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 2rem;
+    font-family: Inter;
+    background: #FFFFFF;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+}
+
+.headerTextContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.headerText {
+    font-size: 30px;
+    font-weight: 600;
+    color: #232222;
+}
+
+.subHeaderText {
+    font-size: 16px;
+    font-weight: 400;
+    color: #706E6D;
+}
+
+.searchButtonContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 6px;
+    border: 1px solid #EEEBEA;
+    width: 512px;
+    height: 61px;
+    background: #FFFFFF;
+}
+
+.searchButtonText {
+    font-size: 18px;
+    font-weight: 500;
+    color: black;
+    margin-left: 17px;
+}
+
+.searchButtonIcon {
+    display: flex;
+    justify-content: center;
+    border-radius: 6px;
+    border: 1px solid #EEEBEA;
+    width: 89px;
+    height: 35px;
+    background: #FFFFFF;
+    margin-right: 17px;
+}
+
+.searchButtonIconText {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+}
+
+.actionButtonContainer {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    padding: 37px;
+}
+
+.actionButtonTime {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    border: 1px solid #EEEBEA;
+    width: 298px;
+    height: 34px;
+    background: #FFFFFF;
+}
+
+.actionButtonTimeText {
+    font-size: 14px;
+    font-weight: 500;
+    color: black;
+}
+
+.actionButtonCourse {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    border: 1px solid #EEEBEA;
+    width: 85px;
+    height: 34px;
+    background: #FFFFFF;
+    margin-left: 20px;
+}
+
+.actionButtonCourseText {
+    font-size: 14px;
+    font-weight: 500;
+    color: black;
+}
+
+.actionButtonGroup {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    border: 1px solid #EEEBEA;
+    width: 85px;
+    height: 34px;
+    background: #FFFFFF;
+    margin-left: 20px;
+}
+
+.actionButtonGroupText {
+    font-size: 14px;
+    font-weight: 500;
+    color: black;
+}
+
+table {
+    border-spacing: 0;
+    border-radius: 8px;
+    width: 95%;
+}
+
+th {
+    text-align: left;
+}
+
+td,
+th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+.courseBtn {
+    border-radius: 6px;
+    text-decoration: none;
+    color: black;
+    border: 1px solid #dddddd;
+    padding: 1px 12px 1px 12px;
+}
+
+.openButtom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    border: 1px solid #DAD6D5;
+    width: 110px;
+    height: 40px;
+    background: #FAF9F8;
+    margin-top: 16px;
+}

@@ -6,13 +6,15 @@ const QR = () => {
 
   let baseUrl;
   if (process.env.NODE_ENV === 'development') {
-    baseUrl = process.env.REACT_APP_IP_ADDRESS;
+    //baseUrl = process.env.REACT_APP_IP_ADDRESS;
+    baseUrl = window.location.origin;
   } else {
     baseUrl = window.location.origin;
   }
 
   const sessionId = searchParams.get('sid');
-  const feedbackUrl = baseUrl + 'feedback/new?sid=' + sessionId;
+
+  const feedbackUrl = baseUrl + '/feedback/new?sid=' + sessionId;
 
   return <>
           <QRCode value={feedbackUrl} />

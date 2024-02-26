@@ -14,7 +14,7 @@ export const useSignup = () => {
     console.log('Backend URL:', backendUrl); // Log the backend URL
 
     try {
-      const response = await fetch(`${backendUrl}/api/user/signup`, {
+      const response = await fetch(`${backendUrl}/api/users/signup`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

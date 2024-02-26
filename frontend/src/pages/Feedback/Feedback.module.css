@@ -1,0 +1,40 @@
+/* Feedback.module.css */
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+.formControl {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 8px;
+    padding: 16px;
+  }
+  
+  .legend.legend {
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+    font-size: 1.25rem; /* Equivalent to h6.fontSize in MUI */
+    color: black !important;
+  }
+  
+  .radioGroup {
+    justify-content: center;
+    gap: 32px; /* Adjust based on your design */
+  }
+  
+  .textField {
+    margin-top: 16px;
+    width: 100%; 
+  }
+  
+  .submitButton {
+    margin-top: 16px;
+  }
+
+  .submitButtonContainer {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%; 
+    margin-top: 16px; 
+  }

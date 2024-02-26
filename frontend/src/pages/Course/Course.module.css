@@ -1,0 +1,96 @@
+.main {
+    padding: 1rem 2rem;
+    font-family: Inter;
+    background: #FFFFFF;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+}
+
+.leftContainer {
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    float: left;
+    width: 50%;
+    height: 100vh;
+}
+
+.rightContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    float: right;
+    width: 50%;
+}
+
+.courseInfoBlock, .contactUsBlock {
+    margin-bottom: 20px; 
+    overflow: hidden; 
+}
+
+.courseInfoBlock {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    border-radius: 6px;
+    border: 1px solid #EEEBEA;
+    width: 654px;
+    background: #FFFFFF;
+    padding: 1rem 1rem;
+    overflow: visible;
+}
+
+.sessionBlock {
+    margin-bottom: 10px; 
+}
+
+.contactUsBlock {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-top: 39px;
+    border-radius: 6px;
+    border: 1px solid #EEEBEA;
+    width: 654px;
+    height: 169px;
+    background: #FFFFFF;
+    padding: 1rem 1rem;
+    box-sizing: border-box;
+}
+
+.qrCodeContainer {
+    height: 369px;
+    width: 365px;
+    padding: 113px;
+}
+
+.button1 {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5%;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    border: 1px solid #EEEBEA;
+    width: 153px;
+    height: 37px;
+    background: #FFFFFF;
+    font-size: 16px;
+}
+.sessionBlock {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9; 
+    border-radius: 5px; 
+}
+.buttonContainer {
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-between; 
+    flex-wrap: wrap; 
+    padding: 10px 0; 
+}
