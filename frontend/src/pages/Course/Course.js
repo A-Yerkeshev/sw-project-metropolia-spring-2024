@@ -1,8 +1,10 @@
 import styles from './Course.module.css';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
+
 
 const Course = () => {
+    const navigate = useNavigate();
     const { courseId } = useParams();
     const [course, setCourse] = useState(null);
 
@@ -30,6 +32,11 @@ const Course = () => {
         // Placeholder for delete session logic
         console.log('Deleting session:', sessionId);
     };
+
+    const handleGenerateQR = (sessionId) => {
+        navigate(`/share?sid=${sessionId}`);
+    };
+
     if (!course) {
         return <div>Loading...</div>;
     }
@@ -60,6 +67,7 @@ const Course = () => {
                                     <div className={styles.buttonContainer}>
                                         <button onClick={() => handleEditSession(session._id)} className={styles.button1}>Edit</button>
                                         <button onClick={() => handleDeleteSession(session._id)} className={styles.button1}>Delete</button>
+                                        <button onClick={() => handleGenerateQR(session._id)} className={styles.button1}>Generate QR</button>
                                     </div>
                                 </div>
                             ))}
@@ -75,7 +83,7 @@ const Course = () => {
             </div>
             <div className={styles.rightContainer}>
                 <img src="/course/qrCode.svg" alt="QR Code" className={styles.qrCodeContainer} />
-                <button className={styles.button1}>Generate QR</button>
+                
                 <button className={styles.button1}>Close QR</button>
             </div>
       </div>
