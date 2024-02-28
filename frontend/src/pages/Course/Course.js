@@ -15,6 +15,7 @@ const Course = () => {
   const [feedbackData, setFeedbackData] = useState(null);
   const [feedbackTexts, setFeedbackTexts] = useState([]);
   const [modalContent, setModalContent] = useState(null);
+  const [currentSession, setCurrentSession] = useState(null);
 
   const modalStyle = {
     position: "absolute",
@@ -85,13 +86,75 @@ const Course = () => {
     console.log("Editing session:", sessionId);
   };
 
-  const handleDeleteSession = (sessionId) => {
-    // Placeholder for delete session logic
-    console.log("Deleting session:", sessionId);
+  const handleDeleteSession = async (sessionId) => {
+    try {
+      const response = await fetch(
+        `http://localhost:4000/api/sessions/${sessionId}`,
+        {
+          method: "DELETE",
+        }
+      );
+
+      if (!response.ok) throw new Error("Failed to delete session.");
+
+      console.log("Session deleted:", sessionId);
+
+      // Update the local state to remove the deleted session from `course.sessions`
+
+      setOpenModal(false); // Close the modal
+      setModalContent(null); // Reset modal content
+      setCurrentSession(null); // Reset current session
+    } catch (error) {
+      console.error("Error deleting session:", error);
+    }
   };
 
   const handleGenerateQR = (sessionId) => {
     navigate(`/share?sid=${sessionId}`);
+  };
+
+  const handleOpenEditModal = (session) => {
+    setCurrentSession(session); // Set the current session to the one selected for editing
+    setModalContent("editSession");
+    setOpenModal(true);
+  };
+
+  const handleEditSubmit = async (event) => {
+    event.preventDefault(); // Prevent the form from submitting in the traditional way
+    const formData = new FormData(event.currentTarget); // Assuming the event is passed from the form submit
+
+    const updatedSessionData = {
+      name: formData.get("name"),
+      description: formData.get("description"),
+      start: formData.get("start"),
+      end: formData.get("end"),
+    };
+
+    try {
+      const response = await fetch(
+        `http://localhost:4000/api/sessions/${currentSession._id}`,
+        {
+          method: "PUT", // or 'PATCH', depending on your API
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(updatedSessionData),
+        }
+      );
+
+      if (!response.ok) throw new Error("Failed to update session.");
+
+      const updatedSession = await response.json();
+      console.log("Session updated:", updatedSession);
+
+      // Perform any state updates or navigations here
+      setOpenModal(false);
+      setModalContent(null);
+      // You might also want to update the course or session list to reflect the changes
+    } catch (error) {
+      console.error("Error updating session:", error);
+      // Handle error cases, possibly setting error messages in state for display
+    }
   };
 
   const handleShowStatistics = async (sessionId) => {
@@ -189,11 +252,12 @@ const Course = () => {
                   <p>End: {new Date(session.end).toLocaleString()}</p>
                   <div className={styles.buttonContainer}>
                     <button
-                      onClick={() => handleEditSession(session._id)}
+                      onClick={() => handleOpenEditModal(session)}
                       className={styles.button1}
                     >
                       Edit
                     </button>
+
                     <button
                       onClick={() => handleDeleteSession(session._id)}
                       className={styles.button1}
@@ -278,6 +342,62 @@ const Course = () => {
                     <input name="start" type="datetime-local" required />
                     <input name="end" type="datetime-local" required />
                     <button type="submit">Submit</button>
+                  </form>
+                </>
+              )}
+              {modalContent === "editSession" && currentSession && (
+                <>
+                  <Typography
+                    id="modal-modal-title"
+                    variant="h6"
+                    component="h2"
+                  >
+                    Edit Session
+                  </Typography>
+                  <form onSubmit={handleEditSubmit}>
+                    <input
+                      name="name"
+                      type="text"
+                      defaultValue={currentSession.name}
+                      placeholder="Session Name"
+                      required
+                    />
+                    <textarea
+                      name="description"
+                      defaultValue={currentSession.description}
+                      placeholder="Session Description"
+                      required
+                    />
+                    <input
+                      name="start"
+                      type="datetime-local"
+                      defaultValue={currentSession.start}
+                      required
+                    />
+                    <input
+                      name="end"
+                      type="datetime-local"
+                      defaultValue={currentSession.end}
+                      required
+                    />
+                    <div>
+                      <button
+                        type="button"
+                        onClick={() =>
+                          handleEditSubmit(
+                            currentSession._id /*, Updated data here*/
+                          )
+                        }
+                      >
+                        Save Changes
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => handleDeleteSession(currentSession._id)}
+                      >
+                        Delete Session
+                      </button>
+                    </div>
                   </form>
                 </>
               )}
