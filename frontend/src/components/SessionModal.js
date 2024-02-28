@@ -1,21 +1,14 @@
 // SessionModal.js
 import React from "react";
-import Modal from "@mui/material/Modal";
-import Box from "@mui/material/Box";
+import Dialog from "@mui/material/Dialog";
+import DialogTitle from "@mui/material/DialogTitle";
+import DialogContent from "@mui/material/DialogContent";
+import DialogActions from "@mui/material/DialogActions";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { PieChart } from "@mui/x-charts/PieChart";
-
-const modalStyle = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-};
+import Grid from "@mui/material/Grid";
 
 const SessionModal = ({
   feedbackData = [],
@@ -29,101 +22,115 @@ const SessionModal = ({
   handleDeleteSession,
 }) => {
   return (
-    <Modal
-      open={openModal}
-      onClose={handleClose}
-      aria-labelledby="modal-modal-title"
-      aria-describedby="modal-modal-description"
-    >
-      <Box sx={modalStyle}>
+    <Dialog open={openModal} onClose={handleClose} fullWidth maxWidth="sm">
+      <DialogTitle>
+        {modalContent === "statistics"
+          ? "Session Feedback"
+          : modalContent === "createSession"
+          ? "Create New Session"
+          : "Edit Session"}
+      </DialogTitle>
+      <DialogContent>
         {modalContent === "statistics" && (
           <>
-            <Typography id="modal-modal-title" variant="h6" component="h2">
-              Session Feedback
-            </Typography>
             {feedbackData && (
               <PieChart series={feedbackData} width={400} height={200} />
             )}
             <Typography sx={{ mt: 2 }}>
               <strong>Text Feedback:</strong>
-              {feedbackTexts.length > 0 ? (
-                feedbackTexts.map((text, index) => (
-                  <div key={index}>{text || "No text feedback provided."}</div>
-                ))
-              ) : (
-                <div>No text feedback available.</div>
-              )}
             </Typography>
+            {feedbackTexts.length > 0 ? (
+              feedbackTexts.map((text, index) => (
+                <Typography key={index}>
+                  {text || "No text feedback provided."}
+                </Typography>
+              ))
+            ) : (
+              <Typography>No text feedback available.</Typography>
+            )}
           </>
         )}
-        {modalContent === "createSession" && (
-          <>
-            <Typography id="modal-modal-title" variant="h6" component="h2">
-              Create New Session
-            </Typography>
-            <form onSubmit={handleSubmit}>
-              <input
-                name="name"
-                type="text"
-                placeholder="Session Name"
-                required
-              />
-              <textarea
-                name="description"
-                placeholder="Session Description"
-                required
-              />
-              <input name="start" type="datetime-local" required />
-              <input name="end" type="datetime-local" required />
-              <button type="submit">Submit</button>
-            </form>
-          </>
-        )}
-        {modalContent === "editSession" && currentSession && (
-          <>
-            <Typography id="modal-modal-title" variant="h6" component="h2">
-              Edit Session
-            </Typography>
-            <form onSubmit={handleEditSubmit}>
-              <input
-                name="name"
-                type="text"
-                defaultValue={currentSession.name}
-                placeholder="Session Name"
-                required
-              />
-              <textarea
-                name="description"
-                defaultValue={currentSession.description}
-                placeholder="Session Description"
-                required
-              />
-              <input
-                name="start"
-                type="datetime-local"
-                defaultValue={currentSession.start}
-                required
-              />
-              <input
-                name="end"
-                type="datetime-local"
-                defaultValue={currentSession.end}
-                required
-              />
-              <div>
-                <button type="submit">Save Changes</button>
-                <button
-                  type="button"
+        {(modalContent === "createSession" ||
+          modalContent === "editSession") && (
+          <form
+            onSubmit={
+              modalContent === "createSession" ? handleSubmit : handleEditSubmit
+            }
+          >
+            <Grid container spacing={2}>
+              <Grid item xs={12}>
+                <TextField
+                  name="name"
+                  label="Session Name"
+                  type="text"
+                  defaultValue={
+                    modalContent === "editSession" ? currentSession.name : ""
+                  }
+                  fullWidth
+                  required
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  name="description"
+                  label="Session Description"
+                  multiline
+                  defaultValue={
+                    modalContent === "editSession"
+                      ? currentSession.description
+                      : ""
+                  }
+                  fullWidth
+                  required
+                />
+              </Grid>
+              <Grid item xs={6}>
+                <TextField
+                  name="start"
+                  label="Start Time"
+                  type="datetime-local"
+                  defaultValue={
+                    modalContent === "editSession" ? currentSession.start : ""
+                  }
+                  fullWidth
+                  required
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                />
+              </Grid>
+              <Grid item xs={6}>
+                <TextField
+                  name="end"
+                  label="End Time"
+                  type="datetime-local"
+                  defaultValue={
+                    modalContent === "editSession" ? currentSession.end : ""
+                  }
+                  fullWidth
+                  required
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                />
+              </Grid>
+            </Grid>
+            <DialogActions>
+              <Button onClick={handleClose}>Cancel</Button>
+              <Button type="submit">Submit</Button>
+              {modalContent === "editSession" && (
+                <Button
                   onClick={() => handleDeleteSession(currentSession._id)}
+                  color="error"
                 >
                   Delete Session
-                </button>
-              </div>
-            </form>
-          </>
+                </Button>
+              )}
+            </DialogActions>
+          </form>
         )}
-      </Box>
-    </Modal>
+      </DialogContent>
+    </Dialog>
   );
 };
 
