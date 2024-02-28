@@ -32,7 +32,7 @@ const Course = () => {
   useEffect(() => {
     const fetchCourse = async () => {
       const response = await fetch(
-        `http://localhost:4000/api/courses/${courseId}`
+        `${process.env.REACT_APP_BACKEND_URL}/api/courses/${courseId}`
       );
       const data = await response.json();
       setCourse(data.course);
@@ -58,7 +58,7 @@ const Course = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:4000/api/sessions/${courseId}`,
+        `${process.env.REACT_APP_BACKEND_URL}/api/sessions/${courseId}`,
         {
           method: "POST",
           headers: {
@@ -81,16 +81,11 @@ const Course = () => {
     }
   };
 
-  const handleEditSession = (sessionId) => {
-    // Placeholder for edit session logic
-    console.log("Editing session:", sessionId);
-  };
-
   const handleDeleteSession = async (sessionId) => {
     try {
       // Include both courseId and sessionId in the URL
       const response = await fetch(
-        `http://localhost:4000/api/sessions/${courseId}/${sessionId}`,
+        `${process.env.REACT_APP_BACKEND_URL}/api/sessions/${courseId}/${sessionId}`,
         {
           method: "DELETE",
         }
@@ -140,7 +135,7 @@ const Course = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:4000/api/sessions/${courseId}/${currentSession._id}`,
+        `${process.env.REACT_APP_BACKEND_URL}/api/sessions/${courseId}/${currentSession._id}`,
         {
           method: "PATCH",
           headers: {
@@ -167,7 +162,7 @@ const Course = () => {
 
   const handleShowStatistics = async (sessionId) => {
     const response = await fetch(
-      `http://localhost:4000/api/feedbacks?sessionId=${sessionId}`
+      `${process.env.REACT_APP_BACKEND_URL}/api/feedbacks?sessionId=${sessionId}`
     );
     const data = await response.json();
     if (data.feedbacks) {
