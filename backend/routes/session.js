@@ -1,27 +1,27 @@
-const express = require('express');
+const express = require("express");
 const {
   getAllSessions,
   getOneSession,
   createSession,
   deleteSession,
   updateSession,
-} = require('../controllers/sessionController');
+} = require("../controllers/sessionController");
 
 const router = express.Router();
 
 // GET all sessions
-router.get('/:courseId/session', getAllSessions);
+router.get("/:courseId", getAllSessions);
 
 // GET one session
-router.get('/:courseId/session/:sessionId', getOneSession);
+router.get("/:courseId/:sessionId", getOneSession);
 
 // POST one event
-router.post('/:courseId/session', createSession);
+router.post("/:courseId/", createSession);
 
 // DELETE one event
-router.delete('/:courseId/session/:sessionId', deleteSession);
+router.delete("/:courseId/:sessionId", deleteSession);
 
 // UPDATE one event
-router.patch('/:courseId/session/:sessionId', updateSession);
+router.patch("/:courseId/:sessionId", updateSession);
 
 module.exports = router;
