@@ -88,8 +88,9 @@ const Course = () => {
 
   const handleDeleteSession = async (sessionId) => {
     try {
+      // Include both courseId and sessionId in the URL
       const response = await fetch(
-        `http://localhost:4000/api/sessions/${sessionId}`,
+        `http://localhost:4000/api/sessions/${courseId}/${sessionId}`,
         {
           method: "DELETE",
         }
@@ -99,11 +100,18 @@ const Course = () => {
 
       console.log("Session deleted:", sessionId);
 
-      // Update the local state to remove the deleted session from `course.sessions`
+      // After successful deletion, update the local state to remove the deleted session
+      // This might involve filtering out the deleted session from the course.sessions array
+      setCourse((prevCourse) => ({
+        ...prevCourse,
+        sessions: prevCourse.sessions.filter(
+          (session) => session._id !== sessionId
+        ),
+      }));
 
       setOpenModal(false); // Close the modal
       setModalContent(null); // Reset modal content
-      setCurrentSession(null); // Reset current session
+      setCurrentSession(null); // Reset current session, if applicable
     } catch (error) {
       console.error("Error deleting session:", error);
     }
@@ -258,12 +266,6 @@ const Course = () => {
                       Edit
                     </button>
 
-                    <button
-                      onClick={() => handleDeleteSession(session._id)}
-                      className={styles.button1}
-                    >
-                      Delete
-                    </button>
                     <button
                       onClick={() => handleGenerateQR(session._id)}
                       className={styles.button1}
