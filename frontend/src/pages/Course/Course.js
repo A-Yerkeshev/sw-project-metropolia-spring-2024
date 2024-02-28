@@ -140,9 +140,9 @@ const Course = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:4000/api/sessions/${currentSession._id}`,
+        `http://localhost:4000/api/sessions/${courseId}/${currentSession._id}`,
         {
-          method: "PUT", // or 'PATCH', depending on your API
+          method: "PATCH",
           headers: {
             "Content-Type": "application/json",
           },
@@ -383,16 +383,7 @@ const Course = () => {
                       required
                     />
                     <div>
-                      <button
-                        type="button"
-                        onClick={() =>
-                          handleEditSubmit(
-                            currentSession._id /*, Updated data here*/
-                          )
-                        }
-                      >
-                        Save Changes
-                      </button>
+                      <button type="submit">Save Changes</button>
                       <button
                         type="button"
                         onClick={() => handleDeleteSession(currentSession._id)}
