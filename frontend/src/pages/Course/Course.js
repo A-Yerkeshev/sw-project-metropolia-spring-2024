@@ -67,7 +67,6 @@ const Course = () => {
 
   const handleDeleteSession = async (sessionId) => {
     try {
-      // Include both courseId and sessionId in the URL
       const response = await fetch(
         `${process.env.REACT_APP_BACKEND_URL}/api/sessions/${courseId}/${sessionId}`,
         {
@@ -80,7 +79,6 @@ const Course = () => {
       console.log("Session deleted:", sessionId);
 
       // After successful deletion, update the local state to remove the deleted session
-      // This might involve filtering out the deleted session from the course.sessions array
       setCourse((prevCourse) => ({
         ...prevCourse,
         sessions: prevCourse.sessions.filter(
@@ -108,7 +106,7 @@ const Course = () => {
 
   const handleEditSubmit = async (event) => {
     event.preventDefault(); // Prevent the form from submitting in the traditional way
-    const formData = new FormData(event.currentTarget); // Assuming the event is passed from the form submit
+    const formData = new FormData(event.currentTarget);
 
     const updatedSessionData = {
       name: formData.get("name"),
@@ -134,13 +132,13 @@ const Course = () => {
       const updatedSession = await response.json();
       console.log("Session updated:", updatedSession);
 
-      // Perform any state updates or navigations here
+      // Perform state updates or navigations here
       setOpenModal(false);
       setModalContent(null);
-      // You might also want to update the course or session list to reflect the changes
+      //update the course or session list to reflect the changes
     } catch (error) {
       console.error("Error updating session:", error);
-      // Handle error cases, possibly setting error messages in state for display
+      // Handle error cases
     }
   };
 
@@ -168,14 +166,13 @@ const Course = () => {
         }
 
         return {
-          id: index, // Ensure each data point has a unique id
+          id: index,
           value: 1, // Each feedback counts as one
-          label: `Rating ${feedback.rating}`, // Customize this label as needed
+          label: `Rating ${feedback.rating}`,
           color: color, // Assign color based on rating
         };
       });
 
-      // Since we're counting each feedback as one, we can aggregate ratings
       const aggregatedData = [
         {
           value: transformedData.filter((d) => d.color === "green").length,
@@ -271,7 +268,7 @@ const Course = () => {
             handleSubmit={handleSubmit}
             handleEditSubmit={handleEditSubmit}
             handleDeleteSession={handleDeleteSession}
-            feedbackData={feedbackData} // Ensure this is set or has a default
+            feedbackData={feedbackData}
             feedbackTexts={feedbackTexts}
             // Pass any other props required by SessionModal
           />
