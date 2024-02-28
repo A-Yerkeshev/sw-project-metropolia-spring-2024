@@ -80,6 +80,7 @@ describe('Feedback API', () => {
     expect(res.status).to.equal(200);
     expect(res.body).to.have.property('feedbacks');
     expect(res.body.feedbacks).to.be.an('array');
+    expect(res.body.feedbacks.length).to.eq(1);
     res.body.feedbacks.forEach((feedback) => {
       expect(feedback.sessionId).to.equal(sessionId);
     });

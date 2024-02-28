@@ -39,7 +39,7 @@ describe('Sessions API', () => {
   // Test POST /api/courses/:courseId/session
   it('should create a new session', async () => {
     const res = await supertest(app)
-      .post(`/api/sessions/${courseId}/session`)
+      .post(`/api/sessions/${courseId}`)
       .send({
         name: 'New Session',
         description: 'This is a new session',
@@ -55,7 +55,7 @@ describe('Sessions API', () => {
 
   // Test GET /api/courses/:courseId/session/:sessionId
   it('should get one session', async () => {
-    const res = await supertest(app).get(`/api/sessions/${courseId}/session/${sessionId}`);
+    const res = await supertest(app).get(`/api/sessions/${courseId}/${sessionId}`);
     expect(res.status).to.equal(200);
     expect(res.body).to.have.property('session');
     expect(res.body.session).to.have.property('_id', sessionId);
@@ -63,7 +63,7 @@ describe('Sessions API', () => {
 
   // Test GET /api/courses/:courseId/session
   it('should get all sessions of a course', async () => {
-    const res = await supertest(app).get(`/api/sessions/${courseId}/session`);
+    const res = await supertest(app).get(`/api/sessions/${courseId}`);
     expect(res.status).to.equal(200);
     expect(res.body).to.have.property('sessions');
     expect(res.body.sessions).to.be.an('array');
@@ -72,7 +72,7 @@ describe('Sessions API', () => {
   // Test PATCH /api/courses/:courseId/session/:sessionId
   it('should update a session', async () => {
     const res = await supertest(app)
-      .patch(`/api/sessions/${courseId}/session/${sessionId}`)
+      .patch(`/api/sessions/${courseId}/${sessionId}`)
       .send({
         name: 'Updated Session',
         description: 'This is an updated session'
@@ -87,7 +87,7 @@ describe('Sessions API', () => {
 
   // Test DELETE /api/courses/:courseId/session/:sessionId
   it('should delete a session', async () => {
-    const res = await supertest(app).delete(`/api/sessions/${courseId}/session/${sessionId}`);
+    const res = await supertest(app).delete(`/api/sessions/${courseId}/${sessionId}`);
     expect(res.status).to.equal(200);
     expect(res.body).to.have.property('deletedSession');
     expect(res.body.deletedSession).to.have.property('_id', sessionId);

@@ -21,14 +21,14 @@ const getAllFeedbacks = async (req, res) => {
     }
 
     // retrieve all feedbacks of the session, and populate their "session" and "course" reference
-    const feedbacks = await Feedback.find({ session: sessionId })
-      .populate({
-        path: 'session',
-        populate: {
-          path: 'course',
-        },
-      })
-      .exec();
+    const feedbacks = await Feedback.find({ sessionId: sessionId });
+      // .populate({
+      //   path: 'session',
+      //   populate: {
+      //     path: 'course',
+      //   },
+      // })
+      // .exec();
 
     res.status(200).json({ feedbacks });
   } catch (error) {
