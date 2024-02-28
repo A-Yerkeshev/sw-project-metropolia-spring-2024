@@ -14,6 +14,7 @@ const Course = () => {
   const [openModal, setOpenModal] = useState(false);
   const [feedbackData, setFeedbackData] = useState(null);
   const [feedbackTexts, setFeedbackTexts] = useState([]);
+  const [modalContent, setModalContent] = useState(null);
 
   const modalStyle = {
     position: "absolute",
@@ -40,8 +41,43 @@ const Course = () => {
   }, [courseId]); // Dependency array ensures this effect runs only when courseId changes
 
   const handleCreateSession = () => {
-    // Placeholder for create session logic
-    console.log("Creating a new session...");
+    setModalContent("createSession");
+    setOpenModal(true);
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault(); // Prevent the form from causing a page reload
+    const formData = new FormData(event.target);
+    const sessionData = {
+      name: formData.get("name"),
+      description: formData.get("description"),
+      start: formData.get("start"),
+      end: formData.get("end"),
+    };
+
+    try {
+      const response = await fetch(
+        `http://localhost:4000/api/sessions/${courseId}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(sessionData),
+        }
+      );
+
+      if (response.ok) {
+        const newSession = await response.json();
+        console.log("Session created:", newSession);
+        // Optionally, refresh the list of sessions or add the new session to the state
+        setOpenModal(false); // Close the modal
+      } else {
+        throw new Error("Failed to create session");
+      }
+    } catch (error) {
+      console.error("Error creating session:", error);
+    }
   };
 
   const handleEditSession = (sessionId) => {
@@ -110,6 +146,7 @@ const Course = () => {
         .filter((d) => d.value > 0) // Filter out categories with no feedback
         .map((d) => ({ ...d, label: `${d.label} (${d.value})` }));
       setFeedbackData([{ data: aggregatedData }]);
+      setModalContent("statistics");
       setOpenModal(true);
 
       // Extract and store feedback texts
@@ -183,29 +220,67 @@ const Course = () => {
           <p>Visit Metropolia</p>
           <Modal
             open={openModal}
-            onClose={() => setOpenModal(false)}
+            onClose={() => {
+              setOpenModal(false);
+              setModalContent(null);
+            }}
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
           >
             <Box sx={modalStyle}>
-              <Typography id="modal-modal-title" variant="h6" component="h2">
-                Session Feedback
-              </Typography>
-              {feedbackData && (
-                <PieChart series={feedbackData} width={400} height={200} />
+              {modalContent === "statistics" && (
+                <>
+                  <Typography
+                    id="modal-modal-title"
+                    variant="h6"
+                    component="h2"
+                  >
+                    Session Feedback
+                  </Typography>
+                  {feedbackData && (
+                    <PieChart series={feedbackData} width={400} height={200} />
+                  )}
+                  <Typography sx={{ mt: 2 }}>
+                    <strong>Text Feedback:</strong>
+                    {feedbackTexts.length > 0 ? (
+                      feedbackTexts.map((text, index) => (
+                        <div key={index}>
+                          {text || "No text feedback provided."}
+                        </div>
+                      ))
+                    ) : (
+                      <div>No text feedback available.</div>
+                    )}
+                  </Typography>
+                </>
               )}
-              <Typography sx={{ mt: 2 }}>
-                <strong>Text Feedback:</strong>
-                {feedbackTexts.length > 0 ? (
-                  feedbackTexts.map((text, index) => (
-                    <div key={index}>
-                      {text || "No text feedback provided."}
-                    </div>
-                  ))
-                ) : (
-                  <div>No text feedback available.</div>
-                )}
-              </Typography>
+              {modalContent === "createSession" && (
+                <>
+                  <Typography
+                    id="modal-modal-title"
+                    variant="h6"
+                    component="h2"
+                  >
+                    Create New Session
+                  </Typography>
+                  <form onSubmit={handleSubmit}>
+                    <input
+                      name="name"
+                      type="text"
+                      placeholder="Session Name"
+                      required
+                    />
+                    <textarea
+                      name="description"
+                      placeholder="Session Description"
+                      required
+                    />
+                    <input name="start" type="datetime-local" required />
+                    <input name="end" type="datetime-local" required />
+                    <button type="submit">Submit</button>
+                  </form>
+                </>
+              )}
             </Box>
           </Modal>
         </div>
