@@ -109,7 +109,7 @@ const Course = () => {
   };
 
   const handleGenerateQR = (sessionId) => {
-    navigate(`/share?sid=${sessionId}`);
+    navigate(`/share`, { state: { courseId, sessionId } });
   };
 
   const handleOpenEditModal = (session) => {
