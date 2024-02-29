@@ -9,6 +9,8 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { PieChart } from "@mui/x-charts/PieChart";
 import Grid from "@mui/material/Grid";
+import IconButton from "@mui/material/IconButton";
+import CloseIcon from "@mui/icons-material/Close";
 
 const SessionModal = ({
   feedbackData = [],
@@ -23,12 +25,24 @@ const SessionModal = ({
 }) => {
   return (
     <Dialog open={openModal} onClose={handleClose} fullWidth maxWidth="sm">
-      <DialogTitle>
+      <DialogTitle sx={{ m: 0, p: 2 }}>
         {modalContent === "statistics"
           ? "Session Feedback"
           : modalContent === "createSession"
           ? "Create New Session"
           : "Edit Session"}
+        <IconButton
+          aria-label="close"
+          onClick={handleClose}
+          sx={{
+            position: "absolute",
+            right: 8,
+            top: 8,
+            color: (theme) => theme.palette.grey[500],
+          }}
+        >
+          <CloseIcon />
+        </IconButton>
       </DialogTitle>
       <DialogContent>
         {modalContent === "statistics" && (
