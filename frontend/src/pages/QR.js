@@ -50,27 +50,56 @@ const QR = () => {
   const feedbackUrl = `${baseUrl}/feedback/new?sid=${sessionId}`;
 
   return (
-    <Box
-      display="flex"
-      flexDirection="column"
-      alignItems="center"
-      marginTop={4}
-    >
-      {sessionDetails && (
-        <Paper elevation={3} style={{ padding: "20px", marginBottom: "20px" }}>
-          <Typography variant="h5" gutterBottom>
-            Session: {sessionDetails.name}
-          </Typography>
-          <Typography variant="subtitle1">
-            Date: {new Date(sessionDetails.start).toLocaleString()}
-          </Typography>
+    <Container maxWidth="sm">
+      <Box
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+        marginTop={4}
+      >
+        {sessionDetails && (
+          <Paper
+            elevation={3}
+            sx={{ padding: 4, marginBottom: 4, width: "100%", maxWidth: 600 }}
+          >
+            <Typography
+              variant="h4"
+              gutterBottom
+              component="div"
+              sx={{ fontWeight: "bold" }}
+            >
+              Session: {sessionDetails.name}
+            </Typography>
+            <Box sx={{ my: 2 }}>
+              <Typography variant="subtitle1" display="block">
+                Start: {new Date(sessionDetails.start).toLocaleString()}
+              </Typography>
+              <Typography variant="subtitle1" display="block">
+                End: {new Date(sessionDetails.end).toLocaleString()}
+              </Typography>
+            </Box>
+          </Paper>
+        )}
+        <Paper
+          elevation={6}
+          sx={{
+            p: 2,
+            mt: 2,
+
+            borderRadius: 2,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            width: "fit-content",
+          }}
+        >
+          <QRCode value={feedbackUrl} size={256} />
         </Paper>
-      )}
-      <QRCode value={feedbackUrl} />
-      <Typography variant="caption" display="block" marginTop={2}>
-        {feedbackUrl}
-      </Typography>
-    </Box>
+        <Typography variant="caption" display="block" marginTop={2}>
+          {feedbackUrl}
+        </Typography>
+      </Box>
+    </Container>
   );
 };
 
