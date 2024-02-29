@@ -22,7 +22,7 @@ const Signup = () => {
             <div className={styles.container}>
                 
                 <div className={styles.leftContainer}> 
-                    <img src="https://i.gifer.com/QHG.gif" alt="Dark" />
+                    <img src="https://i.gifer.com/QHG.gif" />
                  </div> 
 
                 <div className={styles.formsContainer}> 

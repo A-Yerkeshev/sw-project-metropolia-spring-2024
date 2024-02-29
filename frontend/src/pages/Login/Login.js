@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import {useLogin} from '../../hooks/useLogin';
 import styles from './Login.module.css';
-import darkImage from '../../img/dark.JPG';
 import { useNavigate, Link } from 'react-router-dom';
 
 
@@ -26,7 +25,7 @@ const Login = () => {
         <div className={styles.loginWrapper}>
       <div className={ styles.container }> 
           <div className={styles.leftContainer}> 
-              <img src="https://i.gifer.com/QHG.gif" alt="Dark" />
+              <img src="https://i.gifer.com/QHG.gif" />
           </div>
 
           <div className={styles.formsContainer}> 
