@@ -91,7 +91,7 @@ const Feedback = () => {
             row
           >
             <FormControlLabel
-              value="2"
+              value="3"
               control={
                 <Radio
                   sx={{
@@ -104,7 +104,7 @@ const Feedback = () => {
               label="Green"
             />
             <FormControlLabel
-              value="1"
+              value="2"
               control={
                 <Radio
                   sx={{
@@ -117,7 +117,7 @@ const Feedback = () => {
               label="Yellow"
             />
             <FormControlLabel
-              value="0"
+              value="1"
               control={
                 <Radio
                   sx={{
