@@ -14,6 +14,7 @@ const expect = chai.expect;
 describe('Feedback API', () => {
   let sessionId;
   let feedbackId;
+  let courseId;
 
   before(async () => {
     await Feedback.deleteMany({});
@@ -35,13 +36,13 @@ describe('Feedback API', () => {
       students: [1, 2, 3],
       teacherId
     })
-    const courseId = course._id;
+    courseId = course._id;
 
     const session = await Session.create({
       name: 'Test Session',
       description: 'This is a test session',
-      start: new Date(),
-      end: new Date(),
+      start: Date.now(),
+      end: Date.now() + 1000*60,
       course: courseId
     })
     sessionId = session._id.toString();
@@ -85,6 +86,19 @@ describe('Feedback API', () => {
     });
   });
 
+  it('should not be able to submit feedback more than once', async () => {
+    const res = await supertest(app)
+      .post(`/api/feedbacks`)
+      .send({
+        rating: 4,
+        text: 'Good session',
+        studentId: 123,
+        sessionId
+      });
+
+    expect(res.status).to.equal(400);
+  });
+
   // Test DELETE /api/feedbacks/:feedbackId
   it('should delete a feedback', async () => {
     const res = await supertest(app).delete(
@@ -94,4 +108,25 @@ describe('Feedback API', () => {
     expect(res.body).to.have.property('deletedFeedback');
     expect(res.body.deletedFeedback).to.have.property('_id', feedbackId);
   });
+
+  // it('should not be able to submit feedback after session has expired', async () => {
+  //   const session = await Session.create({
+  //     name: 'Test Session',
+  //     description: 'This is a test session',
+  //     start: Date.now(),
+  //     end: Date.now() - 1,
+  //     course: courseId
+  //   });
+
+  //   const res = await supertest(app)
+  //     .post(`/api/feedbacks`)
+  //     .send({
+  //       rating: 4,
+  //       text: 'Good session',
+  //       studentId: 123,
+  //       sessionId: session._id
+  //     });
+
+  //     expect(res.status).to.equal(400);
+  // });
 });

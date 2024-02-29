@@ -94,6 +94,16 @@ const createFeedback = async (req, res) => {
       return res.status(404).json({ error: "Session not found in the course" });
     }
 
+    // check that session has not expired yet
+    // if (Date.now() > session.end.getTime()) {
+    //   return res.status(400).json({ error: "Session has expired. You cannot submit feedback anymore." });
+    // }
+
+    // check that user has not submited feedback for this session yet
+    if (await Feedback.findOne({ studentId })) {
+      return res.status(400).json({ error: "You already submited feedback for this session." });
+    }
+
     // create new feedback and include provided session Id
     const feedback = await Feedback.create({
       rating,
