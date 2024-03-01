@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 3000;
 const dbURI =
   process.env.NODE_ENV === 'test'
     ? process.env.MONGO_URI_TEST
@@ -15,6 +15,7 @@ const feedbackRoutes = require('./routes/feedback');
 const userRoutes = require('./routes/user');
 const { error } = require('console');
 const bodyParser = require('body-parser');
+const path = require('path');
 
 // Create express app
 const app = express();
@@ -28,10 +29,19 @@ app.use(cors());
 // middleware
 app.use(express.json());
 
+app.use(express.static(path.join(__dirname, "../frontend/build")));
+
 app.use((req, res, next) => {
   console.log(req.path, req.method);
   next();
 });
+
+if (process.env.NODE_ENV === 'production') {
+  app.get("/", function(req, res) {
+    res.sendFile(path.join(__dirname, "../frontend/build/index.html"));
+  });
+  console.log('Serving built frontend');
+}
 
 // routes
 app.use('/api/courses', courseRoutes);
