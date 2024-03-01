@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import QRCode from "react-qr-code";
-import { Box, Typography, Paper, Container } from "@mui/material";
+import { Box, Typography, Paper, Container, Link } from "@mui/material";
 
 const QR = () => {
   const location = useLocation();
@@ -77,27 +77,25 @@ const QR = () => {
               <Typography variant="subtitle1" display="block">
                 End: {new Date(sessionDetails.end).toLocaleString()}
               </Typography>
+              <Box display="flex" justifyContent="center" m={2}>
+                <QRCode value={feedbackUrl} size={256} />
+              </Box>
+              <Typography variant="body1" marginTop={2}>
+                Scan QR code or{" "}
+                <Link
+                  component="a"
+                  href={feedbackUrl}
+                  underline="hover"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  click here
+                </Link>{" "}
+                to give your feedback on the session.
+              </Typography>
             </Box>
           </Paper>
         )}
-        <Paper
-          elevation={6}
-          sx={{
-            p: 2,
-            mt: 2,
-
-            borderRadius: 2,
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            width: "fit-content",
-          }}
-        >
-          <QRCode value={feedbackUrl} size={256} />
-        </Paper>
-        <Typography variant="caption" display="block" marginTop={2}>
-          {feedbackUrl}
-        </Typography>
       </Box>
     </Container>
   );
