@@ -22,6 +22,7 @@ import { useSearchParams } from "react-router-dom";
 const Feedback = () => {
   const [searchParams] = useSearchParams();
   const sessionId = searchParams.get("sid");
+
   const [rating, setRating] = useState("");
   const [openFeedback, setOpenFeedback] = useState("");
   const [submitStatus, setSubmitStatus] = useState("");
@@ -48,7 +49,7 @@ const Feedback = () => {
             rating: Number(rating),
             text: openFeedback,
             sessionId: sessionId,
-            studentId: 1, // This should be dynamically set based on the logged-in user
+            studentId: 2, // This should be dynamically set based on the logged-in user
           }),
         }
       );
