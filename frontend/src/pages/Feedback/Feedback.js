@@ -82,9 +82,9 @@ const Feedback = () => {
       <Paper elevation={3} sx={{ p: 3, mt: 8, mb: 2 }}>
         <Box
           sx={{
-            display: "flex", // Makes the box a flex container
-            flexDirection: "column", // Stacks children vertically
-            alignItems: "center", // Centers children horizontally
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
           }}
         >
           <FormControl
