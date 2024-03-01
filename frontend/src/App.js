@@ -24,7 +24,7 @@ function App() {
             path="/signup"
             element={!user ? <Signup /> : <Navigate to="/" />}
           />
-          <Route path="/share" element={<QR />} />
+          <Route path="/share/:sessionName" element={<QR />} />
           <Route path="/feedback/new" element={<Feedback />} />
           <Route path="/CoursesList" element={<CoursesList />} />
           <Route path="/Course" element={<Course />} />

@@ -112,9 +112,11 @@ const Course = () => {
   //   navigate(`/share`, { state: { courseId, sessionId } });
   // };
 
-  const handleGenerateQR = (sessionId) => {
-    const url = `/share?courseId=${courseId}&sessionId=${sessionId}`; // Construct URL with query parameters if needed
-    window.open(url, "_blank"); // Opens in a new tab
+  const handleGenerateQR = (sessionName, sessionId) => {
+    const urlFriendlySessionName = encodeURIComponent(sessionName); // Ensure the session name is URL-friendly
+    // Append courseId and sessionId as query parameters
+    const url = `/share/${urlFriendlySessionName}?courseId=${courseId}&sessionId=${sessionId}`;
+    window.open(url, "_blank");
   };
 
   const handleOpenEditModal = (session) => {
@@ -292,7 +294,9 @@ const Course = () => {
                     <Button
                       variant="outlined"
                       color="primary"
-                      onClick={() => handleGenerateQR(session._id)}
+                      onClick={() =>
+                        handleGenerateQR(session.name, session._id)
+                      }
                       sx={{ mr: 1 }}
                     >
                       Generate QR

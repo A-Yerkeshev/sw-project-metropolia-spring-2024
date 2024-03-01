@@ -10,6 +10,8 @@ const QR = () => {
   const courseId = queryParams.get("courseId");
   const sessionId = queryParams.get("sessionId");
 
+  //const decodedSessionName = decodeURIComponent(sessionName);
+
   const [sessionDetails, setSessionDetails] = useState(null);
 
   useEffect(() => {
