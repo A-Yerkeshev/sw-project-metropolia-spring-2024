@@ -6,7 +6,9 @@ import { Box, Typography, Paper, Container, Link } from "@mui/material";
 const QR = () => {
   const location = useLocation();
   // Access courseId and sessionId from the navigation state
-  const { courseId, sessionId } = location.state || {};
+  const queryParams = new URLSearchParams(location.search);
+  const courseId = queryParams.get("courseId");
+  const sessionId = queryParams.get("sessionId");
 
   const [sessionDetails, setSessionDetails] = useState(null);
 

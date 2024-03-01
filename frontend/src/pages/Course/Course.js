@@ -108,8 +108,13 @@ const Course = () => {
     }
   };
 
+  // const handleGenerateQR = (sessionId) => {
+  //   navigate(`/share`, { state: { courseId, sessionId } });
+  // };
+
   const handleGenerateQR = (sessionId) => {
-    navigate(`/share`, { state: { courseId, sessionId } });
+    const url = `/share?courseId=${courseId}&sessionId=${sessionId}`; // Construct URL with query parameters if needed
+    window.open(url, "_blank"); // Opens in a new tab
   };
 
   const handleOpenEditModal = (session) => {
@@ -241,7 +246,7 @@ const Course = () => {
           Add students
         </Button>
       </Typography>
-      <Grid container spacing={3}>
+      <Grid container spacing={3} justifyContent="flex-start">
         {course.sessions && course.sessions.length > 0 && (
           <Grid item xs={12}>
             <Typography variant="h5" gutterBottom>
