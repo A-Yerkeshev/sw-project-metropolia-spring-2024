@@ -2,6 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import styles from "./Navbar.module.css";
 import { useLogout } from "../../hooks/useLogout";
+import Button from "@mui/material/Button";
 
 const Navbar = () => {
   const { user } = useAuthContext();
@@ -26,9 +27,9 @@ const Navbar = () => {
           <p>{user.email}</p>
         </div>
         <div className={styles.topMenuUserAvatar}></div>
-        <button onClick={logout} className={styles.logoutButton}>
+        <Button onClick={logout} variant="outlined">
           Logout
-        </button>
+        </Button>
       </div>
       <div className={styles.bottonMenu}>
         <Link to="/CoursesList" className={styles.bottonMenuContainer}>
