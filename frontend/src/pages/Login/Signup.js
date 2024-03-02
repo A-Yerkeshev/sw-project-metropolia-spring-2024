@@ -1,80 +1,120 @@
-import React, { useState } from 'react';
-import styles from './Login.module.css';
-import {useSignup} from '../../hooks/useSignUp'; 
-import { useNavigate, Link } from 'react-router-dom';    
+import * as React from "react";
+import Avatar from "@mui/material/Avatar";
+import Button from "@mui/material/Button";
+import CssBaseline from "@mui/material/CssBaseline";
+import TextField from "@mui/material/TextField";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import Link from "@mui/material/Link";
+import { useNavigate } from "react-router-dom";
+import { useSignup } from "../../hooks/useSignUp";
 
-const Signup = () => {
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const {signup, error, isLoading} = useSignup();
-    const navigate = useNavigate();
-    
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        await signup(firstName, lastName, email, password);
-        navigate('/CoursesList');
-    };
-    
-    return (
-        <div className={styles.loginWrapper}>
-            <div className={styles.container}>
-                
-                <div className={styles.leftContainer}> 
-                    <img src="https://i.gifer.com/QHG.gif" />
-                 </div> 
+export default function SignUp() {
+  const navigate = useNavigate();
+  const { signup, error, isLoading } = useSignup();
+  const [firstName, setFirstName] = React.useState("");
+  const [lastName, setLastName] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
 
-                <div className={styles.formsContainer}> 
-                    <form className={styles.formControl} onSubmit={handleSubmit}> 
-                        <h3 className={styles.headerText}>Sign Up for Free</h3>
-                        
-                        <label>First name:</label>
-                        <input 
-                            type="text" 
-                            className={styles.emailInput} // Assuming the same style as email input in Login
-                            value={firstName} 
-                            onChange={(e) => setFirstName(e.target.value)} 
-                            required
-                        />
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    await signup(firstName, lastName, email, password);
+    navigate("/CoursesList");
+  };
 
-                        <label>Last name:</label>
-                        <input 
-                            type="text" 
-                            className={styles.emailInput} // Assuming the same style as email input in Login
-                            value={lastName} 
-                            onChange={(e) => setLastName(e.target.value)} 
-                            required
-                        />
-                        
-                        <label>Email address:</label>
-                        <input 
-                            type="email" 
-                            className={styles.emailInput} 
-                            value={email} 
-                            onChange={(e) => setEmail(e.target.value)} 
-                            required
-                        />
-
-                        <label>Password:</label>
-                        <input 
-                            type="password" 
-                            className={styles.passwordInput} 
-                            value={password} 
-                            onChange={(e) => setPassword(e.target.value)} 
-                            required
-                        />
-                        
-                        <button disabled={isLoading} className={styles.submitButton}>Sign Up</button>
-                        {error && <div className={styles.error}>{error}</div>} 
-                        <p>
-                            Already have an account? <Link to="/">Log in</Link>
-                        </p>
-                    </form>
-                </div>
-            </div>
-        </div>
-    );
-};
-
-export default Signup;
+  return (
+    <Container component="main" maxWidth="xs">
+      <CssBaseline />
+      <Box
+        sx={{
+          marginTop: 8,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+          <LockOutlinedIcon />
+        </Avatar>
+        <Typography component="h1" variant="h5">
+          Sign Up
+        </Typography>
+        <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+          <Grid container spacing={2}>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                autoComplete="fname"
+                name="firstName"
+                required
+                fullWidth
+                id="firstName"
+                label="First Name"
+                autoFocus
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                required
+                fullWidth
+                id="lastName"
+                label="Last Name"
+                name="lastName"
+                autoComplete="lname"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="new-password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </Grid>
+          </Grid>
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}
+            disabled={isLoading}
+          >
+            Sign Up
+          </Button>
+          {error && <Typography color="error">{error}</Typography>}
+          <Grid container justifyContent="flex-end">
+            <Grid item>
+              <Link href="/" variant="body2">
+                Already have an account? Sign in
+              </Link>
+            </Grid>
+          </Grid>
+        </Box>
+      </Box>
+    </Container>
+  );
+}
