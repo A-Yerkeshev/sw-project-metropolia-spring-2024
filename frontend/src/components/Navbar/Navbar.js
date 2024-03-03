@@ -36,7 +36,7 @@ const Navbar = () => {
           <img src="/navbar/CoursesList.svg" alt="course" />
           <p>Courses List</p>
         </Link>
-        <Link to="/Course" className={styles.bottonMenuContainer}>
+        {/* <Link to="/Course" className={styles.bottonMenuContainer}>
           <img src="/navbar/Course.svg" alt="course" />
           <p>Course</p>
         </Link>
@@ -47,7 +47,7 @@ const Navbar = () => {
         <Link to="/Settings" className={styles.bottonMenuContainer}>
           <img src="/navbar/Settings.svg" alt="course" />
           <p>Setttings</p>
-        </Link>
+        </Link> */}
       </div>
     </div>
   );

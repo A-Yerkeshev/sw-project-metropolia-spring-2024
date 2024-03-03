@@ -7,7 +7,7 @@ import Login from "./pages/Login/Login";
 import QR from "./pages/QR";
 import Feedback from "./pages/Feedback/Feedback";
 import Navbar from "./components/Navbar/Navbar";
-import CoursesList from "./pages/CoursesList/CoursesList";
+import CoursesCreateButton from "./pages/CoursesList/CoursesCreateButton";
 import Course from "./pages/Course/Course";
 import Users from "./pages/Users/Users";
 
@@ -26,7 +26,7 @@ function App() {
           />
           <Route path="/share/:sessionName" element={<QR />} />
           <Route path="/feedback/new" element={<Feedback />} />
-          <Route path="/CoursesList" element={<CoursesList />} />
+          <Route path="/CoursesList" element={<CoursesCreateButton />} />
           <Route path="/Course" element={<Course />} />
           <Route path="/courses/:courseId" element={<Course />} />
           <Route path="/Users" element={<Users />} />
