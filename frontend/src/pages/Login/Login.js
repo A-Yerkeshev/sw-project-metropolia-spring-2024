@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useLogin } from "../../hooks/useLogin";
 import { useNavigate } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -15,11 +16,21 @@ import Container from "@mui/material/Container";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [formError, setFormError] = useState("");
   const { login, error, isLoading } = useLogin();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // Reset form error state
+    setFormError("");
+
+    // Basic validation for empty fields
+    if (!email.trim() || !password.trim()) {
+      setFormError("Email and Password are required."); // Set an error message
+      return; // Prevent the form from being submitted
+    }
+
     try {
       await login(email, password);
       navigate("/CoursesList");
@@ -80,11 +91,15 @@ const Login = () => {
             Log in
           </Button>
           {error && <Typography color="error">{error}</Typography>}
+          {formError && <Typography color="error">{formError}</Typography>}
+
           <Grid container>
             <Grid item>
-              <Link href="/signup" variant="body2">
-                {"Don't have an account? Sign Up"}
-              </Link>
+              <RouterLink to="/signup" style={{ textDecoration: "none" }}>
+                <Typography variant="body2">
+                  {"Don't have an account? Sign Up"}
+                </Typography>
+              </RouterLink>
             </Grid>
           </Grid>
         </Box>
