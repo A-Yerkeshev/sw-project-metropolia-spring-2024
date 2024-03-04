@@ -2,6 +2,20 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import styles from "./Course.module.css";
 import SessionModal from "../../components/SessionModal";
+import {
+  Button,
+  Typography,
+  Container,
+  Grid,
+  Card,
+  CardContent,
+  CircularProgress,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+  Box,
+} from "@mui/material";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 const Course = () => {
   const navigate = useNavigate();
@@ -94,8 +108,15 @@ const Course = () => {
     }
   };
 
-  const handleGenerateQR = (sessionId) => {
-    navigate(`/share?sid=${sessionId}`);
+  // const handleGenerateQR = (sessionId) => {
+  //   navigate(`/share`, { state: { courseId, sessionId } });
+  // };
+
+  const handleGenerateQR = (sessionName, sessionId) => {
+    const urlFriendlySessionName = encodeURIComponent(sessionName); // Ensure the session name is URL-friendly
+    // Append courseId and sessionId as query parameters
+    const url = `/share/${urlFriendlySessionName}?courseId=${courseId}&sessionId=${sessionId}`;
+    window.open(url, "_blank");
   };
 
   const handleOpenEditModal = (session) => {
@@ -152,13 +173,13 @@ const Course = () => {
       const transformedData = data.feedbacks.map((feedback, index) => {
         let color;
         switch (feedback.rating) {
-          case 0:
+          case 1:
             color = "red"; // Negative feedback
             break;
-          case 1:
+          case 2:
             color = "yellow"; // Neutral feedback
             break;
-          case 2:
+          case 3:
             color = "green"; // Positive feedback
             break;
           default:
@@ -203,92 +224,118 @@ const Course = () => {
   };
 
   if (!course) {
-    return <div>Loading...</div>;
+    return (
+      <Container>
+        <CircularProgress />
+        <p> Loading </p>
+      </Container>
+    );
   }
 
   return (
-    <div className={styles.main}>
-      <div className={styles.leftContainer}>
-        <h1>Course information</h1>
-        <p>All information that you need about selected course.</p>
-
-        <div className={styles.courseInfoBlock}>
-          <div>
-            <p>Course: {course.name}</p>
-            <p>
-              Course student amount:{" "}
-              {course.students ? course.students.length : "N/A"}
-            </p>
-            <p>Class number:</p>
-            <button onClick={handleCreateSession} className={styles.button1}>
+    <Container maxWidth="lg" sx={{ mt: 4 }}>
+      <Typography variant="h4" gutterBottom>
+        Course: {course.name}
+      </Typography>
+      <Typography variant="subtitle1">
+        Number of students enrolled:{" "}
+        {course.students ? course.students.length : "N/A"}
+        <Button
+          variant="outlined"
+          color="primary"
+          style={{ marginLeft: "1rem" }}
+        >
+          Add students
+        </Button>
+      </Typography>
+      <Grid container spacing={3} justifyContent="flex-start">
+        {course.sessions && course.sessions.length > 0 && (
+          <Grid item xs={12}>
+            <Typography variant="h5" gutterBottom>
+              Sessions
+            </Typography>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={handleCreateSession}
+              sx={{ mb: 2 }}
+            >
               Create Session
-            </button>
-          </div>
-          {/* Sessions list */}
-          {course.sessions && course.sessions.length > 0 && (
-            <div>
-              <h2>Sessions</h2>
-              {course.sessions.map((session) => (
-                <div key={session._id} className={styles.sessionBlock}>
-                  <p>Name: {session.name}</p>
-                  <p>Description: {session.description}</p>
-                  <p>Start: {new Date(session.start).toLocaleString()}</p>
-                  <p>End: {new Date(session.end).toLocaleString()}</p>
-                  <div className={styles.buttonContainer}>
-                    <button
-                      onClick={() => handleOpenEditModal(session)}
-                      className={styles.button1}
-                    >
-                      Edit
-                    </button>
-
-                    <button
-                      onClick={() => handleGenerateQR(session._id)}
-                      className={styles.button1}
+            </Button>
+            {course.sessions.map((session) => (
+              <Accordion key={session._id}>
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  aria-controls="panel1a-content"
+                  id="panel1a-header"
+                >
+                  <Typography>
+                    {session.name} -{" "}
+                    {new Date(session.start).toLocaleDateString()}
+                  </Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <Typography>Description: {session.description}</Typography>
+                  <Typography>
+                    Start: {new Date(session.start).toLocaleString()}
+                  </Typography>
+                  <Typography>
+                    End: {new Date(session.end).toLocaleString()}
+                  </Typography>
+                  <Box
+                    sx={{
+                      width: "100%",
+                      display: "flex",
+                      jjustifyContent: "space-between", // Adjusted for spacing
+                      alignItems: "center",
+                      mt: 2,
+                    }}
+                  >
+                    <Button
+                      variant="outlined"
+                      color="primary"
+                      onClick={() =>
+                        handleGenerateQR(session.name, session._id)
+                      }
+                      sx={{ mr: 1 }}
                     >
                       Generate QR
-                    </button>
-                    <button
+                    </Button>
+                    <Button
+                      variant="outlined"
+                      color="primary"
                       onClick={() => handleShowStatistics(session._id)}
-                      className={styles.button1}
+                      sx={{ mr: 1 }}
                     >
                       Show Statistics
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-          <p>Visit Metropolia</p>
-          <SessionModal
-            openModal={openModal}
-            handleClose={() => setOpenModal(false)}
-            modalContent={modalContent}
-            currentSession={currentSession}
-            handleSubmit={handleSubmit}
-            handleEditSubmit={handleEditSubmit}
-            handleDeleteSession={handleDeleteSession}
-            feedbackData={feedbackData}
-            feedbackTexts={feedbackTexts}
-            // Pass any other props required by SessionModal
-          />
-        </div>
-        <div className={styles.contactUsBlock}>
-          <p>Contact our support</p>
-          <p>Go to service page for more information</p>
-          <p>Contact Us</p>
-        </div>
-      </div>
-      <div className={styles.rightContainer}>
-        <img
-          src="/course/qrCode.svg"
-          alt="QR Code"
-          className={styles.qrCodeContainer}
-        />
-
-        <button className={styles.button1}>Close QR</button>
-      </div>
-    </div>
+                    </Button>
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      onClick={() => handleOpenEditModal(session)}
+                    >
+                      Edit
+                    </Button>
+                  </Box>
+                </AccordionDetails>
+              </Accordion>
+            ))}
+          </Grid>
+        )}
+      </Grid>
+      <SessionModal
+        openModal={openModal}
+        handleClose={() => setOpenModal(false)}
+        modalContent={modalContent}
+        currentSession={currentSession}
+        handleSubmit={handleSubmit}
+        handleEditSubmit={handleEditSubmit}
+        handleDeleteSession={handleDeleteSession}
+        feedbackData={feedbackData}
+        feedbackTexts={feedbackTexts}
+        // Pass any other props required by SessionModal
+      />
+    </Container>
   );
 };
 

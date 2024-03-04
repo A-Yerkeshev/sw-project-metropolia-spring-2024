@@ -1,32 +1,38 @@
-import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
-import {useAuthContext} from './hooks/useAuthContext';
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { useAuthContext } from "./hooks/useAuthContext";
 
 // pages & components
-import Signup from './pages/Login/Signup';
-import Login from './pages/Login/Login';
-import QR from './pages/QR';
-import Feedback from './pages/Feedback/Feedback';
-import Navbar from './components/Navbar/Navbar';
-import CoursesList from './pages/CoursesList/CoursesList';
-import Course from './pages/Course/Course';
-import Users from './pages/Users/Users';
+import Signup from "./pages/Login/Signup";
+import Login from "./pages/Login/Login";
+import QR from "./pages/QR";
+import Feedback from "./pages/Feedback/Feedback";
+import Navbar from "./components/Navbar/Navbar";
+import CoursesCreateButton from "./pages/CoursesList/CoursesCreateButton";
+import Course from "./pages/Course/Course";
+import Users from "./pages/Users/Users";
 
 function App() {
-  const {user} = useAuthContext();
+  const { user } = useAuthContext();
 
   return (
     <div className="App">
       <BrowserRouter>
-      <Navbar />
+        <Navbar />
         <Routes>
-          <Route path="/" element= {<Login />} />
-          <Route path="/signup" element= {!user ? <Signup /> : <Navigate to="/" />} />
-          <Route path="/share" element= {<QR />}/>
-          <Route path="/feedback/new" element= {<Feedback />}/>
-          <Route path="/CoursesList" element= {<CoursesList />} />
-          <Route path="/Course" element= {<Course />} />
+          <Route
+            path="/"
+            element={user ? <Navigate to="/CoursesList" /> : <Login />}
+          />
+          <Route
+            path="/signup"
+            element={!user ? <Signup /> : <Navigate to="/CoursesList" />}
+          />
+          <Route path="/share/:sessionName" element={<QR />} />
+          <Route path="/feedback/new" element={<Feedback />} />
+          <Route path="/CoursesList" element={<CoursesCreateButton />} />
+          <Route path="/Course" element={<Course />} />
           <Route path="/courses/:courseId" element={<Course />} />
-          <Route path="/Users" element= {<Users />} />
+          <Route path="/Users" element={<Users />} />
         </Routes>
       </BrowserRouter>
     </div>
