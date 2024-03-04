@@ -56,6 +56,16 @@ export default function CoursesCreateButton() {
         console.log("Session created:", newSession);
         // Optionally, refresh the list of sessions or add the new session to the state
         setOpenModal(false); // Close the modal
+        const fetchCourses = async () => {
+          const url = process.env.REACT_APP_BACKEND_URL + '/api/courses';
+          const res = await fetch(url);
+          const data = await res.json();
+
+          setCourses(data.courses);
+          console.log(data.courses);
+      }
+
+      fetchCourses();
       } else {
         throw new Error("Failed to create session");
       }
@@ -123,7 +133,7 @@ export default function CoursesCreateButton() {
               onClick={handleCreateSession}
               sx={{ mb: 2 }}
             >
-              Create Session
+              Create Course
             </Button>
             <BasicTable courses={courses} />
             {/* {course.sessions.map((session) => (
