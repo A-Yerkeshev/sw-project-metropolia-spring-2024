@@ -19,10 +19,13 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Login />} />
+          <Route
+            path="/"
+            element={user ? <Navigate to="/CoursesList" /> : <Login />}
+          />
           <Route
             path="/signup"
-            element={!user ? <Signup /> : <Navigate to="/" />}
+            element={!user ? <Signup /> : <Navigate to="/CoursesList" />}
           />
           <Route path="/share/:sessionName" element={<QR />} />
           <Route path="/feedback/new" element={<Feedback />} />
