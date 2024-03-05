@@ -22,9 +22,8 @@ const CourseModal = ({
   return (
     <Dialog open={openModal} onClose={handleClose} fullWidth maxWidth="sm">
       <DialogTitle sx={{ m: 0, p: 2 }}>
-        {modalContent === "createCourse"
-          ? "Create New Course"
-          : "Edit Course"} {/* Изменение: Текст заголовка */}
+        {modalContent === "createCourse" ? "Create New Course" : "Edit Course"}{" "}
+        {/* Изменение: Текст заголовка */}
         <IconButton
           aria-label="close"
           onClick={handleClose}
@@ -64,23 +63,7 @@ const CourseModal = ({
                   label="Course Description"
                   multiline
                   defaultValue={
-                    modalContent === "editCourse"
-                      ? courseData.description
-                      : "" // Изменение: Используем courseData.description
-                  }
-                  fullWidth
-                  required
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  name="teacherId"
-                  label="Teacher Name"
-                  multiline
-                  defaultValue={
-                    modalContent === "editCourse"
-                      ? courseData.description
-                      : "" // Изменение: Используем courseData.description
+                    modalContent === "editCourse" ? courseData.description : "" // Изменение: Используем courseData.description
                   }
                   fullWidth
                   required

@@ -1,19 +1,21 @@
 import React, { useEffect, useState } from "react";
 import CourseModal from "../../components/CourseModal";
 import {
+  Card,
+  CardContent,
+  CardActions,
   Button,
-  Container,
+  Typography,
   Grid,
+  Container,
 } from "@mui/material";
 
-import styles from './CoursesList.module.css';
+import styles from "./CoursesList.module.css";
 import BasicTable from "./CoursesTable";
 
 export default function CoursesCreateButton() {
-
   const [openModal, setOpenModal] = useState(false);
   const [modalContent, setModalContent] = useState(null);
-
 
   const [courses, setCourses] = useState([]);
   const backendUrl = process.env.REACT_APP_BACKEND_URL || "";
@@ -24,20 +26,42 @@ export default function CoursesCreateButton() {
           const res = await fetch(url);
           const data = await res.json();
 
-          setCourses(data.courses);
-          console.log(data.courses);
-      }
+      setCourses(data.courses);
+      console.log(data.courses);
+    };
 
-      fetchCourses();
+    fetchCourses();
   }, []);
 
+  const getUserDetails = () => {
+    const userDetailsString = localStorage.getItem("userDetails");
+    if (userDetailsString) {
+      try {
+        return JSON.parse(userDetailsString);
+      } catch (error) {
+        console.error("Error parsing userDetails from localStorage:", error);
+        return null;
+      }
+    }
+    return null;
+  };
+
+  const userDetails = getUserDetails();
+
   const handleSubmit = async (event) => {
-    event.preventDefault(); // Prevent the form from causing a page reload
+    event.preventDefault();
+
+    const userDetails = getUserDetails();
+
+    if (!userDetails || !userDetails.id) {
+      console.error("User ID is missing from local storage.");
+      return; // Handle this error appropriately
+    }
     const formData = new FormData(event.target);
     const sessionData = {
       name: formData.get("name"),
       description: formData.get("description"),
-      teacherId: formData.get("teacherId"),
+      teacherId: userDetails.id,
     };
 
     try {
@@ -64,15 +88,30 @@ export default function CoursesCreateButton() {
 
           setCourses(data.courses);
           console.log(data.courses);
-      }
+        };
 
-      fetchCourses();
+        fetchCourses();
       } else {
         throw new Error("Failed to create session");
       }
     } catch (error) {
       console.error("Error creating session:", error);
     }
+  };
+  const handleEditCourse = (courseId) => {
+    console.log("Edit", courseId);
+    // Implementation for opening edit modal or redirecting to an edit page
+  };
+
+  const handleDeleteCourse = (courseId) => {
+    console.log("Delete", courseId);
+    // Implementation for deleting a course
+  };
+
+  const goToCourse = (courseId) => {
+    console.log("Go to Course", courseId);
+    // Implementation for navigating to the course's detailed view
+    // This might involve using the `useNavigate` hook from `react-router-dom` if you're using React Router
   };
 
   // const handleEditSubmit = async (event) => {
@@ -118,59 +157,69 @@ export default function CoursesCreateButton() {
     setOpenModal(true);
   };
 
-    return (
+  return (
     <Container maxWidth="lg" sx={{ mt: 4 }}>
       <Grid container spacing={3}>
         <Grid item xs={12}>
-            <div className={styles.headerTextContainer}>
-                <p className={styles.headerText}>Your Courses List</p>
-                <p className={styles.subHeaderText}>All courses that been signed to your account in 30 days.</p>
-            </div>
+          <div className={styles.headerTextContainer}>
+            <p className={styles.headerText}>Your Courses List</p>
+            <p className={styles.subHeaderText}>
+              All courses that been signed to your account in 30 days.
+            </p>
+          </div>
         </Grid>
         <Grid item xs={12}>
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={handleCreateSession}
-              sx={{ mb: 2 }}
-            >
-              Create Course
-            </Button>
-            <BasicTable courses={courses} />
-            {/* {course.sessions.map((session) => (
-              <Accordion key={session._id}>
-                <AccordionSummary
-                  expandIcon={<ExpandMoreIcon />}
-                  aria-controls="panel1a-content"
-                  id="panel1a-header"
-                >
-                  <Typography>
-                    {session.name} -{" "}
-                    {new Date(session.start).toLocaleDateString()}
-                  </Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                  <Typography>Description: {session.description}</Typography>
-                  <Typography>
-                    Start: {new Date(session.start).toLocaleString()}
-                  </Typography>
-                  <Typography>
-                    End: {new Date(session.end).toLocaleString()}
-                  </Typography>
-                </AccordionDetails>
-              </Accordion>
-            ))} */}
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={handleCreateSession}
+            sx={{ mb: 2 }}
+          >
+            Create Course
+          </Button>
+          <Grid container spacing={3}>
+            {courses.map((course) => (
+              <Grid item xs={12} sm={6} md={4} key={course.id}>
+                <Card>
+                  <CardContent>
+                    <Typography variant="h5" component="h2">
+                      {course.name}
+                    </Typography>
+                    <Typography color="textSecondary">
+                      {course.description}
+                    </Typography>
+                    {/* Include other course details here */}
+                  </CardContent>
+                  <CardActions>
+                    <Button
+                      size="small"
+                      color="primary"
+                      onClick={() => handleEditCourse(course.id)}
+                    >
+                      Edit
+                    </Button>
+                    <Button
+                      size="small"
+                      color="secondary"
+                      onClick={() => handleDeleteCourse(course.id)}
+                    >
+                      Delete
+                    </Button>
+                    <Button size="small" onClick={() => goToCourse(course.id)}>
+                      Go to Course
+                    </Button>
+                  </CardActions>
+                </Card>
+              </Grid>
+            ))}
           </Grid>
+        </Grid>
       </Grid>
       <CourseModal
         openModal={openModal}
         handleClose={() => setOpenModal(false)}
         modalContent={modalContent}
-        // currentSession={currentSession}
         handleSubmit={handleSubmit}
-        // handleEditSubmit={handleEditSubmit}
-        // feedbackData={feedbackData}
-        // feedbackTexts={feedbackTexts}
       />
     </Container>
     )
