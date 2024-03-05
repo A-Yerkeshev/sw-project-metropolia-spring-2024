@@ -14,9 +14,22 @@ export const authReducer = (state, action) => {
 };
 export const AuthContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, { user: null });
-  console.log("AuthContext state:", state);
+  const fetchWithToken = async (url, options = {}) => {
+    const storedUser = JSON.parse(localStorage.getItem('user'));
+    const token = storedUser ? storedUser.token : null;
+
+    if (token) {
+      const headers = {
+        Authorization: `Bearer ${token}`,
+        ...options.headers,
+      };
+    const response = await fetch(url, { ...options, headers });
+    return response;
+    }
+    throw new Error("No token found");
+  };
   return (
-    <AuthContext.Provider value={{ ...state, dispatch }}>
+    <AuthContext.Provider value={{ ...state, dispatch, fetchWithToken }}>
       {children}
     </AuthContext.Provider>
   );

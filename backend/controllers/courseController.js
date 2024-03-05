@@ -5,9 +5,11 @@ const { Feedback } = require('../models/feedbackModel');
 
 // GET all courses
 const getAllCourses = async (req, res) => {
+  const { teacherId } = req.params;
+
   try {
     // retrieve all courses, and populate their sessions and sessions' feedbacks
-    const courses = await Course.find({})
+    const courses = await Course.find({teacherId})
       .populate({
         path: 'sessions',
         options: { sort: { createdAt: -1 } },
