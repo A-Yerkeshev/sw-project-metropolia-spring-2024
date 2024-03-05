@@ -17,8 +17,6 @@ RUN npm install
 COPY backend/ .
 
 # Prepare environment and run
-ENV MONGO_URI=mongodb+srv://swp-admin:god-damn-sw-project@cluster0.iicz17f.mongodb.net/
-ENV JWT_SECRET=metropolia
 EXPOSE 3000
 
 ENTRYPOINT ["npm", "start"]
