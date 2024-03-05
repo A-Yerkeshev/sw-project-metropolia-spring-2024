@@ -9,8 +9,6 @@ const Navbar = () => {
   const { logout } = useLogout();
   const location = useLocation();
 
-  console.log("Navbar user:", user);
-
   // Define the routes where the Navbar should not be displayed
   const hideOnRoutes = ["/", "/signup", "/share", "/feedback/new"];
 

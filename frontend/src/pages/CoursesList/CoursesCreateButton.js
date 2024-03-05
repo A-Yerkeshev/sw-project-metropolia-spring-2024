@@ -27,7 +27,6 @@ export default function CoursesCreateButton() {
           const data = await res.json();
 
       setCourses(data.courses);
-      console.log(data.courses);
     };
 
     fetchCourses();
@@ -78,7 +77,6 @@ export default function CoursesCreateButton() {
 
       if (response.ok) {
         const newSession = await response.json();
-        console.log("Session created:", newSession);
         // Optionally, refresh the list of sessions or add the new session to the state
         setOpenModal(false); // Close the modal
         const fetchCourses = async () => {
@@ -87,7 +85,6 @@ export default function CoursesCreateButton() {
           const data = await res.json();
 
           setCourses(data.courses);
-          console.log(data.courses);
         };
 
         fetchCourses();

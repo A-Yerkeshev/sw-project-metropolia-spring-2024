@@ -29,7 +29,6 @@ const QR = () => {
         );
         const data = await response.json();
         if (response.ok) {
-          console.log("Session details fetched:", data); // Log the fetched session details
           setSessionDetails(data.session);
         } else {
           throw new Error("Failed to fetch session details");
@@ -41,9 +40,6 @@ const QR = () => {
 
     fetchSessionDetails();
   }, [courseId, sessionId]); // Depend on both courseId and sessionId
-
-  // Log sessionDetails state before the return statement
-  console.log("Current sessionDetails state:", sessionDetails);
 
   let baseUrl;
   if (process.env.NODE_ENV === "development") {

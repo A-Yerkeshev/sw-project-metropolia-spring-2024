@@ -1,4 +1,5 @@
 const express = require('express');
+const { protect } = require('../middleware/authMiddleware');
 const {
   getAllCourses,
   getOneCourse,
@@ -10,7 +11,7 @@ const {
 const router = express.Router();
 
 // GET all courses
-router.get('/', getAllCourses);
+router.get('/', protect, getAllCourses);
 
 // GET one course
 router.get('/:courseId', getOneCourse);

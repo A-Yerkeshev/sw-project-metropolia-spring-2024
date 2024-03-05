@@ -5,7 +5,7 @@ const { Feedback } = require('../models/feedbackModel');
 
 // GET all courses
 const getAllCourses = async (req, res) => {
-  const { teacherId } = req.params;
+  const teacherId = req.user._id;
 
   try {
     // retrieve all courses, and populate their sessions and sessions' feedbacks

@@ -69,7 +69,6 @@ const Course = () => {
 
       if (response.ok) {
         const newSession = await response.json();
-        console.log("Session created:", newSession);
         // Optionally, refresh the list of sessions or add the new session to the state
         setOpenModal(false); // Close the modal
         const fetchCourse = async () => {
@@ -99,8 +98,6 @@ const Course = () => {
       );
 
       if (!response.ok) throw new Error("Failed to delete session.");
-
-      console.log("Session deleted:", sessionId);
 
       // After successful deletion, update the local state to remove the deleted session
       setCourse((prevCourse) => ({
@@ -161,7 +158,6 @@ const Course = () => {
       if (!response.ok) throw new Error("Failed to update session.");
 
       const updatedSession = await response.json();
-      console.log("Session updated:", updatedSession);
 
       // Perform state updates or navigations here
       setOpenModal(false);

@@ -69,7 +69,6 @@ const Feedback = () => {
       }
 
       const data = await response.json();
-      console.log("Feedback submitted:", data);
       setSubmitStatus("success");
       setSubmitMessage("Feedback submitted successfully!");
     } catch (error) {
