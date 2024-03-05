@@ -25,6 +25,7 @@ const Feedback = () => {
 
   const [rating, setRating] = useState("");
   const [openFeedback, setOpenFeedback] = useState("");
+  const [studentId, setStudentId] = useState("");
   const [submitStatus, setSubmitStatus] = useState("");
   const [submitMessage, setSubmitMessage] = useState("");
 
@@ -34,6 +35,10 @@ const Feedback = () => {
 
   const handleChangeOpenFeedback = (event) => {
     setOpenFeedback(event.target.value);
+  };
+
+  const handleChangeStudentId = (event) => {
+    setStudentId(event.target.value);
   };
 
   const handleSubmit = async () => {
@@ -49,7 +54,7 @@ const Feedback = () => {
             rating: Number(rating),
             text: openFeedback,
             sessionId: sessionId,
-            studentId: 3, // This should be dynamically set based on the logged-in user
+            studentId: Number(studentId),
           }),
         }
       );
@@ -171,6 +176,15 @@ const Feedback = () => {
                 }}
               />
             </RadioGroup>
+            <TextField
+              label="Student ID"
+              name="student-id"
+              type="number"
+              margin="normal"
+              fullWidth
+              value={studentId}
+              onChange={handleChangeStudentId}
+            />
             <TextField
               label="Open feedback"
               name="open-feedback"
