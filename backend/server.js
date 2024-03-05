@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
 const dbURI =
   process.env.NODE_ENV === 'test'
     ? process.env.MONGO_URI_TEST
@@ -40,7 +40,7 @@ if (process.env.NODE_ENV === 'production') {
   app.get("/", function(req, res) {
     res.sendFile(path.join(__dirname, "../frontend/build/index.html"));
   });
-  console.log('Serving built frontend');
+  console.log('Serving in production environment');
 }
 
 // routes

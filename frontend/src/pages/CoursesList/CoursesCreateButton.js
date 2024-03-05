@@ -16,10 +16,11 @@ export default function CoursesCreateButton() {
 
 
   const [courses, setCourses] = useState([]);
+  const backendUrl = process.env.REACT_APP_BACKEND_URL || "";
 
   useEffect(() => {
       const fetchCourses = async () => {
-          const url = process.env.REACT_APP_BACKEND_URL + '/api/courses';  
+          const url = backendUrl + '/api/courses';
           const res = await fetch(url);
           const data = await res.json();
 
@@ -41,7 +42,7 @@ export default function CoursesCreateButton() {
 
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_BACKEND_URL}/api/courses/`,
+        `${backendUrl}/api/courses/`,
         {
           method: "POST",
           headers: {
@@ -57,7 +58,7 @@ export default function CoursesCreateButton() {
         // Optionally, refresh the list of sessions or add the new session to the state
         setOpenModal(false); // Close the modal
         const fetchCourses = async () => {
-          const url = process.env.REACT_APP_BACKEND_URL + '/api/courses';
+          const url = backendUrl + '/api/courses';
           const res = await fetch(url);
           const data = await res.json();
 
@@ -172,5 +173,5 @@ export default function CoursesCreateButton() {
         // feedbackTexts={feedbackTexts}
       />
     </Container>
-    ) 
+    )
 }

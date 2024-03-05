@@ -5,7 +5,7 @@ export const useSignup = () => {
   const { dispatch } = useAuthContext();
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false); // Use false for initial state to match boolean type
-  const backendUrl = process.env.REACT_APP_BACKEND_URL;
+  const backendUrl = process.env.REACT_APP_BACKEND_URL || "";
 
   const signup = async (firstName, lastName, email, password) => {
     setIsLoading(true);

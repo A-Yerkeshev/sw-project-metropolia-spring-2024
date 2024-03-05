@@ -26,11 +26,12 @@ const Course = () => {
   const [feedbackTexts, setFeedbackTexts] = useState([]);
   const [modalContent, setModalContent] = useState(null);
   const [currentSession, setCurrentSession] = useState(null);
+  const backendUrl = process.env.REACT_APP_BACKEND_URL || "";
 
   useEffect(() => {
     const fetchCourse = async () => {
       const response = await fetch(
-        `${process.env.REACT_APP_BACKEND_URL}/api/courses/${courseId}`
+        `${backendUrl}/api/courses/${courseId}`
       );
       const data = await response.json();
       setCourse(data.course);
@@ -56,7 +57,7 @@ const Course = () => {
 
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_BACKEND_URL}/api/sessions/${courseId}`,
+        `${backendUrl}/api/sessions/${courseId}`,
         {
           method: "POST",
           headers: {
@@ -73,12 +74,12 @@ const Course = () => {
         setOpenModal(false); // Close the modal
         const fetchCourse = async () => {
           const response = await fetch(
-            `${process.env.REACT_APP_BACKEND_URL}/api/courses/${courseId}`
+            `${backendUrl}/api/courses/${courseId}`
           );
           const data = await response.json();
           setCourse(data.course);
         };
-    
+
         fetchCourse();
       } else {
         throw new Error("Failed to create session");
@@ -91,7 +92,7 @@ const Course = () => {
   const handleDeleteSession = async (sessionId) => {
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_BACKEND_URL}/api/sessions/${courseId}/${sessionId}`,
+        `${backendUrl}/api/sessions/${courseId}/${sessionId}`,
         {
           method: "DELETE",
         }
@@ -147,7 +148,7 @@ const Course = () => {
 
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_BACKEND_URL}/api/sessions/${courseId}/${currentSession._id}`,
+        `${backendUrl}/api/sessions/${courseId}/${currentSession._id}`,
         {
           method: "PATCH",
           headers: {
@@ -174,7 +175,7 @@ const Course = () => {
 
   const handleShowStatistics = async (sessionId) => {
     const response = await fetch(
-      `${process.env.REACT_APP_BACKEND_URL}/api/feedbacks?sessionId=${sessionId}`
+      `${backendUrl}/api/feedbacks?sessionId=${sessionId}`
     );
     const data = await response.json();
     if (data.feedbacks) {

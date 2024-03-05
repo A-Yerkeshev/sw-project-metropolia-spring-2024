@@ -9,6 +9,7 @@ const QR = () => {
   const queryParams = new URLSearchParams(location.search);
   const courseId = queryParams.get("courseId");
   const sessionId = queryParams.get("sessionId");
+  const backendUrl = process.env.REACT_APP_BACKEND_URL || "";
 
   //const decodedSessionName = decodeURIComponent(sessionName);
 
@@ -24,7 +25,7 @@ const QR = () => {
     const fetchSessionDetails = async () => {
       try {
         const response = await fetch(
-          `${process.env.REACT_APP_BACKEND_URL}/api/sessions/${courseId}/${sessionId}`
+          `${backendUrl}/api/sessions/${courseId}/${sessionId}`
         );
         const data = await response.json();
         if (response.ok) {

@@ -28,6 +28,8 @@ const Feedback = () => {
   const [studentId, setStudentId] = useState("");
   const [submitStatus, setSubmitStatus] = useState("");
   const [submitMessage, setSubmitMessage] = useState("");
+  const backendUrl = process.env.REACT_APP_BACKEND_URL || "";
+
 
   const handleChangeRating = (event) => {
     setRating(event.target.value);
@@ -44,7 +46,7 @@ const Feedback = () => {
   const handleSubmit = async () => {
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_BACKEND_URL}/api/feedbacks`,
+        `${backendUrl}/api/feedbacks`,
         {
           method: "POST",
           headers: {
