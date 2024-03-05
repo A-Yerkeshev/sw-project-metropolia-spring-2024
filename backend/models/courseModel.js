@@ -7,7 +7,7 @@ const courseSchema = new Schema(
     name: { type: String, required: true },
     description: { type: String, required: true },
     students: [{ type: Number }],
-    teacherId: { type: Schema.Types.ObjectId, ref: 'User', required: true }, 
+    teacherId: { type: Schema.Types.ObjectId, ref: 'User', required: false }, 
     sessions: [{ type: Schema.Types.ObjectId, ref: 'Session' }],
   },
   { timestamps: true }

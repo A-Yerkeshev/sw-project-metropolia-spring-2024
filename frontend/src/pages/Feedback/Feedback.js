@@ -25,6 +25,7 @@ const Feedback = () => {
 
   const [rating, setRating] = useState("");
   const [openFeedback, setOpenFeedback] = useState("");
+  const [studentId, setStudentId] = useState("");
   const [submitStatus, setSubmitStatus] = useState("");
   const [submitMessage, setSubmitMessage] = useState("");
 
@@ -34,6 +35,10 @@ const Feedback = () => {
 
   const handleChangeOpenFeedback = (event) => {
     setOpenFeedback(event.target.value);
+  };
+
+  const handleChangeStudentId = (event) => {
+    setStudentId(event.target.value);
   };
 
   const handleSubmit = async () => {
@@ -49,12 +54,16 @@ const Feedback = () => {
             rating: Number(rating),
             text: openFeedback,
             sessionId: sessionId,
-            studentId: 2, // This should be dynamically set based on the logged-in user
+            studentId: Number(studentId),
           }),
         }
       );
+
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        const errorBody = await response.json(); //parse response body to get error details
+        const errorMessage =
+          errorBody.error || `HTTP error! status: ${response.status}`;
+        throw new Error(errorMessage);
       }
 
       const data = await response.json();
@@ -64,7 +73,9 @@ const Feedback = () => {
     } catch (error) {
       console.error("Failed to submit feedback:", error);
       setSubmitStatus("error");
-      setSubmitMessage("Failed to submit feedback. Please try again.");
+      setSubmitMessage(
+        error.message || "Failed to submit feedback. Please try again."
+      );
     }
   };
 
@@ -165,6 +176,15 @@ const Feedback = () => {
                 }}
               />
             </RadioGroup>
+            <TextField
+              label="Student ID"
+              name="student-id"
+              type="number"
+              margin="normal"
+              fullWidth
+              value={studentId}
+              onChange={handleChangeStudentId}
+            />
             <TextField
               label="Open feedback"
               name="open-feedback"

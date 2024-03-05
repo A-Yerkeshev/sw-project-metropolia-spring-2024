@@ -71,6 +71,15 @@ const Course = () => {
         console.log("Session created:", newSession);
         // Optionally, refresh the list of sessions or add the new session to the state
         setOpenModal(false); // Close the modal
+        const fetchCourse = async () => {
+          const response = await fetch(
+            `${process.env.REACT_APP_BACKEND_URL}/api/courses/${courseId}`
+          );
+          const data = await response.json();
+          setCourse(data.course);
+        };
+    
+        fetchCourse();
       } else {
         throw new Error("Failed to create session");
       }
@@ -249,7 +258,7 @@ const Course = () => {
         </Button>
       </Typography>
       <Grid container spacing={3} justifyContent="flex-start">
-        {course.sessions && course.sessions.length > 0 && (
+        {/* {course.sessions && course.sessions.length > 0 && ( */}
           <Grid item xs={12}>
             <Typography variant="h5" gutterBottom>
               Sessions
@@ -321,7 +330,7 @@ const Course = () => {
               </Accordion>
             ))}
           </Grid>
-        )}
+        {/* )} */}
       </Grid>
       <SessionModal
         openModal={openModal}
