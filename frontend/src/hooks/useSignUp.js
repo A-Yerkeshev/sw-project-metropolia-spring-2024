@@ -23,18 +23,19 @@ export const useSignup = () => {
       const json = await response.json();
 
       if (!response.ok) {
-        setError(json.message);
+        setError(json.error);
+        setIsLoading(false);
+        return false;
       } else {
         // Assuming the server's response is now an object { email, token, id }
         const { email, token, id } = json;
 
         // Here you might want to store the token in localStorage,
         // but that depends on your authentication flow
-        localStorage.setItem("authToken", JSON.stringify(token));
-
-        // And then dispatch LOGIN with all necessary user info
-        // Adjust according to what your application expects in user state
-        dispatch({ type: "LOGIN", payload: { email, id, token } });
+        localStorage.setItem("user", JSON.stringify(json));
+        dispatch({ type: "LOGIN", payload: json });
+        setIsLoading(false);
+        return true;
       }
     } catch (error) {
       console.error("Error in useSignup:", error);
