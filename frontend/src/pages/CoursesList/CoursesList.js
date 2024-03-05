@@ -1,6 +1,7 @@
 import styles from './CoursesList.module.css';
 import { useState, useEffect } from "react";
 import BasicTable from './CoursesTable';
+import { AuthContext } from '../../context/AuthContext';
 
 const CoursesList = () => {
     const [courses, setCourses] = useState([]);

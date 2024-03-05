@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import CourseModal from "../../components/CourseModal";
 import {
   Card,
@@ -12,6 +12,7 @@ import {
 
 import styles from "./CoursesList.module.css";
 import BasicTable from "./CoursesTable";
+import { AuthContext } from '../../context/AuthContext';
 
 export default function CoursesCreateButton() {
   const [openModal, setOpenModal] = useState(false);
@@ -19,11 +20,12 @@ export default function CoursesCreateButton() {
 
   const [courses, setCourses] = useState([]);
   const backendUrl = process.env.REACT_APP_BACKEND_URL || "";
+  const { fetchWithToken } = useContext(AuthContext);
 
   useEffect(() => {
       const fetchCourses = async () => {
           const url = backendUrl + '/api/courses';
-          const res = await fetch(url);
+          const res = await fetchWithToken(url);
           const data = await res.json();
 
       setCourses(data.courses);

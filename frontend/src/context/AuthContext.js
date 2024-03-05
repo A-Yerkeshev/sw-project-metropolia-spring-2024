@@ -18,8 +18,6 @@ export const AuthContextProvider = ({ children }) => {
     const storedUser = JSON.parse(localStorage.getItem('user'));
     const token = storedUser ? storedUser.token : null;
 
-    console.log('Token: ', token);
-
     if (token) {
       const headers = {
         Authorization: `Bearer ${token}`,
