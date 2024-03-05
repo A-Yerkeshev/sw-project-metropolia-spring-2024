@@ -17,7 +17,7 @@ router.get('/', protect, getAllCourses);
 router.get('/:courseId', getOneCourse);
 
 // POST one course
-router.post('/', createCourse);
+router.post('/', protect, createCourse);
 
 // DELETE one course
 router.delete('/:courseId', deleteCourse);

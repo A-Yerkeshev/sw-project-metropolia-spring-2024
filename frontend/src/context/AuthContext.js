@@ -23,6 +23,7 @@ export const AuthContextProvider = ({ children }) => {
         Authorization: `Bearer ${token}`,
         ...options.headers,
       };
+
     const response = await fetch(url, { ...options, headers });
     return response;
     }

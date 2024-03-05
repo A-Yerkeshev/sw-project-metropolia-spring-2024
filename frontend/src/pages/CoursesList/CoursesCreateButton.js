@@ -47,26 +47,17 @@ export default function CoursesCreateButton() {
     return null;
   };
 
-  const userDetails = getUserDetails();
-
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const userDetails = getUserDetails();
-
-    if (!userDetails || !userDetails.id) {
-      console.error("User ID is missing from local storage.");
-      return; // Handle this error appropriately
-    }
     const formData = new FormData(event.target);
     const sessionData = {
       name: formData.get("name"),
-      description: formData.get("description"),
-      teacherId: userDetails.id,
+      description: formData.get("description")
     };
 
     try {
-      const response = await fetch(
+      const response = await fetchWithToken(
         `${backendUrl}/api/courses/`,
         {
           method: "POST",
@@ -83,7 +74,7 @@ export default function CoursesCreateButton() {
         setOpenModal(false); // Close the modal
         const fetchCourses = async () => {
           const url = backendUrl + '/api/courses';
-          const res = await fetch(url);
+          const res = await fetchWithToken(url);
           const data = await res.json();
 
           setCourses(data.courses);

@@ -64,7 +64,8 @@ const getOneCourse = async (req, res) => {
 
 // POST one course
 const createCourse = async (req, res) => {
-  const { name, description, students, teacherId } = req.body;
+  const { name, description, students } = req.body;
+  const teacherId = req.user._id;
 
   // Input validation
   let emptyFields = [];
