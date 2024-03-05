@@ -35,13 +35,13 @@ export default function CoursesCreateButton() {
     fetchCourses();
   }, []);
 
-  const getUserDetails = () => {
-    const userDetailsString = localStorage.getItem("userDetails");
-    if (userDetailsString) {
+  const getuser = () => {
+    const userString = localStorage.getItem("user");
+    if (userString) {
       try {
-        return JSON.parse(userDetailsString);
+        return JSON.parse(userString);
       } catch (error) {
-        console.error("Error parsing userDetails from localStorage:", error);
+        console.error("Error parsing user from localStorage:", error);
         return null;
       }
     }

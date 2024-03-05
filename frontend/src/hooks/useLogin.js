@@ -27,7 +27,7 @@ export const useLogin = () => {
         setError(json.error);
       } else {
         // Store the entire user object including email, id, and token in local storage
-        localStorage.setItem("userDetails", JSON.stringify(json));
+        localStorage.setItem("user", JSON.stringify(json));
 
         // Dispatch LOGIN with the user details
         dispatch({ type: "LOGIN", payload: json });
