@@ -1,6 +1,14 @@
 import React, { useEffect, useState } from "react";
 import CourseModal from "../../components/CourseModal";
-import { Button, Container, Grid } from "@mui/material";
+import {
+  Card,
+  CardContent,
+  CardActions,
+  Button,
+  Typography,
+  Grid,
+  Container,
+} from "@mui/material";
 
 import styles from "./CoursesList.module.css";
 import BasicTable from "./CoursesTable";
@@ -31,16 +39,16 @@ export default function CoursesCreateButton() {
         return JSON.parse(userDetailsString);
       } catch (error) {
         console.error("Error parsing userDetails from localStorage:", error);
-        return null; // or return an empty object {}
+        return null;
       }
     }
-    return null; // or return an empty object {}
+    return null;
   };
 
   const userDetails = getUserDetails();
 
   const handleSubmit = async (event) => {
-    event.preventDefault(); // Prevent the form from causing a page reload
+    event.preventDefault();
 
     const userDetails = getUserDetails();
 
@@ -88,6 +96,21 @@ export default function CoursesCreateButton() {
     } catch (error) {
       console.error("Error creating session:", error);
     }
+  };
+  const handleEditCourse = (courseId) => {
+    console.log("Edit", courseId);
+    // Implementation for opening edit modal or redirecting to an edit page
+  };
+
+  const handleDeleteCourse = (courseId) => {
+    console.log("Delete", courseId);
+    // Implementation for deleting a course
+  };
+
+  const goToCourse = (courseId) => {
+    console.log("Go to Course", courseId);
+    // Implementation for navigating to the course's detailed view
+    // This might involve using the `useNavigate` hook from `react-router-dom` if you're using React Router
   };
 
   // const handleEditSubmit = async (event) => {
@@ -153,41 +176,49 @@ export default function CoursesCreateButton() {
           >
             Create Course
           </Button>
-          <BasicTable courses={courses} />
-          {/* {course.sessions.map((session) => (
-              <Accordion key={session._id}>
-                <AccordionSummary
-                  expandIcon={<ExpandMoreIcon />}
-                  aria-controls="panel1a-content"
-                  id="panel1a-header"
-                >
-                  <Typography>
-                    {session.name} -{" "}
-                    {new Date(session.start).toLocaleDateString()}
-                  </Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                  <Typography>Description: {session.description}</Typography>
-                  <Typography>
-                    Start: {new Date(session.start).toLocaleString()}
-                  </Typography>
-                  <Typography>
-                    End: {new Date(session.end).toLocaleString()}
-                  </Typography>
-                </AccordionDetails>
-              </Accordion>
-            ))} */}
+          <Grid container spacing={3}>
+            {courses.map((course) => (
+              <Grid item xs={12} sm={6} md={4} key={course.id}>
+                <Card>
+                  <CardContent>
+                    <Typography variant="h5" component="h2">
+                      {course.name}
+                    </Typography>
+                    <Typography color="textSecondary">
+                      {course.description}
+                    </Typography>
+                    {/* Include other course details here */}
+                  </CardContent>
+                  <CardActions>
+                    <Button
+                      size="small"
+                      color="primary"
+                      onClick={() => handleEditCourse(course.id)}
+                    >
+                      Edit
+                    </Button>
+                    <Button
+                      size="small"
+                      color="secondary"
+                      onClick={() => handleDeleteCourse(course.id)}
+                    >
+                      Delete
+                    </Button>
+                    <Button size="small" onClick={() => goToCourse(course.id)}>
+                      Go to Course
+                    </Button>
+                  </CardActions>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
         </Grid>
       </Grid>
       <CourseModal
         openModal={openModal}
         handleClose={() => setOpenModal(false)}
         modalContent={modalContent}
-        // currentSession={currentSession}
         handleSubmit={handleSubmit}
-        // handleEditSubmit={handleEditSubmit}
-        // feedbackData={feedbackData}
-        // feedbackTexts={feedbackTexts}
       />
     </Container>
   );
