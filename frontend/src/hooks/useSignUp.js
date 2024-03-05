@@ -29,10 +29,7 @@ export const useSignup = () => {
       } else {
         // Assuming the server's response is now an object { email, token, id }
         const { email, token, id } = json;
-
-        // Here you might want to store the token in localStorage,
-        // but that depends on your authentication flow
-        localStorage.setItem("user", JSON.stringify(json));
+        localStorage.setItem("userDetails", JSON.stringify(json));
         dispatch({ type: "LOGIN", payload: json });
         setIsLoading(false);
         return true;
