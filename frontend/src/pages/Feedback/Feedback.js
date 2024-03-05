@@ -49,12 +49,16 @@ const Feedback = () => {
             rating: Number(rating),
             text: openFeedback,
             sessionId: sessionId,
-            studentId: 2, // This should be dynamically set based on the logged-in user
+            studentId: 3, // This should be dynamically set based on the logged-in user
           }),
         }
       );
+
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        const errorBody = await response.json(); //parse response body to get error details
+        const errorMessage =
+          errorBody.error || `HTTP error! status: ${response.status}`;
+        throw new Error(errorMessage);
       }
 
       const data = await response.json();
@@ -64,7 +68,9 @@ const Feedback = () => {
     } catch (error) {
       console.error("Failed to submit feedback:", error);
       setSubmitStatus("error");
-      setSubmitMessage("Failed to submit feedback. Please try again.");
+      setSubmitMessage(
+        error.message || "Failed to submit feedback. Please try again."
+      );
     }
   };
 

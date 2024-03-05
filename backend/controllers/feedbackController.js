@@ -101,7 +101,9 @@ const createFeedback = async (req, res) => {
 
     // check that user has not submited feedback for this session yet
     if (await Feedback.findOne({ studentId })) {
-      return res.status(400).json({ error: "You already submited feedback for this session." });
+      return res
+        .status(400)
+        .json({ error: "You already submited feedback for this session." });
     }
 
     // create new feedback and include provided session Id
