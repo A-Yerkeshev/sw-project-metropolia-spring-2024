@@ -12,22 +12,22 @@ import {
 } from "@mui/material";
 
 import styles from "./CoursesList.module.css";
-import BasicTable from "./CoursesTable";
-import { AuthContext } from '../../context/AuthContext';
+import { AuthContext } from "../../context/AuthContext";
 
 export default function CoursesCreateButton() {
   const [openModal, setOpenModal] = useState(false);
   const [modalContent, setModalContent] = useState(null);
   const [courses, setCourses] = useState([]);
+  const [editCourseData, setEditCourseData] = useState(null);
   const backendUrl = process.env.REACT_APP_BACKEND_URL || "";
   const navigate = useNavigate();
   const { fetchWithToken } = useContext(AuthContext);
 
   useEffect(() => {
-      const fetchCourses = async () => {
-          const url = backendUrl + '/api/courses';
-          const res = await fetchWithToken(url);
-          const data = await res.json();
+    const fetchCourses = async () => {
+      const url = backendUrl + "/api/courses";
+      const res = await fetchWithToken(url);
+      const data = await res.json();
 
       setCourses(data.courses);
     };
@@ -54,27 +54,24 @@ export default function CoursesCreateButton() {
     const formData = new FormData(event.target);
     const sessionData = {
       name: formData.get("name"),
-      description: formData.get("description")
+      description: formData.get("description"),
     };
 
     try {
-      const response = await fetchWithToken(
-        `${backendUrl}/api/courses/`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(sessionData),
-        }
-      );
+      const response = await fetchWithToken(`${backendUrl}/api/courses/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(sessionData),
+      });
 
       if (response.ok) {
         const newSession = await response.json();
         // Optionally, refresh the list of sessions or add the new session to the state
         setOpenModal(false); // Close the modal
         const fetchCourses = async () => {
-          const url = backendUrl + '/api/courses';
+          const url = backendUrl + "/api/courses";
           const res = await fetchWithToken(url);
           const data = await res.json();
 
@@ -89,9 +86,51 @@ export default function CoursesCreateButton() {
       console.error("Error creating session:", error);
     }
   };
-  const handleEditCourse = (courseId) => {
-    console.log("Edit", courseId);
-    // Implementation for opening edit modal or redirecting to an edit page
+  const handleEditCourse = (course) => {
+    setEditCourseData(course); // Set the course data to be edited
+    setModalContent("editCourse");
+    setOpenModal(true);
+  };
+
+  const handleEditSubmit = async (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const updatedCourseData = {
+      name: formData.get("name"),
+      description: formData.get("description"),
+    };
+
+    try {
+      const response = await fetch(
+        `${backendUrl}/api/courses/${editCourseData._id}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(updatedCourseData),
+        }
+      );
+
+      if (!response.ok) throw new Error("Failed to update course.");
+
+      const updatedCourse = await response.json();
+      console.log("Course updated:", updatedCourse);
+
+      // Update local state to reflect changes
+      setCourses((currentCourses) =>
+        currentCourses.map((course) =>
+          course._id === editCourseData._id
+            ? { ...course, ...updatedCourseData }
+            : course
+        )
+      );
+
+      setOpenModal(false); // Close modal upon success
+      setModalContent(null);
+    } catch (error) {
+      console.error("Error updating course:", error);
+    }
   };
 
   const handleDeleteCourse = async (courseId) => {
@@ -117,44 +156,6 @@ export default function CoursesCreateButton() {
   const goToCourse = (courseId) => {
     navigate(`/courses/${courseId}`);
   };
-
-  // const handleEditSubmit = async (event) => {
-  //   event.preventDefault(); // Prevent the form from submitting in the traditional way
-  //   const formData = new FormData(event.currentTarget);
-
-  //   const updatedSessionData = {
-  //     name: formData.get("name"),
-  //     description: formData.get("description"),
-  //     start: formData.get("start"),
-  //     end: formData.get("end"),
-  //   };
-
-  //   try {
-  //     const response = await fetch(
-  //       `${process.env.REACT_APP_BACKEND_URL}/api/sessions/${courseId}/${currentSession._id}`,
-  //       {
-  //         method: "PATCH",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //         body: JSON.stringify(updatedSessionData),
-  //       }
-  //     );
-
-  //     if (!response.ok) throw new Error("Failed to update session.");
-
-  //     const updatedSession = await response.json();
-  //     console.log("Session updated:", updatedSession);
-
-  //     // Perform state updates or navigations here
-  //     setOpenModal(false);
-  //     setModalContent(null);
-  //     //update the course or session list to reflect the changes
-  //   } catch (error) {
-  //     console.error("Error updating session:", error);
-  //     // Handle error cases
-  //   }
-  // };
 
   const handleCreateSession = () => {
     setModalContent("createCourse");
@@ -198,7 +199,7 @@ export default function CoursesCreateButton() {
                     <Button
                       size="small"
                       color="primary"
-                      onClick={() => handleEditCourse(course._id)}
+                      onClick={() => handleEditCourse(course)}
                     >
                       Edit
                     </Button>
@@ -233,6 +234,9 @@ export default function CoursesCreateButton() {
         handleClose={() => setOpenModal(false)}
         modalContent={modalContent}
         handleSubmit={handleSubmit}
+        handleEditSubmit={handleEditSubmit}
+        handleDeleteCourse={handleDeleteCourse}
+        courseData={editCourseData}
       />
     </Container>
   );
