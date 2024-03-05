@@ -22,8 +22,8 @@ export default function SignUp() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const result = await signup(firstName, lastName, email, password);
-    navigate("/CoursesList");
+    await signup(firstName, lastName, email, password);
+    navigate("/");
   };
 
   return (
