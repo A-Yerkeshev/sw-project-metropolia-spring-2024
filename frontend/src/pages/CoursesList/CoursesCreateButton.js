@@ -94,9 +94,24 @@ export default function CoursesCreateButton() {
     // Implementation for opening edit modal or redirecting to an edit page
   };
 
-  const handleDeleteCourse = (courseId) => {
+  const handleDeleteCourse = async (courseId) => {
     console.log("Delete", courseId);
-    // Implementation for deleting a course
+    try {
+      const response = await fetch(`${backendUrl}/api/courses/${courseId}`, {
+        method: "DELETE",
+      });
+      if (!response.ok) {
+        throw new Error("Failed to delete the course.");
+      }
+      console.log("Course deleted:", courseId);
+
+      // Remove the deleted course from the local state to update the UI
+      setCourses((currentCourses) =>
+        currentCourses.filter((course) => course._id !== courseId)
+      );
+    } catch (error) {
+      console.error("Error deleting course:", error.message);
+    }
   };
 
   const goToCourse = (courseId) => {
