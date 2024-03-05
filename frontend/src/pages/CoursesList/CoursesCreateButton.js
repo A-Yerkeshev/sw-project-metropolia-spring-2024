@@ -1,42 +1,58 @@
 import React, { useEffect, useState } from "react";
 import CourseModal from "../../components/CourseModal";
-import {
-  Button,
-  Container,
-  Grid,
-} from "@mui/material";
+import { Button, Container, Grid } from "@mui/material";
 
-import styles from './CoursesList.module.css';
+import styles from "./CoursesList.module.css";
 import BasicTable from "./CoursesTable";
 
 export default function CoursesCreateButton() {
-
   const [openModal, setOpenModal] = useState(false);
   const [modalContent, setModalContent] = useState(null);
-
 
   const [courses, setCourses] = useState([]);
 
   useEffect(() => {
-      const fetchCourses = async () => {
-          const url = process.env.REACT_APP_BACKEND_URL + '/api/courses';  
-          const res = await fetch(url);
-          const data = await res.json();
+    const fetchCourses = async () => {
+      const url = process.env.REACT_APP_BACKEND_URL + "/api/courses";
+      const res = await fetch(url);
+      const data = await res.json();
 
-          setCourses(data.courses);
-          console.log(data.courses);
-      }
+      setCourses(data.courses);
+      console.log(data.courses);
+    };
 
-      fetchCourses();
+    fetchCourses();
   }, []);
+
+  const getUserDetails = () => {
+    const userDetailsString = localStorage.getItem("userDetails");
+    if (userDetailsString) {
+      try {
+        return JSON.parse(userDetailsString);
+      } catch (error) {
+        console.error("Error parsing userDetails from localStorage:", error);
+        return null; // or return an empty object {}
+      }
+    }
+    return null; // or return an empty object {}
+  };
+
+  const userDetails = getUserDetails();
 
   const handleSubmit = async (event) => {
     event.preventDefault(); // Prevent the form from causing a page reload
+
+    const userDetails = getUserDetails();
+
+    if (!userDetails || !userDetails.id) {
+      console.error("User ID is missing from local storage.");
+      return; // Handle this error appropriately
+    }
     const formData = new FormData(event.target);
     const sessionData = {
       name: formData.get("name"),
       description: formData.get("description"),
-      teacherId: formData.get("teacherId"),
+      teacherId: userDetails.id,
     };
 
     try {
@@ -57,15 +73,15 @@ export default function CoursesCreateButton() {
         // Optionally, refresh the list of sessions or add the new session to the state
         setOpenModal(false); // Close the modal
         const fetchCourses = async () => {
-          const url = process.env.REACT_APP_BACKEND_URL + '/api/courses';
+          const url = process.env.REACT_APP_BACKEND_URL + "/api/courses";
           const res = await fetch(url);
           const data = await res.json();
 
           setCourses(data.courses);
           console.log(data.courses);
-      }
+        };
 
-      fetchCourses();
+        fetchCourses();
       } else {
         throw new Error("Failed to create session");
       }
@@ -117,26 +133,28 @@ export default function CoursesCreateButton() {
     setOpenModal(true);
   };
 
-    return (
+  return (
     <Container maxWidth="lg" sx={{ mt: 4 }}>
       <Grid container spacing={3}>
         <Grid item xs={12}>
-            <div className={styles.headerTextContainer}>
-                <p className={styles.headerText}>Your Courses List</p>
-                <p className={styles.subHeaderText}>All courses that been signed to your account in 30 days.</p>
-            </div>
+          <div className={styles.headerTextContainer}>
+            <p className={styles.headerText}>Your Courses List</p>
+            <p className={styles.subHeaderText}>
+              All courses that been signed to your account in 30 days.
+            </p>
+          </div>
         </Grid>
         <Grid item xs={12}>
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={handleCreateSession}
-              sx={{ mb: 2 }}
-            >
-              Create Course
-            </Button>
-            <BasicTable courses={courses} />
-            {/* {course.sessions.map((session) => (
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={handleCreateSession}
+            sx={{ mb: 2 }}
+          >
+            Create Course
+          </Button>
+          <BasicTable courses={courses} />
+          {/* {course.sessions.map((session) => (
               <Accordion key={session._id}>
                 <AccordionSummary
                   expandIcon={<ExpandMoreIcon />}
@@ -159,7 +177,7 @@ export default function CoursesCreateButton() {
                 </AccordionDetails>
               </Accordion>
             ))} */}
-          </Grid>
+        </Grid>
       </Grid>
       <CourseModal
         openModal={openModal}
@@ -172,5 +190,5 @@ export default function CoursesCreateButton() {
         // feedbackTexts={feedbackTexts}
       />
     </Container>
-    ) 
+  );
 }
