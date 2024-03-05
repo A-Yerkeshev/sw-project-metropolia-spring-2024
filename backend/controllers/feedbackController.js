@@ -99,11 +99,19 @@ const createFeedback = async (req, res) => {
     //   return res.status(400).json({ error: "Session has expired. You cannot submit feedback anymore." });
     // }
 
-    // check that user has not submited feedback for this session yet
-    if (await Feedback.findOne({ studentId })) {
+    // check that user has not submitted feedback for this session yet
+    console.log(
+      `Checking feedback for studentId: ${studentId}, sessionId: ${sessionId}`
+    );
+    const existingFeedback = await Feedback.findOne({
+      studentId: studentId,
+      sessionId: sessionId,
+    });
+
+    if (existingFeedback) {
       return res
         .status(400)
-        .json({ error: "You already submited feedback for this session." });
+        .json({ error: "You already submitted feedback for this session." });
     }
 
     // create new feedback and include provided session Id
