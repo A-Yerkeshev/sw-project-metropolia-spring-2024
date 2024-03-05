@@ -1,36 +1,51 @@
-import { createContext, useReducer, useEffect} from 'react';
+import { createContext, useReducer, useEffect } from "react";
 
 export const AuthContext = createContext();
 
 export const authReducer = (state, action) => {
-    switch (action.type) {
-    case 'LOGIN':
-        return {user: action.payload};
-    case 'LOGOUT':
-        return {user: null};
+  switch (action.type) {
+    case "LOGIN":
+      return { user: action.payload };
+    case "LOGOUT":
+      return { user: null };
     default:
-        return state;
-    }
-}
+      return state;
+  }
+};
+
 export const AuthContextProvider = ({ children }) => {
-    // Initialize state from local storage if available
-    const initialState = {
-        user: JSON.parse(localStorage.getItem('user')) || null
-    };
-
-
-    const [state, dispatch] = useReducer(authReducer, initialState);
-
-     // Sync user state with local storage
-     useEffect(() => {
-        localStorage.setItem('user', JSON.stringify(state.user));
-    }, [state.user]);
-
-    console.log('AuthContext state:', state);
-    return (
-        <AuthContext.Provider value={{ ...state, dispatch }}>
-        {children}
-        </AuthContext.Provider>
-       
-    );
+  const getUserFromLocalStorage = () => {
+    const item = localStorage.getItem("user");
+    if (item && item !== "undefined") {
+      try {
+        return JSON.parse(item);
+      } catch (error) {
+        console.error("Error parsing user from localStorage:", error);
+        return null;
+      }
     }
+    return null;
+  };
+
+  const initialState = {
+    user: getUserFromLocalStorage(),
+  };
+
+  const [state, dispatch] = useReducer(authReducer, initialState);
+
+  useEffect(() => {
+    if (state.user !== null) {
+      localStorage.setItem("user", JSON.stringify(state.user));
+    } else {
+      localStorage.removeItem("user");
+    }
+  }, [state.user]);
+
+  console.log("AuthContext state:", state);
+
+  return (
+    <AuthContext.Provider value={{ ...state, dispatch }}>
+      {children}
+    </AuthContext.Provider>
+  );
+};

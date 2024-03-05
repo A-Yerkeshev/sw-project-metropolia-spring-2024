@@ -22,7 +22,7 @@ export default function SignUp() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    await signup(firstName, lastName, email, password);
+    const result = await signup(firstName, lastName, email, password);
     navigate("/CoursesList");
   };
 
