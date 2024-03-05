@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import CourseModal from "../../components/CourseModal";
 import {
   Card,
@@ -17,9 +18,9 @@ import { AuthContext } from '../../context/AuthContext';
 export default function CoursesCreateButton() {
   const [openModal, setOpenModal] = useState(false);
   const [modalContent, setModalContent] = useState(null);
-
   const [courses, setCourses] = useState([]);
   const backendUrl = process.env.REACT_APP_BACKEND_URL || "";
+  const navigate = useNavigate();
   const { fetchWithToken } = useContext(AuthContext);
 
   useEffect(() => {
@@ -99,9 +100,7 @@ export default function CoursesCreateButton() {
   };
 
   const goToCourse = (courseId) => {
-    console.log("Go to Course", courseId);
-    // Implementation for navigating to the course's detailed view
-    // This might involve using the `useNavigate` hook from `react-router-dom` if you're using React Router
+    navigate(`/courses/${courseId}`);
   };
 
   // const handleEditSubmit = async (event) => {
@@ -169,7 +168,7 @@ export default function CoursesCreateButton() {
           </Button>
           <Grid container spacing={3}>
             {courses.map((course) => (
-              <Grid item xs={12} sm={6} md={4} key={course.id}>
+              <Grid item xs={12} sm={6} md={4} key={course._id}>
                 <Card>
                   <CardContent>
                     <Typography variant="h5" component="h2">
@@ -184,18 +183,27 @@ export default function CoursesCreateButton() {
                     <Button
                       size="small"
                       color="primary"
-                      onClick={() => handleEditCourse(course.id)}
+                      onClick={() => handleEditCourse(course._id)}
                     >
                       Edit
                     </Button>
                     <Button
                       size="small"
                       color="secondary"
-                      onClick={() => handleDeleteCourse(course.id)}
+                      onClick={() => handleDeleteCourse(course._id)}
                     >
                       Delete
                     </Button>
-                    <Button size="small" onClick={() => goToCourse(course.id)}>
+                    <Button
+                      size="small"
+                      onClick={() => {
+                        console.log(
+                          `Navigating to course with ID: ${course._id}`,
+                          course
+                        );
+                        goToCourse(course._id);
+                      }}
+                    >
                       Go to Course
                     </Button>
                   </CardActions>
@@ -212,5 +220,5 @@ export default function CoursesCreateButton() {
         handleSubmit={handleSubmit}
       />
     </Container>
-    )
+  );
 }
