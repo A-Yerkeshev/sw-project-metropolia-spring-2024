@@ -13,9 +13,12 @@ export const authReducer = (state, action) => {
   }
 };
 export const AuthContextProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(authReducer, { user: null });
+  const userDetails = JSON.parse(localStorage.getItem("user"));
+  const [state, dispatch] = useReducer(authReducer, {
+    user: userDetails || null,
+  });
   const fetchWithToken = async (url, options = {}) => {
-    const storedUser = JSON.parse(localStorage.getItem('user'));
+    const storedUser = JSON.parse(localStorage.getItem("user"));
     const token = storedUser ? storedUser.token : null;
 
     if (token) {
@@ -24,8 +27,8 @@ export const AuthContextProvider = ({ children }) => {
         ...options.headers,
       };
 
-    const response = await fetch(url, { ...options, headers });
-    return response;
+      const response = await fetch(url, { ...options, headers });
+      return response;
     }
     throw new Error("No token found");
   };
