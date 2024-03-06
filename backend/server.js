@@ -36,18 +36,22 @@ app.use((req, res, next) => {
   next();
 });
 
-if (process.env.NODE_ENV === 'production') {
-  app.get("/", function(req, res) {
-    res.sendFile(path.join(__dirname, "../frontend/build/index.html"));
-  });
-  console.log('Serving in production environment');
-}
-
 // routes
 app.use('/api/courses', courseRoutes);
 app.use('/api/sessions', sessionRoutes);
 app.use('/api/feedbacks', feedbackRoutes);
 app.use('/api/users', userRoutes);
+
+if (process.env.NODE_ENV === 'production') {
+  app.get("/*", function(req, res) {
+    res.sendFile(path.join(__dirname, "../frontend/build/index.html"), function (err) {
+      if (err) {
+        res.status(500).send(err);
+      }
+    });
+  });
+  console.log('Serving in production environment');
+}
 
 //connect to mongodb
 mongoose
