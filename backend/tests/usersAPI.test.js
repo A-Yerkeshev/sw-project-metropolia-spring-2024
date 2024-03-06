@@ -42,4 +42,14 @@ describe('User API', () => {
     expect(res.body).to.have.property('token');
     token = res.body.token; // Save the token for future requests
   });
+
+  it('should not be able to login as non-existing user', async () => {
+    const res = await supertest(app)
+      .post('/api/users/login')
+      .send({
+        email: 'non-registered-user@mail.com',
+        password: 'password123'
+      });
+    expect(res).to.have.status(404);
+  });
 });
