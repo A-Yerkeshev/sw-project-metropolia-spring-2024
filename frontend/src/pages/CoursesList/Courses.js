@@ -87,7 +87,7 @@ export default function Courses() {
     }
   };
   const handleEditCourse = (course) => {
-    setEditCourseData(course); // Set the course data to be edited
+    setEditCourseData(course);
     setModalContent("editCourse");
     setOpenModal(true);
   };
@@ -167,10 +167,7 @@ export default function Courses() {
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <div className={styles.headerTextContainer}>
-            <p className={styles.headerText}>Your Courses List</p>
-            <p className={styles.subHeaderText}>
-              All courses that been signed to your account in 30 days.
-            </p>
+            <p className={styles.headerText}>Your Courses</p>
           </div>
         </Grid>
         <Grid item xs={12}>
