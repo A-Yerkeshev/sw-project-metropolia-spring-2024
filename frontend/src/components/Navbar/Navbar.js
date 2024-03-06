@@ -30,9 +30,9 @@ const Navbar = () => {
         </Button>
       </div>
       <div className={styles.bottonMenu}>
-        <Link to="/CoursesList" className={styles.bottonMenuContainer}>
+        <Link to="/Courses" className={styles.bottonMenuContainer}>
           <img src="/navbar/CoursesList.svg" alt="course" />
-          <p>Courses List</p>
+          <p>Courses</p>
         </Link>
         {/* <Link to="/Course" className={styles.bottonMenuContainer}>
           <img src="/navbar/Course.svg" alt="course" />

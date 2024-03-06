@@ -25,7 +25,7 @@ export default function SignUp() {
     const success = await signup(firstName, lastName, email, password);
 
     if (success) {
-      navigate("/CoursesList"); // Redirect on success
+      navigate("/Courses");
     }
   };
 

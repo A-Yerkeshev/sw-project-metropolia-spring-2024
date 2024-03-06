@@ -14,7 +14,7 @@ import {
 import styles from "./CoursesList.module.css";
 import { AuthContext } from "../../context/AuthContext";
 
-export default function CoursesCreateButton() {
+export default function Courses() {
   const [openModal, setOpenModal] = useState(false);
   const [modalContent, setModalContent] = useState(null);
   const [courses, setCourses] = useState([]);
@@ -154,7 +154,7 @@ export default function CoursesCreateButton() {
   };
 
   const goToCourse = (courseId) => {
-    navigate(`/courses/${courseId}`);
+    navigate(`/sessions/${courseId}`);
   };
 
   const handleCreateSession = () => {

@@ -7,8 +7,8 @@ import Login from "./pages/Login/Login";
 import QR from "./pages/QR";
 import Feedback from "./pages/Feedback/Feedback";
 import Navbar from "./components/Navbar/Navbar";
-import CoursesCreateButton from "./pages/CoursesList/CoursesCreateButton";
-import Course from "./pages/Course/Course";
+import Courses from "./pages/CoursesList/Courses";
+import Sessions from "./pages/Sessions/Sessions";
 import Users from "./pages/Users/Users";
 
 function App() {
@@ -22,17 +22,17 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={user ? <Navigate to="/CoursesList" /> : <Login />}
+            element={user ? <Navigate to="/Courses" /> : <Login />}
           />
           <Route
             path="/signup"
-            element={!user ? <Signup /> : <Navigate to="/CoursesList" />}
+            element={!user ? <Signup /> : <Navigate to="/Courses" />}
           />
           <Route path="/share/:sessionName" element={<QR />} />
           <Route path="/feedback/new" element={<Feedback />} />
-          <Route path="/CoursesList" element={<CoursesCreateButton />} />
-          <Route path="/Course" element={<Course />} />
-          <Route path="/courses/:courseId" element={<Course />} />
+          <Route path="/Courses" element={<Courses />} />
+          <Route path="/Course" element={<Sessions />} />
+          <Route path="/sessions/:courseId" element={<Sessions />} />
           <Route path="/Users" element={<Users />} />
         </Routes>
       </BrowserRouter>
