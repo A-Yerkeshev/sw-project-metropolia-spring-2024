@@ -4,6 +4,7 @@ import styles from "./Navbar.module.css";
 import { useLogout } from "../../hooks/useLogout";
 import Button from "@mui/material/Button";
 
+
 const Navbar = () => {
   const { user } = useAuthContext();
   const { logout } = useLogout();
@@ -20,20 +21,31 @@ const Navbar = () => {
   return (
     <div className={styles.mainNavBarContainer}>
       <div className={styles.topMenu}>
-        <div className={styles.topMenuEmail}>
+        {/* <div className={styles.topMenuEmail}>
           <div className={styles.topMenuEmailAvatar}></div>
           <p>{user.email}</p>
+        </div> */}
+        <div>
+          <img src="/navbar/logo1.png" alt="course" width={"auto"} height={40}/>
         </div>
-        <div className={styles.topMenuUserAvatar}></div>
+        <div className={styles.topMenuEmail}>
+        <p>{user.email}</p>
+        {/* <Button onClick={logout} variant="outlined">
+          Logout
+        </Button> */}
+        </div>
+      </div>
+      <div className={styles.topMenu}>
+        {/* <Link to="/Courses" variant="outlined">
+          <img src="/navbar/CoursesList.svg" alt="course" />
+          <p>Courses</p>
+        </Link> */}
+        <Button component={Link} to="/Courses" variant="outlined">
+        Courses
+        </Button>
         <Button onClick={logout} variant="outlined">
           Logout
         </Button>
-      </div>
-      <div className={styles.bottonMenu}>
-        <Link to="/Courses" className={styles.bottonMenuContainer}>
-          <img src="/navbar/CoursesList.svg" alt="course" />
-          <p>Courses</p>
-        </Link>
         {/* <Link to="/Course" className={styles.bottonMenuContainer}>
           <img src="/navbar/Course.svg" alt="course" />
           <p>Course</p>

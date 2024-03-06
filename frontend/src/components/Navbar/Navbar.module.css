@@ -26,16 +26,11 @@
 
 .topMenuEmail {
     display: flex;
+    flex-direction: column;
     align-items: center;
     gap: 12px;
     font-size: 18px;
     color: black;
-}
-
-.topMenuEmailAvatar {
-    width: 18px;
-    height: 18px;
-    background-color: #B82626;
 }
 
 .topMenuUserAvatar {
