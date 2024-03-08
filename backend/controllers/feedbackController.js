@@ -1,6 +1,7 @@
-const { Session } = require("../models/sessionModel");
-const { Feedback } = require("../models/feedbackModel");
-const mongoose = require("mongoose");
+const { Session } = require('../models/sessionModel');
+const { Feedback } = require('../models/feedbackModel');
+const mongoose = require('mongoose');
+const { Course } = require('../models/courseModel');
 
 // GET all feedbacks of a session in a course
 const getAllFeedbacks = async (req, res) => {
@@ -8,22 +9,22 @@ const getAllFeedbacks = async (req, res) => {
 
   // check if and sessionId are valid
   if (!mongoose.Types.ObjectId.isValid(sessionId)) {
-    return res.status(400).json({ error: "Invalid session ID" });
+    return res.status(400).json({ error: 'Invalid session ID' });
   }
 
   try {
     // check if session exists and belongs to the course
     const session = await Session.findOne({ _id: sessionId });
     if (!session) {
-      return res.status(404).json({ error: "Session not found in the course" });
+      return res.status(404).json({ error: 'Session not found in the course' });
     }
 
     // retrieve all feedbacks of the session, and populate their "session" and "course" reference
     const feedbacks = await Feedback.find({ sessionId: sessionId })
       .populate({
-        path: "sessionId",
+        path: 'sessionId',
         populate: {
-          path: "course",
+          path: 'course',
         },
       })
       .exec();
@@ -39,7 +40,7 @@ const getOneFeedback = async (req, res) => {
   const { feedbackId } = req.params;
 
   if (!mongoose.Types.ObjectId.isValid(feedbackId)) {
-    return res.status(400).json({ error: "Invalid feedback ID" });
+    return res.status(400).json({ error: 'Invalid feedback ID' });
   }
 
   try {
@@ -58,7 +59,7 @@ const getOneFeedback = async (req, res) => {
     if (!feedback) {
       return res
         .status(404)
-        .json({ error: "Feedback not found in the session" });
+        .json({ error: 'Feedback not found in the session' });
     }
 
     res.status(200).json({ feedback });
@@ -73,25 +74,25 @@ const createFeedback = async (req, res) => {
 
   // input validation
   if (!rating) {
-    return res.status(400).json({ error: "Missing required field: rating" });
+    return res.status(400).json({ error: 'Missing required field: rating' });
   }
 
   if (!studentId) {
     return res
       .status(400)
-      .json({ error: "Missing required field: student id" });
+      .json({ error: 'Missing required field: student id' });
   }
 
   // check if and sessionId is valid
   if (!mongoose.Types.ObjectId.isValid(sessionId)) {
-    return res.status(400).json({ error: "Invalid session ID" });
+    return res.status(400).json({ error: 'Invalid session ID' });
   }
 
   try {
     // check if session exists and belongs to the course
     const session = await Session.findOne({ _id: sessionId });
     if (!session) {
-      return res.status(404).json({ error: "Session not found in the course" });
+      return res.status(404).json({ error: 'Session not found in the course' });
     }
 
     // check that session has not expired yet
@@ -99,9 +100,20 @@ const createFeedback = async (req, res) => {
     //   return res.status(400).json({ error: "Session has expired. You cannot submit feedback anymore." });
     // }
 
+    // check that student is enrolled for this course
+    const course = await Course.findOne({ _id: session.course });
+    console.log(
+      `Checking for studentId ${studentId} from the studentId list of course ${course._id}`
+    );
+    if (!course.students.includes(studentId)) {
+      return res
+        .status(400)
+        .json({ error: 'You are not enrolled to this course.' });
+    }
+
     // check that user has not submitted feedback for this session yet
     console.log(
-      `Checking feedback for studentId: ${studentId}, sessionId: ${sessionId}`
+      `Checking existing feedback for studentId: ${studentId}, sessionId: ${sessionId}`
     );
     const existingFeedback = await Feedback.findOne({
       studentId: studentId,
@@ -111,7 +123,7 @@ const createFeedback = async (req, res) => {
     if (existingFeedback) {
       return res
         .status(400)
-        .json({ error: "You already submitted feedback for this session." });
+        .json({ error: 'You already submitted feedback for this session.' });
     }
 
     // create new feedback and include provided session Id
@@ -139,7 +151,7 @@ const deleteFeedback = async (req, res) => {
 
   // check if and sessionId are valid
   if (!mongoose.Types.ObjectId.isValid(feedbackId)) {
-    return res.status(400).json({ error: "Invalid feedback ID" });
+    return res.status(400).json({ error: 'Invalid feedback ID' });
   }
 
   try {
@@ -151,7 +163,7 @@ const deleteFeedback = async (req, res) => {
     if (!deletedFeedback) {
       return res
         .status(404)
-        .json({ error: "Feedback not found in the session" });
+        .json({ error: 'Feedback not found in the session' });
     }
 
     res.status(200).json({ deletedFeedback });
