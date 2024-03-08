@@ -2,8 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import styles from "./Navbar.module.css";
 import { useLogout } from "../../hooks/useLogout";
-import Button from "@mui/material/Button";
-
+import { AppBar, Toolbar, Button, Typography, Grid } from "@mui/material";
 
 const Navbar = () => {
   const { user } = useAuthContext();
@@ -19,47 +18,46 @@ const Navbar = () => {
   }
 
   return (
-    <div className={styles.mainNavBarContainer}>
-      <div className={styles.topMenu}>
-        {/* <div className={styles.topMenuEmail}>
-          <div className={styles.topMenuEmailAvatar}></div>
-          <p>{user.email}</p>
-        </div> */}
-        <div>
-          <img src="/navbar/logo1.png" alt="course" width={"auto"} height={40}/>
-        </div>
-        <div className={styles.topMenuEmail}>
-        <p>{user.email}</p>
-        {/* <Button onClick={logout} variant="outlined">
-          Logout
-        </Button> */}
-        </div>
-      </div>
-      <div className={styles.topMenu}>
-        {/* <Link to="/Courses" variant="outlined">
-          <img src="/navbar/CoursesList.svg" alt="course" />
-          <p>Courses</p>
-        </Link> */}
-        <Button component={Link} to="/Courses" variant="outlined">
-        Courses
-        </Button>
-        <Button onClick={logout} variant="outlined">
-          Logout
-        </Button>
-        {/* <Link to="/Course" className={styles.bottonMenuContainer}>
-          <img src="/navbar/Course.svg" alt="course" />
-          <p>Course</p>
-        </Link>
-        <Link to="/Users" className={styles.bottonMenuContainer}>
-          <img src="/navbar/Users.svg" alt="course" />
-          <p>Users</p>
-        </Link>
-        <Link to="/Settings" className={styles.bottonMenuContainer}>
-          <img src="/navbar/Settings.svg" alt="course" />
-          <p>Setttings</p>
-        </Link> */}
-      </div>
-    </div>
+    <AppBar position="static">
+      <Toolbar>
+        <Grid
+          container
+          alignItems="center"
+          justifyContent="space-between"
+          fullWidth
+        >
+          <Grid item xs>
+            <Grid container alignItems="center" spacing={2}>
+              <Grid item>
+                <img
+                  src="/navbar/logo.svg"
+                  alt="Logo"
+                  style={{ height: "40px" }}
+                />
+              </Grid>
+              <Grid item>
+                <Button component={Link} to="/Courses" color="inherit">
+                  Courses
+                </Button>
+              </Grid>
+            </Grid>
+          </Grid>
+
+          <Grid item>
+            <Grid container alignItems="center" spacing={2}>
+              <Grid item>
+                <Typography variant="body1">{user.email}</Typography>
+              </Grid>
+              <Grid item>
+                <Button onClick={logout} color="inherit">
+                  Logout
+                </Button>
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
+      </Toolbar>
+    </AppBar>
   );
 };
 
