@@ -55,7 +55,7 @@ describe('Feedback API', () => {
       .send({
         rating: 4,
         text: 'Good session',
-        studentId: 123,
+        studentId: 1,
         sessionId
       });
 
@@ -109,24 +109,24 @@ describe('Feedback API', () => {
     expect(res.body.deletedFeedback).to.have.property('_id', feedbackId);
   });
 
-  // it('should not be able to submit feedback after session has expired', async () => {
-  //   const session = await Session.create({
-  //     name: 'Test Session',
-  //     description: 'This is a test session',
-  //     start: Date.now(),
-  //     end: Date.now() - 1,
-  //     course: courseId
-  //   });
+  it('should not be able to submit feedback after session has expired', async () => {
+    const session = await Session.create({
+      name: 'Test Session',
+      description: 'This is a test session',
+      start: Date.now(),
+      end: Date.now() - 1,
+      course: courseId
+    });
 
-  //   const res = await supertest(app)
-  //     .post(`/api/feedbacks`)
-  //     .send({
-  //       rating: 4,
-  //       text: 'Good session',
-  //       studentId: 123,
-  //       sessionId: session._id
-  //     });
+    const res = await supertest(app)
+      .post(`/api/feedbacks`)
+      .send({
+        rating: 4,
+        text: 'Good session',
+        studentId: 123,
+        sessionId: session._id
+      });
 
-  //     expect(res.status).to.equal(400);
-  // });
+      expect(res.status).to.equal(400);
+  });
 });

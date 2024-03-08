@@ -9,27 +9,32 @@ const {User} = require("../models/userModel");
 chai.use(chaiHttp);
 const expect = chai.expect;
 
-describe('Course API', () => {
+describe('Courses API', () => {
   let teacherId;
   let courseId;
+  let token;
 
   before(async () => {
     await User.deleteMany({});
     await Course.deleteMany({});
 
-    const teacher = await User.create({
-      firstName: 'Test',
+    const res = await supertest(app)
+      .post('/api/users/signup')
+      .send({
+        firstName: 'Test',
       lastName: 'User',
       email: 'test.user@mail.com',
       password: 'password'
-    });
-    teacherId = teacher._id;
+      });
+    teacherId = res.body.id;
+    token = res.body.token;
   });
 
   // Test POST /api/courses
   it('should create a new course', async () => {
     const res = await supertest(app)
       .post('/api/courses')
+      .set('Authorization', `Bearer ${token}`)
       .send({
         name: 'Test Course',
         description: 'This is a test course',
@@ -54,7 +59,9 @@ describe('Course API', () => {
 
   // Test GET /api/courses
   it('should get all courses', async () => {
-    const res = await supertest(app).get('/api/courses');
+    const res = await supertest(app)
+      .get('/api/courses')
+      .set('Authorization', `Bearer ${token}`);
     expect(res.status).to.equal(200);
     expect(res.body).to.have.property('courses');
     expect(res.body.courses).to.be.an('array');
