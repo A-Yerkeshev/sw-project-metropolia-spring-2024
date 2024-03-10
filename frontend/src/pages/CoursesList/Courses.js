@@ -11,7 +11,6 @@ import {
   Container,
 } from "@mui/material";
 
-import styles from "./CoursesList.module.css";
 import { AuthContext } from "../../context/AuthContext";
 
 export default function Courses() {
@@ -35,19 +34,6 @@ export default function Courses() {
     fetchCourses();
   }, []);
 
-  const getuser = () => {
-    const userString = localStorage.getItem("user");
-    if (userString) {
-      try {
-        return JSON.parse(userString);
-      } catch (error) {
-        console.error("Error parsing user from localStorage:", error);
-        return null;
-      }
-    }
-    return null;
-  };
-
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -68,8 +54,7 @@ export default function Courses() {
 
       if (response.ok) {
         const newSession = await response.json();
-        // Optionally, refresh the list of sessions or add the new session to the state
-        setOpenModal(false); // Close the modal
+        setOpenModal(false);
         const fetchCourses = async () => {
           const url = backendUrl + "/api/courses";
           const res = await fetchWithToken(url);
@@ -166,9 +151,14 @@ export default function Courses() {
     <Container maxWidth="lg" sx={{ mt: 4 }}>
       <Grid container spacing={3}>
         <Grid item xs={12}>
-          <div className={styles.headerTextContainer}>
-            <p className={styles.headerText}>Your Courses</p>
-          </div>
+          <Typography
+            variant="h4"
+            gutterBottom
+            textAlign="center"
+            sx={{ fontWeight: "bold", mt: 2, color: "#232222" }}
+          >
+            Your Courses
+          </Typography>
         </Grid>
         <Grid item xs={12}>
           <Button
@@ -190,7 +180,6 @@ export default function Courses() {
                     <Typography color="textSecondary">
                       {course.description}
                     </Typography>
-                    {/* Include other course details here */}
                   </CardContent>
                   <CardActions>
                     <Button
