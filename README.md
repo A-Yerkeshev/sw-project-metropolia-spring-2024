@@ -8,6 +8,38 @@ The Instant Review Softwareis designed for dedicated teachers at diverse educati
 
 ## Technology Stack
 
+This project leverages a robust stack designed for scalability, efficiency, and ease of use. Below is an overview of the primary technologies and tools utilized:
+
+### MERN Stack
+
+- ![MongoDB](https://img.shields.io/badge/-MongoDB-green?style=flat-square&logo=mongodb) **MongoDB**: A document-based open source database.
+- ![Express.js](https://img.shields.io/badge/-Express.js-black?style=flat-square&logo=express) **Express.js**: A fast, unopinionated, minimalist web framework for Node.js.
+- ![React](https://img.shields.io/badge/-React-blue?style=flat-square&logo=react) **React**: A JavaScript library for building user interfaces.
+- ![Node.js](https://img.shields.io/badge/-Node.js-green?style=flat-square&logo=node.js) **Node.js**: A JavaScript runtime built on Chrome's V8 JavaScript engine.
+
+### CI/CD & DevOps
+
+- ![Jenkins](https://img.shields.io/badge/-Jenkins-red?style=flat-square&logo=jenkins) **Jenkins**: An open-source automation server that enables developers around the world to reliably build, test, and deploy their software.
+- ![Docker](https://img.shields.io/badge/-Docker-blue?style=flat-square&logo=docker) **Docker**: A set of platform-as-a-service (PaaS) products that use OS-level virtualization to deliver software in packages called containers.
+
+### Authentication
+
+- ![JWT](https://img.shields.io/badge/-JWT-black?style=flat-square&logo=json-web-tokens) **JWT Tokens**: Securely transmitting information between parties as a JSON object.
+
+### UI/UX
+
+- ![Material-UI](https://img.shields.io/badge/-Material--UI-blue?style=flat-square&logo=material-ui) **Material-UI**: A popular React UI framework featuring React components that implement Google's Material Design.
+
+### Testing & Development
+
+- **Jest**: A delightful JavaScript Testing Framework with a focus on simplicity.
+- **Supertest**: A Super-agent driven library for testing HTTP servers.
+- **Mocha/Chai**: A flexible testing framework for asynchronous testing.
+
+### Code Quality
+
+- **ESLint**: A tool for identifying and reporting on patterns found in ECMAScript/JavaScript code.
+
 ## Getting started
 
 ### Prerequisites
