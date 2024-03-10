@@ -2,7 +2,11 @@
 
 ## Introduction
 
-The Instant Review Softwareis designed for dedicated teachers at diverse educational institutions, aiming to enhance their lecture quality through timely and impactful student feedback. This innovative web application empowers students to provide immediate responses post-lecture, enabling educators to adapt and evolve their teaching methods effectively. Unlike traditional end-of-course feedback, our tool offers real-time insights into lecture performance, helping teachers identify successful topics and teaching styles. This approach not only fosters a more engaging learning environment but also aligns with our commitment to continuous improvement and educational excellence.
+The Instant Feedback Software is designed for teachers at different educational institutions, aiming to improve their lecture quality through timely student feedback. This web application allows students to provide immediate responses post-lecture, enabling educators to adapt and evolve their teaching methods effectively. Unlike traditional end-of-course feedback, this tool offers real-time insights into lecture performance, helping teachers identify successful topics and teaching styles.
+
+The teacher has the possibility to sign up, log in, and create courses. Inside each course, the teacher can create sessions. For each session the teacher can generate a QR code.
+
+Students can scan a QR code and leave a review for the session using their phone. The review involves a color assessment (red, green and yellow) and a voluntary comment. Each student can leave only one review per one session.
 
 ## Features
 
