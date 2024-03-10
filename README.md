@@ -55,34 +55,39 @@ Replace `<your_mongodb_connection_string>`, `<your_mongodb_test_connection_strin
 
 2.  **Install dependencies:**
 
-    npm install
+```bash
+ npm install
+```
 
 3.  **Create a `.env` file in the `frontend` directory with the following variable:**
 
 REACT_APP_BACKEND_URL=http://localhost:4000
 
-This variable connects the frontend application to your backend server. 4. **Start the frontend application:**  
- `    npm start 
-   `
+This variable connects the frontend application to your backend server. 4. **Start the frontend application:**
+
+```bash
+ npm start
+```
+
 Your default web browser should open automatically to `http://localhost:3000`.
 
 ### Usage
 
 After installation, open `http://localhost:3000` in your browser to access the application. Teachers can create lectures and view feedback, while students can submit feedback post-lecture.
 
-### Screenshots
+## Screenshots
 
-### UML Diagrams / Architecture
+## UML Diagrams / Architecture
 
-### Contributing
+## Contributing
 
-### FAQ
+## FAQ
 
 **Q: Can I use this software for any educational institution?** A: Yes, the Instant Review Software is designed to be versatile and adaptable for various educational settings.
 
-### Acknowledgments
+## Acknowledgments
 
-#### Team
+### Team
 
 The Instant Review Software was brought to life by:
 
