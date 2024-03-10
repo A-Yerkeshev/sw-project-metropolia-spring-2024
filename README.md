@@ -18,23 +18,54 @@ The Instant Review Softwareis designed for dedicated teachers at diverse educati
 
 **Backend Setup:**
 
-1.  Navigate to the backend directory:
-2.  Install dependencies:
-3.  Create a `.env` file in the `backend` directory with the following variables:
-4.  Start the backend server:
+1.  **Navigate to the backend directory:**
 
-    cd backend
-    npm install
-    npm run dev
+```bash
+cd backend
+```
+
+2.  **Install dependencies:**
+
+```bash
+npm install
+```
+
+3.  **Create a `.env` file in the `backend` directory with the following variables:**
+
+```plaintext
+PORT=4000
+MONGO_URI=<your_mongodb_connection_string>
+MONGO_URI_TEST=<your_mongodb_test_connection_string>
+JWT_SECRET=<your_jwt_secret>
+```
+
+Replace `<your_mongodb_connection_string>`, `<your_mongodb_test_connection_string>`, and `<your_jwt_secret>` with your actual MongoDB connection strings and JWT secret. 4. **Start the backend server:**
+
+```bash
+ npm run dev
+```
 
 **Frontend Setup:**
 
-1.  Navigate to the frontend directory and install dependencies:
-2.  cd frontend
-    npm install
-    npm start
+1.  **Navigate to the frontend directory:**
 
-3.
+```bash
+ cd ../frontend
+```
+
+2.  **Install dependencies:**
+
+
+    npm install
+
+3. **Create a `.env` file in the `frontend` directory with the following variable:**
+
+REACT_APP_BACKEND_URL=http://localhost:4000
+
+This variable connects the frontend application to your backend server. 4. **Start the frontend application:**  
+ `     npm start 
+    `
+Your default web browser should open automatically to `http://localhost:3000`.
 
 ### Usage
 
