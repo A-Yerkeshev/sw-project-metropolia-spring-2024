@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useLogout } from "../../hooks/useLogout";
@@ -6,7 +6,6 @@ import {
   AppBar,
   Toolbar,
   Button,
-  Typography,
   Grid,
   Menu,
   MenuItem,
@@ -18,7 +17,7 @@ const Navbar = () => {
   const { user } = useAuthContext();
   const { logout } = useLogout();
   const location = useLocation();
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState(null); // State for managing menu anchor
 
   // Define the routes where the Navbar should not be displayed
   const hideOnRoutes = ["/", "/signup", "/share", "/feedback/new"];
@@ -28,6 +27,7 @@ const Navbar = () => {
     return null;
   }
 
+  //  opening and closing of the user menu
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -98,7 +98,6 @@ const Navbar = () => {
               onClose={handleClose}
             >
               <MenuItem onClick={handleClose}>{user.email}</MenuItem>
-              <MenuItem onClick={handleClose}>My account</MenuItem>
             </Menu>
           </Grid>
         </Grid>
