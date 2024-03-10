@@ -1,13 +1,24 @@
+import * as React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useAuthContext } from "../../hooks/useAuthContext";
-import styles from "./Navbar.module.css";
 import { useLogout } from "../../hooks/useLogout";
-import { AppBar, Toolbar, Button, Typography, Grid } from "@mui/material";
+import {
+  AppBar,
+  Toolbar,
+  Button,
+  Typography,
+  Grid,
+  Menu,
+  MenuItem,
+  IconButton,
+} from "@mui/material";
+import AccountCircle from "@mui/icons-material/AccountCircle";
 
 const Navbar = () => {
   const { user } = useAuthContext();
   const { logout } = useLogout();
   const location = useLocation();
+  const [anchorEl, setAnchorEl] = React.useState(null);
 
   // Define the routes where the Navbar should not be displayed
   const hideOnRoutes = ["/", "/signup", "/share", "/feedback/new"];
@@ -16,6 +27,14 @@ const Navbar = () => {
   if (!user || hideOnRoutes.includes(location.pathname)) {
     return null;
   }
+
+  const handleMenu = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   return (
     <AppBar position="static">
@@ -46,14 +65,41 @@ const Navbar = () => {
           <Grid item>
             <Grid container alignItems="center" spacing={2}>
               <Grid item>
-                <Typography variant="body1">{user.email}</Typography>
-              </Grid>
-              <Grid item>
                 <Button onClick={logout} color="inherit">
                   Logout
                 </Button>
               </Grid>
             </Grid>
+          </Grid>
+          <Grid>
+            <IconButton
+              size="large"
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleMenu}
+              color="inherit"
+            >
+              <AccountCircle />
+            </IconButton>
+            <Menu
+              id="menu-appbar"
+              anchorEl={anchorEl}
+              anchorOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              open={Boolean(anchorEl)}
+              onClose={handleClose}
+            >
+              <MenuItem onClick={handleClose}>{user.email}</MenuItem>
+              <MenuItem onClick={handleClose}>My account</MenuItem>
+            </Menu>
           </Grid>
         </Grid>
       </Toolbar>
