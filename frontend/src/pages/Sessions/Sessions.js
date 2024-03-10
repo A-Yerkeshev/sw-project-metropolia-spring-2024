@@ -13,6 +13,7 @@ import {
   AccordionDetails,
   Box,
   Paper,
+  Snackbar,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import QRIcon from "@mui/icons-material/QrCode";
@@ -30,6 +31,8 @@ const Course = () => {
 
   const [existingStudentIds, setExistingStudentIds] = useState([]);
   const [openStudentIdModal, setOpenStudentIdModal] = useState(false);
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState("");
 
   const backendUrl = process.env.REACT_APP_BACKEND_URL || "";
 
@@ -59,8 +62,11 @@ const Course = () => {
       const data = await response.json();
 
       setExistingStudentIds(data.updatedCourse.students);
+      setSnackbarOpen(true);
+      setSnackbarMessage("Session updated successfully!");
     } catch (error) {
       console.error("Error updating session:", error);
+      setSnackbarMessage("Failed to update session.");
     }
   };
 
@@ -384,6 +390,12 @@ const Course = () => {
         handleSubmit={handleSubmitStudentIds}
         handleClose={() => setOpenStudentIdModal(false)}
         existingStudentIds={existingStudentIds}
+      />
+      <Snackbar
+        open={snackbarOpen}
+        autoHideDuration={6000}
+        onClose={() => setSnackbarOpen(false)}
+        message={snackbarMessage}
       />
     </Container>
   );
