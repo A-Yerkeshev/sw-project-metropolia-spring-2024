@@ -55,16 +55,15 @@ Replace `<your_mongodb_connection_string>`, `<your_mongodb_test_connection_strin
 
 2.  **Install dependencies:**
 
-
     npm install
 
-3. **Create a `.env` file in the `frontend` directory with the following variable:**
+3.  **Create a `.env` file in the `frontend` directory with the following variable:**
 
 REACT_APP_BACKEND_URL=http://localhost:4000
 
 This variable connects the frontend application to your backend server. 4. **Start the frontend application:**  
- `     npm start 
-    `
+ `    npm start 
+   `
 Your default web browser should open automatically to `http://localhost:3000`.
 
 ### Usage
