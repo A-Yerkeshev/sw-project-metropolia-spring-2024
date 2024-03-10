@@ -111,11 +111,16 @@ After installation, open `http://localhost:3000` in your browser to access the a
 
 ## UML Diagrams / Architecture
 
+![ER Diagram](./diagrams/ERdiagram.png)
+![Relational Schema](./diagrams/RelationalSchema.png)
+![Use Case Diagram](./diagrams/UseCaseDiagram.png)
+
 ## Contributing
 
 ## FAQ
 
-**Q: Can I use this software for any educational institution?** A: Yes, the Instant Review Software is designed to be versatile and adaptable for various educational settings.
+**Q: Can I use this software for any educational institution?**
+A: Yes, the Instant Review Software is designed to be versatile and adaptable for various educational settings.
 
 ## Acknowledgments
 
