@@ -6,6 +6,37 @@ The Instant Review Softwareis designed for dedicated teachers at diverse educati
 
 ## Features
 
+**Continuous Integration/Deployment (CI/CD)**
+
+- **Auto Testing:** Every update is automatically tested with Jenkins, reducing bugs.
+- **Easy Deployment:** Docker makes putting the project live simple and consistent.
+
+**Real-time Feedback**
+
+- **Quick Feedback:** Teachers get student feedback right after classes.
+- **Anonymous:** Students can give honest feedback safely.
+
+**Secure Login**
+
+- **Protected Access:** Uses JWT tokens to keep logins safe.
+- **Different User Types:** Students and teachers see different things on the app.
+
+**User-Friendly Design**
+
+- **Looks Good on Any Device:** Thanks to Material-UI, the app works well on phones, tablets, and computers.
+- **Easy to Use:** Designed to be straightforward for everyone.
+
+**Insights for Teachers**
+
+- **Track Progress:** Teachers can see how they're doing over time.
+- **Visual Data:** Feedback is shown in charts, making it easy to understand.
+
+**Tech Quality**
+
+- **Well-Organized:** Built with MERN (MongoDB, Express.js, React, Node.js) for a clean setup.
+- **Thoroughly Tested:** Uses Jest, Mocha, and Chai for testing to make sure everything works.
+- **High Code Standards:** ESLint helps keep the code clean and easy to work with
+
 ## Technology Stack
 
 This project leverages a robust stack designed for scalability, efficiency, and ease of use. Below is an overview of the primary technologies and tools utilized:
@@ -39,6 +70,23 @@ This project leverages a robust stack designed for scalability, efficiency, and 
 ### Code Quality
 
 - **ESLint**: A tool for identifying and reporting on patterns found in ECMAScript/JavaScript code.
+
+## Screenshots
+
+- Login
+  ![Login](./screenshots/login.JPG)
+- Courses page
+  ![courses](./screenshots/courses.JPG)
+- Sessions page
+  ![Sessions](./screenshots/SessionsAccordeon.JPG)
+- Editing Modal
+  ![Modal](./screenshots/editing.JPG)
+- Statistics
+  ![Statistics](./screenshots/statistics.JPG)
+- QR page
+  ![QR](./screenshots/QR.JPG)
+- Feedback form
+  ![Feedback](./screenshots/FeedbackForm.JPG)
 
 ## Getting started
 
@@ -111,9 +159,14 @@ After installation, open `http://localhost:3000` in your browser to access the a
 
 ## UML Diagrams / Architecture
 
-![ER Diagram](./diagrams/ERdiagram.png)
-![Relational Schema](./diagrams/RelationalSchema.png)
-![Use Case Diagram](./diagrams/UseCaseDiagram.png)
+- ER Diagram
+  ![ER Diagram](./diagrams/ERdiagram.png)
+
+- Relational Schema
+  ![Relational Schema](./diagrams/RelationalSchema.png)
+
+- Use Case Diagram
+  ![Use Case Diagram](./diagrams/UseCaseDiagram.png)
 
 ## Contributing
 
