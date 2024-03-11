@@ -172,6 +172,9 @@ After installation, open `http://localhost:3000` in your browser to access the a
 - Use Case Diagram
   ![Use Case Diagram](./diagrams/UseCaseDiagram.png)
 
+- Activity Diagram
+  ![Activity Diagram](./diagrams/ActivityDiagram.png)
+
 ## Contributing
 
 ## FAQ
