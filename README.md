@@ -1,5 +1,14 @@
 # The Instant Review Software "ReflectEd"
 
+### Team
+
+The Instant Review Software was brought to life by:
+
+- **Arman Yerkeshev** - _Lead Developer_ - [GitHub](https://github.com/A-Yerkeshev) - [LinkedIn](https://www.linkedin.com/in/arman-yerkesh-29b8a7165/)
+- **Anna Linden** - _Full Stack Developer_ - [GitHub](https://github.com/AnnaLinden) - [LinkedIn](https://www.linkedin.com/in/anna-linden-software-developer/)
+- **Artur Golavskiy** - _Full Stack Developer_ - [GitHub](https://github.com/arturgola) - [LinkedIn](https://www.linkedin.com/in/artur-golavskiy/)
+- **Dung Pham** - _Full Stack Developer_ - [GitHub](https://github.com/dungdpham)
+
 ## Introduction
 
 The Instant Feedback Software is designed for teachers at different educational institutions, aiming to improve their lecture quality through timely student feedback. This web application allows students to provide immediate responses post-lecture, enabling educators to adapt and evolve their teaching methods effectively. Unlike traditional end-of-course feedback, this tool offers real-time insights into lecture performance, helping teachers identify successful topics and teaching styles.
@@ -193,6 +202,16 @@ After installation, open `http://localhost:3000` in your browser to access the a
 ![Activity Diagram](./diagrams/ActivityDiagram.png)
 
 ## Contributing
+
+We welcome contributions from everyone who wants to improve ReflectEd. Here's how you can contribute:
+
+- **Report Bugs:** If you find a bug, please create an issue in our GitHub repository describing the problem, how to reproduce it, and any other relevant details.
+- **Suggest Enhancements:** Have ideas on how to make ReflectEd better? Share your suggestions by opening a new issue.
+- **Submit Code:** You can contribute directly by submitting pull requests with code changes. Whether it's fixing bugs, adding new features, or improving the documentation, your help is appreciated.
+
+If you're new to contributing to open-source projects, feel free to reach out to us, and we'll be happy to help you get started.
+
+Thank you for considering contributing to ReflectEd. Your support helps us make the software better for everyone
 
 ## FAQ
 
