@@ -77,33 +77,33 @@ This project leverages a robust stack designed for scalability, efficiency, and 
 
 ## Screenshots
 
-- <p align="center"><i>Login Page</i></p>
+<p align="center"><i>Login Page</i></p>
 
-  ![Login](./screenshots/login.JPG)
+![Login](./screenshots/login.JPG)
 
-- <p align="center"><i>Courses page</i></p>
+<p align="center"><i>Courses page</i></p>
 
-  ![courses](./screenshots/courses.JPG)
+![courses](./screenshots/courses.JPG)
 
-- <p align="center"><i>Sessions page</i></p>
+<p align="center"><i>Sessions page</i></p>
 
-  ![Sessions](./screenshots/SessionsAccordeon.JPG)
+![Sessions](./screenshots/SessionsAccordeon.JPG)
 
-- <p align="center"><i>Editing Modal</i></p>
+<p align="center"><i>Editing Modal</i></p>
 
-  ![Modal](./screenshots/editing.JPG)
+![Modal](./screenshots/editing.JPG)
 
-- <p align="center"><i>Statistics</i></p>
+<p align="center"><i>Statistics</i></p>
 
-  ![Statistics](./screenshots/statistics.JPG)
+![Statistics](./screenshots/statistics.JPG)
 
-- <p align="center"><i>QR page</i></p>
+<p align="center"><i>QR page</i></p>
 
-  ![QR](./screenshots/QR.JPG)
+![QR](./screenshots/QR.JPG)
 
-- <p align="center"><i>Feedback form</i></p>
+<p align="center"><i>Feedback form</i></p>
 
-  ![Feedback](./screenshots/FeedbackForm.JPG)
+![Feedback](./screenshots/FeedbackForm.JPG)
 
 ## Getting started
 
@@ -176,16 +176,20 @@ After installation, open `http://localhost:3000` in your browser to access the a
 
 ## UML Diagrams / Architecture
 
-- <p align="center"><i>ER Diagram</i></p>
+<p align="center"><i>ER Diagram</i></p>
+
     ![ER Diagram](./diagrams/ERdiagram.png)
 
-- <p align="center"><i>Relational Schema</i></p>
+<p align="center"><i>Relational Schema</i></p>
+
     ![Relational Schema](./diagrams/RelationalSchema.png)
 
-- <p align="center"><i>Use Case Diagram</i></p>
+<p align="center"><i>Use Case Diagram</i></p>
+
     ![Use Case Diagram](./diagrams/UseCaseDiagram.png)
 
-- <p align="center"><i>Activity Diagram</i></p>
+<p align="center"><i>Activity Diagram</i></p>
+
     ![Activity Diagram](./diagrams/ActivityDiagram.png)
 
 ## Contributing
