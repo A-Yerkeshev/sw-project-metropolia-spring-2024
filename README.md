@@ -185,9 +185,11 @@ After installation, open `http://localhost:3000` in your browser to access the a
 ![Relational Schema](./diagrams/RelationalSchema.png)
 
 <p align="center"><i>Use Case Diagram</i></p>
+
 ![Use Case Diagram](./diagrams/UseCaseDiagram.png)
 
 <p align="center"><i>Activity Diagram</i></p>
+
 ![Activity Diagram](./diagrams/ActivityDiagram.png)
 
 ## Contributing
