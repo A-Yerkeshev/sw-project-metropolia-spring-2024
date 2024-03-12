@@ -1,5 +1,14 @@
 # The Instant Review Software "ReflectEd"
 
+### Team
+
+The Instant Review Software was brought to life by:
+
+- **Arman Yerkeshev** - _Lead Developer_ - [GitHub](https://github.com/A-Yerkeshev) - [LinkedIn](https://www.linkedin.com/in/arman-yerkesh-29b8a7165/)
+- **Anna Linden** - _Full Stack Developer_ - [GitHub](https://github.com/AnnaLinden) - [LinkedIn](https://www.linkedin.com/in/anna-linden-software-developer/)
+- **Artur Golavskiy** - _Full Stack Developer_ - [GitHub](https://github.com/arturgola) - [LinkedIn](https://www.linkedin.com/in/artur-golavskiy/)
+- **Dung Pham** - _Full Stack Developer_ - [GitHub](https://github.com/dungdpham)
+
 ## Introduction
 
 The Instant Feedback Software is designed for teachers at different educational institutions, aiming to improve their lecture quality through timely student feedback. This web application allows students to provide immediate responses post-lecture, enabling educators to adapt and evolve their teaching methods effectively. Unlike traditional end-of-course feedback, this tool offers real-time insights into lecture performance, helping teachers identify successful topics and teaching styles.
@@ -77,20 +86,33 @@ This project leverages a robust stack designed for scalability, efficiency, and 
 
 ## Screenshots
 
-- Login
-  ![Login](./screenshots/login.JPG)
-- Courses page
-  ![courses](./screenshots/courses.JPG)
-- Sessions page
-  ![Sessions](./screenshots/SessionsAccordeon.JPG)
-- Editing Modal
-  ![Modal](./screenshots/editing.JPG)
-- Statistics
-  ![Statistics](./screenshots/statistics.JPG)
-- QR page
-  ![QR](./screenshots/QR.JPG)
-- Feedback form
-  ![Feedback](./screenshots/FeedbackForm.JPG)
+<p align="center"><i>Login Page</i></p>
+
+![Login](./screenshots/login.JPG)
+
+<p align="center"><i>Courses page</i></p>
+
+![courses](./screenshots/courses.JPG)
+
+<p align="center"><i>Sessions page</i></p>
+
+![Sessions](./screenshots/SessionsAccordeon.JPG)
+
+<p align="center"><i>Editing Modal</i></p>
+
+![Modal](./screenshots/editing.JPG)
+
+<p align="center"><i>Statistics</i></p>
+
+![Statistics](./screenshots/statistics.JPG)
+
+<p align="center"><i>QR page</i></p>
+
+![QR](./screenshots/QR.JPG)
+
+<p align="center"><i>Feedback form</i></p>
+
+![Feedback](./screenshots/FeedbackForm.JPG)
 
 ## Getting started
 
@@ -163,19 +185,33 @@ After installation, open `http://localhost:3000` in your browser to access the a
 
 ## UML Diagrams / Architecture
 
-- ER Diagram
-  ![ER Diagram](./diagrams/ERdiagram.png)
+<p align="center"><i>ER Diagram</i></p>
 
-- Relational Schema
-  ![Relational Schema](./diagrams/RelationalSchema.png)
+![ER Diagram](./diagrams/ERdiagram.png)
 
-- Use Case Diagram
-  ![Use Case Diagram](./diagrams/UseCaseDiagram.png)
+<p align="center"><i>Relational Schema</i></p>
 
-- Activity Diagram
-  ![Activity Diagram](./diagrams/ActivityDiagram.png)
+![Relational Schema](./diagrams/RelationalSchema.png)
+
+<p align="center"><i>Use Case Diagram</i></p>
+
+![Use Case Diagram](./diagrams/UseCaseDiagram.png)
+
+<p align="center"><i>Activity Diagram</i></p>
+
+![Activity Diagram](./diagrams/ActivityDiagram.png)
 
 ## Contributing
+
+We welcome contributions from everyone who wants to improve ReflectEd. Here's how you can contribute:
+
+- **Report Bugs:** If you find a bug, please create an issue in our GitHub repository describing the problem, how to reproduce it, and any other relevant details.
+- **Suggest Enhancements:** Have ideas on how to make ReflectEd better? Share your suggestions by opening a new issue.
+- **Submit Code:** You can contribute directly by submitting pull requests with code changes. Whether it's fixing bugs, adding new features, or improving the documentation, your help is appreciated.
+
+If you're new to contributing to open-source projects, feel free to reach out to us, and we'll be happy to help you get started.
+
+Thank you for considering contributing to ReflectEd. Your support helps us make the software better for everyone
 
 ## FAQ
 

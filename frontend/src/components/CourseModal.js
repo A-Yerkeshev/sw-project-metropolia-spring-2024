@@ -55,6 +55,7 @@ const CourseModal = ({
                   }
                   fullWidth
                   required
+                  style={{ marginTop: "10px" }}
                 />
               </Grid>
               <Grid item xs={12}>
