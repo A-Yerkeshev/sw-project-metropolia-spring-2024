@@ -78,18 +78,33 @@ This project leverages a robust stack designed for scalability, efficiency, and 
 ## Screenshots
 
 - Login
+
   ![Login](./screenshots/login.JPG)
+  <p align="center"><i>Login Page</i></p>
+
 - Courses page
+
   ![courses](./screenshots/courses.JPG)
+  _Courses Page_
+
 - Sessions page
+
   ![Sessions](./screenshots/SessionsAccordeon.JPG)
+
 - Editing Modal
+
   ![Modal](./screenshots/editing.JPG)
+
 - Statistics
+
   ![Statistics](./screenshots/statistics.JPG)
+
 - QR page
+
   ![QR](./screenshots/QR.JPG)
+
 - Feedback form
+
   ![Feedback](./screenshots/FeedbackForm.JPG)
 
 ## Getting started
