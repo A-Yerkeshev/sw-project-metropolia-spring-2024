@@ -77,33 +77,31 @@ This project leverages a robust stack designed for scalability, efficiency, and 
 
 ## Screenshots
 
-- Login
+- <p align="center"><i>Login Page</i></p>
 
   ![Login](./screenshots/login.JPG)
-  <p align="center"><i>Login Page</i></p>
 
-- Courses page
+- <p align="center"><i>Courses page</i></p>
 
   ![courses](./screenshots/courses.JPG)
-  _Courses Page_
 
-- Sessions page
+- <p align="center"><i>Sessions page</i></p>
 
   ![Sessions](./screenshots/SessionsAccordeon.JPG)
 
-- Editing Modal
+- <p align="center"><i>Editing Modal</i></p>
 
   ![Modal](./screenshots/editing.JPG)
 
-- Statistics
+- <p align="center"><i>Statistics</i></p>
 
   ![Statistics](./screenshots/statistics.JPG)
 
-- QR page
+- <p align="center"><i>QR page</i></p>
 
   ![QR](./screenshots/QR.JPG)
 
-- Feedback form
+- <p align="center"><i>Feedback form</i></p>
 
   ![Feedback](./screenshots/FeedbackForm.JPG)
 
@@ -178,17 +176,17 @@ After installation, open `http://localhost:3000` in your browser to access the a
 
 ## UML Diagrams / Architecture
 
-- ER Diagram
-  ![ER Diagram](./diagrams/ERdiagram.png)
+- <p align="center"><i>ER Diagram</i></p>
+    ![ER Diagram](./diagrams/ERdiagram.png)
 
-- Relational Schema
-  ![Relational Schema](./diagrams/RelationalSchema.png)
+- <p align="center"><i>Relational Schema</i></p>
+    ![Relational Schema](./diagrams/RelationalSchema.png)
 
-- Use Case Diagram
-  ![Use Case Diagram](./diagrams/UseCaseDiagram.png)
+- <p align="center"><i>Use Case Diagram</i></p>
+    ![Use Case Diagram](./diagrams/UseCaseDiagram.png)
 
-- Activity Diagram
-  ![Activity Diagram](./diagrams/ActivityDiagram.png)
+- <p align="center"><i>Activity Diagram</i></p>
+    ![Activity Diagram](./diagrams/ActivityDiagram.png)
 
 ## Contributing
 
