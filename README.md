@@ -178,19 +178,17 @@ After installation, open `http://localhost:3000` in your browser to access the a
 
 <p align="center"><i>ER Diagram</i></p>
 
-    ![ER Diagram](./diagrams/ERdiagram.png)
+![ER Diagram](./diagrams/ERdiagram.png)
 
 <p align="center"><i>Relational Schema</i></p>
 
-    ![Relational Schema](./diagrams/RelationalSchema.png)
+![Relational Schema](./diagrams/RelationalSchema.png)
 
 <p align="center"><i>Use Case Diagram</i></p>
-
-    ![Use Case Diagram](./diagrams/UseCaseDiagram.png)
+![Use Case Diagram](./diagrams/UseCaseDiagram.png)
 
 <p align="center"><i>Activity Diagram</i></p>
-
-    ![Activity Diagram](./diagrams/ActivityDiagram.png)
+![Activity Diagram](./diagrams/ActivityDiagram.png)
 
 ## Contributing
 
