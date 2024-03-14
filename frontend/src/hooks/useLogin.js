@@ -11,34 +11,29 @@ export const useLogin = () => {
     setIsLoading(true);
     setError(null);
 
-    try {
-      const response = await fetch(`${backendUrl}/api/users/login`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      });
+    const response = await fetch(`${backendUrl}/api/users/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    });
 
-      const json = await response.json();
+    const json = await response.json();
 
-      if (!response.ok) {
-        setIsLoading(false);
-        setError(json.error);
-      } else {
-        // Store the entire user object including email, id, and token in local storage
-        localStorage.setItem("user", JSON.stringify(json));
-
-        // Dispatch LOGIN with the user details
-        dispatch({ type: "LOGIN", payload: json });
-
-        setIsLoading(false);
-        return true; // Indicate success
-      }
-    } catch (error) {
-      console.error("Error in useLogin:", error);
-      setError(error.message);
+    if (!response.ok) {
       setIsLoading(false);
+      setError(json.error);
+      throw new Error(json.error);
+    } else {
+      // Store the entire user object including email, id, and token in local storage
+      localStorage.setItem("user", JSON.stringify(json));
+
+      // Dispatch LOGIN with the user details
+      dispatch({ type: "LOGIN", payload: json });
+
+      setIsLoading(false);
+      return true; // Indicate success
     }
   };
 
