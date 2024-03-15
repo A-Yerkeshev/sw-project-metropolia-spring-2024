@@ -1,5 +1,20 @@
 # The Instant Review Software "ReflectEd"
 
+## Table of Contents
+- [Team](#team)
+- [Introduction](#introduction)
+- [Features](#features)
+- [Technology Stack](#technology-stack)
+- [Screenshots](#screenshots)
+- [Getting Started](#getting-started)
+    - [Prerequisites](#prerequisites)
+    - [Installation](#installation)
+    - [Usage](#usage)
+- [UML Diagrams / Architecture](#uml-diagrams--architecture)
+- [Contributing](#contributing)
+- [FAQ](#faq)
+- [Acknowledgments](#acknowledgments)
+
 ### Team
 
 The Instant Review Software was brought to life by:
