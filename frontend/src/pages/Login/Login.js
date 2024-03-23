@@ -12,6 +12,7 @@ import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
+import { useTranslation } from 'react-i18next';
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -19,6 +20,7 @@ const Login = () => {
   const [formError, setFormError] = useState("");
   const { login, error, isLoading } = useLogin();
   const navigate = useNavigate();
+  const { t, i18n } = useTranslation();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -54,7 +56,7 @@ const Login = () => {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Welcome back!
+          {t('login.header')}
         </Typography>
         <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
           <TextField

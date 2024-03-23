@@ -1,0 +1,17 @@
+{
+  "coursesList": {},
+  "feedback": {},
+  "login": {
+    "header": "Добро пожаловать!"
+  },
+  "signUp": {},
+  "sessions": {},
+  "users": {},
+  "qr": {},
+  "navbar": {},
+  "modals": {
+    "course": {},
+    "session": {},
+    "studentId": {}
+  }
+}
