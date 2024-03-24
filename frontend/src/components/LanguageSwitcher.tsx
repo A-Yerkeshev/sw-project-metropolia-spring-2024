@@ -14,9 +14,16 @@ const LanguageSwitcher: React.FC = () => {
         <Select
             labelId="language-select-label"
             id="language-select"
-            value={i18n.language}
+            value={i18n.language || 'en'}
             onChange={handleChange}
             displayEmpty
+            sx={{
+                color: 'white',
+                '.MuiSvgIcon-root': { color: 'white' },
+                '& .MuiOutlinedInput-notchedOutline': {
+                    border: 'none',
+                },
+            }}
         >
             <MenuItem value="en">English</MenuItem>
             <MenuItem value="fi">Suomi (Finnish)</MenuItem>
