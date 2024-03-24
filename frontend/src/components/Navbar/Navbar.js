@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useLogout } from "../../hooks/useLogout";
+import LanguageSwitcher from "../LanguageSwitcher";
+import { useTranslation } from "react-i18next";
 import {
   AppBar,
   Toolbar,
@@ -17,6 +19,7 @@ const Navbar = () => {
   const { user } = useAuthContext();
   const { logout } = useLogout();
   const location = useLocation();
+  const { t } = useTranslation();
   const [anchorEl, setAnchorEl] = useState(null); // State for managing menu anchor
 
   // Define the routes where the Navbar should not be displayed
@@ -56,7 +59,7 @@ const Navbar = () => {
               </Grid>
               <Grid item>
                 <Button component={Link} to="/Courses" color="inherit">
-                  Courses
+                  {t("navbar.courses")}
                 </Button>
               </Grid>
             </Grid>
@@ -65,8 +68,11 @@ const Navbar = () => {
           <Grid item>
             <Grid container alignItems="center" spacing={2}>
               <Grid item>
+                <LanguageSwitcher />
+              </Grid>
+              <Grid item>
                 <Button onClick={logout} color="inherit">
-                  Logout
+                  {t("navbar.logout")}
                 </Button>
               </Grid>
             </Grid>
