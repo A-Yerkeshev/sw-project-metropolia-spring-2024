@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import CourseModal from "../../components/CourseModal";
+import { useTranslation } from "react-i18next";
 import {
   Card,
   CardContent,
@@ -21,6 +22,7 @@ export default function Courses() {
   const backendUrl = process.env.REACT_APP_BACKEND_URL || "";
   const navigate = useNavigate();
   const { fetchWithToken } = useContext(AuthContext);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const fetchCourses = async () => {
@@ -157,7 +159,7 @@ export default function Courses() {
             textAlign="center"
             sx={{ fontWeight: "bold", mt: 2, color: "#232222" }}
           >
-            Your Courses
+            {t("coursesList.header")}
           </Typography>
         </Grid>
         <Grid item xs={12}>
@@ -167,7 +169,7 @@ export default function Courses() {
             onClick={handleCreateSession}
             sx={{ mb: 2 }}
           >
-            Create Course
+            {t("coursesList.createButton")}
           </Button>
           <Grid container spacing={3}>
             {courses.map((course) => (
@@ -187,14 +189,14 @@ export default function Courses() {
                       color="primary"
                       onClick={() => handleEditCourse(course)}
                     >
-                      Edit
+                      {t("coursesList.editButton")}
                     </Button>
                     <Button
                       size="small"
                       color="secondary"
                       onClick={() => handleDeleteCourse(course._id)}
                     >
-                      Delete
+                      {t("coursesList.deleteButton")}
                     </Button>
                     <Button
                       size="small"
@@ -206,7 +208,7 @@ export default function Courses() {
                         goToCourse(course._id);
                       }}
                     >
-                      Go to Course
+                      {t("coursesList.goToCourseButton")}
                     </Button>
                   </CardActions>
                 </Card>

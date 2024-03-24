@@ -1,17 +1,88 @@
 {
-  "coursesList": {},
-  "feedback": {},
-  "login": {
-    "header": "Добро пожаловать!"
+  "coursesList": {
+    "header": "Ваши курсы",
+    "createButton": "Создать курс",
+    "editButton": "Редактировать",
+    "deleteButton": "Удалить",
+    "goToCourseButton": "Перейти к курсу"
   },
-  "signUp": {},
-  "sessions": {},
-  "users": {},
-  "qr": {},
-  "navbar": {},
+  "feedback": {
+    "rate": "Оценка:",
+    "positive": "Положительно",
+    "neutral": "Нейтрально",
+    "negative": "Отрицательно",
+    "studentIdLabel": "ID студента",
+    "openFeedbackLabel": "Открытая обратная связь",
+    "submit": "Отправить",
+    "successMessage": "Обратная связь успешно отправлена!",
+    "errorMessage": "Не удалось отправить обратную связь. Попробуйте снова."
+  },
+  "login": {
+    "header": "Добро пожаловать!",
+    "emailAddressLabel": "Электронная почта",
+    "passwordLabel": "Пароль",
+    "loginButton": "Войти",
+    "errorMessage": "Не удалось войти",
+    "signUpPrompt": "Нет аккаунта? Зарегистрируйтесь"
+  },
+  "signUp": {
+    "header": "Регистрация",
+    "firstNameLabel": "Имя",
+    "lastNameLabel": "Фамилия",
+    "emailAddressLabel": "Электронная почта",
+    "passwordLabel": "Пароль",
+    "signUpButton": "Зарегистрироваться",
+    "signInPrompt": "Уже есть аккаунт? Войти"
+  },
+  "sessions": {
+    "header": "Сессии",
+    "createSessionButton": "Создать сессию",
+    "editButton": "Редактировать",
+    "deleteButton": "Удалить",
+    "generateQRButton": "Сгенерировать QR",
+    "showStatisticsButton": "Показать статистику",
+    "loadingText": "Загрузка"
+  },
+  "users": {
+    "attendanceHeader": "Посещаемость пользователей",
+    "subHeader": "Управление пользователями в вашей сети."
+  },
+  "qr": {
+    "header": "QR-код сессии",
+    "feedbackPrompt": "Сканируйте QR-код или нажмите здесь, чтобы оставить отзыв о сессии."
+  },
+  "navbar": {
+    "courses": "Курсы",
+    "logout": "Выйти"
+  },
   "modals": {
-    "course": {},
-    "session": {},
-    "studentId": {}
+    "course": {
+      "createHeader": "Создать новый курс",
+      "editHeader": "Редактировать курс",
+      "nameLabel": "Название курса",
+      "descriptionLabel": "Описание курса",
+      "deleteButton": "Удалить курс",
+      "cancelButton": "Отмена",
+      "submitButton": "Отправить"
+    },
+    "session": {
+      "createHeader": "Создать новую сессию",
+      "editHeader": "Редактировать сессию",
+      "nameLabel": "Название сессии",
+      "descriptionLabel": "Описание сессии",
+      "startLabel": "Начало",
+      "endLabel": "Конец",
+      "deleteButton": "Удалить сессию",
+      "cancelButton": "Отмена",
+      "submitButton": "Отправить",
+      "statisticsHeader": "Обратная связь по сессии"
+    },
+    "studentId": {
+      "header": "ID студентов",
+      "instruction": "Введите ID студента(ов) в список и нажмите \"Отправить\", чтобы применить изменения",
+      "inputLabel": "Введите ID студента",
+      "cancelButton": "Отмена",
+      "submitButton": "Отправить"
+    }
   }
 }
