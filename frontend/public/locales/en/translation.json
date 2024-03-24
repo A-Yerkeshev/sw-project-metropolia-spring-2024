@@ -1,17 +1,88 @@
 {
-  "coursesList": {},
-  "feedback": {},
-  "login": {
-    "header": "Welcome back!"
+  "coursesList": {
+    "header": "Your Courses",
+    "createButton": "Create Course",
+    "editButton": "Edit",
+    "deleteButton": "Delete",
+    "goToCourseButton": "Go to Course"
   },
-  "signUp": {},
-  "sessions": {},
-  "users": {},
-  "qr": {},
-  "navbar": {},
+  "feedback": {
+    "rate": "Rate:",
+    "positive": "Positive",
+    "neutral": "Neutral",
+    "negative": "Negative",
+    "studentIdLabel": "Student ID",
+    "openFeedbackLabel": "Open feedback",
+    "submit": "Submit",
+    "successMessage": "Feedback submitted successfully!",
+    "errorMessage": "Failed to submit feedback. Please try again."
+  },
+  "login": {
+    "header": "Welcome back!",
+    "emailAddressLabel": "Email Address",
+    "passwordLabel": "Password",
+    "loginButton": "Log in",
+    "errorMessage": "Failed to login",
+    "signUpPrompt": "Don't have an account? Sign Up"
+  },
+  "signUp": {
+    "header": "Sign Up",
+    "firstNameLabel": "First Name",
+    "lastNameLabel": "Last Name",
+    "emailAddressLabel": "Email Address",
+    "passwordLabel": "Password",
+    "signUpButton": "Sign Up",
+    "signInPrompt": "Already have an account? Sign in"
+  },
+  "sessions": {
+    "header": "Sessions",
+    "createSessionButton": "Create Session",
+    "editButton": "Edit",
+    "deleteButton": "Delete",
+    "generateQRButton": "Generate QR",
+    "showStatisticsButton": "Show Statistics",
+    "loadingText": "Loading"
+  },
+  "users": {
+    "attendanceHeader": "Users attendance",
+    "subHeader": "Manage the users in your network."
+  },
+  "qr": {
+    "header": "Session QR Code",
+    "feedbackPrompt": "Scan QR code or click here to give your feedback on the session."
+  },
+  "navbar": {
+    "courses": "Courses",
+    "logout": "Logout"
+  },
   "modals": {
-    "course": {},
-    "session": {},
-    "studentId": {}
+    "course": {
+      "createHeader": "Create New Course",
+      "editHeader": "Edit Course",
+      "nameLabel": "Course Name",
+      "descriptionLabel": "Course Description",
+      "deleteButton": "Delete Course",
+      "cancelButton": "Cancel",
+      "submitButton": "Submit"
+    },
+    "session": {
+      "createHeader": "Create New Session",
+      "editHeader": "Edit Session",
+      "nameLabel": "Session Name",
+      "descriptionLabel": "Session Description",
+      "startLabel": "Start Time",
+      "endLabel": "End Time",
+      "deleteButton": "Delete Session",
+      "cancelButton": "Cancel",
+      "submitButton": "Submit",
+      "statisticsHeader": "Session Feedback"
+    },
+    "studentId": {
+      "header": "Student IDs",
+      "instruction": "Enter student ID(s) into the list and press \"Submit\" to apply changes",
+      "inputLabel": "Enter Student ID",
+      "cancelButton": "Cancel",
+      "submitButton": "Submit"
+    }
   }
 }
