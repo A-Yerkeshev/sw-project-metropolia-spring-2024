@@ -11,11 +11,11 @@
     "positive": "Положительно",
     "neutral": "Нейтрально",
     "negative": "Отрицательно",
-    "studentIdLabel": "ID студента",
-    "openFeedbackLabel": "Открытая обратная связь",
+    "studentIdLabel": "Ваш id номер",
+    "openFeedbackLabel": "Комментарий",
     "submit": "Отправить",
-    "successMessage": "Обратная связь успешно отправлена!",
-    "errorMessage": "Не удалось отправить обратную связь. Попробуйте снова."
+    "successMessage": "Отзыв успешно отправлен!",
+    "errorMessage": "Не удалось отправить отзыв. Пожалуйста, попробуйте снова."
   },
   "login": {
     "header": "Добро пожаловать!",
@@ -63,7 +63,8 @@
       "descriptionLabel": "Описание курса",
       "deleteButton": "Удалить курс",
       "cancelButton": "Отмена",
-      "submitButton": "Отправить"
+      "submitButton": "Создать",
+      "submitBtnEdit": "Обновить"
     },
     "session": {
       "createHeader": "Создать новую сессию",
@@ -74,15 +75,16 @@
       "endLabel": "Конец",
       "deleteButton": "Удалить сессию",
       "cancelButton": "Отмена",
-      "submitButton": "Отправить",
-      "statisticsHeader": "Обратная связь по сессии"
+      "submitButton": "Создать",
+      "submitBtnEdit": "Обновить",
+      "statisticsHeader": "Статистика"
     },
     "studentId": {
-      "header": "ID студентов",
-      "instruction": "Введите ID студента(ов) в список и нажмите \"Отправить\", чтобы применить изменения",
-      "inputLabel": "Введите ID студента",
+      "header": "Id номера студентов",
+      "instruction": "Введите id студента(ов) в список и нажмите \"Добавить\"",
+      "inputLabel": "Введите id студента",
       "cancelButton": "Отмена",
-      "submitButton": "Отправить"
+      "submitButton": "Добавить"
     }
   }
 }
