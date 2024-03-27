@@ -43,10 +43,6 @@
     "showStatisticsButton": "Show Statistics",
     "loadingText": "Loading"
   },
-  "users": {
-    "attendanceHeader": "Users attendance",
-    "subHeader": "Manage the users in your network."
-  },
   "qr": {
     "header": "Session QR Code",
     "feedbackPrompt": "Scan QR code or click here to give your feedback on the session."

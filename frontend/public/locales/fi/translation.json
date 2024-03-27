@@ -43,10 +43,6 @@
       "showStatisticsButton": "Näytä Tilastot",
       "loadingText": "Ladataan"
     },
-    "users": {
-      "attendanceHeader": "Käyttäjien osallistuminen",
-      "subHeader": "Hallitse verkostosi käyttäjiä."
-    },
     "qr": {
       "header": "Istunnon QR-koodi",
       "feedbackPrompt": "Skannaa QR-koodi tai klikkaa tästä antaaksesi palautetta istunnosta."
@@ -86,4 +82,3 @@
       }
     }
   }
-  
