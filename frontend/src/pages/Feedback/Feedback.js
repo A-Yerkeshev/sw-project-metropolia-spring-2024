@@ -90,9 +90,16 @@ const Feedback = () => {
   };
 
   return (
-    <Container maxWidth="sm">
+    <Container maxWidth={false} disableGutters>
       <StudentNavbar />
-      <Paper elevation={3} sx={{ p: 3, mt: 8, mb: 2 }}>
+      <Box
+        sx={{
+          p: 3,
+          mb: 2,
+          backgroundColor: "background.paper",
+          borderRadius: "4px",
+        }}
+      >
         <Box
           sx={{
             display: "flex",
@@ -223,7 +230,7 @@ const Feedback = () => {
             )}
           </FormControl>
         </Box>
-      </Paper>
+      </Box>
     </Container>
   );
 };
