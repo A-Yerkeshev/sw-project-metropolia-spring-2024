@@ -19,6 +19,7 @@ import SentimentVeryDissatisfiedIcon from "@mui/icons-material/SentimentVeryDiss
 import styles from "./Feedback.module.css";
 import { useSearchParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import StudentNavbar from "../../components/Navbar/StudentNavbar";
 
 const Feedback = () => {
   const [searchParams] = useSearchParams();
@@ -90,6 +91,7 @@ const Feedback = () => {
 
   return (
     <Container maxWidth="sm">
+      <StudentNavbar />
       <Paper elevation={3} sx={{ p: 3, mt: 8, mb: 2 }}>
         <Box
           sx={{
