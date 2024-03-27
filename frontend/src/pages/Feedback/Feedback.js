@@ -90,7 +90,11 @@ const Feedback = () => {
   };
 
   return (
-    <Container maxWidth={false} disableGutters>
+    <Container
+      maxWidth="sm"
+      disableGutters
+      sx={{ height: "100vh", display: "flex", flexDirection: "column" }}
+    >
       <StudentNavbar />
       <Box
         sx={{
@@ -98,6 +102,9 @@ const Feedback = () => {
           mb: 2,
           backgroundColor: "background.paper",
           borderRadius: "4px",
+          flexGrow: 1, // This makes the Box fill available space
+          display: "flex",
+          flexDirection: "column",
         }}
       >
         <Box
