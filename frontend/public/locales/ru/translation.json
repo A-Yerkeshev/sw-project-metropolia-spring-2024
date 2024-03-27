@@ -7,12 +7,12 @@
     "goToCourseButton": "Перейти к курсу"
   },
   "feedback": {
-    "rate": "Оценка:",
+    "rate": "Оцените урок:",
     "positive": "Положительно",
     "neutral": "Нейтрально",
     "negative": "Отрицательно",
     "studentIdLabel": "Ваш id номер",
-    "openFeedbackLabel": "Комментарий",
+    "openFeedbackLabel": "Комментарии к уроку",
     "submit": "Отправить",
     "successMessage": "Отзыв успешно отправлен!",
     "errorMessage": "Не удалось отправить отзыв. Пожалуйста, попробуйте снова."

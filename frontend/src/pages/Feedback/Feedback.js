@@ -18,6 +18,8 @@ import SentimentVeryDissatisfiedIcon from "@mui/icons-material/SentimentVeryDiss
 
 import styles from "./Feedback.module.css";
 import { useSearchParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import StudentNavbar from "../../components/Navbar/StudentNavbar";
 
 const Feedback = () => {
   const [searchParams] = useSearchParams();
@@ -29,7 +31,7 @@ const Feedback = () => {
   const [submitStatus, setSubmitStatus] = useState("");
   const [submitMessage, setSubmitMessage] = useState("");
   const backendUrl = process.env.REACT_APP_BACKEND_URL || "";
-
+  const { t } = useTranslation();
 
   const handleChangeRating = (event) => {
     setRating(event.target.value);
@@ -45,21 +47,18 @@ const Feedback = () => {
 
   const handleSubmit = async () => {
     try {
-      const response = await fetch(
-        `${backendUrl}/api/feedbacks`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            rating: Number(rating),
-            text: openFeedback,
-            sessionId: sessionId,
-            studentId: Number(studentId),
-          }),
-        }
-      );
+      const response = await fetch(`${backendUrl}/api/feedbacks`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          rating: Number(rating),
+          text: openFeedback,
+          sessionId: sessionId,
+          studentId: Number(studentId),
+        }),
+      });
 
       if (!response.ok) {
         const errorBody = await response.json(); //parse response body to get error details
@@ -91,8 +90,16 @@ const Feedback = () => {
   };
 
   return (
-    <Container maxWidth="sm">
-      <Paper elevation={3} sx={{ p: 3, mt: 8, mb: 2 }}>
+    <Container maxWidth={false} disableGutters>
+      <StudentNavbar />
+      <Box
+        sx={{
+          p: 3,
+          mb: 2,
+          backgroundColor: "background.paper",
+          borderRadius: "4px",
+        }}
+      >
         <Box
           sx={{
             display: "flex",
@@ -107,15 +114,20 @@ const Feedback = () => {
             sx={{ width: "100%", mt: 2 }}
           >
             <FormLabel component="legend" className={styles.legend}>
-              Rate:
+              {t("feedback.rate")}
             </FormLabel>
             <RadioGroup
               name="rate"
               value={rating}
               onChange={handleChangeRating}
               row
-              aria-label="rating"
-              sx={{ justifyContent: "center", mb: 2, mt: 2 }}
+              label={t("feedback.rate")}
+              sx={{
+                justifyContent: "space-around",
+                mb: 2,
+                mt: 2,
+                width: "100%",
+              }}
             >
               <FormControlLabel
                 value="3"
@@ -127,7 +139,7 @@ const Feedback = () => {
                     }
                   />
                 }
-                label="Positive"
+                aria-label={t("feedback.positive")}
                 sx={{
                   ".MuiTypography-root": {
                     color: rating === "3" ? "green" : "inherit",
@@ -146,7 +158,7 @@ const Feedback = () => {
                     }
                   />
                 }
-                label="Neutral"
+                aria-label={t("feedback.neutral")}
                 sx={{
                   ".MuiTypography-root": {
                     color: rating === "2" ? "yellow" : "inherit",
@@ -169,7 +181,7 @@ const Feedback = () => {
                     }
                   />
                 }
-                label="Negative"
+                aria-label={t("feedback.negative")}
                 sx={{
                   ".MuiTypography-root": {
                     color: rating === "1" ? "red" : "inherit",
@@ -178,7 +190,7 @@ const Feedback = () => {
               />
             </RadioGroup>
             <TextField
-              label="Student ID"
+              label={t("feedback.studentIdLabel")}
               name="student-id"
               type="number"
               margin="normal"
@@ -187,7 +199,7 @@ const Feedback = () => {
               onChange={handleChangeStudentId}
             />
             <TextField
-              label="Open feedback"
+              label={t("feedback.openFeedbackLabel")}
               name="open-feedback"
               multiline
               rows={4}
@@ -203,7 +215,7 @@ const Feedback = () => {
                 color="primary"
                 sx={{ marginTop: 2 }}
               >
-                Submit
+                {t("feedback.submit")}
               </Button>
             </Box>
             {submitStatus && (
@@ -218,7 +230,7 @@ const Feedback = () => {
             )}
           </FormControl>
         </Box>
-      </Paper>
+      </Box>
     </Container>
   );
 };
