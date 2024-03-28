@@ -2,23 +2,30 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import QRCode from "react-qr-code";
 import { Box, Typography, Paper, Container, Link } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
-const QR = () => {
+interface SessionDetails {
+  name: string;
+  start: string;
+  end: string;
+}
+
+const QR: React.FC = () => {
   const location = useLocation();
   // Access courseId and sessionId from the navigation state
   const queryParams = new URLSearchParams(location.search);
   const courseId = queryParams.get("courseId");
   const sessionId = queryParams.get("sessionId");
   const backendUrl = process.env.REACT_APP_BACKEND_URL || "";
-
+  const { t } = useTranslation();
   //const decodedSessionName = decodeURIComponent(sessionName);
 
-  const [sessionDetails, setSessionDetails] = useState(null);
+  const [sessionDetails, setSessionDetails] = useState<SessionDetails | null>(null);
 
   useEffect(() => {
     // Ensure both courseId and sessionId are present
     if (!courseId || !sessionId) {
-      console.error("Course ID or Session ID is missing.");
+      console.error(t("qr.errorMissingID"));
       return;
     }
 
@@ -31,15 +38,15 @@ const QR = () => {
         if (response.ok) {
           setSessionDetails(data.session);
         } else {
-          throw new Error("Failed to fetch session details");
+          throw new Error(t("feedback.errorMessage"));
         }
       } catch (error) {
-        console.error("Error fetching session details:", error);
+        console.error(t("feedback.errorMessage"), error);
       }
     };
 
     fetchSessionDetails();
-  }, [courseId, sessionId]); // Depend on both courseId and sessionId
+  }, [courseId, sessionId, backendUrl, t]); // Depend on both courseId and sessionId
 
   let baseUrl;
   if (process.env.NODE_ENV === "development") {
@@ -69,20 +76,20 @@ const QR = () => {
               component="div"
               sx={{ fontWeight: "bold" }}
             >
-              Session: {sessionDetails.name}
+              {t('qr.header')}: {sessionDetails.name}
             </Typography>
             <Box sx={{ my: 2 }}>
               <Typography variant="subtitle1" display="block">
-                Start: {new Date(sessionDetails.start).toLocaleString()}
+              {t('qr.startLabel')}: {new Date(sessionDetails.start).toLocaleString()}
               </Typography>
               <Typography variant="subtitle1" display="block">
-                End: {new Date(sessionDetails.end).toLocaleString()}
+              {t('qr.endLabel')}: {new Date(sessionDetails.end).toLocaleString()}
               </Typography>
               <Box display="flex" justifyContent="center" m={2}>
                 <QRCode value={feedbackUrl} size={256} />
               </Box>
               <Typography variant="body1" marginTop={2}>
-                Scan QR code or{" "}
+              {t('qr.feedbackPrompt')} {" "}
                 <Link
                   component="a"
                   href={feedbackUrl}
@@ -90,9 +97,9 @@ const QR = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  click here
+                  {t('qr.clickHere')}
                 </Link>{" "}
-                to give your feedback on the session.
+                {t('qr.feedbackPrompt2')}
               </Typography>
             </Box>
           </Paper>
