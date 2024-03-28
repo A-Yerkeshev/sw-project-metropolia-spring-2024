@@ -43,9 +43,14 @@
     "showStatisticsButton": "Показать статистику",
     "loadingText": "Загрузка"
   },
-  "qr": {
-    "header": "QR-код сессии",
-    "feedbackPrompt": "Сканируйте QR-код или нажмите здесь, чтобы оставить отзыв о сессии."
+  "qr":  {
+    "header": "Тема урока",
+    "startLabel": "Начало урока",
+    "endLabel": "Конец урока",
+    "feedbackPrompt": "Отсканируйте QR-код или",
+    "clickHere": "кликните здесь",
+    "feedbackPrompt2": "чтобы оставить свой отзыв уроку."
+    
   },
   "navbar": {
     "courses": "Курсы",

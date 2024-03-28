@@ -44,8 +44,13 @@
       "loadingText": "Ladataan"
     },
     "qr": {
-      "header": "Istunnon QR-koodi",
-      "feedbackPrompt": "Skannaa QR-koodi tai klikkaa tästä antaaksesi palautetta istunnosta."
+      "header": "Tunti",
+      "startLabel": "Alku",
+      "endLabel": "Loppu",
+      "feedbackPrompt": "Skannaa QR-koodi tai",
+      "clickHere": "klikkaa tästä", 
+      "feedbackPrompt2": "antaaksesi palautetta tunnista."
+      
     },
     "navbar": {
       "courses": "Kurssit",

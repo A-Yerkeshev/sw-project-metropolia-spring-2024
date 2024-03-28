@@ -44,8 +44,13 @@
     "loadingText": "Loading"
   },
   "qr": {
-    "header": "Session QR Code",
-    "feedbackPrompt": "Scan QR code or click here to give your feedback on the session."
+    "header": "Session",
+    "startLabel": "Start",
+    "endLabel": "End",
+    "feedbackPrompt": "Scan QR code or ",
+    "clickHere": "click here",
+    "feedbackPrompt2": " to give your feedback on the session."
+    
   },
   "navbar": {
     "courses": "Courses",
