@@ -17,8 +17,11 @@ import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DateTimePicker } from '@mui/x-date-pickers';
 import 'dayjs/locale/en';
+import { enUS } from '@mui/x-date-pickers/locales';
 import 'dayjs/locale/ru';
+import { ruRU } from '@mui/x-date-pickers/locales';
 import 'dayjs/locale/fi';
+import { fiFI } from '@mui/x-date-pickers/locales';
 
 const SessionModal = ({
   feedbackData = [],
@@ -32,9 +35,18 @@ const SessionModal = ({
   handleDeleteSession,
 }) => {
   const { i18n } = useTranslation();
+  let placeholdersLocale = enUS
+  switch(i18n.language) {
+    case('ru'):
+      placeholdersLocale = ruRU;
+      break;
+    case('fi'):
+      placeholdersLocale = fiFI;
+      break;
+  }
 
   return (
-    <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale={i18n.language}>
+    <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale={i18n.language} localeText={placeholdersLocale.components.MuiLocalizationProvider.defaultProps.localeText}>
       <Dialog open={openModal} onClose={handleClose} fullWidth maxWidth="sm">
         <DialogTitle sx={{ m: 0, p: 2 }}>
           {modalContent === "statistics"
