@@ -1,5 +1,6 @@
 // SessionModal.js
 import React from "react";
+import dayjs from 'dayjs';
 import Dialog from "@mui/material/Dialog";
 import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
@@ -11,6 +12,13 @@ import { PieChart } from "@mui/x-charts/PieChart";
 import Grid from "@mui/material/Grid";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
+import { useTranslation } from 'react-i18next';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { DateTimePicker } from '@mui/x-date-pickers';
+import 'dayjs/locale/en';
+import 'dayjs/locale/ru';
+import 'dayjs/locale/fi';
 
 const SessionModal = ({
   feedbackData = [],
@@ -23,129 +31,121 @@ const SessionModal = ({
   handleEditSubmit,
   handleDeleteSession,
 }) => {
+  const { i18n } = useTranslation();
+
   return (
-    <Dialog open={openModal} onClose={handleClose} fullWidth maxWidth="sm">
-      <DialogTitle sx={{ m: 0, p: 2 }}>
-        {modalContent === "statistics"
-          ? "Session Feedback"
-          : modalContent === "createSession"
-          ? "Create New Session"
-          : "Edit Session"}
-        <IconButton
-          aria-label="close"
-          onClick={handleClose}
-          sx={{
-            position: "absolute",
-            right: 8,
-            top: 8,
-            color: (theme) => theme.palette.grey[500],
-          }}
-        >
-          <CloseIcon />
-        </IconButton>
-      </DialogTitle>
-      <DialogContent>
-        {modalContent === "statistics" && (
-          <>
-            {feedbackData && (
-              <PieChart series={feedbackData} width={400} height={200} />
-            )}
-            <Typography sx={{ mt: 2 }}>
-              <strong>Text Feedback:</strong>
-            </Typography>
-            {feedbackTexts.length > 0 ? (
-              feedbackTexts.map((text, index) => (
-                <Typography key={index}>
-                  {text || "No text feedback provided."}
-                </Typography>
-              ))
-            ) : (
-              <Typography>No text feedback available.</Typography>
-            )}
-          </>
-        )}
-        {(modalContent === "createSession" ||
-          modalContent === "editSession") && (
-          <form
-            onSubmit={
-              modalContent === "createSession" ? handleSubmit : handleEditSubmit
-            }
+    <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale={i18n.language}>
+      <Dialog open={openModal} onClose={handleClose} fullWidth maxWidth="sm">
+        <DialogTitle sx={{ m: 0, p: 2 }}>
+          {modalContent === "statistics"
+            ? "Session Feedback"
+            : modalContent === "createSession"
+            ? "Create New Session"
+            : "Edit Session"}
+          <IconButton
+            aria-label="close"
+            onClick={handleClose}
+            sx={{
+              position: "absolute",
+              right: 8,
+              top: 8,
+              color: (theme) => theme.palette.grey[500],
+            }}
           >
-            <Grid container spacing={2}>
-              <Grid item xs={12}>
-                <TextField
-                  name="name"
-                  label="Session Name"
-                  type="text"
-                  defaultValue={
-                    modalContent === "editSession" ? currentSession.name : ""
-                  }
-                  fullWidth
-                  required
-                  style={{ marginTop: "10px" }}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  name="description"
-                  label="Session Description"
-                  multiline
-                  defaultValue={
-                    modalContent === "editSession"
-                      ? currentSession.description
-                      : ""
-                  }
-                  fullWidth
-                  required
-                />
-              </Grid>
-              <Grid item xs={6}>
-                <TextField
-                  name="start"
-                  label="Start Time"
-                  type="datetime-local"
-                  defaultValue={
-                    modalContent === "editSession" ? currentSession.start : ""
-                  }
-                  fullWidth
-                  required
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                />
-              </Grid>
-              <Grid item xs={6}>
-                <TextField
-                  name="end"
-                  label="End Time"
-                  type="datetime-local"
-                  defaultValue={
-                    modalContent === "editSession" ? currentSession.end : ""
-                  }
-                  fullWidth
-                  required
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                />
-              </Grid>
-            </Grid>
-            <DialogActions>
-              <Button onClick={handleClose}>Cancel</Button>
-              <Button type="submit">Submit</Button>
-              {modalContent === "editSession" && (
-                <Button
-                  onClick={() => handleDeleteSession(currentSession._id)}
-                  color="error"
-                >
-                  Delete Session
-                </Button>
+            <CloseIcon />
+          </IconButton>
+        </DialogTitle>
+        <DialogContent>
+          {modalContent === "statistics" && (
+            <>
+              {feedbackData && (
+                <PieChart series={feedbackData} width={400} height={200} />
               )}
-            </DialogActions>
-          </form>
-        )}
-      </DialogContent>
-    </Dialog>
+              <Typography sx={{ mt: 2 }}>
+                <strong>Text Feedback:</strong>
+              </Typography>
+              {feedbackTexts.length > 0 ? (
+                feedbackTexts.map((text, index) => (
+                  <Typography key={index}>
+                    {text || "No text feedback provided."}
+                  </Typography>
+                ))
+              ) : (
+                <Typography>No text feedback available.</Typography>
+              )}
+            </>
+          )}
+          {(modalContent === "createSession" ||
+            modalContent === "editSession") && (
+            <form
+              onSubmit={
+                modalContent === "createSession" ? handleSubmit : handleEditSubmit
+              }
+            >
+              <Grid container spacing={2}>
+                <Grid item xs={12}>
+                  <TextField
+                    name="name"
+                    label="Session Name"
+                    type="text"
+                    defaultValue={
+                      modalContent === "editSession" ? currentSession.name : ""
+                    }
+                    fullWidth
+                    required
+                    style={{ marginTop: "10px" }}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    name="description"
+                    label="Session Description"
+                    multiline
+                    defaultValue={
+                      modalContent === "editSession"
+                        ? currentSession.description
+                        : ""
+                    }
+                    fullWidth
+                    required
+                  />
+                </Grid>
+                <Grid item xs={6}>
+                  <DateTimePicker
+                    name="start"
+                    label="Start Time"
+                    defaultValue={
+                      modalContent === "editSession" ? dayjs(currentSession.start) : dayjs('')
+                    }
+                  />
+                </Grid>
+                <Grid item xs={6}>
+                <DateTimePicker
+                    name="start"
+                    label="End Time"
+                    defaultValue={
+                      modalContent === "editSession" ? dayjs(currentSession.end) : dayjs('')
+                    }
+                  />
+                </Grid>
+              </Grid>
+              <DialogActions>
+                <Button onClick={handleClose}>Cancel</Button>
+                <Button type="submit">Submit</Button>
+                {modalContent === "editSession" && (
+                  <Button
+                    onClick={() => handleDeleteSession(currentSession._id)}
+                    color="error"
+                  >
+                    Delete Session
+                  </Button>
+                )}
+              </DialogActions>
+            </form>
+          )}
+        </DialogContent>
+      </Dialog>
+    </LocalizationProvider>
   );
 };
 
