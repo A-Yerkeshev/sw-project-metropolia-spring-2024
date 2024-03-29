@@ -23,7 +23,8 @@
     "passwordLabel": "Пароль",
     "loginButton": "Войти",
     "errorMessage": "Не удалось войти",
-    "signUpPrompt": "Нет аккаунта? Зарегистрируйтесь"
+    "signUpPrompt": "Нет аккаунта? Зарегистрируйтесь",
+    "emailAndPasswordRequired": "Введите электронную почту и пароль"
   },
   "signUp": {
     "header": "Регистрация",

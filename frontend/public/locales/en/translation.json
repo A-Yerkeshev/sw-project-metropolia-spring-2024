@@ -23,7 +23,8 @@
     "passwordLabel": "Password",
     "loginButton": "Log in",
     "errorMessage": "Failed to login",
-    "signUpPrompt": "Don't have an account? Sign Up"
+    "signUpPrompt": "Don't have an account? Sign Up",
+    "emailAndPasswordRequired": "Email and password are required."
   },
   "signUp": {
     "header": "Sign Up",

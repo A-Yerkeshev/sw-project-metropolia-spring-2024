@@ -41,7 +41,8 @@
       "deleteButton": "Poista",
       "generateQRButton": "Luo QR",
       "showStatisticsButton": "Näytä Tilastot",
-      "loadingText": "Ladataan"
+      "loadingText": "Ladataan",
+      "emailAndPasswordRequired": "Sähköposti ja salasana vaaditaan."
     },
     "qr": {
       "header": "Istunnon QR-koodi",
