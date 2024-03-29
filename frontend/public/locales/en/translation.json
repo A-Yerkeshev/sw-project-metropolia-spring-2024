@@ -98,7 +98,13 @@
       "instruction": "Enter student ID(s) into the list and press \"Submit\" to apply changes",
       "inputLabel": "Enter Student ID",
       "cancelButton": "Cancel",
-      "submitButton": "Submit"
+      "submitButton": "Submit",
+      "numbersOnly": "Please enter numbers only!",
+      "alreadyExists": "Student with this ID already exists in the list!"
+    },
+    "feedback": {
+      "textFeedbackHeader": "Session Statistics",
+      "textFeedback": "Text Feedback"
     }
   }
 }

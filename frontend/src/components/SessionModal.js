@@ -35,6 +35,7 @@ const SessionModal = ({
   handleDeleteSession,
 }) => {
   const { i18n } = useTranslation();
+  const { t } = useTranslation();
   let placeholdersLocale = enUS
   switch(i18n.language) {
     case('ru'):
@@ -74,7 +75,7 @@ const SessionModal = ({
                 <PieChart series={feedbackData} width={400} height={200} />
               )}
               <Typography sx={{ mt: 2 }}>
-                <strong>Text Feedback:</strong>
+                <strong>{t("modals.feedback.textFeedback")}</strong>
               </Typography>
               {feedbackTexts.length > 0 ? (
                 feedbackTexts.map((text, index) => (

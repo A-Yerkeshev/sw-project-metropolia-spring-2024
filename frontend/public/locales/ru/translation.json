@@ -103,6 +103,10 @@
       "submitButton": "Добавить",
       "numbersOnly": "Пожалуйста, введите только цифры!",
       "alreadyExists": "Студент с таким id уже добавлен"
+    },
+    "feedback": {
+      "textFeedbackHeader": "Статистика Сессии",
+      "textFeedback": "Текстовый Отзыв"
     }
   }
 }
