@@ -23,7 +23,8 @@
       "passwordLabel": "Salasana",
       "loginButton": "Kirjaudu sisään",
       "errorMessage": "Kirjautuminen epäonnistui",
-      "signUpPrompt": "Eikö sinulla ole tiliä? Rekisteröidy"
+      "signUpPrompt": "Eikö sinulla ole tiliä? Rekisteröidy",
+      "emailAndPasswordRequired": "Sähköposti ja salasana vaaditaan."
     },
     "signUp": {
       "header": "Rekisteröidy",
@@ -42,7 +43,20 @@
       "generateQRButton": "Luo QR",
       "showStatisticsButton": "Näytä Tilastot",
       "loadingText": "Ladataan",
-      "emailAndPasswordRequired": "Sähköposti ja salasana vaaditaan."
+      "updateFail": "Päivitys epäonnistui.",
+      "updateOk": "Istunnon päivitys onnistui!",
+      "createFail": "Istunnon luominen epäonnistui",
+      "deleteFail": "Istunnon poistaminen epäonnistui.",
+      "rating": "Arviointi",
+      "positiveLabel": "Positiivinen",
+      "neutralLabel": "Neutraali",
+      "negativeLabel": "Negatiivinen",
+      "course": "Kurssi",
+      "addStudents": "Lisää opiskelijoita",
+      "description": "Kuvaus",
+      "start": "Aloitus",
+      "end": "Loppu",
+      "studentsNum": "Opiskelijat rekisteröitynyt"
     },
     "qr": {
       "header": "Istunnon QR-koodi",

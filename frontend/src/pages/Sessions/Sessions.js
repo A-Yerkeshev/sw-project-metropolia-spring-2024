@@ -18,6 +18,7 @@ import {
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import QRIcon from "@mui/icons-material/QrCode";
 import BarChartIcon from "@mui/icons-material/BarChart";
+import { useTranslation } from 'react-i18next';
 
 const Course = () => {
   const navigate = useNavigate();
@@ -33,6 +34,7 @@ const Course = () => {
   const [openStudentIdModal, setOpenStudentIdModal] = useState(false);
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
+  const { t, i18n } = useTranslation();
 
   const backendUrl = process.env.REACT_APP_BACKEND_URL || "";
 
@@ -57,16 +59,16 @@ const Course = () => {
         body: JSON.stringify({ students: updatedStudentIds }),
       });
 
-      if (!response.ok) throw new Error("Failed to update session.");
+      if (!response.ok) throw new Error(t('sessions.updateFail'));
 
       const data = await response.json();
 
       setExistingStudentIds(data.updatedCourse.students);
       setSnackbarOpen(true);
-      setSnackbarMessage("Session updated successfully!");
+      setSnackbarMessage(t('sessions.updateOk'));
     } catch (error) {
       console.error("Error updating session:", error);
-      setSnackbarMessage("Failed to update session.");
+      setSnackbarMessage(t('sessions.updateFail'));
     }
   };
 
@@ -105,7 +107,7 @@ const Course = () => {
 
         fetchCourse();
       } else {
-        throw new Error("Failed to create session");
+        throw new Error(t('sessions.createFail'));
       }
     } catch (error) {
       console.error("Error creating session:", error);
@@ -121,7 +123,7 @@ const Course = () => {
         }
       );
 
-      if (!response.ok) throw new Error("Failed to delete session.");
+      if (!response.ok) throw new Error(t('sessions.deleteFail'));
 
       // After successful deletion, update the local state to remove the deleted session
       setCourse((prevCourse) => ({
@@ -175,7 +177,7 @@ const Course = () => {
         }
       );
 
-      if (!response.ok) throw new Error("Failed to update session.");
+      if (!response.ok) throw new Error(t('sessions.updateFail'));
 
       const updatedSession = await response.json();
 
@@ -214,7 +216,7 @@ const Course = () => {
         return {
           id: index,
           value: 1, // Each feedback counts as one
-          label: `Rating ${feedback.rating}`,
+          label: `${t('sessions.rating')} ${feedback.rating}`,
           color: color, // Assign color based on rating
         };
       });
@@ -222,17 +224,17 @@ const Course = () => {
       const aggregatedData = [
         {
           value: transformedData.filter((d) => d.color === "green").length,
-          label: "Positive",
+          label: t('sessions.positiveLabel'),
           color: "green",
         },
         {
           value: transformedData.filter((d) => d.color === "yellow").length,
-          label: "Neutral",
+          label: t('sessions.neutralLabel'),
           color: "yellow",
         },
         {
           value: transformedData.filter((d) => d.color === "red").length,
-          label: "Negative",
+          label: t('sessions.negativeLabel'),
           color: "red",
         },
       ]
@@ -261,7 +263,7 @@ const Course = () => {
           <Box textAlign="center">
             <CircularProgress />
             <Typography variant="h6" sx={{ mt: 2 }}>
-              Loading
+              {t('sessions.loadingText')}
             </Typography>
           </Box>
         </Box>
@@ -278,10 +280,10 @@ const Course = () => {
           textAlign="center"
           sx={{ fontWeight: "bold", mt: 2, color: "#232222" }}
         >
-          Course: {course.name}
+          {t('sessions.course')}: {course.name}
         </Typography>
         <Typography variant="subtitle1" gutterBottom textAlign="center">
-          Students enrolled:{" "}
+          {t('sessions.studentsNum')}:{" "}
           {course.students ? existingStudentIds.length : "N/A"}
           <Button
             variant="outlined"
@@ -289,14 +291,14 @@ const Course = () => {
             sx={{ ml: 2 }}
             onClick={() => setOpenStudentIdModal(true)}
           >
-            Add students
+            {t('sessions.addStudents')}
           </Button>
         </Typography>
       </Box>
 
       <Typography variant="h5" gutterBottom>
         <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-          <EventNoteIcon /> Sessions
+          <EventNoteIcon /> {t('sessions.header')}
         </Box>
       </Typography>
       <Button
@@ -305,7 +307,7 @@ const Course = () => {
         onClick={handleCreateSession}
         sx={{ mb: 2 }}
       >
-        Create Session
+        {t('sessions.createSessionButton')}
       </Button>
       {course.sessions.map((session) => (
         <Paper
@@ -324,12 +326,12 @@ const Course = () => {
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
-              <Typography>Description: {session.description}</Typography>
+              <Typography>{t('sessions.description')}: {session.description}</Typography>
               <Typography>
-                Start: {new Date(session.start).toLocaleString()}
+                {t('sessions.start')}: {new Date(session.start).toLocaleString()}
               </Typography>
               <Typography>
-                End: {new Date(session.end).toLocaleString()}
+              {t('sessions.end')}: {new Date(session.end).toLocaleString()}
               </Typography>
               <Box
                 sx={{
@@ -346,7 +348,7 @@ const Course = () => {
                   startIcon={<QRIcon />}
                   sx={{ mr: 1 }}
                 >
-                  Generate QR
+                  {t('sessions.generateQRButton')}
                 </Button>
                 <Button
                   variant="outlined"
@@ -355,7 +357,7 @@ const Course = () => {
                   startIcon={<BarChartIcon />}
                   sx={{ mr: 1 }}
                 >
-                  Show Statistics
+                  {t('sessions.showStatisticsButton')}
                 </Button>
                 {/* Spacer element */}
                 <Box sx={{ flexGrow: 1 }}></Box>
@@ -364,7 +366,7 @@ const Course = () => {
                   color="primary"
                   onClick={() => handleOpenEditModal(session)}
                 >
-                  Edit
+                  {t('sessions.editButton')}
                 </Button>
               </Box>
             </AccordionDetails>
