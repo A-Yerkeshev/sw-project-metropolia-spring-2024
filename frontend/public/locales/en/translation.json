@@ -23,7 +23,8 @@
     "passwordLabel": "Password",
     "loginButton": "Log in",
     "errorMessage": "Failed to login",
-    "signUpPrompt": "Don't have an account? Sign Up"
+    "signUpPrompt": "Don't have an account? Sign Up",
+    "emailAndPasswordRequired": "Email and password are required."
   },
   "signUp": {
     "header": "Sign Up",
@@ -41,7 +42,21 @@
     "deleteButton": "Delete",
     "generateQRButton": "Generate QR",
     "showStatisticsButton": "Show Statistics",
-    "loadingText": "Loading"
+    "loadingText": "Loading",
+    "updateFail": "Failed to update session.",
+    "updateOk": "Session updated successfully!",
+    "createFail": "Failed to create session",
+    "deleteFail": "Failed to delete session.",
+    "rating": "Rating",
+    "positiveLabel": "Positive",
+    "neutralLabel": "Neutral",
+    "negativeLabel": "Negative",
+    "course": "Course",
+    "addStudents": "Add students",
+    "description": "Description",
+    "start": "Start",
+    "end": "End",
+    "studentsNum": "Students enrolled"
   },
   "qr": {
     "header": "Session",

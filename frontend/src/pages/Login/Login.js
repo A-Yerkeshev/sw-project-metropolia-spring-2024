@@ -29,7 +29,7 @@ const Login = () => {
 
     // Basic validation for empty fields
     if (!email.trim() || !password.trim()) {
-      setFormError("Email and Password are required."); // Set an error message
+      setFormError(t('login.emailAndPasswordRequired')); // Set an error message
       return; // Prevent the form from being submitted
     }
 
@@ -64,7 +64,7 @@ const Login = () => {
             required
             fullWidth
             id="email"
-            label="Email Address"
+            label={t('login.emailAddressLabel')}
             name="email"
             autoComplete="email"
             autoFocus
@@ -76,7 +76,7 @@ const Login = () => {
             required
             fullWidth
             name="password"
-            label="Password"
+            label={t('login.passwordLabel')}
             type="password"
             id="password"
             autoComplete="current-password"
@@ -90,7 +90,7 @@ const Login = () => {
             sx={{ mt: 3, mb: 2 }}
             disabled={isLoading}
           >
-            Log in
+            {t('login.loginButton')}
           </Button>
           {error && <Typography color="error">{error}</Typography>}
           {formError && <Typography color="error">{formError}</Typography>}
@@ -99,7 +99,7 @@ const Login = () => {
             <Grid item>
               <RouterLink to="/signup" style={{ textDecoration: "none" }}>
                 <Typography variant="body2">
-                  {"Don't have an account? Sign Up"}
+                  {t('login.signUpPrompt')}
                 </Typography>
               </RouterLink>
             </Grid>

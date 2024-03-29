@@ -23,7 +23,8 @@
     "passwordLabel": "Пароль",
     "loginButton": "Войти",
     "errorMessage": "Не удалось войти",
-    "signUpPrompt": "Нет аккаунта? Зарегистрируйтесь"
+    "signUpPrompt": "Нет аккаунта? Зарегистрируйтесь",
+    "emailAndPasswordRequired": "Введите электронную почту и пароль"
   },
   "signUp": {
     "header": "Регистрация",
@@ -41,7 +42,21 @@
     "deleteButton": "Удалить",
     "generateQRButton": "Сгенерировать QR",
     "showStatisticsButton": "Показать статистику",
-    "loadingText": "Загрузка"
+    "loadingText": "Загрузка",
+    "updateFail": "Не удалось обновить сессию.",
+    "updateOk": "Сессия обновлена!",
+    "createFail": "Не удалось создать сессию",
+    "deleteFail": "Не удалось удалить сессию.",
+    "rating": "Оценка",
+    "positiveLabel": "Хорошо",
+    "neutralLabel": "Обычно",
+    "negativeLabel": "Плохо",
+    "course": "Курс",
+    "addStudents": "Добавить студентов",
+    "description": "Описание",
+    "start": "Начало",
+    "end": "Конец",
+    "studentsNum": "Студентов на курсе"
   },
   "qr":  {
     "header": "Тема урока",

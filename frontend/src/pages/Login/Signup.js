@@ -11,6 +11,7 @@ import Container from "@mui/material/Container";
 import Link from "@mui/material/Link";
 import { useNavigate } from "react-router-dom";
 import { useSignup } from "../../hooks/useSignUp";
+import { useTranslation } from 'react-i18next';
 
 export default function SignUp() {
   const navigate = useNavigate();
@@ -19,6 +20,7 @@ export default function SignUp() {
   const [lastName, setLastName] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
+  const { t, i18n } = useTranslation();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -44,7 +46,7 @@ export default function SignUp() {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign Up
+          {t('signUp.header')}
         </Typography>
         <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
           <Grid container spacing={2}>
@@ -55,7 +57,7 @@ export default function SignUp() {
                 required
                 fullWidth
                 id="firstName"
-                label="First Name"
+                label={t('signUp.firstNameLabel')}
                 autoFocus
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
@@ -66,7 +68,7 @@ export default function SignUp() {
                 required
                 fullWidth
                 id="lastName"
-                label="Last Name"
+                label={t('signUp.lastNameLabel')}
                 name="lastName"
                 autoComplete="lname"
                 value={lastName}
@@ -78,7 +80,7 @@ export default function SignUp() {
                 required
                 fullWidth
                 id="email"
-                label="Email Address"
+                label={t('signUp.emailAddressLabel')}
                 name="email"
                 autoComplete="email"
                 value={email}
@@ -90,7 +92,7 @@ export default function SignUp() {
                 required
                 fullWidth
                 name="password"
-                label="Password"
+                label={t('signUp.passwordLabel')}
                 type="password"
                 id="password"
                 autoComplete="new-password"
@@ -106,13 +108,13 @@ export default function SignUp() {
             sx={{ mt: 3, mb: 2 }}
             disabled={isLoading}
           >
-            Sign Up
+            {t('signUp.signUpButton')}
           </Button>
           {error && <Typography color="error">{error}</Typography>}
           <Grid container justifyContent="flex-end">
             <Grid item>
               <Link href="/" variant="body2">
-                Already have an account? Sign in
+                {t('signUp.signInPrompt')}
               </Link>
             </Grid>
           </Grid>
