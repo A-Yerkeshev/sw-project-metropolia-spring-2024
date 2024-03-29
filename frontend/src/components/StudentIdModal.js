@@ -9,6 +9,7 @@ import Chip from '@mui/material/Chip';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import { Typography } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 
 const StudentIdModal = ({
   openModal,
@@ -19,6 +20,7 @@ const StudentIdModal = ({
   const [inputValue, setInputValue] = useState('');
   const [studentIds, setStudentIds] = useState(existingStudentIds);
   const [error, setError] = useState('');
+  const { t, i18n } = useTranslation();
 
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
@@ -67,7 +69,7 @@ const StudentIdModal = ({
   return (
     <Dialog open={openModal} onClose={handleModalClose} fullWidth maxWidth="sm">
       <DialogTitle>
-        Student IDs
+      {t('modals.studentId.header')} {' '}
         <IconButton
           aria-label="close"
           onClick={handleModalClose}
@@ -83,10 +85,10 @@ const StudentIdModal = ({
       </DialogTitle>
       <DialogContent>
         <Typography variant="subtitle1" gutterBottom>
-          Enter student ID(s) into the list and press "Submit" to apply changes
+          {t('modals.studentId.instruction')} {' '}
         </Typography>
         <TextField
-          label="Enter Student ID"
+          label={t('modals.studentId.inputLabel')}
           value={inputValue}
           onChange={handleInputChange}
           onKeyDown={handleInputKeydown}
@@ -107,8 +109,12 @@ const StudentIdModal = ({
         </div>
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleModalClose}>Cancel</Button>
-        <Button onClick={handleSubmitStudentId}>Submit</Button>{' '}
+        <Button 
+        onClick={handleModalClose}>{t('modals.studentId.cancelButton')}
+        </Button>
+        <Button 
+        onClick={handleSubmitStudentId}>{t('modals.studentId.submitButton')}
+        </Button>
       </DialogActions>
     </Dialog>
   );
