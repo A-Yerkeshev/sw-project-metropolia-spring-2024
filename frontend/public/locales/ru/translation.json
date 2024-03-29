@@ -100,7 +100,9 @@
       "instruction": "Введите id студента(ов) в список и нажмите \"Добавить\"",
       "inputLabel": "Введите id студента",
       "cancelButton": "Отмена",
-      "submitButton": "Добавить"
+      "submitButton": "Добавить",
+      "numbersOnly": "Пожалуйста, введите только цифры!",
+      "alreadyExists": "Студент с таким id уже добавлен"
     }
   }
 }

@@ -32,7 +32,7 @@ const StudentIdModal = ({
       event.preventDefault();
 
       if (isNaN(inputValue.trim())) {
-        setError('Please enter numbers only');
+        setError(t('modals.studentId.numbersOnly'));
         return;
       }
 
@@ -42,7 +42,7 @@ const StudentIdModal = ({
         setStudentIds([...studentIds, newStudentId]);
         setInputValue('');
       } else {
-        setError('Student ID already exists!');
+        setError(t('modals.studentId.alreadyExists'));
       }
     }
   };
