@@ -86,8 +86,8 @@ const Course = () => {
     event.preventDefault(); // Prevent the form from causing a page reload
     const formData = new FormData(event.target);
 
-    const start = dayjs(formData.get("start"), dateTimeFormats[i18n.language]).valueOf();
-    const end = dayjs(formData.get("end"), dateTimeFormats[i18n.language]).valueOf();
+    const start = dayjs(formData.get("start"), dateTimeFormats.datetime[i18n.language]).valueOf();
+    const end = dayjs(formData.get("end"), dateTimeFormats.datetime[i18n.language]).valueOf();
 
     const sessionData = {
       name: formData.get("name"),
@@ -167,8 +167,8 @@ const Course = () => {
     event.preventDefault(); // Prevent the form from submitting in the traditional way
     const formData = new FormData(event.currentTarget);
 
-    const start = dayjs(formData.get("start"), dateTimeFormats[i18n.language]).valueOf();
-    const end = dayjs(formData.get("end"), dateTimeFormats[i18n.language]).valueOf();
+    const start = dayjs(formData.get("start"), dateTimeFormats.datetime[i18n.language]).valueOf();
+    const end = dayjs(formData.get("end"), dateTimeFormats.datetime[i18n.language]).valueOf();
 
     const updatedSessionData = {
       name: formData.get("name"),
@@ -334,16 +334,16 @@ const Course = () => {
               id="panel1a-header"
             >
               <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                {session.name} - {new Date(session.start).toLocaleDateString()}
+                {session.name} - {dayjs(session.start).format(dateTimeFormats.date[i18n.language])}
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
               <Typography>{t('sessions.description')}: {session.description}</Typography>
               <Typography>
-                {t('sessions.start')}: {dayjs(session.start).format(dateTimeFormats[i18n.language])}
+                {t('sessions.start')}: {dayjs(session.start).format(dateTimeFormats.datetime[i18n.language])}
               </Typography>
               <Typography>
-              {t('sessions.end')}: {dayjs(session.end).format(dateTimeFormats[i18n.language])}
+              {t('sessions.end')}: {dayjs(session.end).format(dateTimeFormats.datetime[i18n.language])}
               </Typography>
               <Box
                 sx={{
