@@ -98,7 +98,13 @@
         "instruction": "Lisää opiskelija ID(t) listaan ja paina \"Lähetä\" tehdäksesi muutokset",
         "inputLabel": "Syötä Opiskelija ID",
         "cancelButton": "Peruuta",
-        "submitButton": "Lähetä"
+        "submitButton": "Lähetä",
+        "numbersOnly": "Lisää vain numeroita!",
+        "alreadyExists": "Opiskelija ID on jo lisätty!"
+      },
+      "feedback": {
+        "textFeedbackHeader": "Kurssin Palaute",
+        "textFeedback": "Tekstin Palaute"
       }
     }
   }
