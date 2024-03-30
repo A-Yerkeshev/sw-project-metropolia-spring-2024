@@ -1,5 +1,5 @@
 {
-  "en": "MM/DD/YYYY H:mm A",
+  "en": "MM/DD/YYYY h:mm A",
   "fi": "DD.MM.YYYY H:mm",
   "ru": "DD.MM.YYYY H:mm"
 }

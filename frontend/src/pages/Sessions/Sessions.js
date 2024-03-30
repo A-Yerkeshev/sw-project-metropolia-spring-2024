@@ -167,11 +167,14 @@ const Course = () => {
     event.preventDefault(); // Prevent the form from submitting in the traditional way
     const formData = new FormData(event.currentTarget);
 
+    const start = dayjs(formData.get("start"), dateTimeFormats[i18n.language]).valueOf();
+    const end = dayjs(formData.get("end"), dateTimeFormats[i18n.language]).valueOf();
+
     const updatedSessionData = {
       name: formData.get("name"),
       description: formData.get("description"),
-      start: formData.get("start"),
-      end: formData.get("end"),
+      start,
+      end
     };
 
     try {
@@ -337,10 +340,10 @@ const Course = () => {
             <AccordionDetails>
               <Typography>{t('sessions.description')}: {session.description}</Typography>
               <Typography>
-                {t('sessions.start')}: {new Date(session.start).toLocaleString()}
+                {t('sessions.start')}: {dayjs(session.start).format(dateTimeFormats[i18n.language])}
               </Typography>
               <Typography>
-              {t('sessions.end')}: {new Date(session.end).toLocaleString()}
+              {t('sessions.end')}: {dayjs(session.end).format(dateTimeFormats[i18n.language])}
               </Typography>
               <Box
                 sx={{
