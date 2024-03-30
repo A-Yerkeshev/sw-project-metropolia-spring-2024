@@ -19,6 +19,11 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import QRIcon from "@mui/icons-material/QrCode";
 import BarChartIcon from "@mui/icons-material/BarChart";
 import { useTranslation } from 'react-i18next';
+import dateTimeFormats from '../../dateTimeFormats.json';
+import dayjs from "dayjs";
+import customParseFormat from 'dayjs/plugin/customParseFormat';
+
+dayjs.extend(customParseFormat);
 
 const Course = () => {
   const navigate = useNavigate();
@@ -80,11 +85,15 @@ const Course = () => {
   const handleSubmit = async (event) => {
     event.preventDefault(); // Prevent the form from causing a page reload
     const formData = new FormData(event.target);
+
+    const start = dayjs(formData.get("start"), dateTimeFormats[i18n.language]).valueOf();
+    const end = dayjs(formData.get("end"), dateTimeFormats[i18n.language]).valueOf();
+
     const sessionData = {
       name: formData.get("name"),
       description: formData.get("description"),
-      start: formData.get("start"),
-      end: formData.get("end"),
+      start,
+      end
     };
 
     try {
@@ -107,7 +116,7 @@ const Course = () => {
 
         fetchCourse();
       } else {
-        throw new Error(t('sessions.createFail'));
+        throw new Error(response.error);
       }
     } catch (error) {
       console.error("Error creating session:", error);

@@ -133,7 +133,7 @@ const SessionModal = ({
                 </Grid>
                 <Grid item xs={6}>
                 <DateTimePicker
-                    name="start"
+                    name="end"
                     label="End Time"
                     defaultValue={
                       modalContent === "editSession" ? dayjs(currentSession.end) : dayjs('')
