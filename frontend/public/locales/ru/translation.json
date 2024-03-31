@@ -95,7 +95,7 @@
       "statisticsHeader": "Статистика"
     },
     "studentId": {
-      "header": "Id номера студентов",
+      "header": "ID студентов",
       "instruction": "Введите id студента(ов) в список и нажмите \"Добавить\"",
       "inputLabel": "Введите id студента",
       "cancelButton": "Отмена",
