@@ -1,15 +1,15 @@
 // CourseModal.js
-import React from "react";
-import Dialog from "@mui/material/Dialog";
-import DialogTitle from "@mui/material/DialogTitle";
-import DialogContent from "@mui/material/DialogContent";
-import DialogActions from "@mui/material/DialogActions";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
-import Grid from "@mui/material/Grid";
-import IconButton from "@mui/material/IconButton";
-import CloseIcon from "@mui/icons-material/Close";
-import { useTranslation } from "react-i18next";
+import React from 'react';
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogContent from '@mui/material/DialogContent';
+import DialogActions from '@mui/material/DialogActions';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import Grid from '@mui/material/Grid';
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
+import { useTranslation } from 'react-i18next';
 
 const CourseModal = ({
   courseData = {}, // Изменение: Используем courseData для отображения данных о курсе
@@ -25,15 +25,15 @@ const CourseModal = ({
   return (
     <Dialog open={openModal} onClose={handleClose} fullWidth maxWidth="sm">
       <DialogTitle sx={{ m: 0, p: 2 }}>
-        {modalContent === "createCourse"
-          ? t("modals.course.createHeader")
-          : t("modals.course.editHeader")}{" "}
+        {modalContent === 'createCourse'
+          ? t('modals.course.createHeader')
+          : t('modals.course.editHeader')}{' '}
         {/* Изменение: Текст заголовка */}
         <IconButton
           aria-label="close"
           onClick={handleClose}
           sx={{
-            position: "absolute",
+            position: 'absolute',
             right: 8,
             top: 8,
             color: (theme) => theme.palette.grey[500],
@@ -43,33 +43,33 @@ const CourseModal = ({
         </IconButton>
       </DialogTitle>
       <DialogContent>
-        {(modalContent === "createCourse" || modalContent === "editCourse") && (
+        {(modalContent === 'createCourse' || modalContent === 'editCourse') && (
           <form
             onSubmit={
-              modalContent === "createCourse" ? handleSubmit : handleEditSubmit
+              modalContent === 'createCourse' ? handleSubmit : handleEditSubmit
             }
           >
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <TextField
                   name="name"
-                  label={t("modals.course.nameLabel")}
+                  label={t('modals.course.nameLabel')}
                   type="text"
                   defaultValue={
-                    modalContent === "editCourse" ? courseData.name : "" // Изменение: Используем courseData.name
+                    modalContent === 'editCourse' ? courseData.name : '' // Изменение: Используем courseData.name
                   }
                   fullWidth
                   required
-                  style={{ marginTop: "10px" }}
+                  style={{ marginTop: '10px' }}
                 />
               </Grid>
               <Grid item xs={12}>
                 <TextField
                   name="description"
-                  label={t("modals.course.descriptionLabel")}
+                  label={t('modals.course.descriptionLabel')}
                   multiline
                   defaultValue={
-                    modalContent === "editCourse" ? courseData.description : "" // Изменение: Используем courseData.description
+                    modalContent === 'editCourse' ? courseData.description : '' // Изменение: Используем courseData.description
                   }
                   fullWidth
                   required
@@ -78,15 +78,15 @@ const CourseModal = ({
             </Grid>
             <DialogActions>
               <Button onClick={handleClose}>
-                {t("modals.course.cancelButton")}
+                {t('modals.course.cancelButton')}
               </Button>
-              <Button type="submit">{t("modals.course.submitButton")}</Button>
-              {modalContent === "editCourse" && (
+              <Button type="submit">{t('modals.course.submitButton')}</Button>
+              {modalContent === 'editCourse' && (
                 <Button
                   onClick={() => handleDeleteCourse(courseData._id)} // Изменение: Используем courseData._id
                   color="error"
                 >
-                  {t("modals.course.deleteButton")}
+                  {t('modals.course.deleteButton')}
                 </Button>
               )}
             </DialogActions>

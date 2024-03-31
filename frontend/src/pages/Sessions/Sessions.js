@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import SessionModal from "../../components/SessionModal";
-import StudentIdModal from "../../components/StudentIdModal";
-import EventNoteIcon from "@mui/icons-material/EventNote";
+import React, { useEffect, useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import SessionModal from '../../components/SessionModal';
+import StudentIdModal from '../../components/StudentIdModal';
+import EventNoteIcon from '@mui/icons-material/EventNote';
 import {
   Button,
   Typography,
@@ -14,13 +14,13 @@ import {
   Box,
   Paper,
   Snackbar,
-} from "@mui/material";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import QRIcon from "@mui/icons-material/QrCode";
-import BarChartIcon from "@mui/icons-material/BarChart";
+} from '@mui/material';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import QRIcon from '@mui/icons-material/QrCode';
+import BarChartIcon from '@mui/icons-material/BarChart';
 import { useTranslation } from 'react-i18next';
 import dateTimeFormats from '../../dateTimeFormats.json';
-import dayjs from "dayjs";
+import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 
 dayjs.extend(customParseFormat);
@@ -38,10 +38,10 @@ const Course = () => {
   const [existingStudentIds, setExistingStudentIds] = useState([]);
   const [openStudentIdModal, setOpenStudentIdModal] = useState(false);
   const [snackbarOpen, setSnackbarOpen] = useState(false);
-  const [snackbarMessage, setSnackbarMessage] = useState("");
+  const [snackbarMessage, setSnackbarMessage] = useState('');
   const { t, i18n } = useTranslation();
 
-  const backendUrl = process.env.REACT_APP_BACKEND_URL || "";
+  const backendUrl = process.env.REACT_APP_BACKEND_URL || '';
 
   useEffect(() => {
     const fetchCourse = async () => {
@@ -57,9 +57,9 @@ const Course = () => {
   const handleSubmitStudentIds = async (updatedStudentIds) => {
     try {
       const response = await fetch(`${backendUrl}/api/courses/${courseId}`, {
-        method: "PATCH",
+        method: 'PATCH',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({ students: updatedStudentIds }),
       });
@@ -72,13 +72,13 @@ const Course = () => {
       setSnackbarOpen(true);
       setSnackbarMessage(t('sessions.updateOk'));
     } catch (error) {
-      console.error("Error updating session:", error);
+      console.error('Error updating session:', error);
       setSnackbarMessage(t('sessions.updateFail'));
     }
   };
 
   const handleCreateSession = () => {
-    setModalContent("createSession");
+    setModalContent('createSession');
     setOpenModal(true);
   };
 
@@ -86,21 +86,27 @@ const Course = () => {
     event.preventDefault(); // Prevent the form from causing a page reload
     const formData = new FormData(event.target);
 
-    const start = dayjs(formData.get("start"), dateTimeFormats.datetime[i18n.language]).valueOf();
-    const end = dayjs(formData.get("end"), dateTimeFormats.datetime[i18n.language]).valueOf();
+    const start = dayjs(
+      formData.get('start'),
+      dateTimeFormats.datetime[i18n.language]
+    ).valueOf();
+    const end = dayjs(
+      formData.get('end'),
+      dateTimeFormats.datetime[i18n.language]
+    ).valueOf();
 
     const sessionData = {
-      name: formData.get("name"),
-      description: formData.get("description"),
+      name: formData.get('name'),
+      description: formData.get('description'),
       start,
-      end
+      end,
     };
 
     try {
       const response = await fetch(`${backendUrl}/api/sessions/${courseId}`, {
-        method: "POST",
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify(sessionData),
       });
@@ -119,7 +125,7 @@ const Course = () => {
         throw new Error(response.error);
       }
     } catch (error) {
-      console.error("Error creating session:", error);
+      console.error('Error creating session:', error);
     }
   };
 
@@ -128,7 +134,7 @@ const Course = () => {
       const response = await fetch(
         `${backendUrl}/api/sessions/${courseId}/${sessionId}`,
         {
-          method: "DELETE",
+          method: 'DELETE',
         }
       );
 
@@ -146,7 +152,7 @@ const Course = () => {
       setModalContent(null); // Reset modal content
       setCurrentSession(null); // Reset current session, if applicable
     } catch (error) {
-      console.error("Error deleting session:", error);
+      console.error('Error deleting session:', error);
     }
   };
 
@@ -154,12 +160,12 @@ const Course = () => {
     const urlFriendlySessionName = encodeURIComponent(sessionName); // Ensure the session name is URL-friendly
     // Append courseId and sessionId as query parameters
     const url = `/share/${urlFriendlySessionName}?courseId=${courseId}&sessionId=${sessionId}`;
-    window.open(url, "_blank");
+    window.open(url, '_blank');
   };
 
   const handleOpenEditModal = (session) => {
     setCurrentSession(session); // Set the current session to the one selected for editing
-    setModalContent("editSession");
+    setModalContent('editSession');
     setOpenModal(true);
   };
 
@@ -167,23 +173,29 @@ const Course = () => {
     event.preventDefault(); // Prevent the form from submitting in the traditional way
     const formData = new FormData(event.currentTarget);
 
-    const start = dayjs(formData.get("start"), dateTimeFormats.datetime[i18n.language]).valueOf();
-    const end = dayjs(formData.get("end"), dateTimeFormats.datetime[i18n.language]).valueOf();
+    const start = dayjs(
+      formData.get('start'),
+      dateTimeFormats.datetime[i18n.language]
+    ).valueOf();
+    const end = dayjs(
+      formData.get('end'),
+      dateTimeFormats.datetime[i18n.language]
+    ).valueOf();
 
     const updatedSessionData = {
-      name: formData.get("name"),
-      description: formData.get("description"),
+      name: formData.get('name'),
+      description: formData.get('description'),
       start,
-      end
+      end,
     };
 
     try {
       const response = await fetch(
         `${backendUrl}/api/sessions/${courseId}/${currentSession._id}`,
         {
-          method: "PATCH",
+          method: 'PATCH',
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
           body: JSON.stringify(updatedSessionData),
         }
@@ -198,7 +210,7 @@ const Course = () => {
       setModalContent(null);
       //update the course or session list to reflect the changes
     } catch (error) {
-      console.error("Error updating session:", error);
+      console.error('Error updating session:', error);
       // Handle error cases
     }
   };
@@ -213,16 +225,16 @@ const Course = () => {
         let color;
         switch (feedback.rating) {
           case 1:
-            color = "red"; // Negative feedback
+            color = 'red'; // Negative feedback
             break;
           case 2:
-            color = "yellow"; // Neutral feedback
+            color = 'yellow'; // Neutral feedback
             break;
           case 3:
-            color = "green"; // Positive feedback
+            color = 'green'; // Positive feedback
             break;
           default:
-            color = "grey"; // Unknown or undefined rating
+            color = 'grey'; // Unknown or undefined rating
         }
 
         return {
@@ -235,29 +247,37 @@ const Course = () => {
 
       const aggregatedData = [
         {
-          value: transformedData.filter((d) => d.color === "green").length,
+          value: transformedData.filter((d) => d.color === 'green').length,
           label: t('sessions.positiveLabel'),
-          color: "green",
+          color: 'green',
         },
         {
-          value: transformedData.filter((d) => d.color === "yellow").length,
+          value: transformedData.filter((d) => d.color === 'yellow').length,
           label: t('sessions.neutralLabel'),
-          color: "yellow",
+          color: 'yellow',
         },
         {
-          value: transformedData.filter((d) => d.color === "red").length,
+          value: transformedData.filter((d) => d.color === 'red').length,
           label: t('sessions.negativeLabel'),
-          color: "red",
+          color: 'red',
         },
       ]
         .filter((d) => d.value > 0) // Filter out categories with no feedback
         .map((d) => ({ ...d, label: `${d.label} (${d.value})` }));
       setFeedbackData([{ data: aggregatedData }]);
-      setModalContent("statistics");
+      setModalContent('statistics');
       setOpenModal(true);
 
       // Extract and store feedback texts
-      const texts = data.feedbacks.map((feedback) => feedback.text);
+      const texts = data.feedbacks.map((feedback) => {
+        const createdAt = new Date(feedback.createdAt);
+        const formattedDate = `${createdAt.toLocaleDateString()} ${createdAt.toLocaleTimeString()}`;
+
+        return {
+          text: feedback.text,
+          createdAt: formattedDate,
+        };
+      });
       setFeedbackTexts(texts);
     }
   };
@@ -290,13 +310,13 @@ const Course = () => {
           variant="h4"
           gutterBottom
           textAlign="center"
-          sx={{ fontWeight: "bold", mt: 2, color: "#232222" }}
+          sx={{ fontWeight: 'bold', mt: 2, color: '#232222' }}
         >
           {t('sessions.course')}: {course.name}
         </Typography>
         <Typography variant="subtitle1" gutterBottom textAlign="center">
-          {t('sessions.studentsNum')}:{" "}
-          {course.students ? existingStudentIds.length : "N/A"}
+          {t('sessions.studentsNum')}:{' '}
+          {course.students ? existingStudentIds.length : 'N/A'}
           <Button
             variant="outlined"
             color="primary"
@@ -309,7 +329,7 @@ const Course = () => {
       </Box>
 
       <Typography variant="h5" gutterBottom>
-        <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
           <EventNoteIcon /> {t('sessions.header')}
         </Box>
       </Typography>
@@ -324,7 +344,7 @@ const Course = () => {
       {course.sessions.map((session) => (
         <Paper
           elevation={4}
-          sx={{ mb: 2, overflow: "hidden" }}
+          sx={{ mb: 2, overflow: 'hidden' }}
           key={session._id}
         >
           <Accordion>
@@ -334,22 +354,33 @@ const Course = () => {
               id="panel1a-header"
             >
               <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                {session.name} - {dayjs(session.start).format(dateTimeFormats.date[i18n.language])}
+                {session.name} -{' '}
+                {dayjs(session.start).format(
+                  dateTimeFormats.date[i18n.language]
+                )}
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
-              <Typography>{t('sessions.description')}: {session.description}</Typography>
               <Typography>
-                {t('sessions.start')}: {dayjs(session.start).format(dateTimeFormats.datetime[i18n.language])}
+                {t('sessions.description')}: {session.description}
               </Typography>
               <Typography>
-              {t('sessions.end')}: {dayjs(session.end).format(dateTimeFormats.datetime[i18n.language])}
+                {t('sessions.start')}:{' '}
+                {dayjs(session.start).format(
+                  dateTimeFormats.datetime[i18n.language]
+                )}
+              </Typography>
+              <Typography>
+                {t('sessions.end')}:{' '}
+                {dayjs(session.end).format(
+                  dateTimeFormats.datetime[i18n.language]
+                )}
               </Typography>
               <Box
                 sx={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
                   mt: 2,
                 }}
               >

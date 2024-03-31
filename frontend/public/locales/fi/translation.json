@@ -1,110 +1,111 @@
 {
-    "coursesList": {
-      "header": "Kurssisi",
-      "createButton": "Luo Kurssi",
-      "editButton": "Muokkaa",
-      "deleteButton": "Poista",
-      "goToCourseButton": "Siirry Kurssille"
+  "coursesList": {
+    "header": "Kurssisi",
+    "createButton": "Luo Kurssi",
+    "editButton": "Muokkaa",
+    "deleteButton": "Poista",
+    "goToCourseButton": "Siirry Kurssille"
+  },
+  "feedback": {
+    "rate": "Arvio:",
+    "positive": "Positiivinen",
+    "neutral": "Neutraali",
+    "negative": "Negatiivinen",
+    "studentIdLabel": "Opiskelija ID",
+    "openFeedbackLabel": "Avoin palaute",
+    "submit": "Lähetä",
+    "successMessage": "Palaute lähetetty onnistuneesti!",
+    "errorMessage": "Palautteen lähetys epäonnistui. Yritä uudelleen."
+  },
+  "login": {
+    "header": "Tervetuloa takaisin!",
+    "emailAddressLabel": "Sähköpostiosoite",
+    "passwordLabel": "Salasana",
+    "loginButton": "Kirjaudu sisään",
+    "errorMessage": "Kirjautuminen epäonnistui",
+    "signUpPrompt": "Eikö sinulla ole tiliä? Rekisteröidy",
+    "emailAndPasswordRequired": "Sähköposti ja salasana vaaditaan."
+  },
+  "signUp": {
+    "header": "Rekisteröidy",
+    "firstNameLabel": "Etunimi",
+    "lastNameLabel": "Sukunimi",
+    "emailAddressLabel": "Sähköpostiosoite",
+    "passwordLabel": "Salasana",
+    "signUpButton": "Rekisteröidy",
+    "signInPrompt": "Onko sinulla jo tili? Kirjaudu sisään"
+  },
+  "sessions": {
+    "header": "Istunnot",
+    "createSessionButton": "Luo Istunto",
+    "editButton": "Muokkaa",
+    "deleteButton": "Poista",
+    "generateQRButton": "Luo QR",
+    "showStatisticsButton": "Näytä Tilastot",
+    "loadingText": "Ladataan",
+    "updateFail": "Päivitys epäonnistui.",
+    "updateOk": "Istunnon päivitys onnistui!",
+    "createFail": "Istunnon luominen epäonnistui",
+    "deleteFail": "Istunnon poistaminen epäonnistui.",
+    "rating": "Arviointi",
+    "positiveLabel": "Positiivinen",
+    "neutralLabel": "Neutraali",
+    "negativeLabel": "Negatiivinen",
+    "course": "Kurssi",
+    "addStudents": "Lisää opiskelijoita",
+    "description": "Kuvaus",
+    "start": "Aloitus",
+    "end": "Loppu",
+    "studentsNum": "Opiskelijat rekisteröitynyt"
+  },
+  "qr": {
+    "header": "Tunti",
+    "startLabel": "Alku",
+    "endLabel": "Loppu",
+    "feedbackPrompt": "Skannaa QR-koodi tai",
+    "clickHere": "klikkaa tästä",
+    "feedbackPrompt2": "antaaksesi palautetta tunnista."
+  },
+  "navbar": {
+    "courses": "Kurssit",
+    "logout": "Kirjaudu ulos"
+  },
+  "modals": {
+    "course": {
+      "createHeader": "Luo Uusi Kurssi",
+      "editHeader": "Muokkaa Kurssia",
+      "nameLabel": "Kurssin Nimi",
+      "descriptionLabel": "Kurssin Kuvaus",
+      "deleteButton": "Poista Kurssi",
+      "cancelButton": "Peruuta",
+      "submitButton": "Lähetä"
+    },
+    "session": {
+      "createHeader": "Luo Uusi Istunto",
+      "editHeader": "Muokkaa Istuntoa",
+      "nameLabel": "Istunnon Nimi",
+      "descriptionLabel": "Istunnon Kuvaus",
+      "startLabel": "Aloitusaika",
+      "endLabel": "Päättymisaika",
+      "deleteButton": "Poista Istunto",
+      "cancelButton": "Peruuta",
+      "submitButton": "Lähetä",
+      "statisticsHeader": "Istunnon Palaute"
+    },
+    "studentId": {
+      "header": "Opiskelija ID:t",
+      "instruction": "Lisää opiskelija ID(t) listaan ja paina \"Lähetä\" tehdäksesi muutokset",
+      "inputLabel": "Syötä Opiskelija ID",
+      "cancelButton": "Peruuta",
+      "submitButton": "Lähetä",
+      "numbersOnly": "Lisää vain numeroita!",
+      "alreadyExists": "Opiskelija ID on jo lisätty!"
     },
     "feedback": {
-      "rate": "Arvio:",
-      "positive": "Positiivinen",
-      "neutral": "Neutraali",
-      "negative": "Negatiivinen",
-      "studentIdLabel": "Opiskelija ID",
-      "openFeedbackLabel": "Avoin palaute",
-      "submit": "Lähetä",
-      "successMessage": "Palaute lähetetty onnistuneesti!",
-      "errorMessage": "Palautteen lähetys epäonnistui. Yritä uudelleen."
-    },
-    "login": {
-      "header": "Tervetuloa takaisin!",
-      "emailAddressLabel": "Sähköpostiosoite",
-      "passwordLabel": "Salasana",
-      "loginButton": "Kirjaudu sisään",
-      "errorMessage": "Kirjautuminen epäonnistui",
-      "signUpPrompt": "Eikö sinulla ole tiliä? Rekisteröidy",
-      "emailAndPasswordRequired": "Sähköposti ja salasana vaaditaan."
-    },
-    "signUp": {
-      "header": "Rekisteröidy",
-      "firstNameLabel": "Etunimi",
-      "lastNameLabel": "Sukunimi",
-      "emailAddressLabel": "Sähköpostiosoite",
-      "passwordLabel": "Salasana",
-      "signUpButton": "Rekisteröidy",
-      "signInPrompt": "Onko sinulla jo tili? Kirjaudu sisään"
-    },
-    "sessions": {
-      "header": "Istunnot",
-      "createSessionButton": "Luo Istunto",
-      "editButton": "Muokkaa",
-      "deleteButton": "Poista",
-      "generateQRButton": "Luo QR",
-      "showStatisticsButton": "Näytä Tilastot",
-      "loadingText": "Ladataan",
-      "updateFail": "Päivitys epäonnistui.",
-      "updateOk": "Istunnon päivitys onnistui!",
-      "createFail": "Istunnon luominen epäonnistui",
-      "deleteFail": "Istunnon poistaminen epäonnistui.",
-      "rating": "Arviointi",
-      "positiveLabel": "Positiivinen",
-      "neutralLabel": "Neutraali",
-      "negativeLabel": "Negatiivinen",
-      "course": "Kurssi",
-      "addStudents": "Lisää opiskelijoita",
-      "description": "Kuvaus",
-      "start": "Aloitus",
-      "end": "Loppu",
-      "studentsNum": "Opiskelijat rekisteröitynyt"
-    },
-    "qr": {
-      "header": "Tunti",
-      "startLabel": "Alku",
-      "endLabel": "Loppu",
-      "feedbackPrompt": "Skannaa QR-koodi tai",
-      "clickHere": "klikkaa tästä", 
-      "feedbackPrompt2": "antaaksesi palautetta tunnista."
-      
-    },
-    "navbar": {
-      "courses": "Kurssit",
-      "logout": "Kirjaudu ulos"
-    },
-    "modals": {
-      "course": {
-        "createHeader": "Luo Uusi Kurssi",
-        "editHeader": "Muokkaa Kurssia",
-        "nameLabel": "Kurssin Nimi",
-        "descriptionLabel": "Kurssin Kuvaus",
-        "deleteButton": "Poista Kurssi",
-        "cancelButton": "Peruuta",
-        "submitButton": "Lähetä"
-      },
-      "session": {
-        "createHeader": "Luo Uusi Istunto",
-        "editHeader": "Muokkaa Istuntoa",
-        "nameLabel": "Istunnon Nimi",
-        "descriptionLabel": "Istunnon Kuvaus",
-        "startLabel": "Aloitusaika",
-        "endLabel": "Päättymisaika",
-        "deleteButton": "Poista Istunto",
-        "cancelButton": "Peruuta",
-        "submitButton": "Lähetä",
-        "statisticsHeader": "Istunnon Palaute"
-      },
-      "studentId": {
-        "header": "Opiskelija ID:t",
-        "instruction": "Lisää opiskelija ID(t) listaan ja paina \"Lähetä\" tehdäksesi muutokset",
-        "inputLabel": "Syötä Opiskelija ID",
-        "cancelButton": "Peruuta",
-        "submitButton": "Lähetä",
-        "numbersOnly": "Lisää vain numeroita!",
-        "alreadyExists": "Opiskelija ID on jo lisätty!"
-      },
-      "feedback": {
-        "textFeedbackHeader": "Kurssin Palaute",
-        "textFeedback": "Tekstin Palaute"
-      }
+      "textFeedbackHeader": "Kurssin Palaute",
+      "textFeedback": "Tekstin Palaute",
+      "noTextFeedbackMessage": "No text feedback provided.",
+      "noFeedbackMessage": "The session has not received any feedback."
     }
   }
+}

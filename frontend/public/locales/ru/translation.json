@@ -58,14 +58,13 @@
     "end": "Конец",
     "studentsNum": "Студентов на курсе"
   },
-  "qr":  {
+  "qr": {
     "header": "Тема урока",
     "startLabel": "Начало урока",
     "endLabel": "Конец урока",
     "feedbackPrompt": "Отсканируйте QR-код или",
     "clickHere": "кликните здесь",
     "feedbackPrompt2": "чтобы оставить свой отзыв уроку."
-    
   },
   "navbar": {
     "courses": "Курсы",
@@ -106,7 +105,9 @@
     },
     "feedback": {
       "textFeedbackHeader": "Статистика Сессии",
-      "textFeedback": "Текстовый Отзыв"
+      "textFeedback": "Текстовый Отзыв",
+      "noTextFeedbackMessage": "No text feedback provided.",
+      "noFeedbackMessage": "The session has not received any feedback."
     }
   }
 }

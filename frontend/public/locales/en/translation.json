@@ -65,7 +65,6 @@
     "feedbackPrompt": "Scan QR code or ",
     "clickHere": "click here",
     "feedbackPrompt2": " to give your feedback on the session."
-    
   },
   "navbar": {
     "courses": "Courses",
@@ -104,7 +103,9 @@
     },
     "feedback": {
       "textFeedbackHeader": "Session Statistics",
-      "textFeedback": "Text Feedback"
+      "textFeedback": "Text Feedback",
+      "noTextFeedbackMessage": "No text feedback provided.",
+      "noFeedbackMessage": "The session has not received any feedback."
     }
   }
 }
