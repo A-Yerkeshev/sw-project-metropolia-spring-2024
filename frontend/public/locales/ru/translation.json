@@ -36,7 +36,7 @@
     "signInPrompt": "Уже есть аккаунт? Войти"
   },
   "sessions": {
-    "header": "Сессии",
+    "header": "Лекции",
     "createSessionButton": "Создать сессию",
     "editButton": "Редактировать",
     "deleteButton": "Удалить",
