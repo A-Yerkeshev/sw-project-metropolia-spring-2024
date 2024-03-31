@@ -14,6 +14,7 @@
     "studentIdLabel": "Mã số học sinh",
     "openFeedbackLabel": "Nhận xét",
     "submit": "Gửi",
+    "ratingAndIdRequired": "Đánh giá và mã số học sinh cần được nhập.",
     "successMessage": "Đánh giá được gửi thành công!",
     "errorMessage": "Gửi đánh giá không thành công. Vui lòng thử lại."
   },

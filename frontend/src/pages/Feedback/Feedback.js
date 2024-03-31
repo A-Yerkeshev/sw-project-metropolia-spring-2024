@@ -46,6 +46,12 @@ const Feedback = () => {
   };
 
   const handleSubmit = async () => {
+    if (!rating || !studentId.trim()) {
+      setSubmitStatus('error');
+      setSubmitMessage(t('feedback.ratingAndIdRequired'));
+      return;
+    }
+
     try {
       const response = await fetch(`${backendUrl}/api/feedbacks`, {
         method: 'POST',
@@ -200,6 +206,7 @@ const Feedback = () => {
               type="number"
               margin="normal"
               fullWidth
+              required
               value={studentId}
               onChange={handleChangeStudentId}
             />
