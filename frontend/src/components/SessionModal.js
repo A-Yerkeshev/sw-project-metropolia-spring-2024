@@ -22,6 +22,8 @@ import 'dayjs/locale/ru';
 import { ruRU } from '@mui/x-date-pickers/locales';
 import 'dayjs/locale/fi';
 import { fiFI } from '@mui/x-date-pickers/locales';
+import 'dayjs/locale/vi';
+import { viVN } from '@mui/x-date-pickers/locales';
 
 const SessionModal = ({
   feedbackData = [],
@@ -43,6 +45,12 @@ const SessionModal = ({
       break;
     case 'fi':
       placeholdersLocale = fiFI;
+      break;
+    case 'vi':
+      placeholdersLocale = viVN;
+      break;
+    default:
+      placeholdersLocale = enUS;
       break;
   }
 

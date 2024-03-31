@@ -1,19 +1,19 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { useAuthContext } from "./hooks/useAuthContext";
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { useAuthContext } from './hooks/useAuthContext';
 
 // pages & components
-import Signup from "./pages/Login/Signup";
-import Login from "./pages/Login/Login";
-import QR from "./pages/QR";
-import Feedback from "./pages/Feedback/Feedback";
-import Navbar from "./components/Navbar/Navbar";
-import Courses from "./pages/CoursesList/Courses";
-import Sessions from "./pages/Sessions/Sessions";
-import Users from "./pages/Users/Users";
+import Signup from './pages/Login/Signup';
+import Login from './pages/Login/Login';
+import QR from './pages/QR';
+import Feedback from './pages/Feedback/Feedback';
+import Navbar from './components/Navbar/Navbar';
+import Courses from './pages/CoursesList/Courses';
+import Sessions from './pages/Sessions/Sessions';
+import Users from './pages/Users/Users';
 
 function App() {
   const { user } = useAuthContext();
-  console.log({ user });
+  //console.log({ user });
 
   return (
     <div className="App">

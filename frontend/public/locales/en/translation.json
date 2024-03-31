@@ -44,7 +44,7 @@
     "showStatisticsButton": "Show Statistics",
     "loadingText": "Loading",
     "updateFail": "Failed to update session.",
-    "updateOk": "Session updated successfully!",
+    "updateOk": "Updated successfully!",
     "createFail": "Failed to create session",
     "deleteFail": "Failed to delete session.",
     "rating": "Rating",

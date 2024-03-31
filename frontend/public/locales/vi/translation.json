@@ -1,0 +1,111 @@
+{
+  "coursesList": {
+    "header": "Khóa học",
+    "createButton": "Tạo khóa học",
+    "editButton": "Sửa",
+    "deleteButton": "Xóa",
+    "goToCourseButton": "Tới khóa học"
+  },
+  "feedback": {
+    "rate": "Đánh giá:",
+    "positive": "Tốt",
+    "neutral": "Trung bình",
+    "negative": "Không tốt",
+    "studentIdLabel": "Mã số học sinh",
+    "openFeedbackLabel": "Nhận xét",
+    "submit": "Gửi",
+    "successMessage": "Đánh giá được gửi thành công!",
+    "errorMessage": "Gửi đánh giá không thành công. Vui lòng thử lại."
+  },
+  "login": {
+    "header": "Chào mừng trở lại!",
+    "emailAddressLabel": "Địa chỉ email",
+    "passwordLabel": "Mật khẩu",
+    "loginButton": "Đăng nhập",
+    "errorMessage": "Đăng nhập không thành công",
+    "signUpPrompt": "Chưa có tài khoản? Đăng kí",
+    "emailAndPasswordRequired": "Email và mật khẩu cần được nhập"
+  },
+  "signUp": {
+    "header": "Đăng kí",
+    "firstNameLabel": "Tên",
+    "lastNameLabel": "Họ",
+    "emailAddressLabel": "Địa chỉ email",
+    "passwordLabel": "Mật khẩu",
+    "signUpButton": "Đăng kí",
+    "signInPrompt": "Đã tạo tài khoản? Đăng nhập"
+  },
+  "sessions": {
+    "header": "Tiết học",
+    "createSessionButton": "Tạo tiết học",
+    "editButton": "Sửa",
+    "deleteButton": "Xóa",
+    "generateQRButton": "Tạo mã QR",
+    "showStatisticsButton": "Hiển thị đánh giá",
+    "loadingText": "Đang tải",
+    "updateFail": "Cập nhật tiết học không thành công.",
+    "updateOk": "Cập nhật thành công!",
+    "createFail": "Tạo tiết học không thành công.",
+    "deleteFail": "Xóa tiết học không thành công.",
+    "rating": "Đánh giá",
+    "positiveLabel": "Tốt",
+    "neutralLabel": "Trung bình",
+    "negativeLabel": "Không tốt",
+    "course": "Khóa học",
+    "addStudents": "Thêm học sinh",
+    "description": "Thông tin tiết học",
+    "start": "Bắt đầu",
+    "end": "Kết thúc",
+    "studentsNum": "Học sinh đã tham gia khóa học"
+  },
+  "qr": {
+    "header": "Tiết học",
+    "startLabel": "Bắt đầu",
+    "endLabel": "Kết thúc",
+    "feedbackPrompt": "Quét mã QR hoặc ",
+    "clickHere": "bấm vào đây",
+    "feedbackPrompt2": " để gửi đánh giá cho tiết học."
+  },
+  "navbar": {
+    "courses": "Khóa học",
+    "logout": "Đăng xuất"
+  },
+  "modals": {
+    "course": {
+      "createHeader": "Tạo khóa học mới",
+      "editHeader": "Sửa khóa học",
+      "nameLabel": "Tên khóa học",
+      "descriptionLabel": "Thông tin khóa học",
+      "deleteButton": "Xóa khóa học",
+      "cancelButton": "Hủy",
+      "submitButton": "Gửi"
+    },
+    "session": {
+      "createHeader": "Tạo tiết học mới",
+      "editHeader": "Sửa tiết học",
+      "nameLabel": "Tên tiết học",
+      "descriptionLabel": "Thông tin tiết học",
+      "startLabel": "Thời gian bắt đầu",
+      "endLabel": "Thời gian kết thúc",
+      "deleteButton": "Xóa tiết học",
+      "cancelButton": "Hủy",
+      "submitButton": "Gửi",
+      "statisticsHeader": "Đánh giá về tiết học"
+    },
+    "studentId": {
+      "header": "Mã số học sinh",
+      "instruction": "Nhập mã số học sinh vào danh sách và bấm \"Gửi\" để cập nhật thay đổi.",
+      "inputLabel": "Nhập mã số học sinh",
+      "cancelButton": "Hủy",
+      "submitButton": "Gửi",
+      "numbersOnly": "Vui lòng chỉ nhập số!",
+      "alreadyExists": "Mã số học sinh đã tồn tại trong danh sách!"
+    },
+    "feedback": {
+      "textFeedbackHeader": "Đánh giá về tiết học",
+      "textFeedback": "Nhận xét",
+      "noTextFeedbackMessage": "Đánh giá không đi kèm nhận xét bằng văn bản.",
+      "noFeedbackMessage": "Tiết học chưa nhận được đánh giá nào."
+    }
+  }
+}
