@@ -7,12 +7,12 @@
     "goToCourseButton": "Перейти к курсу"
   },
   "feedback": {
-    "rate": "Оцените урок:",
+    "rate": "Оцените лекцию:",
     "positive": "Положительно",
     "neutral": "Нейтрально",
     "negative": "Отрицательно",
     "studentIdLabel": "Ваш id номер",
-    "openFeedbackLabel": "Комментарии к уроку",
+    "openFeedbackLabel": "Комментарии к лекции",
     "submit": "Отправить",
     "successMessage": "Отзыв успешно отправлен!",
     "errorMessage": "Не удалось отправить отзыв. Пожалуйста, попробуйте снова."
@@ -37,16 +37,16 @@
   },
   "sessions": {
     "header": "Лекции",
-    "createSessionButton": "Создать сессию",
+    "createSessionButton": "Создать лекцию",
     "editButton": "Редактировать",
     "deleteButton": "Удалить",
     "generateQRButton": "Сгенерировать QR",
     "showStatisticsButton": "Показать статистику",
     "loadingText": "Загрузка",
-    "updateFail": "Не удалось обновить сессию.",
-    "updateOk": "Сессия обновлена!",
-    "createFail": "Не удалось создать сессию",
-    "deleteFail": "Не удалось удалить сессию.",
+    "updateFail": "Не удалось обновить лекцию.",
+    "updateOk": "Лекция обновлена!",
+    "createFail": "Не удалось создать лекцию",
+    "deleteFail": "Не удалось удалить лекцию.",
     "rating": "Оценка",
     "positiveLabel": "Хорошо",
     "neutralLabel": "Обычно",
@@ -54,17 +54,17 @@
     "course": "Курс",
     "addStudents": "Добавить студентов",
     "description": "Описание",
-    "start": "Начало",
-    "end": "Конец",
+    "start": "Начало лекции",
+    "end": "Конец лекции",
     "studentsNum": "Студентов на курсе"
   },
   "qr": {
-    "header": "Тема урока",
-    "startLabel": "Начало урока",
-    "endLabel": "Конец урока",
+    "header": "Тема лекции",
+    "startLabel": "Начало лекции",
+    "endLabel": "Конец лекции",
     "feedbackPrompt": "Отсканируйте QR-код или",
     "clickHere": "кликните здесь",
-    "feedbackPrompt2": "чтобы оставить свой отзыв уроку."
+    "feedbackPrompt2": "чтобы оставить свой отзыв лекции."
   },
   "navbar": {
     "courses": "Курсы",
@@ -82,20 +82,20 @@
       "submitBtnEdit": "Обновить"
     },
     "session": {
-      "createHeader": "Создать новую сессию",
-      "editHeader": "Редактировать сессию",
-      "nameLabel": "Название сессии",
-      "descriptionLabel": "Описание сессии",
-      "startLabel": "Начало",
-      "endLabel": "Конец",
-      "deleteButton": "Удалить сессию",
+      "createHeader": "Создать новую лекцию",
+      "editHeader": "Редактировать лекцию",
+      "nameLabel": "Название лекции",
+      "descriptionLabel": "Описание лекции",
+      "startLabel": "Начало лекции",
+      "endLabel": "Конец лекции",
+      "deleteButton": "Удалить лекцию",
       "cancelButton": "Отмена",
       "submitButton": "Создать",
       "submitBtnEdit": "Обновить",
       "statisticsHeader": "Статистика"
     },
     "studentId": {
-      "header": "Id номера студентов",
+      "header": "ID студентов",
       "instruction": "Введите id студента(ов) в список и нажмите \"Добавить\"",
       "inputLabel": "Введите id студента",
       "cancelButton": "Отмена",
@@ -104,10 +104,10 @@
       "alreadyExists": "Студент с таким id уже добавлен"
     },
     "feedback": {
-      "textFeedbackHeader": "Статистика Сессии",
-      "textFeedback": "Текстовый Отзыв",
-      "noTextFeedbackMessage": "No text feedback provided.",
-      "noFeedbackMessage": "The session has not received any feedback."
+      "textFeedbackHeader": "Статистика по данной лекции",
+      "textFeedback": "Дополнительные комментарии:",
+      "noTextFeedbackMessage": "Письменных отзывов к данной лекции нет",
+      "noFeedbackMessage": "Нет отзывов"
     }
   }
 }
