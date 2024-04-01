@@ -1,34 +1,35 @@
-import * as React from "react";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import CssBaseline from "@mui/material/CssBaseline";
-import TextField from "@mui/material/TextField";
-import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
-import Link from "@mui/material/Link";
-import { useNavigate } from "react-router-dom";
-import { useSignup } from "../../hooks/useSignUp";
-import { useTranslation } from "react-i18next";
-import StudentNavbar from "../../components/Navbar/StudentNavbar";
+import * as React from 'react';
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import CssBaseline from '@mui/material/CssBaseline';
+import TextField from '@mui/material/TextField';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import Link from '@mui/material/Link';
+import { useNavigate } from 'react-router-dom';
+import { useSignup } from '../../hooks/useSignUp';
+import { useTranslation } from 'react-i18next';
+import StudentNavbar from '../../components/Navbar/StudentNavbar';
 
 export default function SignUp() {
   const navigate = useNavigate();
   const { signup, error, isLoading } = useSignup();
-  const [firstName, setFirstName] = React.useState("");
-  const [lastName, setLastName] = React.useState("");
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
+  const [firstName, setFirstName] = React.useState('');
+  const [lastName, setLastName] = React.useState('');
+  const [email, setEmail] = React.useState('');
+  const [password, setPassword] = React.useState('');
   const { t, i18n } = useTranslation();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
     const success = await signup(firstName, lastName, email, password);
 
     if (success) {
-      navigate("/Courses");
+      navigate('/Courses');
     }
   };
 
@@ -40,16 +41,16 @@ export default function SignUp() {
         <Box
           sx={{
             marginTop: 8,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            {t("signUp.header")}
+            {t('signUp.header')}
           </Typography>
           <Box
             component="form"
@@ -65,7 +66,7 @@ export default function SignUp() {
                   required
                   fullWidth
                   id="firstName"
-                  label={t("signUp.firstNameLabel")}
+                  label={t('signUp.firstNameLabel')}
                   autoFocus
                   value={firstName}
                   onChange={(e) => setFirstName(e.target.value)}
@@ -76,7 +77,7 @@ export default function SignUp() {
                   required
                   fullWidth
                   id="lastName"
-                  label={t("signUp.lastNameLabel")}
+                  label={t('signUp.lastNameLabel')}
                   name="lastName"
                   autoComplete="lname"
                   value={lastName}
@@ -88,7 +89,7 @@ export default function SignUp() {
                   required
                   fullWidth
                   id="email"
-                  label={t("signUp.emailAddressLabel")}
+                  label={t('signUp.emailAddressLabel')}
                   name="email"
                   autoComplete="email"
                   value={email}
@@ -100,7 +101,7 @@ export default function SignUp() {
                   required
                   fullWidth
                   name="password"
-                  label={t("signUp.passwordLabel")}
+                  label={t('signUp.passwordLabel')}
                   type="password"
                   id="password"
                   autoComplete="new-password"
@@ -116,13 +117,13 @@ export default function SignUp() {
               sx={{ mt: 3, mb: 2 }}
               disabled={isLoading}
             >
-              {t("signUp.signUpButton")}
+              {t('signUp.signUpButton')}
             </Button>
             {error && <Typography color="error">{error}</Typography>}
             <Grid container justifyContent="flex-end">
               <Grid item>
                 <Link href="/" variant="body2">
-                  {t("signUp.signInPrompt")}
+                  {t('signUp.signInPrompt')}
                 </Link>
               </Grid>
             </Grid>

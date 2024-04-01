@@ -29,11 +29,17 @@ const loginUser = async (req, res) => {
 // signup user
 const signupUser = async (req, res) => {
   const { firstName, lastName, email, password } = req.body;
+  const language = req.headers['accept-language'];
 
   try {
-    const user = await User.signup(firstName, lastName, email, password);
+    const user = await User.signup(
+      firstName,
+      lastName,
+      email,
+      password,
+      language
+    );
 
-    console.log(user);
     // create token
     const token = createToken(user._id);
     const id = user._id;

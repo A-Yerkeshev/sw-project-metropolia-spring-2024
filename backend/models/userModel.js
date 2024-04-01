@@ -19,7 +19,8 @@ userSchema.statics.signup = async function (
   firstName,
   lastName,
   email,
-  password
+  password,
+  language
 ) {
   //validation
   if (!firstName || !lastName || !email || !password) {
@@ -28,7 +29,7 @@ userSchema.statics.signup = async function (
 
   const exists = await this.findOne({ email });
   if (exists) {
-    throw new Error('User already exists');
+    throw new Error(i18next.t('signUp.userExist', { lng: language }));
   }
 
   const salt = await bcrypt.genSalt(10);

@@ -2,6 +2,7 @@ const { Session } = require('../models/sessionModel');
 const { Feedback } = require('../models/feedbackModel');
 const mongoose = require('mongoose');
 const { Course } = require('../models/courseModel');
+const i18next = require('../i18n');
 
 // GET all feedbacks of a session in a course
 const getAllFeedbacks = async (req, res) => {
@@ -71,6 +72,7 @@ const getOneFeedback = async (req, res) => {
 // POST a feedback to a session in a course
 const createFeedback = async (req, res) => {
   const { sessionId, rating, text, studentId } = req.body;
+  const language = req.headers['accept-language'];
 
   // input validation
   if (!rating) {
@@ -102,28 +104,28 @@ const createFeedback = async (req, res) => {
 
     // check that student is enrolled for this course
     const course = await Course.findOne({ _id: session.course });
-    console.log(
-      `Checking for studentId ${studentId} from the studentId list of course ${course._id}`
-    );
+    // console.log(
+    //   `Checking for studentId ${studentId} from the studentId list of course ${course._id}`
+    // );
     if (!course.students.includes(studentId)) {
-      return res
-        .status(400)
-        .json({ error: 'You are not enrolled to this course.' });
+      return res.status(400).json({
+        error: i18next.t('feedback.studentNotEnrolled', { lng: language }),
+      });
     }
 
     // check that user has not submitted feedback for this session yet
-    console.log(
-      `Checking existing feedback for studentId: ${studentId}, sessionId: ${sessionId}`
-    );
+    // console.log(
+    //   `Checking existing feedback for studentId: ${studentId}, sessionId: ${sessionId}`
+    // );
     const existingFeedback = await Feedback.findOne({
       studentId: studentId,
       sessionId: sessionId,
     });
 
     if (existingFeedback) {
-      return res
-        .status(400)
-        .json({ error: 'You already submitted feedback for this session.' });
+      return res.status(400).json({
+        error: i18next.t('feedback.studentIdExist', { lng: language }),
+      });
     }
 
     // create new feedback and include provided session Id

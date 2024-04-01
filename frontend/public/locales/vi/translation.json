@@ -25,7 +25,7 @@
     "loginButton": "Đăng nhập",
     "errorMessage": "Đăng nhập không thành công",
     "signUpPrompt": "Chưa có tài khoản? Đăng kí",
-    "emailAndPasswordRequired": "Email và mật khẩu cần được nhập"
+    "emailAndPasswordRequired": "Email và mật khẩu cần được nhập."
   },
   "signUp": {
     "header": "Đăng kí",
@@ -34,7 +34,8 @@
     "emailAddressLabel": "Địa chỉ email",
     "passwordLabel": "Mật khẩu",
     "signUpButton": "Đăng kí",
-    "signInPrompt": "Đã tạo tài khoản? Đăng nhập"
+    "signInPrompt": "Đã tạo tài khoản? Đăng nhập",
+    "allFieldRequired": "Tất cả thông tin cần được nhập."
   },
   "sessions": {
     "header": "Tiết học",

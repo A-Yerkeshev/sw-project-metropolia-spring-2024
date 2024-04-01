@@ -34,7 +34,8 @@
     "emailAddressLabel": "Электронная почта",
     "passwordLabel": "Пароль",
     "signUpButton": "Зарегистрироваться",
-    "signInPrompt": "Уже есть аккаунт? Войти"
+    "signInPrompt": "Уже есть аккаунт? Войти",
+    "allFieldRequired": "All fields are required."
   },
   "sessions": {
     "header": "Лекции",

@@ -2,5 +2,12 @@
   "login": {
     "wrongPassword": "Mật khẩu không chính xác",
     "wrongEmail": "Địa chỉ email không chính xác"
+  },
+  "signUp": {
+    "userExist": "Địa chỉ email đã được dùng"
+  },
+  "feedback": {
+    "studentNotEnrolled": "Bạn không tham gia khóa học này.",
+    "studentIdExist": "Đã tồn tại đánh giá từ mã số học sinh này."
   }
 }

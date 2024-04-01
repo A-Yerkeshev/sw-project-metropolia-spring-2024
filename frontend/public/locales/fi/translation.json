@@ -34,7 +34,8 @@
     "emailAddressLabel": "Sähköpostiosoite",
     "passwordLabel": "Salasana",
     "signUpButton": "Rekisteröidy",
-    "signInPrompt": "Onko sinulla jo tili? Kirjaudu sisään"
+    "signInPrompt": "Onko sinulla jo tili? Kirjaudu sisään",
+    "allFieldRequired": "All fields are required."
   },
   "sessions": {
     "header": "Luennot",

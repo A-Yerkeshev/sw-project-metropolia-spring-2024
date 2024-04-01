@@ -31,7 +31,7 @@ const Feedback = () => {
   const [submitStatus, setSubmitStatus] = useState('');
   const [submitMessage, setSubmitMessage] = useState('');
   const backendUrl = process.env.REACT_APP_BACKEND_URL || '';
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const handleChangeRating = (event) => {
     setRating(event.target.value);
@@ -57,6 +57,7 @@ const Feedback = () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Accept-Language': i18n.language,
         },
         body: JSON.stringify({
           rating: Number(rating),
@@ -73,7 +74,7 @@ const Feedback = () => {
         throw new Error(errorMessage);
       }
 
-      const data = await response.json();
+      //const data = await response.json();
       setSubmitStatus('success');
       setSubmitMessage(t('feedback.successMessage'));
     } catch (error) {

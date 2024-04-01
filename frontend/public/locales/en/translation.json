@@ -34,7 +34,8 @@
     "emailAddressLabel": "Email Address",
     "passwordLabel": "Password",
     "signUpButton": "Sign Up",
-    "signInPrompt": "Already have an account? Sign in"
+    "signInPrompt": "Already have an account? Sign in",
+    "allFieldRequired": "All fields are required."
   },
   "sessions": {
     "header": "Sessions",
