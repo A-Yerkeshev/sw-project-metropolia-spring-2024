@@ -154,7 +154,7 @@ const SessionModal = ({
                     defaultValue={
                       modalContent === 'editSession'
                         ? dayjs(currentSession.start)
-                        : dayjs('')
+                        : null
                     }
                   />
                 </Grid>
@@ -165,7 +165,7 @@ const SessionModal = ({
                     defaultValue={
                       modalContent === 'editSession'
                         ? dayjs(currentSession.end)
-                        : dayjs('')
+                        : null
                     }
                   />
                 </Grid>

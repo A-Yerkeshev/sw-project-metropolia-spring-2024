@@ -270,8 +270,10 @@ const Course = () => {
 
       // Extract and store feedback texts
       const texts = data.feedbacks.map((feedback) => {
-        const createdAt = new Date(feedback.createdAt);
-        const formattedDate = `${createdAt.toLocaleDateString()} ${createdAt.toLocaleTimeString()}`;
+        //const createdAt = new Date(feedback.createdAt);
+        const formattedDate = dayjs(feedback.createdAt).format(
+          dateTimeFormats.datetime[i18n.language]
+        );
 
         return {
           text: feedback.text,
@@ -438,7 +440,7 @@ const Course = () => {
       />
       <Snackbar
         open={snackbarOpen}
-        autoHideDuration={6000}
+        autoHideDuration={5000}
         onClose={() => setSnackbarOpen(false)}
         message={snackbarMessage}
       />
