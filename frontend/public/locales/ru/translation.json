@@ -94,7 +94,8 @@
       "cancelButton": "Отмена",
       "submitButton": "Создать",
       "submitBtnEdit": "Обновить",
-      "statisticsHeader": "Статистика"
+      "statisticsHeader": "Статистика",
+      "allFieldRequired": "All fields are required."
     },
     "studentId": {
       "header": "ID студентов",

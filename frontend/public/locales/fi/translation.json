@@ -92,7 +92,8 @@
       "deleteButton": "Poista luento",
       "cancelButton": "Peruuta",
       "submitButton": "Lähetä",
-      "statisticsHeader": "Luennon palaute"
+      "statisticsHeader": "Luennon palaute",
+      "allFieldRequired": "All fields are required."
     },
     "studentId": {
       "header": "Opiskelija ID:t",

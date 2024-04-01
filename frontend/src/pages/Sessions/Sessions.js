@@ -34,6 +34,7 @@ const Course = () => {
   const [feedbackTexts, setFeedbackTexts] = useState([]);
   const [modalContent, setModalContent] = useState(null);
   const [currentSession, setCurrentSession] = useState(null);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const [existingStudentIds, setExistingStudentIds] = useState([]);
   const [openStudentIdModal, setOpenStudentIdModal] = useState(false);
@@ -78,6 +79,7 @@ const Course = () => {
   };
 
   const handleCreateSession = () => {
+    setErrorMessage('');
     setModalContent('createSession');
     setOpenModal(true);
   };
@@ -90,14 +92,23 @@ const Course = () => {
       formData.get('start'),
       dateTimeFormats.datetime[i18n.language]
     ).valueOf();
+
     const end = dayjs(
       formData.get('end'),
       dateTimeFormats.datetime[i18n.language]
     ).valueOf();
 
+    const name = formData.get('name');
+    const description = formData.get('description');
+
+    if (!name || !description || !start || !end) {
+      setErrorMessage(t('modals.session.allFieldRequired'));
+      return;
+    }
+
     const sessionData = {
-      name: formData.get('name'),
-      description: formData.get('description'),
+      name,
+      description,
       start,
       end,
     };
@@ -112,8 +123,11 @@ const Course = () => {
       });
 
       if (response.ok) {
-        const newSession = await response.json();
+        setErrorMessage('');
         setOpenModal(false); // Close the modal
+
+        //const newSession = await response.json();
+
         const fetchCourse = async () => {
           const response = await fetch(`${backendUrl}/api/courses/${courseId}`);
           const data = await response.json();
@@ -164,6 +178,7 @@ const Course = () => {
   };
 
   const handleOpenEditModal = (session) => {
+    setErrorMessage('');
     setCurrentSession(session); // Set the current session to the one selected for editing
     setModalContent('editSession');
     setOpenModal(true);
@@ -182,9 +197,17 @@ const Course = () => {
       dateTimeFormats.datetime[i18n.language]
     ).valueOf();
 
+    const name = formData.get('name');
+    const description = formData.get('description');
+
+    if (!name || !description || !start || !end) {
+      setErrorMessage(t('modals.session.allFieldRequired'));
+      return;
+    }
+
     const updatedSessionData = {
-      name: formData.get('name'),
-      description: formData.get('description'),
+      name,
+      description,
       start,
       end,
     };
@@ -430,6 +453,7 @@ const Course = () => {
         handleDeleteSession={handleDeleteSession}
         feedbackData={feedbackData}
         feedbackTexts={feedbackTexts}
+        errorMessage={errorMessage}
       />
 
       <StudentIdModal

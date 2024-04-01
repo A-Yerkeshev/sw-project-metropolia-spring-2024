@@ -92,7 +92,8 @@
       "deleteButton": "Xóa tiết học",
       "cancelButton": "Hủy",
       "submitButton": "Gửi",
-      "statisticsHeader": "Đánh giá về tiết học"
+      "statisticsHeader": "Đánh giá về tiết học",
+      "allFieldRequired": "Tất cả thông tin cần được nhập."
     },
     "studentId": {
       "header": "Mã số học sinh",

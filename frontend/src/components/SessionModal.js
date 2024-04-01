@@ -35,6 +35,7 @@ const SessionModal = ({
   handleSubmit,
   handleEditSubmit,
   handleDeleteSession,
+  errorMessage,
 }) => {
   const { i18n } = useTranslation();
   const { t } = useTranslation();
@@ -186,6 +187,9 @@ const SessionModal = ({
                   </Button>
                 )}
               </DialogActions>
+              {errorMessage && (
+                <Typography color="error">{errorMessage}</Typography>
+              )}
             </form>
           )}
         </DialogContent>

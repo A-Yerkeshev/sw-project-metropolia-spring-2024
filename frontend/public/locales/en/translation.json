@@ -92,7 +92,8 @@
       "deleteButton": "Delete Session",
       "cancelButton": "Cancel",
       "submitButton": "Submit",
-      "statisticsHeader": "Session Feedback"
+      "statisticsHeader": "Session Feedback",
+      "allFieldRequired": "All fields are required."
     },
     "studentId": {
       "header": "Student IDs",
