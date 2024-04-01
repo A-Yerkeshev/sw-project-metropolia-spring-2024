@@ -16,6 +16,8 @@ const userRoutes = require('./routes/user');
 const { error } = require('console');
 const bodyParser = require('body-parser');
 const path = require('path');
+const i18next = require('./i18n');
+const i18nextMiddleware = require('i18next-express-middleware');
 
 // Create express app
 const app = express();
@@ -27,9 +29,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
 // middleware
-app.use(express.json());
 
-app.use(express.static(path.join(__dirname, "../frontend/build")));
+app.use(express.json());
+app.use(i18nextMiddleware.handle(i18next));
+
+app.use(express.static(path.join(__dirname, '../frontend/build')));
 
 app.use((req, res, next) => {
   console.log(req.path, req.method);
@@ -43,12 +47,15 @@ app.use('/api/feedbacks', feedbackRoutes);
 app.use('/api/users', userRoutes);
 
 if (process.env.NODE_ENV === 'production') {
-  app.get("/*", function(req, res) {
-    res.sendFile(path.join(__dirname, "../frontend/build/index.html"), function (err) {
-      if (err) {
-        res.status(500).send(err);
+  app.get('/*', function (req, res) {
+    res.sendFile(
+      path.join(__dirname, '../frontend/build/index.html'),
+      function (err) {
+        if (err) {
+          res.status(500).send(err);
+        }
       }
-    });
+    );
   });
   console.log('Serving in production environment');
 }

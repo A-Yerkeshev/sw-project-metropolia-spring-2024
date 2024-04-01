@@ -1,0 +1,6 @@
+{
+  "login": {
+    "wrongPassword": "Mật khẩu không chính xác",
+    "wrongEmail": "Địa chỉ email không chính xác"
+  }
+}

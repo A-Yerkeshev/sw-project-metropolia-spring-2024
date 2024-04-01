@@ -1,57 +1,67 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt');
+const i18next = require('../i18n');
 
 // User Schema
-const userSchema = new Schema({
+const userSchema = new Schema(
+  {
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
     email: { type: String, unique: true, required: true },
-    password: { type: String, required: true }
-  }, {timestamps: true});
+    password: { type: String, required: true },
+  },
+  { timestamps: true }
+);
 
+//static signup method
+userSchema.statics.signup = async function (
+  firstName,
+  lastName,
+  email,
+  password
+) {
+  //validation
+  if (!firstName || !lastName || !email || !password) {
+    throw new Error('All fields are required');
+  }
 
-  //static signup method
-    userSchema.statics.signup = async function (firstName, lastName, email, password) {
+  const exists = await this.findOne({ email });
+  if (exists) {
+    throw new Error('User already exists');
+  }
 
-        //validation
-        if (!firstName || !lastName || !email || !password) {
-            throw new Error('All fields are required');
-        }
+  const salt = await bcrypt.genSalt(10);
+  const hash = await bcrypt.hash(password, salt);
 
+  const user = await this.create({
+    firstName,
+    lastName,
+    email,
+    password: hash,
+  });
 
-        const exists = await this.findOne({ email });
-        if (exists) {
-            throw new Error('User already exists');
-        }
+  return user;
+};
 
-        const salt = await bcrypt.genSalt(10);
-        const hash = await bcrypt.hash(password, salt);
+//static login method
+userSchema.statics.login = async function (email, password, language) {
+  //validation
+  if (!email || !password) {
+    throw new Error('All fields are required');
+  }
 
-        const user = await this.create({ firstName, lastName, email, password: hash});
+  const user = await this.findOne({ email });
+  if (user) {
+    const auth = await bcrypt.compare(password, user.password);
+    if (auth) {
+      return user;
+    }
+    throw new Error(i18next.t('login.wrongPassword', { lng: language }));
+  }
+  throw new Error(i18next.t('login.wrongEmail', { lng: language }));
+};
 
-        return user;
-    };
+const User = mongoose.model('User', userSchema);
 
-    //static login method
-    userSchema.statics.login = async function (email, password) {
-
-        //validation
-        if (!email || !password) {
-            throw new Error('All fields are required');
-        }
-
-        const user = await this.findOne({ email });
-        if (user) {
-            const auth = await bcrypt.compare(password, user.password);
-            if (auth) {
-                return user;
-            }
-            throw new Error('Incorrect password');
-        }
-        throw new Error('Incorrect email');
-    };
-
-  const User = mongoose.model('User', userSchema);
-
-  module.exports = {User};
+module.exports = { User };

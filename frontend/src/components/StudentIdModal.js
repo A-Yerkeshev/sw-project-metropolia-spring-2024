@@ -20,7 +20,7 @@ const StudentIdModal = ({
   const [inputValue, setInputValue] = useState('');
   const [studentIds, setStudentIds] = useState(existingStudentIds);
   const [error, setError] = useState('');
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
@@ -69,7 +69,7 @@ const StudentIdModal = ({
   return (
     <Dialog open={openModal} onClose={handleModalClose} fullWidth maxWidth="sm">
       <DialogTitle>
-      {t('modals.studentId.header')} {' '}
+        {t('modals.studentId.header')}{' '}
         <IconButton
           aria-label="close"
           onClick={handleModalClose}
@@ -85,7 +85,7 @@ const StudentIdModal = ({
       </DialogTitle>
       <DialogContent>
         <Typography variant="subtitle1" gutterBottom>
-          {t('modals.studentId.instruction')} {' '}
+          {t('modals.studentId.instruction')}{' '}
         </Typography>
         <TextField
           label={t('modals.studentId.inputLabel')}
@@ -109,11 +109,11 @@ const StudentIdModal = ({
         </div>
       </DialogContent>
       <DialogActions>
-        <Button 
-        onClick={handleModalClose}>{t('modals.studentId.cancelButton')}
+        <Button onClick={handleModalClose}>
+          {t('modals.studentId.cancelButton')}
         </Button>
-        <Button 
-        onClick={handleSubmitStudentId}>{t('modals.studentId.submitButton')}
+        <Button onClick={handleSubmitStudentId}>
+          {t('modals.studentId.submitButton')}
         </Button>
       </DialogActions>
     </Dialog>

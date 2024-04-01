@@ -1,0 +1,6 @@
+{
+  "login": {
+    "wrongPassword": "Incorrect password",
+    "wrongEmail": "Incorrect email"
+  }
+}
