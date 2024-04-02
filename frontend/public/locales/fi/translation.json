@@ -1,8 +1,8 @@
 {
   "coursesList": {
     "header": "Kurssit",
-    "createButton": "Luo kurssi",
-    "editButton": "Muokkaa",
+    "createButton": "Luo uusi kurssi",
+    "editButton": "Muokata",
     "deleteButton": "Poista",
     "goToCourseButton": "Siirry kurssille"
   },
@@ -56,17 +56,17 @@
     "course": "Kurssi",
     "addStudents": "Lisää opiskelijoita",
     "description": "Kuvaus",
-    "start": "Luento alkaa",
-    "end": "Luento päättyy",
-    "studentsNum": "Opiskelijoita rekisteröitynyt"
+    "start": "Luenton alkamisaika",
+    "end": "Luenton päättymisaika",
+    "studentsNum": "Opiskelijat ovat nyt rekisteröityneet"
   },
   "qr": {
     "header": "Luento",
-    "startLabel": "Luento alkaa",
-    "endLabel": "Luento päättyy",
+    "startLabel": "Luenton alkamisaika",
+    "endLabel": "Luenton päättymisaika",
     "feedbackPrompt": "Skannaa QR-koodi tai",
     "clickHere": "klikkaa tästä",
-    "feedbackPrompt2": "antaaksesi palautetta luennosta."
+    "feedbackPrompt2": "Ole hyvä ja anna palautetta tästä luentosta"
   },
   "navbar": {
     "courses": "Kurssit",
@@ -75,16 +75,16 @@
   "modals": {
     "course": {
       "createHeader": "Luo uusi kurssi",
-      "editHeader": "Muokkaa kurssia",
+      "editHeader": "Muokata kurssi",
       "nameLabel": "Kurssin nimi",
       "descriptionLabel": "Kurssin kuvaus",
       "deleteButton": "Poista kurssi",
       "cancelButton": "Peruuta",
-      "submitButton": "Lähetä"
+      "submitButton": "Tallentaa"
     },
     "session": {
       "createHeader": "Luo uusi luento",
-      "editHeader": "Muokkaa luentoa",
+      "editHeader": "Muokata luento",
       "nameLabel": "Luennon nimi",
       "descriptionLabel": "Luennon kuvaus",
       "startLabel": "Aloitusaika",
@@ -93,22 +93,22 @@
       "cancelButton": "Peruuta",
       "submitButton": "Lähetä",
       "statisticsHeader": "Luennon palaute",
-      "allFieldRequired": "All fields are required."
+      "allFieldRequired": "Kaikki kentät ovat pakollisia"
     },
     "studentId": {
       "header": "Opiskelija ID:t",
-      "instruction": "Lisää opiskelija ID(t) listaan ja paina \"Lähetä\" tehdäksesi muutokset",
+      "instruction": "Lisää opiskelija ID(t) listaan ja paina \"Enter\" tehdäksesi muutokset",
       "inputLabel": "Syötä Opiskelija ID",
       "cancelButton": "Peruuta",
-      "submitButton": "Lähetä",
+      "submitButton": "Tallentaa",
       "numbersOnly": "Lisää vain numeroita!",
       "alreadyExists": "Opiskelija ID on jo lisätty!"
     },
     "feedback": {
       "textFeedbackHeader": "Kurssin palaute",
-      "textFeedback": "Tekstin palaute",
-      "noTextFeedbackMessage": "Ei sanallista palautetta annettu.",
-      "noFeedbackMessage": "Luento ei ole saanut palautetta."
+      "textFeedback": "Palaute tekstimuodossa",
+      "noTextFeedbackMessage": "Palaute ei ole vielä annettu",
+      "noFeedbackMessage": "Luento ei ole vielä saanut palautetta tekstimuodossa"
     }
   }
 }
