@@ -98,9 +98,7 @@ const SessionModal = ({
                   </Typography>
                   {feedbackTexts.map((text, index) => (
                     <Typography key={index}>
-                      {`(${text.createdAt}) ${
-                        text.text || t('modals.feedback.noTextFeedbackMessage')
-                      }`}
+                      {text.text ? `(${text.createdAt}) ${text.text}` : ''}
                     </Typography>
                   ))}
                 </>
