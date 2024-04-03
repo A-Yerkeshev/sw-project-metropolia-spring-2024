@@ -1,13 +1,13 @@
 {
   "login": {
-    "wrongPassword": "Incorrect password",
-    "wrongEmail": "Incorrect email"
+    "wrongPassword": "Väärä salasana",
+    "wrongEmail": "Väärä sähköpostiosoite"
   },
   "signUp": {
-    "userExist": "User already exists"
+    "userExist": "Käyttäjätunnus on varattu"
   },
   "feedback": {
-    "studentNotEnrolled": "You are not enrolled to this course.",
-    "studentIdExist": "You already submitted feedback for this session."
+    "studentNotEnrolled": "Käyttäjätunnus ei ole lisätty tälle kurssille.",
+    "studentIdExist": "Palautetta tästä istunnosta on tallennettu järjestelmässä."
   }
 }

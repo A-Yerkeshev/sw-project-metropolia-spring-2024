@@ -1,13 +1,13 @@
 {
   "login": {
-    "wrongPassword": "Incorrect password",
-    "wrongEmail": "Incorrect email"
+    "wrongPassword": "Неправильный пароль",
+    "wrongEmail": "Неправильный почтовый ящик"
   },
   "signUp": {
-    "userExist": "User already exists"
+    "userExist": "Аккаунт с таким почтовым ящиком уже существует"
   },
   "feedback": {
-    "studentNotEnrolled": "You are not enrolled to this course.",
-    "studentIdExist": "You already submitted feedback for this session."
+    "studentNotEnrolled": "Вы не добавлены на этот курс.",
+    "studentIdExist": "Вы уже добавили отзыв на эту сессию."
   }
 }
