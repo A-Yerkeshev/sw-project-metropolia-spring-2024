@@ -27,7 +27,6 @@ const Feedback = () => {
 
   const [rating, setRating] = useState('');
   const [openFeedback, setOpenFeedback] = useState('');
-  const [studentId, setStudentId] = useState('');
   const [submitStatus, setSubmitStatus] = useState('');
   const [submitMessage, setSubmitMessage] = useState('');
   const backendUrl = process.env.REACT_APP_BACKEND_URL || '';
@@ -41,14 +40,10 @@ const Feedback = () => {
     setOpenFeedback(event.target.value);
   };
 
-  const handleChangeStudentId = (event) => {
-    setStudentId(event.target.value);
-  };
-
   const handleSubmit = async () => {
-    if (!rating || !studentId.trim()) {
+    if (!rating) {
       setSubmitStatus('error');
-      setSubmitMessage(t('feedback.ratingAndIdRequired'));
+      setSubmitMessage(t('feedback.ratingIsRequired'));
       return;
     }
 
@@ -62,8 +57,7 @@ const Feedback = () => {
         body: JSON.stringify({
           rating: Number(rating),
           text: openFeedback,
-          sessionId: sessionId,
-          studentId: Number(studentId),
+          sessionId: sessionId
         }),
       });
 
@@ -201,16 +195,6 @@ const Feedback = () => {
                 }}
               />
             </RadioGroup>
-            <TextField
-              label={t('feedback.studentIdLabel')}
-              name="student-id"
-              type="number"
-              margin="normal"
-              fullWidth
-              required
-              value={studentId}
-              onChange={handleChangeStudentId}
-            />
             <TextField
               label={t('feedback.openFeedbackLabel')}
               name="open-feedback"

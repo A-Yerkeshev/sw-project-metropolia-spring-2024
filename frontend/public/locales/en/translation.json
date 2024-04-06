@@ -14,7 +14,7 @@
     "studentIdLabel": "Student ID",
     "openFeedbackLabel": "Open feedback",
     "submit": "Submit",
-    "ratingAndIdRequired": "Rating and student ID are required.",
+    "ratingIsRequired": "Rating is required.",
     "successMessage": "Feedback submitted successfully!",
     "errorMessage": "Failed to submit feedback. Please try again."
   },

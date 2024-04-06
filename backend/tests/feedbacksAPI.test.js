@@ -33,7 +33,6 @@ describe('Feedback API', () => {
     const course = await Course.create({
       name: 'Test Course',
       description: 'This is a test course',
-      students: [1, 2, 3],
       teacherId
     })
     courseId = course._id;
@@ -55,7 +54,6 @@ describe('Feedback API', () => {
       .send({
         rating: 4,
         text: 'Good session',
-        studentId: 1,
         sessionId
       });
 
@@ -86,19 +84,6 @@ describe('Feedback API', () => {
     });
   });
 
-  it('should not be able to submit feedback more than once', async () => {
-    const res = await supertest(app)
-      .post(`/api/feedbacks`)
-      .send({
-        rating: 4,
-        text: 'Good session',
-        studentId: 123,
-        sessionId
-      });
-
-    expect(res.status).to.equal(400);
-  });
-
   // Test DELETE /api/feedbacks/:feedbackId
   it('should delete a feedback', async () => {
     const res = await supertest(app).delete(
@@ -123,7 +108,6 @@ describe('Feedback API', () => {
       .send({
         rating: 4,
         text: 'Good session',
-        studentId: 123,
         sessionId: session._id
       });
 

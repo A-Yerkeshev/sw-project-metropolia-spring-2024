@@ -71,18 +71,12 @@ const getOneFeedback = async (req, res) => {
 
 // POST a feedback to a session in a course
 const createFeedback = async (req, res) => {
-  const { sessionId, rating, text, studentId } = req.body;
+  const { sessionId, rating, text } = req.body;
   const language = req.headers['accept-language'];
 
   // input validation
   if (!rating) {
     return res.status(400).json({ error: 'Missing required field: rating' });
-  }
-
-  if (!studentId) {
-    return res
-      .status(400)
-      .json({ error: 'Missing required field: student id' });
   }
 
   // check if and sessionId is valid
@@ -102,38 +96,11 @@ const createFeedback = async (req, res) => {
     //   return res.status(400).json({ error: "Session has expired. You cannot submit feedback anymore." });
     // }
 
-    // check that student is enrolled for this course
-    const course = await Course.findOne({ _id: session.course });
-    // console.log(
-    //   `Checking for studentId ${studentId} from the studentId list of course ${course._id}`
-    // );
-    if (!course.students.includes(studentId)) {
-      return res.status(400).json({
-        error: i18next.t('feedback.studentNotEnrolled', { lng: language }),
-      });
-    }
-
-    // check that user has not submitted feedback for this session yet
-    // console.log(
-    //   `Checking existing feedback for studentId: ${studentId}, sessionId: ${sessionId}`
-    // );
-    const existingFeedback = await Feedback.findOne({
-      studentId: studentId,
-      sessionId: sessionId,
-    });
-
-    if (existingFeedback) {
-      return res.status(400).json({
-        error: i18next.t('feedback.studentIdExist', { lng: language }),
-      });
-    }
-
     // create new feedback and include provided session Id
     const feedback = await Feedback.create({
       rating,
       text,
-      sessionId,
-      studentId,
+      sessionId
     });
 
     // include the newly created feedback's Id in the session's "feedbacks" array

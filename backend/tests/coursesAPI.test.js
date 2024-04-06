@@ -38,8 +38,7 @@ describe('Courses API', () => {
       .send({
         name: 'Test Course',
         description: 'This is a test course',
-        teacherId,
-        students: [1, 2, 3]
+        teacherId
       });
 
     expect(res.status).to.equal(200);
@@ -73,8 +72,7 @@ describe('Courses API', () => {
       .patch(`/api/courses/${courseId}`)
       .send({
         name: 'Updated Course',
-        description: 'This is an updated test course',
-        students: [4, 5, 6],
+        description: 'This is an updated test course'
       });
 
     expect(res.status).to.equal(200);

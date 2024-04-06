@@ -14,7 +14,7 @@
     "studentIdLabel": "Opiskelija ID",
     "openFeedbackLabel": "Avoin palaute",
     "submit": "Lähetä",
-    "ratingAndIdRequired": "Rating and student ID are required.",
+    "ratingIsRequired": "Arvio vaaditaan.",
     "successMessage": "Palaute lähetetty onnistuneesti!",
     "errorMessage": "Palautteen lähetys epäonnistui. Yritä uudelleen."
   },

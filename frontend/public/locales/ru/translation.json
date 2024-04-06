@@ -14,7 +14,7 @@
     "studentIdLabel": "Ваш id номер",
     "openFeedbackLabel": "Комментарии к лекции",
     "submit": "Отправить",
-    "ratingAndIdRequired": "Rating and student ID are required.",
+    "ratingIsRequired": "Пожалуйста, поставьте оценку.",
     "successMessage": "Отзыв успешно отправлен!",
     "errorMessage": "Не удалось отправить отзыв. Пожалуйста, попробуйте снова."
   },

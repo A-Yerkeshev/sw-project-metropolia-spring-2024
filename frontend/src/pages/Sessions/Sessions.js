@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import SessionModal from '../../components/SessionModal';
-import StudentIdModal from '../../components/StudentIdModal';
 import EventNoteIcon from '@mui/icons-material/EventNote';
 import {
   Button,
@@ -36,8 +35,6 @@ const Course = () => {
   const [currentSession, setCurrentSession] = useState(null);
   const [errorMessage, setErrorMessage] = useState('');
 
-  const [existingStudentIds, setExistingStudentIds] = useState([]);
-  const [openStudentIdModal, setOpenStudentIdModal] = useState(false);
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState('');
   const { t, i18n } = useTranslation();
@@ -49,34 +46,10 @@ const Course = () => {
       const response = await fetch(`${backendUrl}/api/courses/${courseId}`);
       const data = await response.json();
       setCourse(data.course);
-      setExistingStudentIds(data.course.students || []);
     };
 
     fetchCourse();
   }, [courseId]); // Dependency array ensures this effect runs only when courseId changes
-
-  const handleSubmitStudentIds = async (updatedStudentIds) => {
-    try {
-      const response = await fetch(`${backendUrl}/api/courses/${courseId}`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ students: updatedStudentIds }),
-      });
-
-      if (!response.ok) throw new Error(t('sessions.updateFail'));
-
-      const data = await response.json();
-
-      setExistingStudentIds(data.updatedCourse.students);
-      setSnackbarOpen(true);
-      setSnackbarMessage(t('sessions.updateOk'));
-    } catch (error) {
-      console.error('Error updating session:', error);
-      setSnackbarMessage(t('sessions.updateFail'));
-    }
-  };
 
   const handleCreateSession = () => {
     setErrorMessage('');
@@ -339,18 +312,6 @@ const Course = () => {
         >
           {t('sessions.course')}: {course.name}
         </Typography>
-        <Typography variant="subtitle1" gutterBottom textAlign="center">
-          {t('sessions.studentsNum')}:{' '}
-          {course.students ? existingStudentIds.length : 'N/A'}
-          <Button
-            variant="outlined"
-            color="primary"
-            sx={{ ml: 2 }}
-            onClick={() => setOpenStudentIdModal(true)}
-          >
-            {t('sessions.addStudents')}
-          </Button>
-        </Typography>
       </Box>
 
       <Typography variant="h5" gutterBottom>
@@ -454,13 +415,6 @@ const Course = () => {
         feedbackData={feedbackData}
         feedbackTexts={feedbackTexts}
         errorMessage={errorMessage}
-      />
-
-      <StudentIdModal
-        openModal={openStudentIdModal}
-        handleSubmit={handleSubmitStudentIds}
-        handleClose={() => setOpenStudentIdModal(false)}
-        existingStudentIds={existingStudentIds}
       />
       <Snackbar
         open={snackbarOpen}

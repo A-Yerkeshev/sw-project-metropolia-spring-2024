@@ -64,7 +64,7 @@ const getOneCourse = async (req, res) => {
 
 // POST one course
 const createCourse = async (req, res) => {
-  const { name, description, students } = req.body;
+  const { name, description } = req.body;
   const teacherId = req.user._id;
 
   // Input validation
@@ -86,7 +86,7 @@ const createCourse = async (req, res) => {
 
   try {
     // create course entry with provided info in req body
-    const course = await Course.create({ name, description, students, teacherId });
+    const course = await Course.create({ name, description, teacherId });
 
     res.status(200).json({ course });
   } catch (error) {
@@ -128,7 +128,7 @@ const deleteCourse = async (req, res) => {
 // UPDATE one course
 const updateCourse = async (req, res) => {
   const { courseId } = req.params;
-  const { name, description, students } = req.body;
+  const { name, description } = req.body;
 
   // check if courseId is valid
   if (!mongoose.Types.ObjectId.isValid(courseId)) {
@@ -139,7 +139,7 @@ const updateCourse = async (req, res) => {
     // find the course by its Id and update using info from req body
     const updatedCourse = await Course.findByIdAndUpdate(
       courseId,
-      { name, description, students },
+      { name, description },
       { new: true }
     );
 

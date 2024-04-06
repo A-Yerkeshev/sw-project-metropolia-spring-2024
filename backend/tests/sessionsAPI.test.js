@@ -30,7 +30,6 @@ describe("Sessions API", () => {
     const course = await Course.create({
       name: "Test Course",
       description: "This is a test course",
-      students: [1, 2, 3],
       teacherId,
     });
     courseId = course._id.toString();
