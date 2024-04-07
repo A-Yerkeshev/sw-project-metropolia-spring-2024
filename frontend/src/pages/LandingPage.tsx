@@ -1,7 +1,13 @@
 import React from 'react';
-import { Box, Typography, Button, useTheme, useMediaQuery } from '@mui/material';
+import { Box, Typography, Button, Grid, useTheme, useMediaQuery} from '@mui/material';
 import StudentNavbar from '../components/Navbar/StudentNavbar';
 import LandingNavbar from '../components/Navbar/LandingNavbar';
+import FeatureCard from '../components/FeatureCard';
+import Footer from '../components/Footer';
+import FeedbackIcon from '@mui/icons-material/Feedback';
+import StatisticsIcon from '@mui/icons-material/Assessment';
+import AnonymousIcon from '@mui/icons-material/PersonOff';
+import CourseIcon from '@mui/icons-material/MenuBook';
 
 const LandingPage = () => {
     const theme = useTheme();
@@ -50,6 +56,21 @@ const LandingPage = () => {
         Get Started
       </Button>
     </Box>
+    <Grid container spacing={2} sx={{ justifyContent: 'center', p: isMobile ? 2 : 4 }}>
+        <Grid item xs={12} sm={6} md={3}>
+          <FeatureCard icon={<FeedbackIcon />} title="QR Feedback Collection" description="QR codes for instant feedback collection make the process seamless and efficient." />
+        </Grid>
+        <Grid item xs={12} sm={6} md={3}>
+          <FeatureCard icon={<StatisticsIcon />} title="Feedback Statistics" description="Access insightful feedback statistics to analyze and improve teaching outcomes." />
+        </Grid>
+        <Grid item xs={12} sm={6} md={3}>
+          <FeatureCard icon={<AnonymousIcon />} title="Anonymous Feedback" description="Encourage honest and constructive feedback by allowing anonymity for respondents." />
+        </Grid>
+        <Grid item xs={12} sm={6} md={3}>
+          <FeatureCard icon={<CourseIcon />} title="Course Creation" description="Easily create comprehensive courses, organizing your teaching material effectively." />
+        </Grid>
+      </Grid>
+      <Footer />
     </>
   );
 };
