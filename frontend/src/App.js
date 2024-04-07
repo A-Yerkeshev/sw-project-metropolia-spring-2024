@@ -1,15 +1,16 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { useAuthContext } from './hooks/useAuthContext';
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { useAuthContext } from "./hooks/useAuthContext";
 
 // pages & components
-import Signup from './pages/Login/Signup';
-import Login from './pages/Login/Login';
-import QR from './pages/QR';
-import Feedback from './pages/Feedback/Feedback';
-import Navbar from './components/Navbar/Navbar';
-import Courses from './pages/CoursesList/Courses';
-import Sessions from './pages/Sessions/Sessions';
-import Users from './pages/Users/Users';
+import Signup from "./pages/Login/Signup";
+import Login from "./pages/Login/Login";
+import LandingPage from "./pages/LandingPage";
+import QR from "./pages/QR";
+import Feedback from "./pages/Feedback/Feedback";
+import Navbar from "./components/Navbar/Navbar";
+import Courses from "./pages/CoursesList/Courses";
+import Sessions from "./pages/Sessions/Sessions";
+import Users from "./pages/Users/Users";
 
 function App() {
   const { user } = useAuthContext();
@@ -20,9 +21,10 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
+          <Route path="/" element={<LandingPage />} />
           <Route
-            path="/"
-            element={user ? <Navigate to="/Courses" /> : <Login />}
+            path="/login"
+            element={!user ? <Login /> : <Navigate to="/Courses" />}
           />
           <Route
             path="/signup"
