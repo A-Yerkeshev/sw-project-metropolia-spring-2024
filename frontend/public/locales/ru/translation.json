@@ -14,7 +14,7 @@
     "studentIdLabel": "Ваш id номер",
     "openFeedbackLabel": "Комментарии к лекции",
     "submit": "Отправить",
-    "ratingAndIdRequired": "Rating and student ID are required.",
+    "ratingAndIdRequired": "Оцените лекцию и введите свой ID чтобы оставить отзыв",
     "successMessage": "Отзыв успешно отправлен!",
     "errorMessage": "Не удалось отправить отзыв. Пожалуйста, попробуйте снова."
   },
@@ -35,7 +35,7 @@
     "passwordLabel": "Пароль",
     "signUpButton": "Зарегистрироваться",
     "signInPrompt": "Уже есть аккаунт? Войти",
-    "allFieldRequired": "All fields are required."
+    "allFieldRequired": "Все поля обязательны к заполнению."
   },
   "sessions": {
     "header": "Лекции",
@@ -95,7 +95,7 @@
       "submitButton": "Создать",
       "submitBtnEdit": "Обновить",
       "statisticsHeader": "Статистика",
-      "allFieldRequired": "All fields are required."
+      "allFieldRequired": "Все поля обязательны к заполнению."
     },
     "studentId": {
       "header": "ID студентов",

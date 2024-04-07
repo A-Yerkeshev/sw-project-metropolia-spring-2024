@@ -8,6 +8,6 @@
   },
   "feedback": {
     "studentNotEnrolled": "Вы не добавлены на этот курс.",
-    "studentIdExist": "Вы уже добавили отзыв на эту сессию."
+    "studentIdExist": "Вы уже добавили отзыв к этой лекции."
   }
 }
