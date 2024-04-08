@@ -1,13 +1,11 @@
 import React from 'react';
 import { Box, Typography, Button, Grid, useTheme, useMediaQuery} from '@mui/material';
-import StudentNavbar from '../components/Navbar/StudentNavbar';
 import LandingNavbar from '../components/Navbar/LandingNavbar';
 import FeatureCard from '../components/FeatureCard';
-import Footer from '../components/Footer';
-import FeedbackIcon from '@mui/icons-material/Feedback';
 import StatisticsIcon from '@mui/icons-material/Assessment';
 import AnonymousIcon from '@mui/icons-material/PersonOff';
 import CourseIcon from '@mui/icons-material/MenuBook';
+import QrCodeScannerIcon from '@mui/icons-material/QrCodeScanner';
 
 const LandingPage = () => {
     const theme = useTheme();
@@ -25,6 +23,13 @@ const LandingPage = () => {
         p: isMobile ? 2 : 5,
         bgcolor: 'background.default', // Use theme's default background
         textAlign: 'center',
+        maxWidth: '100%', // Ensure the box takes up full width to properly calculate margins
+    px: { // Responsive padding on the x-axis (left and right)
+      xs: 2, // Smaller padding on smaller screens
+      sm: '10%', // Starts to increase padding as the screen size grows
+      md: '15%', // Further increase for medium screens
+      lg: '20%', // Target 20% space on left and right for large screens
+    },
     }}
     >
       {/* Main Title */}
@@ -56,21 +61,33 @@ const LandingPage = () => {
         Get Started
       </Button>
     </Box>
-    <Grid container spacing={2} sx={{ justifyContent: 'center', p: isMobile ? 2 : 4 }}>
-        <Grid item xs={12} sm={6} md={3}>
-          <FeatureCard icon={<FeedbackIcon />} title="QR Feedback Collection" description="QR codes for instant feedback collection make the process seamless and efficient." />
+    <Grid container spacing={2} sx={{
+  justifyContent: 'center',
+  alignItems: 'center', 
+  px: { // Responsive padding on the x-axis (left and right)
+    xs: 2, // Smaller padding on smaller screens
+    sm: '10%', // Starts to increase padding as the screen size grows
+    md: '15%', // Further increase for medium screens
+    lg: '20%', // Target 20% space on left and right for large screens
+  },
+  width: 'auto', // Adjust width to fit the content plus padding
+  bgcolor: 'background.default',
+  margin: '0 auto', // Center the grid container
+}}>
+        <Grid item xs={12} sm={12} md={6} lg={6}>
+          <FeatureCard icon={<QrCodeScannerIcon />} title="QR Feedback Collection" description="QR codes for instant feedback collection make the process seamless and efficient." />
         </Grid>
-        <Grid item xs={12} sm={6} md={3}>
+        <Grid item xs={12} sm={12} md={6} lg={6}>
           <FeatureCard icon={<StatisticsIcon />} title="Feedback Statistics" description="Access insightful feedback statistics to analyze and improve teaching outcomes." />
         </Grid>
-        <Grid item xs={12} sm={6} md={3}>
+        <Grid item xs={12} sm={12} md={6} lg={6}>
           <FeatureCard icon={<AnonymousIcon />} title="Anonymous Feedback" description="Encourage honest and constructive feedback by allowing anonymity for respondents." />
         </Grid>
-        <Grid item xs={12} sm={6} md={3}>
+        <Grid item xs={12} sm={12} md={6} lg={6}>
           <FeatureCard icon={<CourseIcon />} title="Course Creation" description="Easily create comprehensive courses, organizing your teaching material effectively." />
         </Grid>
       </Grid>
-      <Footer />
+      
     </>
   );
 };

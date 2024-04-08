@@ -11,6 +11,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Courses from "./pages/CoursesList/Courses";
 import Sessions from "./pages/Sessions/Sessions";
 import Users from "./pages/Users/Users";
+import Footer from "./components/Footer";
 
 function App() {
   const { user } = useAuthContext();
@@ -37,6 +38,7 @@ function App() {
           <Route path="/sessions/:courseId" element={<Sessions />} />
           <Route path="/Users" element={<Users />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </div>
   );
