@@ -2,15 +2,20 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { AppBar, Toolbar, Button, Grid, Box } from '@mui/material';
 import LanguageSwitcher from '../LanguageSwitcher';
+import { useAuthContext } from '../../hooks/useAuthContext';
 const LandingNavbar = () => {
+    const { user } = useAuthContext();
   return (
     <AppBar position="static"  elevation={1}>
       <Toolbar>
         <Grid container alignItems="center" justifyContent="space-between">
           {/* Logo on the left */}
           <Grid item>
-            <Link to="/">
-              <img src="/navbar/logo.svg" alt="Logo" style={{ height: '40px' }} />
+            <Link to={user ? "/Courses" : "/"}>
+              <img
+                src="/navbar/logo.svg"
+                alt="Logo"
+                style={{ height: "40px" }}                  />
             </Link>
           </Grid>
 

@@ -1,18 +1,21 @@
 import React from 'react';
 import { Box, Typography, Button, Grid, useTheme, useMediaQuery} from '@mui/material';
 import LandingNavbar from '../components/Navbar/LandingNavbar';
+import Navbar from '../components/Navbar/Navbar';
 import FeatureCard from '../components/FeatureCard';
 import StatisticsIcon from '@mui/icons-material/Assessment';
 import AnonymousIcon from '@mui/icons-material/PersonOff';
 import CourseIcon from '@mui/icons-material/MenuBook';
 import QrCodeScannerIcon from '@mui/icons-material/QrCodeScanner';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 const LandingPage = () => {
+    const {user} = useAuthContext();
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   return (
     <>
-    <LandingNavbar/>
+    {!user && <LandingNavbar/>}
     <Box
       sx={{
         display: 'flex',

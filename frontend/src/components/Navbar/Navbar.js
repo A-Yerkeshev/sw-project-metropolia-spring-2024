@@ -51,11 +51,13 @@ const Navbar = () => {
           <Grid item xs>
             <Grid container alignItems="center" spacing={2}>
               <Grid item>
-                <img
-                  src="/navbar/logo.svg"
-                  alt="Logo"
-                  style={{ height: "40px" }}
-                />
+                <Link to={user ? "/Courses" : "/"}>
+                  <img
+                    src="/navbar/logo.svg"
+                    alt="Logo"
+                    style={{ height: "40px" }}
+                  />
+                </Link>
               </Grid>
               <Grid item>
                 <Button component={Link} to="/Courses" color="inherit">
