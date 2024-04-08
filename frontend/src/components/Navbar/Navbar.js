@@ -23,7 +23,7 @@ const Navbar = () => {
   const [anchorEl, setAnchorEl] = useState(null); // State for managing menu anchor
 
   // Define the routes where the Navbar should not be displayed
-  const hideOnRoutes = ["/", "/signup", "/share", "/feedback/new"];
+  const hideOnRoutes = ["/signup", "/share", "/feedback/new"];
 
   // Check if the current route is in the list of routes to hide the Navbar on
   if (!user || hideOnRoutes.includes(location.pathname)) {
@@ -51,11 +51,13 @@ const Navbar = () => {
           <Grid item xs>
             <Grid container alignItems="center" spacing={2}>
               <Grid item>
-                <img
-                  src="/navbar/logo.svg"
-                  alt="Logo"
-                  style={{ height: "40px" }}
-                />
+                <Link to={user ? "/Courses" : "/"}>
+                  <img
+                    src="/navbar/logo.svg"
+                    alt="Logo"
+                    style={{ height: "40px" }}
+                  />
+                </Link>
               </Grid>
               <Grid item>
                 <Button component={Link} to="/Courses" color="inherit">

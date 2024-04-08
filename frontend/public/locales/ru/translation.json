@@ -35,7 +35,7 @@
     "passwordLabel": "Пароль",
     "signUpButton": "Зарегистрироваться",
     "signInPrompt": "Уже есть аккаунт? Войти",
-    "allFieldRequired": "All fields are required."
+    "allFieldRequired": "Все поля обязательны к заполнению."
   },
   "sessions": {
     "header": "Лекции",
@@ -95,7 +95,7 @@
       "submitButton": "Создать",
       "submitBtnEdit": "Обновить",
       "statisticsHeader": "Статистика",
-      "allFieldRequired": "All fields are required."
+      "allFieldRequired": "Все поля обязательны к заполнению."
     },
     "studentId": {
       "header": "ID студентов",
