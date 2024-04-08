@@ -70,7 +70,9 @@
   },
   "navbar": {
     "courses": "Курсы",
-    "logout": "Выйти"
+    "logout": "Выйти",
+    "login": "Войти",
+    "signup": "Зарегестрироваться"
   },
   "modals": {
     "course": {

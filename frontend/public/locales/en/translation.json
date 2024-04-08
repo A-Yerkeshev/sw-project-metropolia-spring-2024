@@ -70,7 +70,9 @@
   },
   "navbar": {
     "courses": "Courses",
-    "logout": "Logout"
+    "logout": "Logout",
+    "login": "Login",
+    "signup": "Sign up"
   },
   "modals": {
     "course": {

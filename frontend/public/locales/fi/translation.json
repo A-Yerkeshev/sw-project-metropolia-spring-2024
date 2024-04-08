@@ -70,7 +70,9 @@
   },
   "navbar": {
     "courses": "Kurssit",
-    "logout": "Kirjaudu ulos"
+    "logout": "Kirjaudu ulos",
+    "login": "Kirjaudu sisään",
+    "signup": "Luo tili"
   },
   "modals": {
     "course": {

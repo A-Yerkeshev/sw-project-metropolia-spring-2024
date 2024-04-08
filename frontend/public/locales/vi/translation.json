@@ -70,7 +70,9 @@
   },
   "navbar": {
     "courses": "Khóa học",
-    "logout": "Đăng xuất"
+    "logout": "Đăng xuất",
+    "login": "Đăng nhập",
+    "signup": "Đăng ký"
   },
   "modals": {
     "course": {

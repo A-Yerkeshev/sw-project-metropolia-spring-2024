@@ -1,10 +1,12 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { AppBar, Toolbar, Button, Grid, Box } from '@mui/material';
 import LanguageSwitcher from '../LanguageSwitcher';
 import { useAuthContext } from '../../hooks/useAuthContext';
+import { useTranslation } from "react-i18next";
+
 const LandingNavbar = () => {
-    const { user } = useAuthContext();
+  const { user } = useAuthContext();
+  const { t } = useTranslation();
   return (
     <AppBar position="static"  elevation={1}>
       <Toolbar>
@@ -24,12 +26,12 @@ const LandingNavbar = () => {
             <Box display="flex" alignItems="center" height="100%">
               {/* Login Button */}
               <Button component={Link} to="/login" color="inherit">
-                Login
+                {t('navbar.login')}
               </Button>
-              
+
               {/* Signup Button */}
               <Button component={Link} to="/signup" color="inherit">
-                Sign Up
+                {t('navbar.signup')}
               </Button>
 
               {/* Language Selector */}
