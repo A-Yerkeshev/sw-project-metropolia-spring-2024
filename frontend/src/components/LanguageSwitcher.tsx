@@ -23,6 +23,9 @@ const LanguageSwitcher: React.FC = () => {
         '& .MuiOutlinedInput-notchedOutline': {
           border: 'none',
         },
+        fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif', 
+        fontSize: '0.9rem',
+  
       }}
     >
       <MenuItem value="en">English</MenuItem>
