@@ -9,6 +9,7 @@ import CourseIcon from '@mui/icons-material/MenuBook';
 import QrCodeScannerIcon from '@mui/icons-material/QrCodeScanner';
 import { useAuthContext } from '../hooks/useAuthContext';
 import { Link } from 'react-router-dom';
+import Footer from '../components/Footer';
 
 const LandingPage = () => {
     const {user} = useAuthContext();
@@ -93,7 +94,7 @@ const LandingPage = () => {
           <FeatureCard icon={<CourseIcon />} title="Course Creation" description="Easily create comprehensive courses, organizing your teaching material effectively." />
         </Grid>
       </Grid>
-      
+      <Footer/>
     </>
   );
 };
