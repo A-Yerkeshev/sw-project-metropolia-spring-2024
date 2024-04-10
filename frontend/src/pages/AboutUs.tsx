@@ -38,7 +38,7 @@ const AboutUs = () => {
   const { user } = useAuthContext();
 
   return (
-    <div style={{ backgroundColor: '#fff', padding: 15, minHeight: '100vh' }}>
+    <div style={{ backgroundColor: '#fff', minHeight: '100vh' }}>
       {!user && <LandingNavbar />}
       <Grid container spacing={3} justifyContent="center" sx={{ padding: 15 }}>
         {developers.map((developer, index) => (
