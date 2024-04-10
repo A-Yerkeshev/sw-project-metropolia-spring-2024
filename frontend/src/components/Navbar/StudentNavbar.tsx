@@ -9,11 +9,9 @@ const StudentNavbar: React.FC = () => {
       <Toolbar>
         <Grid container alignItems="center" justifyContent="space-between">
           <Grid item>
-            {/* <Link to="/">
-              <img src="/navbar/logo.svg" alt="Logo" style={{ height: "40px" }} />
-            </Link> */}
-            {/*Logo in the Feedback form shown to students shouldn't link to app homepage*/}
-            <img src="/navbar/logo.svg" alt="Logo" style={{ height: '40px' }} />
+            <Link to="/">
+              <img src="/navbar/logo.svg" alt="Logo" style={{ height: '40px' }} />
+            </Link>
           </Grid>
           <Grid item>
             <LanguageSwitcher />
