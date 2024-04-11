@@ -8,6 +8,8 @@ import AnonymousIcon from '@mui/icons-material/PersonOff';
 import CourseIcon from '@mui/icons-material/MenuBook';
 import QrCodeScannerIcon from '@mui/icons-material/QrCodeScanner';
 import { useAuthContext } from '../hooks/useAuthContext';
+import { Link } from 'react-router-dom';
+import Footer from '../components/Footer';
 
 const LandingPage = () => {
     const {user} = useAuthContext();
@@ -51,18 +53,20 @@ const LandingPage = () => {
       </Typography>
       
       {/* Get Started Button */}
-      <Button
-        variant="contained"
-        sx={{
-          mt:  isMobile ? 2 : 4,
-          bgcolor: 'secondary.main', // Use theme's secondary color
-          '&:hover': {
-            bgcolor: 'secondary.dark', // Darken button on hover
-          },
-        }}
-      >
-        Get Started
-      </Button>
+      <Link to="/signup" style={{ textDecoration: 'none' }}>
+  <Button
+    variant="contained"
+    sx={{
+      mt: isMobile ? 2 : 4,
+      bgcolor: 'secondary.main', 
+      '&:hover': {
+        bgcolor: 'secondary.dark',
+      },
+    }}
+  >
+    Get Started
+  </Button>
+</Link>
     </Box>
     <Grid container spacing={2} sx={{
   justifyContent: 'center',
@@ -90,7 +94,7 @@ const LandingPage = () => {
           <FeatureCard icon={<CourseIcon />} title="Course Creation" description="Easily create comprehensive courses, organizing your teaching material effectively." />
         </Grid>
       </Grid>
-      
+      <Footer/>
     </>
   );
 };

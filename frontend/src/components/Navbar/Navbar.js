@@ -51,7 +51,7 @@ const Navbar = () => {
           <Grid item xs>
             <Grid container alignItems="center" spacing={2}>
               <Grid item>
-                <Link to={user ? "/Courses" : "/"}>
+                <Link to={user ? "/" : "/"}>
                   <img
                     src="/navbar/logo.svg"
                     alt="Logo"

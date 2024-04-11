@@ -13,7 +13,7 @@ const LandingNavbar = () => {
         <Grid container alignItems="center" justifyContent="space-between">
           {/* Logo on the left */}
           <Grid item>
-            <Link to={user ? "/Courses" : "/"}>
+            <Link to={user ? "/" : "/"}>
               <img
                 src="/navbar/logo.svg"
                 alt="Logo"
