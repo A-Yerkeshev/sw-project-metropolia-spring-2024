@@ -14,7 +14,7 @@ const LandingPage = () => {
     const {user} = useAuthContext();
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
 
   return (
     <>
