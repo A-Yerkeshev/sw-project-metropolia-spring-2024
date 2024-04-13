@@ -1,7 +1,5 @@
-import React from 'react';
 import { Box, Typography, Button, Grid, useTheme, useMediaQuery} from '@mui/material';
 import LandingNavbar from '../components/Navbar/LandingNavbar';
-import Navbar from '../components/Navbar/Navbar';
 import FeatureCard from '../components/FeatureCard';
 import StatisticsIcon from '@mui/icons-material/Assessment';
 import AnonymousIcon from '@mui/icons-material/PersonOff';
@@ -10,11 +8,14 @@ import QrCodeScannerIcon from '@mui/icons-material/QrCodeScanner';
 import { useAuthContext } from '../hooks/useAuthContext';
 import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
+import { useTranslation } from 'react-i18next';
 
 const LandingPage = () => {
     const {user} = useAuthContext();
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+    const { t } = useTranslation();
+
   return (
     <>
     {!user && <LandingNavbar/>}
@@ -37,36 +38,35 @@ const LandingPage = () => {
     },
     }}
     >
-      {/* Main Title */}
-      <Typography variant="h3" component="h1" sx={{
-            fontWeight: 600,
-            fontSize: isMobile ? '2.25rem' : '5rem', // Adjust font size based on the screen size
-            lineHeight: isMobile ? '2.5rem' : '5.5rem', // Adjust line height for mobile
-            mt: isMobile ? 2 : 4, // Adjust top margin
-          }}>
-        Instant Feedback App
+      <Typography
+        variant="h3"
+        component="h1"
+        sx={{
+        fontWeight: 600,
+        fontSize: isMobile ? '2.25rem' : '5rem',
+        lineHeight: isMobile ? '2.5rem' : '5.5rem',
+        mt: isMobile ? 2 : 4,
+        }}
+        >
+        {t('landingPage.mainTitle')}
       </Typography>
-      
-      {/* Subtitle/Description */}
-      <Typography variant="subtitle1" sx={{ mt: 2, opacity: 0.8,fontSize: isMobile ? '1rem' : '1.25rem', }}>
-        Enhance your teaching with ReflectEd— a tool for collecting instant feedback on lessons and gaining valuable insights to refine your teaching strategies.
-      </Typography>
-      
-      {/* Get Started Button */}
+        <Typography variant="subtitle1" sx={{ mt: 2, opacity: 0.8, fontSize: isMobile ? '1rem' : '1.25rem' }}>
+          {t('landingPage.subtitle')}
+        </Typography>
       <Link to="/signup" style={{ textDecoration: 'none' }}>
-  <Button
-    variant="contained"
-    sx={{
-      mt: isMobile ? 2 : 4,
-      bgcolor: 'secondary.main', 
-      '&:hover': {
+      <Button
+        variant="contained"
+        sx={{
+        mt: isMobile ? 2 : 4,
+        bgcolor: 'secondary.main', 
+        '&:hover': {
         bgcolor: 'secondary.dark',
-      },
-    }}
-  >
-    Get Started
-  </Button>
-</Link>
+        },
+        }}
+        >
+        {t('landingPage.getStarted')}
+        </Button>
+      </Link>
     </Box>
     <Grid container spacing={2} sx={{
   justifyContent: 'center',
@@ -81,18 +81,34 @@ const LandingPage = () => {
   bgcolor: 'background.default',
   margin: '0 auto', // Center the grid container
 }}>
-        <Grid item xs={12} sm={12} md={6} lg={6}>
-          <FeatureCard icon={<QrCodeScannerIcon />} title="QR Feedback Collection" description="QR codes for instant feedback collection make the process seamless and efficient." />
-        </Grid>
-        <Grid item xs={12} sm={12} md={6} lg={6}>
-          <FeatureCard icon={<StatisticsIcon />} title="Feedback Statistics" description="Access insightful feedback statistics to analyze and improve teaching outcomes." />
-        </Grid>
-        <Grid item xs={12} sm={12} md={6} lg={6}>
-          <FeatureCard icon={<AnonymousIcon />} title="Anonymous Feedback" description="Encourage honest and constructive feedback by allowing anonymity for respondents." />
-        </Grid>
-        <Grid item xs={12} sm={12} md={6} lg={6}>
-          <FeatureCard icon={<CourseIcon />} title="Course Creation" description="Easily create comprehensive courses, organizing your teaching material effectively." />
-        </Grid>
+<Grid item xs={12} sm={12} md={6} lg={6}>
+  <FeatureCard
+    icon={<QrCodeScannerIcon />}
+    title={t('landingPage.qrFeedbackTitle')}
+    description={t('landingPage.qrFeedbackDescription')}
+  />
+</Grid>
+<Grid item xs={12} sm={12} md={6} lg={6}>
+  <FeatureCard
+    icon={<StatisticsIcon />}
+    title={t('landingPage.feedbackStatisticsTitle')}
+    description={t('landingPage.feedbackStatisticsDescription')}
+  />
+</Grid>
+<Grid item xs={12} sm={12} md={6} lg={6}>
+  <FeatureCard
+    icon={<AnonymousIcon />}
+    title={t('landingPage.anonymousFeedbackTitle')}
+    description={t('landingPage.anonymousFeedbackDescription')}
+  />
+</Grid>
+<Grid item xs={12} sm={12} md={6} lg={6}>
+  <FeatureCard
+    icon={<CourseIcon />}
+    title={t('landingPage.courseCreationTitle')}
+    description={t('landingPage.courseCreationDescription')}
+  />
+</Grid>
       </Grid>
       <Footer/>
     </>

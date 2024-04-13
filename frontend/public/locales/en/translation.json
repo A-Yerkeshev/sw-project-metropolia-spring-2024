@@ -112,5 +112,25 @@
       "noTextFeedbackMessage": "No text feedback provided.",
       "noFeedbackMessage": "The session has not received any feedback."
     }
+  }, 
+  "landingPage": {
+    "mainTitle": "Instant Feedback App",
+    "subtitle": "Enhance your teaching with ReflectEd— a tool for collecting instant feedback on lessons and gaining valuable insights to refine your teaching strategies.",
+    "getStarted": "Get Started",
+    "qrFeedbackTitle": "QR Feedback Collection",
+    "qrFeedbackDescription": "QR codes for instant feedback collection make the process seamless and efficient.",
+    "feedbackStatisticsTitle": "Feedback Statistics",
+    "feedbackStatisticsDescription": "Access insightful feedback statistics to analyze and improve teaching outcomes.",
+    "anonymousFeedbackTitle": "Anonymous Feedback",
+    "anonymousFeedbackDescription": "Encourage honest and constructive feedback by allowing anonymity for respondents.",
+    "courseCreationTitle": "Course Creation",
+    "courseCreationDescription": "Easily create comprehensive courses, organizing your teaching material effectively."
+  },
+  "footer": {
+    "aboutUs": "About Us",
+    "createdBy": "Created by Metropolia students 💕"
+  },
+  "aboutus": {
+    "loremIpsum": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis enim eget purus hendrerit commodo. Phasellus fringilla efficitur justo non laoreet. Nullam tempor arcu in ex tincidunt, vel tincidunt justo blandit. Nullam vel pulvinar odio. Aenean malesuada sit amet nisi ut fringilla. Nullam sollicitudin nisi vitae mi commodo, et cursus sapien aliquam."
   }
 }

@@ -2,6 +2,7 @@ import { Typography, Grid, } from '@mui/material';
 import LandingNavbar from '../components/Navbar/LandingNavbar';
 import { useAuthContext } from '../hooks/useAuthContext';
 import BasicCard from '../components/BasicCard';
+import { useTranslation } from 'react-i18next';
 
 const developers = [
     { 
@@ -35,14 +36,16 @@ const developers = [
 ];
 
 const AboutUs = () => {
+  
   const { user } = useAuthContext();
+  const { t } = useTranslation();
 
   return (
     <div style={{ backgroundColor: '#fff', minHeight: '100vh' }}>
       {!user && <LandingNavbar />}
       <Grid container spacing={3} justifyContent="center" sx={{ padding: 15 }}>
         {developers.map((developer, index) => (
-          <Grid item xs={12} sm={6} md={6} lg={3} key={index}> {/* Set 2 columns on md screens */}
+          <Grid item xs={12} sm={6} md={6} lg={3} key={index}>
             <BasicCard
               title={developer.title}
               content={developer.content}
@@ -54,12 +57,9 @@ const AboutUs = () => {
       </Grid>
       <Grid container spacing={3} justifyContent="center">
         <Grid item xs={12} sm={8} md={6}>
-          <Typography variant="body1" align="center">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis enim eget purus hendrerit commodo.
-            Phasellus fringilla efficitur justo non laoreet. Nullam tempor arcu in ex tincidunt, vel tincidunt justo
-            blandit. Nullam vel pulvinar odio. Aenean malesuada sit amet nisi ut fringilla. Nullam sollicitudin nisi
-            vitae mi commodo, et cursus sapien aliquam.
-          </Typography>
+        <Typography variant="body1" align="center">
+          {t('aboutus.loremIpsum')}
+        </Typography>
         </Grid>
       </Grid>
     </div>
