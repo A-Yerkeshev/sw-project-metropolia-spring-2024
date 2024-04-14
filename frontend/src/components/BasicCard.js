@@ -15,10 +15,10 @@ const BasicCard = ({ title, content, actionLink, linkedInLink, imageUrl }) => {
           {title}
         </Typography>
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          {imageUrl && <img src={imageUrl} alt={title} style={{ width: 50, marginRight: 10 }} />}
           <Typography variant="h5" component="div">
             {content}
           </Typography>
-          {imageUrl && <img src={imageUrl} alt={title} style={{ width: 50, marginLeft: 10 }} />}
         </Box>
       </CardContent>
       {actionLink && (

@@ -117,20 +117,24 @@
     },
     "landingPage": {
       "mainTitle": "Instant Feedback App",
-      "subtitle": "Enhance your teaching with ReflectEd— a tool for collecting instant feedback on lessons and gaining valuable insights to refine your teaching strategies.",
-      "getStarted": "Get Started",
-      "qrFeedbackTitle": "QR Feedback Collection",
-      "qrFeedbackDescription": "QR codes for instant feedback collection make the process seamless and efficient.",
-      "feedbackStatisticsTitle": "Feedback Statistics",
-      "feedbackStatisticsDescription": "Access insightful feedback statistics to analyze and improve teaching outcomes.",
-      "anonymousFeedbackTitle": "Anonymous Feedback",
-      "anonymousFeedbackDescription": "Encourage honest and constructive feedback by allowing anonymity for respondents.",
-      "courseCreationTitle": "Course Creation",
-      "courseCreationDescription": "Easily create comprehensive courses, organizing your teaching material effectively."
+      "subtitle": "Улучшите свое преподавание с помощью ReflectEd - инструмента для сбора мгновенной обратной связи по урокам и получения ценных идей для улучшения своих методов преподавания.",
+      "getStarted": "Начать",
+      "qrFeedbackTitle": "Сбор обратной связи по QR-коду",
+      "qrFeedbackDescription": "QR-коды для сбора мгновенной обратной связи делают процесс плавным и эффективным.",
+      "feedbackStatisticsTitle": "Статистика обратной связи",
+      "feedbackStatisticsDescription": "Получите доступ к информативной статистике обратной связи для анализа и улучшения результатов обучения.",
+      "anonymousFeedbackTitle": "Анонимная обратная связь",
+      "anonymousFeedbackDescription": "Поощряйте честную и конструктивную обратную связь, позволяя анонимность для респондентов.",
+      "courseCreationTitle": "Создание курса",
+      "courseCreationDescription": "Легко создавайте комплексные курсы, эффективно организуя учебный материал."
     },
     "footer": {
-      "aboutUs": "About Us",
-      "createdBy": "Created by Metropolia students 💕"
+      "aboutUs": "О нас",
+      "createdBy": "Создано студентами Метрополии 💕"
+    },
+    "developers": {
+      "frontend": "Разработчик: frontend",
+      "backend": "Разработчик: backend"
     },
     "aboutus": {
       "loremIpsum": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis enim eget purus hendrerit commodo. Phasellus fringilla efficitur justo non laoreet. Nullam tempor arcu in ex tincidunt, vel tincidunt justo blandit. Nullam vel pulvinar odio. Aenean malesuada sit amet nisi ut fringilla. Nullam sollicitudin nisi vitae mi commodo, et cursus sapien aliquam."
