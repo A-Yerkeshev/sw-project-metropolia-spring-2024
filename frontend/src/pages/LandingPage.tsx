@@ -74,35 +74,56 @@ const LandingPage = () => {
   px: { // Responsive padding on the x-axis (left and right)
     xs: 2, // Smaller padding on smaller screens
     sm: '10%', // Starts to increase padding as the screen size grows
-    md: '15%', // Further increase for medium screens
+    md: '10%', // Further increase for medium screens
     lg: '20%', // Target 20% space on left and right for large screens
   },
-  width: 'auto', // Adjust width to fit the content plus padding
+  width: '100%', // Adjust width to fit the content plus padding
   bgcolor: 'background.default',
   margin: '0 auto', // Center the grid container
 }}>
-<Grid item xs={12} sm={12} md={6} lg={6}>
+<Grid item xs={12} sm={12} md={6} lg={6}
+sx={{
+    display: 'flex', // Ensures the content within grid item is flexible
+    flexDirection: 'column', // Stacks children vertically
+    justifyContent: 'center', // Centers children vertically in the grid item
+    alignItems: 'center', // Centers children horizontally in the grid item
+  }}>
   <FeatureCard
     icon={<QrCodeScannerIcon />}
     title={t('landingPage.qrFeedbackTitle')}
     description={t('landingPage.qrFeedbackDescription')}
   />
 </Grid>
-<Grid item xs={12} sm={12} md={6} lg={6}>
+<Grid item xs={12} sm={12} md={6} lg={6}sx={{
+    display: 'flex', // Ensures the content within grid item is flexible
+    flexDirection: 'column', // Stacks children vertically
+    justifyContent: 'center', // Centers children vertically in the grid item
+    alignItems: 'center', // Centers children horizontally in the grid item
+  }}>
   <FeatureCard
     icon={<StatisticsIcon />}
     title={t('landingPage.feedbackStatisticsTitle')}
     description={t('landingPage.feedbackStatisticsDescription')}
   />
 </Grid>
-<Grid item xs={12} sm={12} md={6} lg={6}>
+<Grid item xs={12} sm={12} md={6} lg={6}sx={{
+    display: 'flex', // Ensures the content within grid item is flexible
+    flexDirection: 'column', // Stacks children vertically
+    justifyContent: 'center', // Centers children vertically in the grid item
+    alignItems: 'center', // Centers children horizontally in the grid item
+  }}>
   <FeatureCard
     icon={<AnonymousIcon />}
     title={t('landingPage.anonymousFeedbackTitle')}
     description={t('landingPage.anonymousFeedbackDescription')}
   />
 </Grid>
-<Grid item xs={12} sm={12} md={6} lg={6}>
+<Grid item xs={12} sm={12} md={6} lg={6}sx={{
+    display: 'flex', // Ensures the content within grid item is flexible
+    flexDirection: 'column', // Stacks children vertically
+    justifyContent: 'center', // Centers children vertically in the grid item
+    alignItems: 'center', // Centers children horizontally in the grid item
+  }}>
   <FeatureCard
     icon={<CourseIcon />}
     title={t('landingPage.courseCreationTitle')}
