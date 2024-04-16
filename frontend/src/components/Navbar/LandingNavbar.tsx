@@ -25,12 +25,12 @@ const LandingNavbar = () => {
           <Grid item>
             <Box display="flex" alignItems="center" height="100%">
               {/* Login Button */}
-              <Button component={Link} to="/login" color="inherit">
+              <Button component={Link} to="/login" color="inherit" id="login">
                 {t('navbar.login')}
               </Button>
 
               {/* Signup Button */}
-              <Button component={Link} to="/signup" color="inherit">
+              <Button component={Link} to="/signup" color="inherit" id="sign-up">
                 {t('navbar.signup')}
               </Button>
 

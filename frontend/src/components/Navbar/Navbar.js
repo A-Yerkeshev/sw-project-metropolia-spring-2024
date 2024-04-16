@@ -73,7 +73,7 @@ const Navbar = () => {
                 <LanguageSwitcher />
               </Grid>
               <Grid item>
-                <Button onClick={logout} color="inherit">
+                <Button onClick={logout} color="inherit" id="sign-out">
                   {t("navbar.logout")}
                 </Button>
               </Grid>
