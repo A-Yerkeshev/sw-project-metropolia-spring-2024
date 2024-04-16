@@ -1,10 +1,15 @@
 require('dotenv').config();
 
-const port = process.env.PORT || 3000;
 const dbURI =
   process.env.NODE_ENV === 'test'
     ? process.env.MONGO_URI_TEST
     : process.env.MONGO_URI;
+let port =
+  process.env.NODE_ENV === 'test'
+    ? process.env.TEST_PORT
+    : process.env.PORT
+
+port ||= 4000;
 
 const express = require('express');
 const cors = require('cors');
