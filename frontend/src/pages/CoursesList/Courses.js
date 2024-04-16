@@ -168,6 +168,7 @@ export default function Courses() {
             color="primary"
             onClick={handleCreateSession}
             sx={{ mb: 2 }}
+            id="new-course"
           >
             {t("coursesList.createButton")}
           </Button>
