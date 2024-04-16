@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test('teacher can login', async ({ page }) => {
-  await page.goto('http://localhost:3000/');
+  await page.goto('http://127.0.0.1:3000/');
 
   const signOutBtn = await page.locator('#sign-out');
 
@@ -14,5 +14,5 @@ test('teacher can login', async ({ page }) => {
   await page.locator('#password').fill('playwright');
   await page.locator('#login-btn').click();
 
-  await expect(page).toHaveURL('http://localhost:3000/Courses');
+  await expect(page).toHaveURL('http://127.0.0.1:3000/Courses');
 });
