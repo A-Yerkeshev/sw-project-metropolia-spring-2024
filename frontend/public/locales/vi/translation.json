@@ -116,7 +116,7 @@
   "landingPage": {
     "mainTitle": "Ứng dụng thu thập đánh giá tức thì",
     "subtitle": "Nâng cao chất lượng giảng dạy với ReflectEd — công cụ thu thập đánh giá tiết học tức thì để nhận được những thông tin có giá trị cho chiến lượng giảng dạy của bạn.",
-    "getStarted": "Bắt đầu",
+    "getStarted": "BẮT ĐẦU",
     "qrFeedbackTitle": "Thu thập đánh giá bằng mã QR",
     "qrFeedbackDescription": "Thu thập đánh giá tức thì qua mã QR giúp quá trình diễn ra liền mạch và hiệu quả.",
     "feedbackStatisticsTitle": "Số liệu cho đánh giá",
@@ -131,10 +131,10 @@
     "createdBy": "Được tạo bởi các sinh viên từ Metropolia 💕"
   },
   "developers": {
-    "frontend": "Developer: frontend",
-    "backend": "Developer: backend"
+    "frontend": "Lập trình: frontend",
+    "backend": "Lập trình: backend"
   },
   "aboutus": {
-    "loremIpsum": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis enim eget purus hendrerit commodo. Phasellus fringilla efficitur justo non laoreet. Nullam tempor arcu in ex tincidunt, vel tincidunt justo blandit. Nullam vel pulvinar odio. Aenean malesuada sit amet nisi ut fringilla. Nullam sollicitudin nisi vitae mi commodo, et cursus sapien aliquam."
+    "description": "Chúng tôi là một nhóm sinh viên đến từ Đại học Khoa học Ứng dụng Metropolia tại Helsinki, Phần Lan. Cùng nhau, chúng tôi đã phát triển dự án này cho khóa học Phát triển phần mềm, đồng thời tìm hiểu về DevOps trong quá trình thực hiện. Mỗi người trong chúng tôi có đủ khả năng để thực hiện tốt các dự án của riêng mình, nhưng cùng nhau, chúng tôi có thể làm ra những dự án tốt hơn, giống như dịch vụ này. Truy cập trang GitHub của chúng tôi để xem những gì đã được thực hiện!"
   }
 }
