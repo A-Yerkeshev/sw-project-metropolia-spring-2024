@@ -117,14 +117,14 @@
       "mainTitle": "Instant Feedback App",
       "subtitle": "Tehosta opetustasi ReflectEdin avulla - työkalu välittömän palautteen keräämiseen oppitunneista ja arvokkaiden näkökulmien saamiseen opetusstrategioiden hienosäätöön.",
       "getStarted": "Aloita",
-      "qrFeedbackTitle": "QR-palautteen keruu",
+      "qrFeedbackTitle": "QR palaute",
       "qrFeedbackDescription": "QR-koodit välittömän palautteen keräämiseen tekevät prosessista saumattoman ja tehokkaan.",
       "feedbackStatisticsTitle": "Palautetilastot",
-      "feedbackStatisticsDescription": "Pääse käsiksi oivaltaviin palautetilastoihin opetustulosten analysoimiseksi ja parantamiseksi.",
+      "feedbackStatisticsDescription": "Tutki palautetilastoja opetustulosten analysoimiseksi ja parantamiseksi.",
       "anonymousFeedbackTitle": "Anonyymi palaute",
       "anonymousFeedbackDescription": "Kannusta rehellistä ja rakentavaa palautetta mahdollistamalla vastaajille anonymiteetti.",
       "courseCreationTitle": "Kurssin luominen",
-      "courseCreationDescription": "Luo helposti kattavia kursseja, järjestäen opetusmateriaalisi tehokkaasti."
+      "courseCreationDescription": "Luo helposti kursseja, järjestä opetusmateriaalisi tehokkaasti."
     },
     "footer": {
       "aboutUs": "Tietoa meistä",
@@ -135,6 +135,6 @@
       "backend": "Kehittäjä: backend"
     },
     "aboutus": {
-      "loremIpsum": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis enim eget purus hendrerit commodo. Phasellus fringilla efficitur justo non laoreet. Nullam tempor arcu in ex tincidunt, vel tincidunt justo blandit. Nullam vel pulvinar odio. Aenean malesuada sit amet nisi ut fringilla. Nullam sollicitudin nisi vitae mi commodo, et cursus sapien aliquam."
+      "description": "Olemme joukko Metropolia Ammattikorkeakoulun opiskelijoita Helsingissä. Yhdessä loimme ohjelmistokehityskurssillemme projektin, jossa opimme DevOpsista matkan varrella. Jokainen meistä tietää tarpeeksi tehdäkseen omia projekteja, mutta yhdessä teimme tästä palvelusta vieläkin paremman. Vieraile GitHub-arkistoissamme nähdäksesi, mitä olemme tehneet!"
     }
 }

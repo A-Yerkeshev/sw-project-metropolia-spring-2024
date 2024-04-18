@@ -135,6 +135,6 @@
     "backend": "Developer: backend"
   },
   "aboutus": {
-    "loremIpsum": "We're a group of Metropolia Applied University students in Helsinki, Finland. Together, we're working on a project for our Software 1-2 courses, learning about DevOps along the way. Each of us knows enough to do our own projects well, but together, we make something even better like this service. Feel free to visit our GitHub repositories to see what we've been up to!"
+    "description": "We are a group of Metropolia Applied University students in Helsinki, Finland. Together, we created a project for our Software Development course, learning about DevOps along the way. Each of us knows enough to do our own projects well, but together, we make something even better like this service. Feel free to visit our GitHub repositories to see what we've been up to!"
   }
 }

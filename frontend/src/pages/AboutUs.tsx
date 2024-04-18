@@ -59,7 +59,7 @@ const AboutUs = () => {
       <Grid container spacing={3} justifyContent="center">
         <Grid item xs={12} sm={8} md={6}>
         <Typography variant="body1" align="center">
-          {t('aboutus.loremIpsum')}
+          {t('aboutus.description')}
         </Typography>
         </Grid>
       </Grid>
