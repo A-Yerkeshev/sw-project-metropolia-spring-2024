@@ -65,13 +65,14 @@ const Navbar = () => {
           </Grid>
 
           <Grid item>
-            <Button onClick={logout} color="inherit">
+            <Button onClick={logout} color="inherit"
+            style={{ marginLeft: "5%" }}>
               {t("navbar.logout")}
             </Button>
           </Grid>
 
           <Grid item>
-            <LanguageSwitcher />
+            <LanguageSwitcher/>
           </Grid>
 
           <Grid item>
@@ -82,7 +83,7 @@ const Navbar = () => {
               aria-haspopup="true"
               onClick={handleMenu}
               color="inherit"
-              style={{ marginTop: "-4px" }}
+              style={{ marginTop: "-4%" }}
             >
               <AccountCircle />
             </IconButton>
