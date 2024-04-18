@@ -48,7 +48,7 @@ const LandingPage = () => {
         mt: isMobile ? 2 : 4,
         }}
         >
-        {t('landingPage.mainTitle')}
+        ReflectEd
       </Typography>
         <Typography variant="subtitle1" sx={{ mt: 2, opacity: 0.8, fontSize: isMobile ? '1rem' : '1.25rem' }}>
           {t('landingPage.subtitle')}
@@ -58,7 +58,7 @@ const LandingPage = () => {
         variant="contained"
         sx={{
         mt: isMobile ? 2 : 4,
-        bgcolor: 'secondary.main', 
+        bgcolor: 'secondary.main',
         '&:hover': {
         bgcolor: 'secondary.dark',
         },
@@ -70,7 +70,7 @@ const LandingPage = () => {
     </Box>
     <Grid container spacing={2} sx={{
   justifyContent: 'center',
-  alignItems: 'center', 
+  alignItems: 'center',
   px: { // Responsive padding on the x-axis (left and right)
     xs: 2, // Smaller padding on smaller screens
     sm: '10%', // Starts to increase padding as the screen size grows

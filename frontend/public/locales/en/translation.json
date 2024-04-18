@@ -112,7 +112,7 @@
       "noTextFeedbackMessage": "No text feedback provided.",
       "noFeedbackMessage": "The session has not received any feedback."
     }
-  }, 
+  },
   "landingPage": {
     "mainTitle": "Instant Feedback App",
     "subtitle": "Enhance your teaching with ReflectEd— a tool for collecting instant feedback on lessons and gaining valuable insights to refine your teaching strategies.",
@@ -130,7 +130,11 @@
     "aboutUs": "About Us",
     "createdBy": "Created by Metropolia students 💕"
   },
+  "developers": {
+    "frontend": "Developer: frontend",
+    "backend": "Developer: backend"
+  },
   "aboutus": {
-    "loremIpsum": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis enim eget purus hendrerit commodo. Phasellus fringilla efficitur justo non laoreet. Nullam tempor arcu in ex tincidunt, vel tincidunt justo blandit. Nullam vel pulvinar odio. Aenean malesuada sit amet nisi ut fringilla. Nullam sollicitudin nisi vitae mi commodo, et cursus sapien aliquam."
+    "loremIpsum": "We're a group of Metropolia Applied University students in Helsinki, Finland. Together, we're working on a project for our Software 1-2 courses, learning about DevOps along the way. Each of us knows enough to do our own projects well, but together, we make something even better like this service. Feel free to visit our GitHub repositories to see what we've been up to!"
   }
 }

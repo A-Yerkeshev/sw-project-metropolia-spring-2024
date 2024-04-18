@@ -113,24 +113,28 @@
       "noFeedbackMessage": "Tiết học chưa nhận được đánh giá nào."
     }
   },
-    "landingPage": {
-      "mainTitle": "Instant Feedback App",
-      "subtitle": "Enhance your teaching with ReflectEd— a tool for collecting instant feedback on lessons and gaining valuable insights to refine your teaching strategies.",
-      "getStarted": "Get Started",
-      "qrFeedbackTitle": "QR Feedback Collection",
-      "qrFeedbackDescription": "QR codes for instant feedback collection make the process seamless and efficient.",
-      "feedbackStatisticsTitle": "Feedback Statistics",
-      "feedbackStatisticsDescription": "Access insightful feedback statistics to analyze and improve teaching outcomes.",
-      "anonymousFeedbackTitle": "Anonymous Feedback",
-      "anonymousFeedbackDescription": "Encourage honest and constructive feedback by allowing anonymity for respondents.",
-      "courseCreationTitle": "Course Creation",
-      "courseCreationDescription": "Easily create comprehensive courses, organizing your teaching material effectively."
-    },
-    "footer": {
-      "aboutUs": "About Us",
-      "createdBy": "Created by Metropolia students 💕"
-    },
-    "aboutus": {
-      "loremIpsum": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis enim eget purus hendrerit commodo. Phasellus fringilla efficitur justo non laoreet. Nullam tempor arcu in ex tincidunt, vel tincidunt justo blandit. Nullam vel pulvinar odio. Aenean malesuada sit amet nisi ut fringilla. Nullam sollicitudin nisi vitae mi commodo, et cursus sapien aliquam."
-    }
+  "landingPage": {
+    "mainTitle": "Ứng dụng thu thập đánh giá tức thì",
+    "subtitle": "Nâng cao chất lượng giảng dạy với ReflectEd — công cụ thu thập đánh giá tiết học tức thì để nhận được những thông tin có giá trị cho chiến lượng giảng dạy của bạn.",
+    "getStarted": "Bắt đầu",
+    "qrFeedbackTitle": "Thu thập đánh giá bằng mã QR",
+    "qrFeedbackDescription": "Thu thập đánh giá tức thì qua mã QR giúp quá trình diễn ra liền mạch và hiệu quả.",
+    "feedbackStatisticsTitle": "Số liệu cho đánh giá",
+    "feedbackStatisticsDescription": "Truy cập số liệu về đánh giá để phân tích và cải thiện kết quả giảng dạy.",
+    "anonymousFeedbackTitle": "Đánh giá ẩn danh",
+    "anonymousFeedbackDescription": "Khuyến khích đánh giá trung thực và mang tính xây dựng bằng cách cho phép người trả lời ẩn danh.",
+    "courseCreationTitle": "Tạo khóa học",
+    "courseCreationDescription": "Dễ dàng tạo các khóa học toàn diện, sắp xếp tài liệu giảng dạy một cách hiệu quả."
+  },
+  "footer": {
+    "aboutUs": "Về chúng tôi",
+    "createdBy": "Được tạo bởi các sinh viên từ Metropolia 💕"
+  },
+  "developers": {
+    "frontend": "Developer: frontend",
+    "backend": "Developer: backend"
+  },
+  "aboutus": {
+    "loremIpsum": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis enim eget purus hendrerit commodo. Phasellus fringilla efficitur justo non laoreet. Nullam tempor arcu in ex tincidunt, vel tincidunt justo blandit. Nullam vel pulvinar odio. Aenean malesuada sit amet nisi ut fringilla. Nullam sollicitudin nisi vitae mi commodo, et cursus sapien aliquam."
+  }
 }
