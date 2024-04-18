@@ -20,17 +20,14 @@ const Navbar = () => {
   const { logout } = useLogout();
   const location = useLocation();
   const { t } = useTranslation();
-  const [anchorEl, setAnchorEl] = useState(null); // State for managing menu anchor
+  const [anchorEl, setAnchorEl] = useState(null);
 
-  // Define the routes where the Navbar should not be displayed
   const hideOnRoutes = ["/signup", "/share", "/feedback/new"];
 
-  // Check if the current route is in the list of routes to hide the Navbar on
   if (!user || hideOnRoutes.includes(location.pathname)) {
     return null;
   }
 
-  //  opening and closing of the user menu
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -70,16 +67,17 @@ const Navbar = () => {
           <Grid item>
             <Grid container alignItems="center" spacing={2}>
               <Grid item>
-                <LanguageSwitcher />
-              </Grid>
-              <Grid item>
                 <Button onClick={logout} color="inherit">
                   {t("navbar.logout")}
                 </Button>
               </Grid>
+              <Grid item>
+                <LanguageSwitcher />
+              </Grid>
             </Grid>
           </Grid>
-          <Grid>
+
+          <Grid item>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -87,6 +85,7 @@ const Navbar = () => {
               aria-haspopup="true"
               onClick={handleMenu}
               color="inherit"
+              style={{ marginTop: "-2px" }}
             >
               <AccountCircle />
             </IconButton>
@@ -113,5 +112,6 @@ const Navbar = () => {
     </AppBar>
   );
 };
+
 
 export default Navbar;
