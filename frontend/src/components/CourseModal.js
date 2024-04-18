@@ -23,7 +23,7 @@ const CourseModal = ({
   const { t } = useTranslation();
 
   return (
-    <Dialog open={openModal} onClose={handleClose} fullWidth maxWidth="sm">
+    <Dialog open={openModal} onClose={handleClose} fullWidth maxWidth="sm" id="course-modal">
       <DialogTitle sx={{ m: 0, p: 2 }}>
         {modalContent === 'createCourse'
           ? t('modals.course.createHeader')
@@ -56,7 +56,7 @@ const CourseModal = ({
                   label={t('modals.course.nameLabel')}
                   type="text"
                   defaultValue={
-                    modalContent === 'editCourse' ? courseData.name : '' // Изменение: Используем courseData.name
+                    modalContent === 'editCourse' ? courseData.name : ''
                   }
                   fullWidth
                   required
@@ -69,7 +69,7 @@ const CourseModal = ({
                   label={t('modals.course.descriptionLabel')}
                   multiline
                   defaultValue={
-                    modalContent === 'editCourse' ? courseData.description : '' // Изменение: Используем courseData.description
+                    modalContent === 'editCourse' ? courseData.description : ''
                   }
                   fullWidth
                   required

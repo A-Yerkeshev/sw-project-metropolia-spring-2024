@@ -65,7 +65,7 @@ const Navbar = () => {
           </Grid>
 
           <Grid item>
-            <Button onClick={logout} color="inherit"
+            <Button onClick={logout} color="inherit" id="sign-out"
             style={{ marginLeft: "5%" }}>
               {t("navbar.logout")}
             </Button>
