@@ -137,6 +137,6 @@
       "backend": "Разработчик: backend"
     },
     "aboutus": {
-      "loremIpsum": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis enim eget purus hendrerit commodo. Phasellus fringilla efficitur justo non laoreet. Nullam tempor arcu in ex tincidunt, vel tincidunt justo blandit. Nullam vel pulvinar odio. Aenean malesuada sit amet nisi ut fringilla. Nullam sollicitudin nisi vitae mi commodo, et cursus sapien aliquam."
+      "description": "Мы — студенты университета Metropolia в Финляндии, город Хельсинки. Этот проект был создан в рамках курса по разработке программного обеспечения, в ходе которого мы также изучали и применяли принципы DevOps. Каждый из нас обладает достаточными навыками для реализации собственных индивидуальных проектов, но вместе мы способны создать нечто большее, например, этот проект. Заходите на наши  GitHub репозитории , чтобы узнать, чем ещё мы занимаемся!"
     }
 }

@@ -135,6 +135,6 @@
     "backend": "Developer: backend"
   },
   "aboutus": {
-    "loremIpsum": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis enim eget purus hendrerit commodo. Phasellus fringilla efficitur justo non laoreet. Nullam tempor arcu in ex tincidunt, vel tincidunt justo blandit. Nullam vel pulvinar odio. Aenean malesuada sit amet nisi ut fringilla. Nullam sollicitudin nisi vitae mi commodo, et cursus sapien aliquam."
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis enim eget purus hendrerit commodo. Phasellus fringilla efficitur justo non laoreet. Nullam tempor arcu in ex tincidunt, vel tincidunt justo blandit. Nullam vel pulvinar odio. Aenean malesuada sit amet nisi ut fringilla. Nullam sollicitudin nisi vitae mi commodo, et cursus sapien aliquam."
   }
 }
