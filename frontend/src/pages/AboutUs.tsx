@@ -1,4 +1,4 @@
-import { Typography, Grid, } from '@mui/material';
+import { Typography, Grid, Box } from '@mui/material';
 import LandingNavbar from '../components/Navbar/LandingNavbar';
 import { useAuthContext } from '../hooks/useAuthContext';
 import BasicCard from '../components/BasicCard';
@@ -43,24 +43,28 @@ const AboutUs = () => {
   return (
     <div style={{ backgroundColor: '#fff', minHeight: '100vh' }}>
       {!user && <LandingNavbar />}
-      <Grid container spacing={3} justifyContent="center" sx={{ padding: 15, marginTop: 0 }}>
+      <Grid container spacing={3} justifyContent="center" sx={{ padding: 10, marginTop: 0 }}>
         {developers.map((developer, index) => (
           <Grid item xs={12} sm={6} md={6} lg={3} key={index}>
-            <BasicCard
-              title={developer.title}
-              content={developer.content}
-              actionLink={developer.actionLink}
-              linkedInLink={developer.linkedInLink}
-              imageUrl={developer.imageUrl}
-            />
+            <Box sx={{ display: 'flex', justifyContent: 'center', width: 290 }}>
+            <Box sx={{ height: 190 }}> 
+              <BasicCard
+                title={developer.title}
+                content={developer.content}
+                actionLink={developer.actionLink}
+                linkedInLink={developer.linkedInLink}
+                imageUrl={developer.imageUrl}
+              />
+            </Box>
+            </Box>
           </Grid>
         ))}
       </Grid>
       <Grid container spacing={3} justifyContent="center">
         <Grid item xs={12} sm={8} md={6}>
-        <Typography variant="body1" align="center">
-          {t('aboutus.description')}
-        </Typography>
+          <Typography variant="body1" align="center">
+            {t('aboutus.description')}
+          </Typography>
         </Grid>
       </Grid>
     </div>
