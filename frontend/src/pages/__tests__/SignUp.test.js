@@ -1,5 +1,5 @@
-import { render, screen } from '@testing-library/react';
-import Login from '../Login/Login';
+import { render } from '@testing-library/react';
+import SignUp from '../Login/Signup';
 import { AuthContextProvider } from '../../context/AuthContext';
 import { BrowserRouter } from 'react-router-dom';
 
@@ -10,7 +10,7 @@ describe('Login component', () => {
     page = render(
       <AuthContextProvider>
         <BrowserRouter>
-          <Login />
+          <SignUp />
         </BrowserRouter>
       </AuthContextProvider>
     ).container;
@@ -19,6 +19,8 @@ describe('Login component', () => {
   it('renders all input fields', () => {
     expect(page.querySelector('#email')).toBeInTheDocument();
     expect(page.querySelector('#password')).toBeInTheDocument();
-    expect(page.querySelector('#login-btn')).toBeInTheDocument();
+    expect(page.querySelector('#firstName')).toBeInTheDocument();
+    expect(page.querySelector('#lastName')).toBeInTheDocument();
+    expect(page.querySelector('button[type="submit"]')).toBeInTheDocument();
   });
 });
