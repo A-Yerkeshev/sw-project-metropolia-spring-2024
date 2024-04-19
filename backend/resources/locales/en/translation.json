@@ -9,5 +9,12 @@
   "feedback": {
     "studentNotEnrolled": "You are not enrolled to this course.",
     "studentIdExist": "You already submitted feedback for this session."
+  },
+  "resetPassword": {
+    "missingFields": "",
+    "wrongEmail": "",
+    "passwordsMismatch": "",
+    "recoveryFailed": "",
+    "recoveryOk": ""
   }
 }
