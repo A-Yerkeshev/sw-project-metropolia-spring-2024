@@ -40,7 +40,11 @@ describe('User API', () => {
     expect(res).to.have.status(200);
     expect(res.body).to.have.property('email');
     expect(res.body).to.have.property('token');
-    token = res.body.token; // Save the token for future requests
+    token = res.body.token;
+
+    // Check that password recovery token has been generated
+    const user = await User.findOne({}, {}, { sort: { 'created_at' : -1 } });
+    expect(!!user.recoveryToken).to.not.equal(false);
   });
 
   it('should not be able to login as non-existing user', async () => {

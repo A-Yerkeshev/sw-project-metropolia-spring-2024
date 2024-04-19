@@ -17,9 +17,14 @@ const loginUser = async (req, res) => {
   try {
     const user = await User.login(email, password, language);
 
-    // create token
+    // create JWT token
     const token = createToken(user._id);
     const id = user._id;
+
+    // create password recovery token
+    user.recoveryToken = createToken(user._id);
+    user.save();
+
     res.status(200).json({ email, token, id });
   } catch (error) {
     res.status(404).json({ error: error.message });
