@@ -50,4 +50,16 @@ const signupUser = async (req, res) => {
   }
 };
 
-module.exports = { signupUser, loginUser };
+const changePassword = async (req, res) => {
+  const {email, newPassword} = req.body;
+  
+  try {
+    const changePassword = await User.changePassword(email, newPassword);
+    res.status(200).json({message: 'Password updated successfully'});   
+  } catch (error) {
+    console.error('Error in changePassword:', error);
+    res.status(500).json({ error: error.message });
+  }
+};
+
+module.exports = { signupUser, loginUser, changePassword };
