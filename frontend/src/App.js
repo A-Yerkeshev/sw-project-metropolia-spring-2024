@@ -11,6 +11,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Courses from "./pages/CoursesList/Courses";
 import Sessions from "./pages/Sessions/Sessions";
 import Users from "./pages/Users/Users";
+import ResetPasswordPage from "./pages/resetPassword/ResetPassword";
 // import Footer from "./components/Footer";
 import AboutUs from "./pages/AboutUs";
 
@@ -39,6 +40,7 @@ function App() {
           <Route path="/sessions/:courseId" element={<Sessions />} />
           <Route path="/Users" element={<Users />} />
           <Route path="/about-us" element={<AboutUs />} />
+          <Route path="/resetpassword" element={<ResetPasswordPage />} />
         </Routes>
         {/* <Footer /> */}
       </BrowserRouter>

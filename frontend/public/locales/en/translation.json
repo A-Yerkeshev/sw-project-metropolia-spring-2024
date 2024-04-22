@@ -25,6 +25,7 @@
     "loginButton": "Log in",
     "errorMessage": "Failed to login",
     "signUpPrompt": "Don't have an account? Sign Up",
+    "resetPassword": "Forgot your password?",
     "emailAndPasswordRequired": "Email and password are required."
   },
   "signUp": {
@@ -136,5 +137,11 @@
   },
   "aboutus": {
     "description": "We are a group of Metropolia Applied University students in Helsinki, Finland. Together, we created a project for our Software Development course, learning about DevOps along the way. Each of us knows enough to do our own projects well, but together, we make something even better like this service. Feel free to visit our GitHub repositories to see what we've been up to!"
-  }
+  },
+    "resetPassword": {
+      "header": "Reset Password",
+      "emailAddressLabel": "Email Address",
+      "newPasswordLabel": "New Password",
+      "submitButton": "Submit"
+    }
 }

@@ -111,6 +111,11 @@ const Login = () => {
                     {t('login.signUpPrompt')}
                   </Typography>
                 </RouterLink>
+                <RouterLink to="/resetpassword" style={{ textDecoration: 'none' }}>
+                  <Typography variant="body2">
+                    {t('login.resetPassword')}
+                  </Typography>
+                </RouterLink>
               </Grid>
             </Grid>
           </Box>

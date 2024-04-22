@@ -64,6 +64,24 @@ userSchema.statics.login = async function (email, password, language) {
   throw new Error(i18next.t('login.wrongEmail', { lng: language }));
 };
 
+userSchema.statics.changePassword = async function ( email, newPassword ) {
+
+  if (!email || !newPassword) {
+    throw new Error('All fields are required');
+  }
+
+  const user = await this.findOne({ email });
+  if (user) {
+    const salt = await bcrypt.genSalt(10);
+    const hash = await bcrypt.hash(newPassword, salt);
+    user.password = hash;
+    await user.save();
+    return { message: 'Password updated successfully' };
+  }
+  throw new Error(i18next.t('login.wrongEmail', { lng: language }));
+
+};
+
 const User = mongoose.model('User', userSchema);
 
 module.exports = { User };

@@ -57,34 +57,16 @@ const signupUser = async (req, res) => {
   }
 };
 
-const resetPassword = async (req, res) => {
-  const { token, email, password, passwordRep, language } = req.body;
-
-  if (!token || !email || !password || !passwordRep) {
-    return res.status(400).json({ error: i18next.t('resetPassword.missingFields', { lng: language }) });
-  }
-
-  if (password !== passwordRep) {
-    return res.status(400).json({ error: i18next.t('resetPassword.passwordsMismatch', { lng: language }) });
-  }
-
-  const user = await this.findOne({ email });
-  if (!user) {
-    return res.status(404).json({ error: i18next.t('resetPassword.wrongEmail', { lng: language }) });
-  }
-
-  if (user.recoveryToken !== token) {
-    return res.status(400).json({ error: i18next.t('resetPassword.recoveryFailed', { lng: language }) });
-  }
+const changePassword = async (req, res) => {
+  const {email, newPassword} = req.body;
 
   try {
-    const salt = await bcrypt.genSalt(10);
-    const hash = await bcrypt.hash(password, salt);
-    user.password = hash;
-    return res.status(200).json({ error: i18next.t('resetPassword.recoveryOk', { lng: language }) });
-  } catch {
-    return res.status(500).json({ error: i18next.t('resetPassword.recoveryFailed', { lng: language }) });
+    const changePassword = await User.changePassword(email, newPassword);
+    res.status(200).json({message: 'Password updated successfully'});
+  } catch (error) {
+    console.error('Error in changePassword:', error);
+    res.status(500).json({ error: error.message });
   }
-}
+};
 
-module.exports = { signupUser, loginUser, resetPassword };
+module.exports = { signupUser, loginUser, changePassword };
