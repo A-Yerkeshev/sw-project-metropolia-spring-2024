@@ -9,5 +9,11 @@
   "feedback": {
     "studentNotEnrolled": "Käyttäjätunnus ei ole lisätty tälle kurssille.",
     "studentIdExist": "Palautetta tästä istunnosta on tallennettu järjestelmässä."
+  },
+  "resetPassword": {
+    "missingFields": "Täytä kaikki vaaditut kentät",
+    "passwordsMismatch": "Salasanat eivät täsmää",
+    "recoveryFailed": "Salasanan palauttaminen epäonnistui. Tarkista sähköpostiosoite",
+    "recoveryOk": "Salasanan palauttaminen onnistui!"
   }
 }

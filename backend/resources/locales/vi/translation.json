@@ -9,5 +9,11 @@
   "feedback": {
     "studentNotEnrolled": "Bạn không tham gia khóa học này.",
     "studentIdExist": "Đã tồn tại đánh giá từ mã số học sinh này."
+  },
+  "resetPassword": {
+    "missingFields": "Vui lòng điền vào tất cả các trường bắt buộc",
+    "passwordsMismatch": "Mật khẩu không khớp",
+    "recoveryFailed": "Không thể khôi phục mật khẩu. Kiểm tra địa chỉ email",
+    "recoveryOk": "Khôi phục mật khẩu thành công!"
   }
 }

@@ -136,5 +136,12 @@
   },
   "aboutus": {
     "description": "Chúng tôi là một nhóm sinh viên đến từ Đại học Khoa học Ứng dụng Metropolia tại Helsinki, Phần Lan. Cùng nhau, chúng tôi đã phát triển dự án này cho khóa học Phát triển phần mềm, đồng thời tìm hiểu về DevOps trong quá trình thực hiện. Mỗi người trong chúng tôi có đủ khả năng để thực hiện tốt các dự án của riêng mình, nhưng cùng nhau, chúng tôi có thể làm ra những dự án tốt hơn, giống như dịch vụ này. Truy cập trang GitHub của chúng tôi để xem những gì đã được thực hiện!"
+  },
+  "resetPassword": {
+    "header": "Đặt lại Mật khẩu",
+    "emailAddressLabel": "Địa chỉ Email",
+    "newPasswordLabel": "Mật khẩu Mới",
+    "passwordRepLabel": "Nhập lại mật khẩu",
+    "submitButton": "Gửi"
   }
 }

@@ -58,14 +58,23 @@ const signupUser = async (req, res) => {
 };
 
 const changePassword = async (req, res) => {
-  const {email, newPassword} = req.body;
+  const { token, email, password, passwordRep } = req.body;
+  const language = req.headers['accept-language'];
 
-  try {
-    const changePassword = await User.changePassword(email, newPassword);
-    res.status(200).json({message: 'Password updated successfully'});
-  } catch (error) {
-    console.error('Error in changePassword:', error);
-    res.status(500).json({ error: error.message });
+  if (!token || !email || !password || !passwordRep) {
+    return res.status(400).json({ error: i18next.t('resetPassword.missingFields', { lng: language }) });
+  }
+
+  if (password !== passwordRep) {
+    return res.status(400).json({ error: i18next.t('resetPassword.passwordsMismatch', { lng: language }) });
+  }
+
+  const changeSuccessful = await User.changePassword(email, password, token);
+
+  if (changeSuccessful === true) {
+    return res.status(200).json({ message: i18next.t('resetPassword.recoveryOk', { lng: language }) });
+  } else {
+    return res.status(500).json({ error: i18next.t('resetPassword.recoveryFailed', { lng: language }) });
   }
 };
 

@@ -7,32 +7,42 @@ import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useTranslation } from 'react-i18next';
+import { useLocation } from "react-router-dom";
 
 const ResetPasswordPage = () => {
+  const location = useLocation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { t } = useTranslation();
+  const [passwordRep, setPasswordRep] = useState('');
+  const { t, i18n } = useTranslation();
   const backendUrl = process.env.REACT_APP_BACKEND_URL || '';
+  const queryParams = new URLSearchParams(location.search);
+  const [message, setMessage] = useState('');
+  const [error, setError] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const token = queryParams.get("token");
+
     try {
       const response = await fetch(`${backendUrl}/api/users/changepassword`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Accept-Language': i18n.language
         },
-        body: JSON.stringify({ email, newPassword: password }),
+        body: JSON.stringify({ email, password, passwordRep, token }),
       });
+      const res = await response.json();
+
       if (!response.ok) {
-        throw new Error('Password reset failed');
+        throw new Error(res.error);
       }
-      const data = await response.json();
-      console.log(data); // Log the response (optional)
-      // Optionally, redirect the user to a login page or display a success message
+      setError('');
+      setMessage(res.message);
     } catch (error) {
-      console.error('Password reset failed:', error);
-      // Optionally, display an error message to the user
+      setMessage('');
+      setError(error.message);
     }
   };
 
@@ -75,6 +85,18 @@ const ResetPasswordPage = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            name="password-rep"
+            label={t('resetPassword.passwordRepLabel')}
+            type="password"
+            id="password-rep"
+            autoComplete="new-password"
+            value={passwordRep}
+            onChange={(e) => setPasswordRep(e.target.value)}
+          />
           <Button
             type="submit"
             fullWidth
@@ -83,6 +105,8 @@ const ResetPasswordPage = () => {
           >
             {t('resetPassword.submitButton')}
           </Button>
+          {error && <Typography color="error">{error}</Typography>}
+          {message && <Typography color="success.main">{message}</Typography>}
         </Box>
       </Box>
     </Container>

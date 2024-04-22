@@ -136,5 +136,12 @@
     },
     "aboutus": {
       "description": "Olemme joukko Metropolia Ammattikorkeakoulun opiskelijoita Helsingissä. Yhdessä loimme ohjelmistokehityskurssillemme projektin, jossa opimme DevOpsista matkan varrella. Jokainen meistä tietää tarpeeksi tehdäkseen omia projekteja, mutta yhdessä teimme tästä palvelusta vieläkin paremman. Vieraile GitHub-arkistoissamme nähdäksesi, mitä olemme tehneet!"
+    },
+    "resetPassword": {
+      "header": "Palauta salasana",
+      "emailAddressLabel": "Sähköpostiosoite",
+      "newPasswordLabel": "Uusi salasana",
+      "passwordRepLabel": "Toista salasana",
+      "submitButton": "Lähetä"
     }
 }

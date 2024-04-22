@@ -9,5 +9,11 @@
   "feedback": {
     "studentNotEnrolled": "Вы не добавлены на этот курс.",
     "studentIdExist": "Вы уже добавили отзыв к этой лекции."
+  },
+  "resetPassword": {
+    "missingFields": "Пожалуйста, заполните все поля",
+    "passwordsMismatch": "Пароли не совпадают",
+    "recoveryFailed": "Не удалось изменить пароль. Проверьте адресс электронной почты",
+    "recoveryOk": "Пароль изменнён!"
   }
 }

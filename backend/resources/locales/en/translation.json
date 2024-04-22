@@ -11,10 +11,9 @@
     "studentIdExist": "You already submitted feedback for this session."
   },
   "resetPassword": {
-    "missingFields": "",
-    "wrongEmail": "",
-    "passwordsMismatch": "",
-    "recoveryFailed": "",
-    "recoveryOk": ""
+    "missingFields": "Please, fill all required fields",
+    "passwordsMismatch": "Passwords do not match",
+    "recoveryFailed": "Failed to recover password. Check email address",
+    "recoveryOk": "Password recovered successfully!"
   }
 }
