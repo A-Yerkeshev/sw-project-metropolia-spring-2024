@@ -92,9 +92,9 @@ const createFeedback = async (req, res) => {
     }
 
     // check that session has not expired yet
-    // if (Date.now() > session.end.getTime()) {
-    //   return res.status(400).json({ error: "Session has expired. You cannot submit feedback anymore." });
-    // }
+    if (Date.now() > session.end.getTime()) {
+      return res.status(400).json({ error: "Session has expired. You cannot submit feedback anymore." });
+    }
 
     // create new feedback and include provided session Id
     const feedback = await Feedback.create({
