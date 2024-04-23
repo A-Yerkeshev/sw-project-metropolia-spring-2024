@@ -49,7 +49,7 @@ const Course = () => {
     };
 
     fetchCourse();
-  }, [courseId]); // Dependency array ensures this effect runs only when courseId changes
+  }, [courseId, currentSession]);
 
   const handleCreateSession = () => {
     setErrorMessage('');
@@ -204,7 +204,7 @@ const Course = () => {
       // Perform state updates or navigations here
       setOpenModal(false);
       setModalContent(null);
-      //update the course or session list to reflect the changes
+      setCurrentSession(null);
     } catch (error) {
       console.error('Error updating session:', error);
       // Handle error cases
