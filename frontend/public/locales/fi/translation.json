@@ -42,7 +42,7 @@
     "createSessionButton": "Luo Luento",
     "editButton": "Muokkaa",
     "deleteButton": "Poista",
-    "generateQRButton": "Luo QR",
+    "generateQRButton": "Näytä QR",
     "showStatisticsButton": "Näytä Tilastot",
     "loadingText": "Ladataan",
     "updateFail": "Päivitys epäonnistui.",

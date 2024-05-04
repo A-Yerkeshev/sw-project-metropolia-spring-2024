@@ -43,7 +43,7 @@
     "createSessionButton": "Create Session",
     "editButton": "Edit",
     "deleteButton": "Delete",
-    "generateQRButton": "Generate QR",
+    "generateQRButton": "Show QR",
     "showStatisticsButton": "Show Statistics",
     "loadingText": "Loading",
     "updateFail": "Failed to update session.",

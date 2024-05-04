@@ -42,7 +42,7 @@
     "createSessionButton": "Создать лекцию",
     "editButton": "Редактировать",
     "deleteButton": "Удалить",
-    "generateQRButton": "Сгенерировать QR",
+    "generateQRButton": "Показать QR",
     "showStatisticsButton": "Показать статистику",
     "loadingText": "Загрузка",
     "updateFail": "Не удалось обновить лекцию.",

@@ -55,7 +55,7 @@ const QR: React.FC = () => {
   } else {
     baseUrl = window.location.origin;
   }
-  const feedbackUrl = `${baseUrl}/feedback/new?sid=${sessionId}`;
+  const feedbackUrl = `${baseUrl}/feedback/new?sid=${sessionId}&cid=${courseId}`;
 
   return (
     <Container maxWidth="sm">
