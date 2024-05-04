@@ -16,7 +16,9 @@
     "submit": "Gửi",
     "ratingIsRequired": "Đánh giá và mã số học sinh cần được nhập.",
     "successMessage": "Đánh giá được gửi thành công!",
-    "errorMessage": "Gửi đánh giá không thành công. Vui lòng thử lại."
+    "errorMessage": "Gửi đánh giá không thành công. Vui lòng thử lại.",
+    "sessionName": "Tên buổi: ",
+    "missingSessionOrCourseID": "Thiếu ID buổi học hoặc khóa học."
   },
   "login": {
     "header": "Chào mừng trở lại!",

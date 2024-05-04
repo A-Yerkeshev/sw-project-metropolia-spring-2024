@@ -16,7 +16,9 @@
     "submit": "Lähetä",
     "ratingIsRequired": "Arvio vaaditaan.",
     "successMessage": "Palaute lähetetty onnistuneesti!",
-    "errorMessage": "Palautteen lähetys epäonnistui. Yritä uudelleen."
+    "errorMessage": "Palautteen lähetys epäonnistui. Yritä uudelleen.",
+    "sessionName": "Luennon nimi: ",
+    "missingSessionOrCourseID": "Luento- tai kurssitunnus puuttuu."
   },
   "login": {
     "header": "Tervetuloa takaisin!",

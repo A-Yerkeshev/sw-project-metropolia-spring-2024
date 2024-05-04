@@ -135,7 +135,7 @@ const Feedback = () => {
       >
         {sessionDetails && (
           <Typography variant="h6" sx={{ mb: 2 }}>
-            Session name: {sessionDetails.name}
+            {t("feedback.sessionName")} {sessionDetails.name.toUpperCase()}
           </Typography>
         )}
 
@@ -152,9 +152,7 @@ const Feedback = () => {
             fullWidth
             sx={{ width: "100%", mt: 2 }}
           >
-            <FormLabel component="legend" className={styles.legend}>
-              {t("feedback.rate")}
-            </FormLabel>
+            <FormLabel component="legend">{t("feedback.rate")}</FormLabel>
             <RadioGroup
               name="rate"
               value={rating}

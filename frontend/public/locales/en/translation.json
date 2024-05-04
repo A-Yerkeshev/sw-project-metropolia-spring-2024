@@ -16,7 +16,9 @@
     "submit": "Submit",
     "ratingIsRequired": "Rating is required.",
     "successMessage": "Feedback submitted successfully!",
-    "errorMessage": "Failed to submit feedback. Please try again."
+    "errorMessage": "Failed to submit feedback. Please try again.",
+    "sessionName": "Session name: ",
+    "missingSessionOrCourseID": "Missing session or course ID."
   },
   "login": {
     "header": "Welcome back!",
