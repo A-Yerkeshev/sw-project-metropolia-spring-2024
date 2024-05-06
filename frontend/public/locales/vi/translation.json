@@ -44,7 +44,7 @@
     "createSessionButton": "Tạo tiết học",
     "editButton": "Sửa",
     "deleteButton": "Xóa",
-    "generateQRButton": "Tạo mã QR",
+    "generateQRButton": "Hiển thị mã QR",
     "showStatisticsButton": "Hiển thị đánh giá",
     "loadingText": "Đang tải",
     "updateFail": "Cập nhật tiết học không thành công.",
