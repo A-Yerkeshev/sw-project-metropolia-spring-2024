@@ -89,9 +89,9 @@ const Navbar = () => {
               onClick={handleMenu}
               color="inherit"
               style={{
-                marginTop: '-4%',
+                //marginTop: '-4%',
                 borderRadius: '4px',
-                padding: '2px 10px',
+                padding: '2px 8px',
               }}
             >
               <Grid container alignItems="center" spacing={1}>
