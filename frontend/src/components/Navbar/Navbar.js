@@ -12,7 +12,7 @@ import {
   Menu,
   MenuItem,
   IconButton,
-  Box,
+  Typography,
 } from '@mui/material';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 
@@ -88,9 +88,21 @@ const Navbar = () => {
               aria-haspopup="true"
               onClick={handleMenu}
               color="inherit"
-              style={{ marginTop: '-4%' }}
+              style={{
+                marginTop: '-4%',
+                borderRadius: '4px',
+                padding: '2px 10px',
+              }}
             >
-              <AccountCircle />
+              <Grid container alignItems="center" spacing={1}>
+                <Grid item>
+                  <Typography variant="body1">{user.firstName}</Typography>
+                </Grid>
+
+                <Grid item>
+                  <AccountCircle />
+                </Grid>
+              </Grid>
             </IconButton>
             <Menu
               id="menu-appbar"
