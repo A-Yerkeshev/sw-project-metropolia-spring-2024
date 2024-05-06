@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { useAuthContext } from "../../hooks/useAuthContext";
-import { useLogout } from "../../hooks/useLogout";
-import LanguageSwitcher from "../LanguageSwitcher";
-import { useTranslation } from "react-i18next";
+import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { useAuthContext } from '../../hooks/useAuthContext';
+import { useLogout } from '../../hooks/useLogout';
+import LanguageSwitcher from '../LanguageSwitcher';
+import { useTranslation } from 'react-i18next';
 import {
   AppBar,
   Toolbar,
@@ -12,8 +12,9 @@ import {
   Menu,
   MenuItem,
   IconButton,
-} from "@mui/material";
-import AccountCircle from "@mui/icons-material/AccountCircle";
+  Box,
+} from '@mui/material';
+import AccountCircle from '@mui/icons-material/AccountCircle';
 
 const Navbar = () => {
   const { user } = useAuthContext();
@@ -22,7 +23,7 @@ const Navbar = () => {
   const { t } = useTranslation();
   const [anchorEl, setAnchorEl] = useState(null);
 
-  const hideOnRoutes = ["/signup", "/share", "/feedback/new"];
+  const hideOnRoutes = ['/signup', '/share', '/feedback/new'];
 
   if (!user || hideOnRoutes.includes(location.pathname)) {
     return null;
@@ -48,31 +49,35 @@ const Navbar = () => {
           <Grid item xs>
             <Grid container alignItems="center" spacing={2}>
               <Grid item>
-                <Link to={user ? "/" : "/"}>
+                <Link to={user ? '/' : '/'}>
                   <img
                     src="/navbar/logo.svg"
                     alt="Logo"
-                    style={{ height: "40px" }}
+                    style={{ height: '40px' }}
                   />
                 </Link>
               </Grid>
               <Grid item>
                 <Button component={Link} to="/Courses" color="inherit">
-                  {t("navbar.courses")}
+                  {t('navbar.courses')}
                 </Button>
               </Grid>
             </Grid>
           </Grid>
 
           <Grid item>
-            <Button onClick={logout} color="inherit" id="sign-out"
-            style={{ marginLeft: "5%" }}>
-              {t("navbar.logout")}
+            <Button
+              onClick={logout}
+              color="inherit"
+              id="sign-out"
+              //style={{ marginLeft: '5%' }}
+            >
+              {t('navbar.logout')}
             </Button>
           </Grid>
 
           <Grid item>
-            <LanguageSwitcher/>
+            <LanguageSwitcher />
           </Grid>
 
           <Grid item>
@@ -83,7 +88,7 @@ const Navbar = () => {
               aria-haspopup="true"
               onClick={handleMenu}
               color="inherit"
-              style={{ marginTop: "-4%" }}
+              style={{ marginTop: '-4%' }}
             >
               <AccountCircle />
             </IconButton>
@@ -91,13 +96,13 @@ const Navbar = () => {
               id="menu-appbar"
               anchorEl={anchorEl}
               anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
+                vertical: 'top',
+                horizontal: 'right',
               }}
               keepMounted
               transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
+                vertical: 'top',
+                horizontal: 'right',
               }}
               open={Boolean(anchorEl)}
               onClose={handleClose}
