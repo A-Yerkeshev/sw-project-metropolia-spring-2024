@@ -165,6 +165,7 @@ const Course = () => {
       formData.get('start'),
       dateTimeFormats.datetime[i18n.language]
     ).valueOf();
+
     const end = dayjs(
       formData.get('end'),
       dateTimeFormats.datetime[i18n.language]

@@ -1,9 +1,9 @@
 {
   "date": {
-    "en": "M/D",
-    "fi": "D.M",
-    "ru": "D.M",
-    "vi": "D/M"
+    "en": "M/D/YYYY",
+    "fi": "D.M.YYYY",
+    "ru": "D.M.YYYY",
+    "vi": "D/M/YYYY"
   },
   "datetime": {
     "en": "MM/DD/YYYY h:mm A",
