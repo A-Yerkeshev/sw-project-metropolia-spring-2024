@@ -1,55 +1,74 @@
-import React, { useState } from 'react';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
+import { Typography, Grid, Box } from '@mui/material';
+import LandingNavbar from '../components/Navbar/LandingNavbar';
+import { useAuthContext } from '../hooks/useAuthContext';
+import BasicCard from '../components/BasicCard';
+import { useTranslation } from 'react-i18next';
 
-const ResetPasswordPage = () => {
-  const [email, setEmail] = useState('');
-  const [loginName, setLoginName] = useState('');
-  const [secretQuestion, setSecretQuestion] = useState('');
+const AboutUs = () => {
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    // Here you can implement the logic to submit the form data
-    console.log('Email:', email);
-    console.log('Login Name:', loginName);
-    console.log('Secret Question:', secretQuestion);
-    // Reset input fields after submission
-    setEmail('');
-    setLoginName('');
-    setSecretQuestion('');
-  };
+  const { user } = useAuthContext();
+  const { t } = useTranslation();
+
+  const developers = [
+    {
+      title: t('developers.frontend'),
+      content: 'Anna Linden',
+      actionLink: 'https://github.com/AnnaLinden',
+      linkedInLink: 'https://www.linkedin.com/in/anna-linden-software-developer/',
+      imageUrl: '/navbar/developerPictures/Anna.jpg'
+    },
+    {
+      title: t('developers.frontend'),
+      content: 'Artur Golavskiy',
+      actionLink: 'https://github.com/arturgola',
+      linkedInLink: 'https://www.linkedin.com/in/artur-golavskiy/',
+      imageUrl: '/navbar/developerPictures/Artur.jpg'
+    },
+    {
+      title: t('developers.backend'),
+      content: 'Arman Yerkeshev',
+      actionLink: 'https://github.com/A-Yerkeshev',
+      linkedInLink: 'https://www.linkedin.com/in/arman-yerkesh-29b8a7165/',
+      imageUrl: '/navbar/developerPictures/Arman.jpg'
+    },
+    {
+      title: t('developers.backend'),
+      content: 'Dung Pham',
+      actionLink: 'https://github.com/dungdpham',
+      linkedInLink: 'https://www.linkedin.com/in/dungdpham/',
+      imageUrl: '/navbar/developerPictures/Pham.png'
+    },
+  ];
 
   return (
-    <form className="form-container" onSubmit={handleSubmit}>
-      <TextField
-        id="email"
-        label="Email"
-        variant="outlined"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        className="input-field"
-      />
-      <TextField
-        id="loginName"
-        label="Login Name"
-        variant="outlined"
-        value={loginName}
-        onChange={(e) => setLoginName(e.target.value)}
-        className="input-field"
-      />
-      <TextField
-        id="secretQuestion"
-        label="Secret Question"
-        variant="outlined"
-        value={secretQuestion}
-        onChange={(e) => setSecretQuestion(e.target.value)}
-        className="input-field"
-      />
-      <Button variant="contained" color="primary" type="submit" className="submit-button">
-        Submit
-      </Button>
-    </form>
+    <div style={{ backgroundColor: '#fff', minHeight: '100vh' }}>
+      {!user && <LandingNavbar />}
+      <Grid container spacing={3} justifyContent="center" sx={{ padding: 10, marginTop: 0 }}>
+        {developers.map((developer, index) => (
+          <Grid item xs={12} sm={6} md={6} lg={3} key={index}>
+            <Box sx={{ display: 'flex', justifyContent: 'center', width: 290 }}>
+            <Box sx={{ height: 190 }}>
+              <BasicCard
+                title={developer.title}
+                content={developer.content}
+                actionLink={developer.actionLink}
+                linkedInLink={developer.linkedInLink}
+                imageUrl={developer.imageUrl}
+              />
+            </Box>
+            </Box>
+          </Grid>
+        ))}
+      </Grid>
+      <Grid container spacing={3} justifyContent="center">
+        <Grid item xs={12} sm={8} md={6}>
+          <Typography variant="body1" align="center">
+            {t('aboutus.description')}
+          </Typography>
+        </Grid>
+      </Grid>
+    </div>
   );
 };
 
-export default ResetPasswordPage;
+export default AboutUs;
