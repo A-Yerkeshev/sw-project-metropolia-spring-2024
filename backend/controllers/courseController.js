@@ -9,7 +9,7 @@ const getAllCourses = async (req, res) => {
 
   try {
     // retrieve all courses, and populate their sessions and sessions' feedbacks
-    const courses = await Course.find({teacherId})
+    const courses = await Course.find({ teacherId })
       .populate({
         path: 'sessions',
         options: { sort: { createdAt: -1 } },
