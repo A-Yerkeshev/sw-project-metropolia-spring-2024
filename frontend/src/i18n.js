@@ -8,14 +8,20 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 // for passing in lng and translations on init
 
 i18n.use(Backend);
-i18n.use(LanguageDetector).init({
-  detection: {
-    order: ['querystring', 'cookie', 'localStorage', 'sessionStorage'],
-  },
-});
-i18n.use(initReactI18next).init({
-  fallbackLng: 'en',
-  debug: true,
-});
+i18n
+  .use(LanguageDetector)
+  .use(initReactI18next)
+  .init({
+    detection: {
+      order: ['querystring', 'cookie', 'localStorage', 'sessionStorage'],
+    },
+    fallbackLng: 'en',
+    // debug: true,
+    debug: false, // prevent returning of i18n object in brower console
+  });
+// i18n.use(initReactI18next).init({
+//   fallbackLng: 'en',
+//   debug: true,
+// });
 
 export default i18n;
