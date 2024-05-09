@@ -55,6 +55,9 @@ const SessionModal = ({
       break;
   }
 
+  console.log(feedbackTexts);
+  console.log(feedbackData);
+
   return (
     <LocalizationProvider
       dateAdapter={AdapterDayjs}
