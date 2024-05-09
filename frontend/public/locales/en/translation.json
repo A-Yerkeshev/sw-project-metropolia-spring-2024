@@ -62,8 +62,8 @@
     "start": "Start",
     "end": "End",
     "studentsNum": "Students enrolled",
-    "noFeedbacks": "No feedbacks",
-    "feedbackCountText": "Submitted feedback"
+    "noFeedbacks": "No Feedback",
+    "feedbackCountText": "Submitted Feedback(s)"
   },
   "qr": {
     "header": "Session",
@@ -115,7 +115,7 @@
       "textFeedbackHeader": "Session Statistics",
       "textFeedback": "Text Feedback",
       "noTextFeedbackMessage": "No text feedback provided.",
-      "noFeedbackMessage": "The session has not received any feedback."
+      "noOpenFeedbackMessage": "The session has not received any open feedback."
     }
   },
   "landingPage": {

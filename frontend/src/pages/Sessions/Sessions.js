@@ -352,6 +352,13 @@ const Course = () => {
                 {dayjs(session.start).format(
                   dateTimeFormats.date[i18n.language]
                 )}
+                <Typography variant="body2" color="textSecondary">
+                  {session.feedbacks && session.feedbacks.length > 0
+                    ? `${session.feedbacks.length} ${t(
+                        'sessions.feedbackCountText'
+                      )}`
+                    : t('sessions.noFeedbacks')}
+                </Typography>
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
@@ -396,13 +403,13 @@ const Course = () => {
                 >
                   {t('sessions.showStatisticsButton')}
                 </Button>
-                <Typography variant="body2" color="textSecondary">
+                {/* <Typography variant="body2" color="textSecondary">
                   {session.feedbacks && session.feedbacks.length > 0
                     ? `${session.feedbacks.length} ${t(
                         'sessions.feedbackCountText'
                       )}`
                     : t('sessions.noFeedbacks')}
-                </Typography>
+                </Typography> */}
                 {/* Spacer element */}
                 <Box sx={{ flexGrow: 1 }}></Box>
                 <Button
