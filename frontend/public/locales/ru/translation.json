@@ -60,7 +60,9 @@
     "description": "Описание",
     "start": "Начало лекции",
     "end": "Конец лекции",
-    "studentsNum": "Студентов на курсе"
+    "studentsNum": "Студентов на курсе",
+    "noFeedbacks": "Нету отзывов",
+    "feedbackCountText": "Отзывов оставлено"
   },
   "qr": {
     "header": "Тема лекции",

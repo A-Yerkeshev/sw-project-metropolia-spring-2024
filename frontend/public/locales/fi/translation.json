@@ -18,7 +18,9 @@
     "successMessage": "Palaute lähetetty onnistuneesti!",
     "errorMessage": "Palautteen lähetys epäonnistui. Yritä uudelleen.",
     "sessionName": "Luennon nimi: ",
-    "missingSessionOrCourseID": "Luento- tai kurssitunnus puuttuu."
+    "missingSessionOrCourseID": "Luento- tai kurssitunnus puuttuu.",
+    "noFeedbacks": "Ei ole palautetta",
+    "feedbackCountText": "Palautetta tehty"
   },
   "login": {
     "header": "Tervetuloa takaisin!",

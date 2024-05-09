@@ -61,7 +61,9 @@
     "description": "Description",
     "start": "Start",
     "end": "End",
-    "studentsNum": "Students enrolled"
+    "studentsNum": "Students enrolled",
+    "noFeedbacks": "No feedbacks",
+    "feedbackCountText": "Submitted feedback"
   },
   "qr": {
     "header": "Session",

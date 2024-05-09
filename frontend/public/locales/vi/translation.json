@@ -60,7 +60,9 @@
     "description": "Thông tin tiết học",
     "start": "Bắt đầu",
     "end": "Kết thúc",
-    "studentsNum": "Học sinh đã tham gia khóa học"
+    "studentsNum": "Học sinh đã tham gia khóa học",
+    "noFeedbacks": "Không có phản hồi",
+    "feedbackCountText": "Đã gửi phản hồi"
   },
   "qr": {
     "header": "Tiết học",
