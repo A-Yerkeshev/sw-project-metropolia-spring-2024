@@ -37,6 +37,8 @@ const Navbar = () => {
     setAnchorEl(null);
   };
 
+  console.log(user);
+
   return (
     <AppBar position="static">
       <Toolbar>
@@ -119,7 +121,12 @@ const Navbar = () => {
               open={Boolean(anchorEl)}
               onClose={handleClose}
             >
-              <MenuItem onClick={handleClose}>{user.email}</MenuItem>
+              <MenuItem onClick={handleClose}>
+                <Typography variant="body1">
+                  {user.firstName} {user.lastName} <br />
+                  {user.email}
+                </Typography>
+              </MenuItem>
             </Menu>
           </Grid>
         </Grid>

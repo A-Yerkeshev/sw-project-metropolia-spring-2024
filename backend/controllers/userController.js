@@ -23,12 +23,13 @@ const loginUser = async (req, res) => {
     const token = createToken(user._id);
     const id = user._id;
     const firstName = user.firstName;
+    const lastName = user.lastName;
 
     // create password recovery token
     user.recoveryToken = createToken(user._id);
     user.save();
 
-    res.status(200).json({ firstName, email, token, id });
+    res.status(200).json({ firstName, lastName, email, token, id });
   } catch (error) {
     res.status(404).json({ error: error.message });
   }
@@ -51,7 +52,7 @@ const signupUser = async (req, res) => {
     // create token
     const token = createToken(user._id);
     const id = user._id;
-    res.status(200).json({ firstName, email, token, id });
+    res.status(200).json({ firstName, lastName, email, token, id });
   } catch (error) {
     console.error('Error in signupUser:', error);
     res.status(500).json({ error: error.message });
