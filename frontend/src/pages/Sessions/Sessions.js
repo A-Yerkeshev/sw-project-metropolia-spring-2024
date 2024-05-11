@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import SessionModal from '../../components/SessionModal';
-import EventNoteIcon from '@mui/icons-material/EventNote';
+import React, { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import SessionModal from "../../components/SessionModal";
+import EventNoteIcon from "@mui/icons-material/EventNote";
+import SearchIcon from "@mui/icons-material/Search";
 import {
   Button,
   Typography,
@@ -13,14 +14,16 @@ import {
   Box,
   Paper,
   Snackbar,
-} from '@mui/material';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import QRIcon from '@mui/icons-material/QrCode';
-import BarChartIcon from '@mui/icons-material/BarChart';
-import { useTranslation } from 'react-i18next';
-import dateTimeFormats from '../../dateTimeFormats.json';
-import dayjs from 'dayjs';
-import customParseFormat from 'dayjs/plugin/customParseFormat';
+  TextField,
+  InputAdornment,
+} from "@mui/material";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import QRIcon from "@mui/icons-material/QrCode";
+import BarChartIcon from "@mui/icons-material/BarChart";
+import { useTranslation } from "react-i18next";
+import dateTimeFormats from "../../dateTimeFormats.json";
+import dayjs from "dayjs";
+import customParseFormat from "dayjs/plugin/customParseFormat";
 
 dayjs.extend(customParseFormat);
 
@@ -33,13 +36,14 @@ const Course = () => {
   const [feedbackTexts, setFeedbackTexts] = useState([]);
   const [modalContent, setModalContent] = useState(null);
   const [currentSession, setCurrentSession] = useState(null);
-  const [errorMessage, setErrorMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
 
   const [snackbarOpen, setSnackbarOpen] = useState(false);
-  const [snackbarMessage, setSnackbarMessage] = useState('');
+  const [snackbarMessage, setSnackbarMessage] = useState("");
   const { t, i18n } = useTranslation();
 
-  const backendUrl = process.env.REACT_APP_BACKEND_URL || '';
+  const backendUrl = process.env.REACT_APP_BACKEND_URL || "";
 
   useEffect(() => {
     const fetchCourse = async () => {
@@ -52,8 +56,8 @@ const Course = () => {
   }, [courseId, currentSession]);
 
   const handleCreateSession = () => {
-    setErrorMessage('');
-    setModalContent('createSession');
+    setErrorMessage("");
+    setModalContent("createSession");
     setOpenModal(true);
   };
 
@@ -62,20 +66,20 @@ const Course = () => {
     const formData = new FormData(event.target);
 
     const start = dayjs(
-      formData.get('start'),
+      formData.get("start"),
       dateTimeFormats.datetime[i18n.language]
     ).valueOf();
 
     const end = dayjs(
-      formData.get('end'),
+      formData.get("end"),
       dateTimeFormats.datetime[i18n.language]
     ).valueOf();
 
-    const name = formData.get('name');
-    const description = formData.get('description');
+    const name = formData.get("name");
+    const description = formData.get("description");
 
     if (!name || !description || !start || !end) {
-      setErrorMessage(t('modals.session.allFieldRequired'));
+      setErrorMessage(t("modals.session.allFieldRequired"));
       return;
     }
 
@@ -88,18 +92,16 @@ const Course = () => {
 
     try {
       const response = await fetch(`${backendUrl}/api/sessions/${courseId}`, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(sessionData),
       });
 
       if (response.ok) {
-        setErrorMessage('');
+        setErrorMessage("");
         setOpenModal(false); // Close the modal
-
-        //const newSession = await response.json();
 
         const fetchCourse = async () => {
           const response = await fetch(`${backendUrl}/api/courses/${courseId}`);
@@ -112,7 +114,7 @@ const Course = () => {
         throw new Error(response.error);
       }
     } catch (error) {
-      console.error('Error creating session:', error);
+      console.error("Error creating session:", error);
     }
   };
 
@@ -121,13 +123,12 @@ const Course = () => {
       const response = await fetch(
         `${backendUrl}/api/sessions/${courseId}/${sessionId}`,
         {
-          method: 'DELETE',
+          method: "DELETE",
         }
       );
 
-      if (!response.ok) throw new Error(t('sessions.deleteFail'));
+      if (!response.ok) throw new Error(t("sessions.deleteFail"));
 
-      // After successful deletion, update the local state to remove the deleted session
       setCourse((prevCourse) => ({
         ...prevCourse,
         sessions: prevCourse.sessions.filter(
@@ -135,47 +136,46 @@ const Course = () => {
         ),
       }));
 
-      setOpenModal(false); // Close the modal
-      setModalContent(null); // Reset modal content
-      setCurrentSession(null); // Reset current session, if applicable
+      setOpenModal(false);
+      setModalContent(null);
+      setCurrentSession(null);
     } catch (error) {
-      console.error('Error deleting session:', error);
+      console.error("Error deleting session:", error);
     }
   };
 
   const handleGenerateQR = (sessionName, sessionId) => {
-    const urlFriendlySessionName = encodeURIComponent(sessionName); // Ensure the session name is URL-friendly
-    // Append courseId and sessionId as query parameters
+    const urlFriendlySessionName = encodeURIComponent(sessionName);
     const url = `/share/${urlFriendlySessionName}?courseId=${courseId}&sessionId=${sessionId}`;
-    window.open(url, '_blank');
+    window.open(url, "_blank");
   };
 
   const handleOpenEditModal = (session) => {
-    setErrorMessage('');
-    setCurrentSession(session); // Set the current session to the one selected for editing
-    setModalContent('editSession');
+    setErrorMessage("");
+    setCurrentSession(session);
+    setModalContent("editSession");
     setOpenModal(true);
   };
 
   const handleEditSubmit = async (event) => {
-    event.preventDefault(); // Prevent the form from submitting in the traditional way
+    event.preventDefault();
     const formData = new FormData(event.currentTarget);
 
     const start = dayjs(
-      formData.get('start'),
+      formData.get("start"),
       dateTimeFormats.datetime[i18n.language]
     ).valueOf();
 
     const end = dayjs(
-      formData.get('end'),
+      formData.get("end"),
       dateTimeFormats.datetime[i18n.language]
     ).valueOf();
 
-    const name = formData.get('name');
-    const description = formData.get('description');
+    const name = formData.get("name");
+    const description = formData.get("description");
 
     if (!name || !description || !start || !end) {
-      setErrorMessage(t('modals.session.allFieldRequired'));
+      setErrorMessage(t("modals.session.allFieldRequired"));
       return;
     }
 
@@ -190,25 +190,21 @@ const Course = () => {
       const response = await fetch(
         `${backendUrl}/api/sessions/${courseId}/${currentSession._id}`,
         {
-          method: 'PATCH',
+          method: "PATCH",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
           body: JSON.stringify(updatedSessionData),
         }
       );
 
-      if (!response.ok) throw new Error(t('sessions.updateFail'));
+      if (!response.ok) throw new Error(t("sessions.updateFail"));
 
-      const updatedSession = await response.json();
-
-      // Perform state updates or navigations here
       setOpenModal(false);
       setModalContent(null);
       setCurrentSession(null);
     } catch (error) {
-      console.error('Error updating session:', error);
-      // Handle error cases
+      console.error("Error updating session:", error);
     }
   };
 
@@ -219,8 +215,7 @@ const Course = () => {
     const data = await response.json();
 
     if (!data.feedbacks || data.feedbacks.length === 0) {
-      // No feedbacks available, display a message
-      setSnackbarMessage(t('sessions.noFeedbacks'));
+      setSnackbarMessage(t("sessions.noFeedbacks"));
       setSnackbarOpen(true);
       return;
     }
@@ -229,52 +224,52 @@ const Course = () => {
       let color;
       switch (feedback.rating) {
         case 1:
-          color = 'red'; // Negative feedback
+          color = "red"; // Negative feedback
           break;
         case 2:
-          color = 'yellow'; // Neutral feedback
+          color = "yellow"; // Neutral feedback
           break;
         case 3:
-          color = 'green'; // Positive feedback
+          color = "green"; // Positive feedback
           break;
         default:
-          color = 'grey'; // Unknown or undefined rating
+          color = "grey"; // Unknown or undefined rating
       }
 
       return {
         id: index,
         value: 1, // Each feedback counts as one
-        label: `${t('sessions.rating')} ${feedback.rating}`,
+        label: `${t("sessions.rating")} ${feedback.rating}`,
         color: color, // Assign color based on rating
       };
     });
 
     const aggregatedData = [
       {
-        value: transformedData.filter((d) => d.color === 'green').length,
-        label: t('sessions.positiveLabel'),
-        color: 'green',
+        value: transformedData.filter((d) => d.color === "green").length,
+        label: t("sessions.positiveLabel"),
+        color: "green",
       },
       {
-        value: transformedData.filter((d) => d.color === 'yellow').length,
-        label: t('sessions.neutralLabel'),
-        color: 'yellow',
+        value: transformedData.filter((d) => d.color === "yellow").length,
+        label: t("sessions.neutralLabel"),
+        color: "yellow",
       },
       {
-        value: transformedData.filter((d) => d.color === 'red').length,
-        label: t('sessions.negativeLabel'),
-        color: 'red',
+        value: transformedData.filter((d) => d.color === "red").length,
+        label: t("sessions.negativeLabel"),
+        color: "red",
       },
     ]
       .filter((d) => d.value > 0) // Filter out categories with no feedback
       .map((d) => ({ ...d, label: `${d.label} (${d.value})` }));
     setFeedbackData([{ data: aggregatedData }]);
-    setModalContent('statistics');
+    setModalContent("statistics");
     setOpenModal(true);
 
     // Extract and store feedback texts
     const texts = data.feedbacks
-      .filter((feedback) => feedback.text !== '')
+      .filter((feedback) => feedback.text !== "")
       .map((feedback) => {
         const formattedDate = dayjs(feedback.createdAt).format(
           dateTimeFormats.datetime[i18n.language]
@@ -288,7 +283,12 @@ const Course = () => {
     setFeedbackTexts(texts);
   };
 
-  // loading screen
+  const filteredSessions = course
+    ? course.sessions.filter((session) =>
+        session.name.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+    : [];
+
   if (!course) {
     return (
       <Container>
@@ -301,7 +301,7 @@ const Course = () => {
           <Box textAlign="center">
             <CircularProgress />
             <Typography variant="h6" sx={{ mt: 2 }}>
-              {t('sessions.loadingText')}
+              {t("sessions.loadingText")}
             </Typography>
           </Box>
         </Box>
@@ -316,29 +316,44 @@ const Course = () => {
           variant="h4"
           gutterBottom
           textAlign="center"
-          sx={{ fontWeight: 'bold', mt: 2, color: '#232222' }}
+          sx={{ fontWeight: "bold", mt: 2, color: "#232222" }}
         >
-          {t('sessions.course')}: {course.name}
+          {t("sessions.course")}: {course.name}
         </Typography>
       </Box>
 
       <Typography variant="h5" gutterBottom>
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-          <EventNoteIcon /> {t('sessions.header')}
+        <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+          <EventNoteIcon /> {t("sessions.header")}
         </Box>
       </Typography>
-      <Button
-        variant="contained"
-        color="primary"
-        onClick={handleCreateSession}
-        sx={{ mb: 2 }}
-      >
-        {t('sessions.createSessionButton')}
-      </Button>
-      {course.sessions.map((session) => (
+      <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={handleCreateSession}
+          sx={{ height: 55 }}
+        >
+          {t("sessions.createSessionButton")}
+        </Button>
+        <TextField
+          variant="outlined"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <SearchIcon />
+              </InputAdornment>
+            ),
+          }}
+          sx={{ ml: 2, width: "25%"}}
+        />
+      </Box>
+      {filteredSessions.map((session) => (
         <Paper
           elevation={4}
-          sx={{ mb: 2, overflow: 'hidden' }}
+          sx={{ mb: 2, overflow: "hidden" }}
           key={session._id}
         >
           <Accordion>
@@ -348,40 +363,40 @@ const Course = () => {
               id="panel1a-header"
             >
               <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                {session.name} -{' '}
+                {session.name} -{" "}
                 {dayjs(session.start).format(
                   dateTimeFormats.date[i18n.language]
                 )}
                 <Typography variant="body2" color="textSecondary">
                   {session.feedbacks && session.feedbacks.length > 0
                     ? `${session.feedbacks.length} ${t(
-                        'sessions.feedbackCountText'
+                        "sessions.feedbackCountText"
                       )}`
-                    : t('sessions.noFeedbacks')}
+                    : t("sessions.noFeedbacks")}
                 </Typography>
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
               <Typography>
-                {t('sessions.description')}: {session.description}
+                {t("sessions.description")}: {session.description}
               </Typography>
               <Typography>
-                {t('sessions.start')}:{' '}
+                {t("sessions.start")}:{" "}
                 {dayjs(session.start).format(
                   dateTimeFormats.datetime[i18n.language]
                 )}
               </Typography>
               <Typography>
-                {t('sessions.end')}:{' '}
+                {t("sessions.end")}:{" "}
                 {dayjs(session.end).format(
                   dateTimeFormats.datetime[i18n.language]
                 )}
               </Typography>
               <Box
                 sx={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
                   mt: 2,
                 }}
               >
@@ -392,7 +407,7 @@ const Course = () => {
                   startIcon={<QRIcon />}
                   sx={{ mr: 1 }}
                 >
-                  {t('sessions.generateQRButton')}
+                  {t("sessions.generateQRButton")}
                 </Button>
                 <Button
                   variant="outlined"
@@ -401,23 +416,15 @@ const Course = () => {
                   startIcon={<BarChartIcon />}
                   sx={{ mr: 1 }}
                 >
-                  {t('sessions.showStatisticsButton')}
+                  {t("sessions.showStatisticsButton")}
                 </Button>
-                {/* <Typography variant="body2" color="textSecondary">
-                  {session.feedbacks && session.feedbacks.length > 0
-                    ? `${session.feedbacks.length} ${t(
-                        'sessions.feedbackCountText'
-                      )}`
-                    : t('sessions.noFeedbacks')}
-                </Typography> */}
-                {/* Spacer element */}
                 <Box sx={{ flexGrow: 1 }}></Box>
                 <Button
                   variant="contained"
                   color="primary"
                   onClick={() => handleOpenEditModal(session)}
                 >
-                  {t('sessions.editButton')}
+                  {t("sessions.editButton")}
                 </Button>
               </Box>
             </AccordionDetails>
@@ -425,7 +432,6 @@ const Course = () => {
         </Paper>
       ))}
 
-      {/* SessionModal and StudentIdModal */}
       <SessionModal
         openModal={openModal}
         handleClose={() => setOpenModal(false)}
