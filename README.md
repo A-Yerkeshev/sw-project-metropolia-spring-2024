@@ -196,6 +196,8 @@ Your default web browser should open automatically to `http://localhost:3000`.
 
 After installation, open `http://localhost:3000` in your browser to access the application. Teachers can create lectures and view feedback, while students can submit feedback post-lecture.
 
+In order to run unit tests run `npm test` commands both in frontend and backend directories. To run integration tests, go to backend directory and run `npx playwright test`.
+
 ## Screenshots
 
 ## UML Diagrams / Architecture
@@ -215,6 +217,14 @@ After installation, open `http://localhost:3000` in your browser to access the a
 <p align="center"><i>Activity Diagram</i></p>
 
 ![Activity Diagram](./diagrams/ActivityDiagram.png)
+
+<p align="center"><i>Sequence Diagram</i></p>
+
+![Sequence Diagram](./diagrams/SequenceDiagram.png)
+
+<p align="center"><i>Deployment Diagram</i></p>
+
+![Deployment Diagram](./diagrams/DeploymentDiagram.png)
 
 ## Contributing
 
