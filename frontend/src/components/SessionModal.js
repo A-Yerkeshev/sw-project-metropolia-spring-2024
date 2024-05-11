@@ -103,8 +103,8 @@ const SessionModal = ({
                   ))}
                 </>
               ) : (
-                <Typography>
-                  {t('modals.feedback.noFeedbackMessage')}
+                <Typography sx={{ mt: 2 }}>
+                  {t('modals.feedback.noOpenFeedbackMessage')}
                 </Typography>
               )}
             </>

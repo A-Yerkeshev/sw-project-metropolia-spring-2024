@@ -60,7 +60,9 @@
     "description": "Kuvaus",
     "start": "Luenton alkamisaika",
     "end": "Luenton päättymisaika",
-    "studentsNum": "Opiskelijat ovat nyt rekisteröityneet"
+    "studentsNum": "Opiskelijat ovat nyt rekisteröityneet",
+    "noFeedbacks": "Ei ole palautetta",
+    "feedbackCountText": "Palautetta tehty"
   },
   "qr": {
     "header": "Luento",
@@ -112,38 +114,38 @@
       "textFeedbackHeader": "Kurssin palaute",
       "textFeedback": "Palaute tekstimuodossa",
       "noTextFeedbackMessage": "Palaute ei ole vielä annettu",
-      "noFeedbackMessage": "Luento ei ole vielä saanut palautetta tekstimuodossa"
+      "noOpenFeedbackMessage": "Luento ei ole vielä saanut palautetta tekstimuodossa"
     }
-    },
-    "landingPage": {
-      "mainTitle": "Instant Feedback App",
-      "subtitle": "Tehosta opetustasi ReflectEdin avulla - työkalu välittömän palautteen keräämiseen oppitunneista ja arvokkaiden näkökulmien saamiseen opetusstrategioiden hienosäätöön.",
-      "getStarted": "Aloita",
-      "qrFeedbackTitle": "QR palaute",
-      "qrFeedbackDescription": "QR-koodit välittömän palautteen keräämiseen tekevät prosessista saumattoman ja tehokkaan.",
-      "feedbackStatisticsTitle": "Palautetilastot",
-      "feedbackStatisticsDescription": "Tutki palautetilastoja opetustulosten analysoimiseksi ja parantamiseksi.",
-      "anonymousFeedbackTitle": "Anonyymi palaute",
-      "anonymousFeedbackDescription": "Kannusta rehellistä ja rakentavaa palautetta mahdollistamalla vastaajille anonymiteetti.",
-      "courseCreationTitle": "Kurssin luominen",
-      "courseCreationDescription": "Luo helposti kursseja, järjestä opetusmateriaalisi tehokkaasti."
-    },
-    "footer": {
-      "aboutUs": "Tietoa meistä",
-      "createdBy": "Luotu Metropolia-opiskelijoiden toimesta 💕"
-    },
-    "developers": {
-      "frontend": "Kehittäjä: frontend",
-      "backend": "Kehittäjä: backend"
-    },
-    "aboutus": {
-      "description": "Olemme joukko Metropolia Ammattikorkeakoulun opiskelijoita Helsingissä. Yhdessä loimme ohjelmistokehityskurssillemme projektin, jossa opimme DevOpsista matkan varrella. Jokainen meistä tietää tarpeeksi tehdäkseen omia projekteja, mutta yhdessä teimme tästä palvelusta vieläkin paremman. Vieraile GitHub-arkistoissamme nähdäksesi, mitä olemme tehneet!"
-    },
-    "resetPassword": {
-      "header": "Palauta salasana",
-      "emailAddressLabel": "Sähköpostiosoite",
-      "newPasswordLabel": "Uusi salasana",
-      "passwordRepLabel": "Toista salasana",
-      "submitButton": "Lähetä"
-    }
+  },
+  "landingPage": {
+    "mainTitle": "Instant Feedback App",
+    "subtitle": "Tehosta opetustasi ReflectEdin avulla - työkalu välittömän palautteen keräämiseen oppitunneista ja arvokkaiden näkökulmien saamiseen opetusstrategioiden hienosäätöön.",
+    "getStarted": "Aloita",
+    "qrFeedbackTitle": "QR palaute",
+    "qrFeedbackDescription": "QR-koodit välittömän palautteen keräämiseen tekevät prosessista saumattoman ja tehokkaan.",
+    "feedbackStatisticsTitle": "Palautetilastot",
+    "feedbackStatisticsDescription": "Tutki palautetilastoja opetustulosten analysoimiseksi ja parantamiseksi.",
+    "anonymousFeedbackTitle": "Anonyymi palaute",
+    "anonymousFeedbackDescription": "Kannusta rehellistä ja rakentavaa palautetta mahdollistamalla vastaajille anonymiteetti.",
+    "courseCreationTitle": "Kurssin luominen",
+    "courseCreationDescription": "Luo helposti kursseja, järjestä opetusmateriaalisi tehokkaasti."
+  },
+  "footer": {
+    "aboutUs": "Tietoa meistä",
+    "createdBy": "Luotu Metropolia-opiskelijoiden toimesta 💕"
+  },
+  "developers": {
+    "frontend": "Kehittäjä: frontend",
+    "backend": "Kehittäjä: backend"
+  },
+  "aboutus": {
+    "description": "Olemme joukko Metropolia Ammattikorkeakoulun opiskelijoita Helsingissä. Yhdessä loimme ohjelmistokehityskurssillemme projektin, jossa opimme DevOpsista matkan varrella. Jokainen meistä tietää tarpeeksi tehdäkseen omia projekteja, mutta yhdessä teimme tästä palvelusta vieläkin paremman. Vieraile GitHub-arkistoissamme nähdäksesi, mitä olemme tehneet!"
+  },
+  "resetPassword": {
+    "header": "Palauta salasana",
+    "emailAddressLabel": "Sähköpostiosoite",
+    "newPasswordLabel": "Uusi salasana",
+    "passwordRepLabel": "Toista salasana",
+    "submitButton": "Lähetä"
+  }
 }

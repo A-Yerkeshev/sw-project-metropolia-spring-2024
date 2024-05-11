@@ -108,7 +108,7 @@ const Navbar = () => {
               id="menu-appbar"
               anchorEl={anchorEl}
               anchorOrigin={{
-                vertical: 'top',
+                vertical: 'bottom',
                 horizontal: 'right',
               }}
               keepMounted
@@ -119,7 +119,12 @@ const Navbar = () => {
               open={Boolean(anchorEl)}
               onClose={handleClose}
             >
-              <MenuItem onClick={handleClose}>{user.email}</MenuItem>
+              <MenuItem onClick={handleClose}>
+                <Typography variant="body1">
+                  {user.firstName} {user.lastName} <br />
+                  {user.email}
+                </Typography>
+              </MenuItem>
             </Menu>
           </Grid>
         </Grid>

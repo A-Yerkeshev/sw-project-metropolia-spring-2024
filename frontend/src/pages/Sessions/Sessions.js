@@ -217,57 +217,65 @@ const Course = () => {
       `${backendUrl}/api/feedbacks?sessionId=${sessionId}`
     );
     const data = await response.json();
-    if (data.feedbacks) {
-      const transformedData = data.feedbacks.map((feedback, index) => {
-        let color;
-        switch (feedback.rating) {
-          case 1:
-            color = 'red'; // Negative feedback
-            break;
-          case 2:
-            color = 'yellow'; // Neutral feedback
-            break;
-          case 3:
-            color = 'green'; // Positive feedback
-            break;
-          default:
-            color = 'grey'; // Unknown or undefined rating
-        }
 
-        return {
-          id: index,
-          value: 1, // Each feedback counts as one
-          label: `${t('sessions.rating')} ${feedback.rating}`,
-          color: color, // Assign color based on rating
-        };
-      });
+    if (!data.feedbacks || data.feedbacks.length === 0) {
+      // No feedbacks available, display a message
+      setSnackbarMessage(t('sessions.noFeedbacks'));
+      setSnackbarOpen(true);
+      return;
+    }
 
-      const aggregatedData = [
-        {
-          value: transformedData.filter((d) => d.color === 'green').length,
-          label: t('sessions.positiveLabel'),
-          color: 'green',
-        },
-        {
-          value: transformedData.filter((d) => d.color === 'yellow').length,
-          label: t('sessions.neutralLabel'),
-          color: 'yellow',
-        },
-        {
-          value: transformedData.filter((d) => d.color === 'red').length,
-          label: t('sessions.negativeLabel'),
-          color: 'red',
-        },
-      ]
-        .filter((d) => d.value > 0) // Filter out categories with no feedback
-        .map((d) => ({ ...d, label: `${d.label} (${d.value})` }));
-      setFeedbackData([{ data: aggregatedData }]);
-      setModalContent('statistics');
-      setOpenModal(true);
+    const transformedData = data.feedbacks.map((feedback, index) => {
+      let color;
+      switch (feedback.rating) {
+        case 1:
+          color = 'red'; // Negative feedback
+          break;
+        case 2:
+          color = 'yellow'; // Neutral feedback
+          break;
+        case 3:
+          color = 'green'; // Positive feedback
+          break;
+        default:
+          color = 'grey'; // Unknown or undefined rating
+      }
 
-      // Extract and store feedback texts
-      const texts = data.feedbacks.map((feedback) => {
-        //const createdAt = new Date(feedback.createdAt);
+      return {
+        id: index,
+        value: 1, // Each feedback counts as one
+        label: `${t('sessions.rating')} ${feedback.rating}`,
+        color: color, // Assign color based on rating
+      };
+    });
+
+    const aggregatedData = [
+      {
+        value: transformedData.filter((d) => d.color === 'green').length,
+        label: t('sessions.positiveLabel'),
+        color: 'green',
+      },
+      {
+        value: transformedData.filter((d) => d.color === 'yellow').length,
+        label: t('sessions.neutralLabel'),
+        color: 'yellow',
+      },
+      {
+        value: transformedData.filter((d) => d.color === 'red').length,
+        label: t('sessions.negativeLabel'),
+        color: 'red',
+      },
+    ]
+      .filter((d) => d.value > 0) // Filter out categories with no feedback
+      .map((d) => ({ ...d, label: `${d.label} (${d.value})` }));
+    setFeedbackData([{ data: aggregatedData }]);
+    setModalContent('statistics');
+    setOpenModal(true);
+
+    // Extract and store feedback texts
+    const texts = data.feedbacks
+      .filter((feedback) => feedback.text !== '')
+      .map((feedback) => {
         const formattedDate = dayjs(feedback.createdAt).format(
           dateTimeFormats.datetime[i18n.language]
         );
@@ -277,8 +285,7 @@ const Course = () => {
           createdAt: formattedDate,
         };
       });
-      setFeedbackTexts(texts);
-    }
+    setFeedbackTexts(texts);
   };
 
   // loading screen
@@ -345,6 +352,13 @@ const Course = () => {
                 {dayjs(session.start).format(
                   dateTimeFormats.date[i18n.language]
                 )}
+                <Typography variant="body2" color="textSecondary">
+                  {session.feedbacks && session.feedbacks.length > 0
+                    ? `${session.feedbacks.length} ${t(
+                        'sessions.feedbackCountText'
+                      )}`
+                    : t('sessions.noFeedbacks')}
+                </Typography>
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
@@ -389,6 +403,13 @@ const Course = () => {
                 >
                   {t('sessions.showStatisticsButton')}
                 </Button>
+                {/* <Typography variant="body2" color="textSecondary">
+                  {session.feedbacks && session.feedbacks.length > 0
+                    ? `${session.feedbacks.length} ${t(
+                        'sessions.feedbackCountText'
+                      )}`
+                    : t('sessions.noFeedbacks')}
+                </Typography> */}
                 {/* Spacer element */}
                 <Box sx={{ flexGrow: 1 }}></Box>
                 <Button

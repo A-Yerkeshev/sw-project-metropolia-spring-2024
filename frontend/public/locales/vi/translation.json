@@ -60,7 +60,9 @@
     "description": "Thông tin tiết học",
     "start": "Bắt đầu",
     "end": "Kết thúc",
-    "studentsNum": "Học sinh đã tham gia khóa học"
+    "studentsNum": "Học sinh đã tham gia khóa học",
+    "noFeedbacks": "Không có đánh giá",
+    "feedbackCountText": "đánh giá"
   },
   "qr": {
     "header": "Tiết học",
@@ -112,7 +114,7 @@
       "textFeedbackHeader": "Đánh giá về tiết học",
       "textFeedback": "Nhận xét",
       "noTextFeedbackMessage": "Đánh giá không đi kèm nhận xét bằng văn bản.",
-      "noFeedbackMessage": "Tiết học chưa nhận được đánh giá nào."
+      "noOpenFeedbackMessage": "Tiết học chưa nhận được nhận xét bằng văn bản nào."
     }
   },
   "landingPage": {
