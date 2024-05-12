@@ -1,15 +1,16 @@
 # The Instant Review Software "ReflectEd"
 
 ## Table of Contents
+
 - [Team](#team)
 - [Introduction](#introduction)
 - [Features](#features)
 - [Technology Stack](#technology-stack)
 - [Screenshots](#screenshots)
 - [Getting Started](#getting-started)
-    - [Prerequisites](#prerequisites)
-    - [Installation](#installation)
-    - [Usage](#usage)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Usage](#usage)
 - [UML Diagrams / Architecture](#uml-diagrams--architecture)
 - [Contributing](#contributing)
 - [FAQ](#faq)
@@ -53,6 +54,11 @@ Students can scan a QR code and leave a review for the session using their phone
 
 - **Looks Good on Any Device:** Thanks to Material-UI, the app works well on phones, tablets, and computers.
 - **Easy to Use:** Designed to be straightforward for everyone.
+
+**Multilingual Support**
+
+- **Languages:** The app is available in English, Finnish, Russian, and Vietnamese, making it accessible to a wider audience.
+- **Dynamic Language Switching:** Users can switch languages seamlessly within the app, enhancing usability and comfort.
 
 **Insights for Teachers**
 
