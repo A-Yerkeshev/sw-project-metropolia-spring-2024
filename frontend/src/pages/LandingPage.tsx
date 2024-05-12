@@ -9,6 +9,7 @@ import { useAuthContext } from '../hooks/useAuthContext';
 import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import { useTranslation } from 'react-i18next';
+import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
 
 const LandingPage = () => {
     const {user} = useAuthContext();
@@ -67,6 +68,12 @@ const LandingPage = () => {
         {t('landingPage.getStarted')}
         </Button>
       </Link>
+      <KeyboardDoubleArrowDownIcon
+        sx={{
+        mt: 13,
+        fontSize: '5rem',
+        }}
+      />
     </Box>
     <Grid container spacing={2} sx={{
   justifyContent: 'center',
