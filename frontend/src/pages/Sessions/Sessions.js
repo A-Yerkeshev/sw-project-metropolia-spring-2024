@@ -44,6 +44,7 @@ const Course = () => {
   const { t, i18n } = useTranslation();
 
   const backendUrl = process.env.REACT_APP_BACKEND_URL || "";
+  const [expandedAccordions, setExpandedAccordions] = useState([]);
 
   useEffect(() => {
     const fetchCourse = async () => {
@@ -289,6 +290,40 @@ const Course = () => {
       )
     : [];
 
+    const accordionClicked = (index) => {
+      const isExpanded = expandedAccordions.includes(index);
+    
+      if (isExpanded) {
+        setExpandedAccordions(expandedAccordions.filter((number) => number !== index));
+      } else {
+        setExpandedAccordions([...expandedAccordions, index]);
+      }
+    };
+    
+    const collapseAll = () => {
+      const allCollapsed = expandedAccordions.length === 0;
+    
+      if (!allCollapsed) {
+        setExpandedAccordions([]);
+      } else {
+        const newArray = [];
+        filteredSessions.forEach((_, index) => newArray.push(index));
+        setExpandedAccordions(newArray);
+      }
+    };
+    
+    const expandAll = () => {
+      const allExpanded = expandedAccordions.length === filteredSessions.length;
+    
+      if (!allExpanded) {
+        const newArray = [];
+        filteredSessions.forEach((_, index) => newArray.push(index));
+        setExpandedAccordions(newArray);
+      } else {
+        setExpandedAccordions([]);
+      }
+    };    
+
   if (!course) {
     return (
       <Container>
@@ -347,16 +382,36 @@ const Course = () => {
               </InputAdornment>
             ),
           }}
-          sx={{ ml: 2, width: "25%"}}
+          sx={{ ml: 2, width: "25%" }}
         />
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={expandAll}
+          sx={{ height: 55, ml: 2, width: "12%"}} 
+        >
+          {t("sessions.openAllSessionsButton")}
+        </Button>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={collapseAll}
+          sx={{ height: 55, ml: 2, width: "12%" }}
+        >
+          {t("sessions.closeAllSessionsButton")}
+        </Button>
       </Box>
-      {filteredSessions.map((session) => (
+      {filteredSessions.map((session, index) => (
         <Paper
           elevation={4}
           sx={{ mb: 2, overflow: "hidden" }}
           key={session._id}
         >
-          <Accordion>
+          <Accordion
+          key={index}
+          onChange={() => accordionClicked(index)}
+          expanded={expandedAccordions.includes(index)}
+          >
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1a-content"

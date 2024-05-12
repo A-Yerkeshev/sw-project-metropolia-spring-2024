@@ -63,7 +63,9 @@
     "end": "End",
     "studentsNum": "Students enrolled",
     "noFeedbacks": "No Feedback",
-    "feedbackCountText": "Submitted Feedback(s)"
+    "feedbackCountText": "Submitted Feedback(s)",
+    "openAllSessionsButton": "Open all sessions",
+    "closeAllSessionsButton": "Close all sessions"
   },
   "qr": {
     "header": "Session",

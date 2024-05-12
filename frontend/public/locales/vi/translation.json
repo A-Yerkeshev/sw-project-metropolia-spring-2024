@@ -62,7 +62,9 @@
     "end": "Kết thúc",
     "studentsNum": "Học sinh đã tham gia khóa học",
     "noFeedbacks": "Không có đánh giá",
-    "feedbackCountText": "đánh giá"
+    "feedbackCountText": "đánh giá",
+    "openAllSessionsButton": "Mở tất cả các phiên",
+    "closeAllSessionsButton": "Đóng tất cả các phiên"
   },
   "qr": {
     "header": "Tiết học",
