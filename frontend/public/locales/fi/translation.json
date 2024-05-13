@@ -62,9 +62,7 @@
     "end": "Luenton päättymisaika",
     "studentsNum": "Opiskelijat ovat nyt rekisteröityneet",
     "noFeedbacks": "Ei ole palautetta",
-    "feedbackCountText": "Palautetta tehty",
-    "openAllSessionsButton": "Avata kaikki luennot",
-    "closeAllSessionsButton": "Sulje kaikki luennot"
+    "feedbackCountText": "Palautetta tehty"
   },
   "qr": {
     "header": "Luento",

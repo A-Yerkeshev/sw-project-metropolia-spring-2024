@@ -24,6 +24,7 @@ import { useTranslation } from "react-i18next";
 import dateTimeFormats from "../../dateTimeFormats.json";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
+import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh';
 
 dayjs.extend(customParseFormat);
 
@@ -300,18 +301,6 @@ const Course = () => {
       }
     };
     
-    const collapseAll = () => {
-      const allCollapsed = expandedAccordions.length === 0;
-    
-      if (!allCollapsed) {
-        setExpandedAccordions([]);
-      } else {
-        const newArray = [];
-        filteredSessions.forEach((_, index) => newArray.push(index));
-        setExpandedAccordions(newArray);
-      }
-    };
-    
     const expandAll = () => {
       const allExpanded = expandedAccordions.length === filteredSessions.length;
     
@@ -388,17 +377,9 @@ const Course = () => {
           variant="contained"
           color="primary"
           onClick={expandAll}
-          sx={{ height: 55, ml: 2, width: "12%"}} 
+          sx={{ height: 55, ml: 2, width: "8%"}} 
         >
-          {t("sessions.openAllSessionsButton")}
-        </Button>
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={collapseAll}
-          sx={{ height: 55, ml: 2, width: "12%" }}
-        >
-          {t("sessions.closeAllSessionsButton")}
+          <AutoFixHighIcon/>
         </Button>
       </Box>
       {filteredSessions.map((session, index) => (

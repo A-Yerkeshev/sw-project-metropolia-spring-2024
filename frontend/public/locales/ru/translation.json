@@ -62,9 +62,7 @@
     "end": "Конец лекции",
     "studentsNum": "Студентов на курсе",
     "noFeedbacks": "Нету отзывов",
-    "feedbackCountText": "Отзывов оставлено",
-    "openAllSessionsButton": "Открыть все курсы",
-    "closeAllSessionsButton": "Закрыть все курсы"
+    "feedbackCountText": "Отзывов оставлено"
   },
   "qr": {
     "header": "Тема лекции",
